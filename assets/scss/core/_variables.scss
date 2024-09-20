@@ -1,0 +1,50 @@
+@use 'sass:color';
+
+/* fonts */
+$font-base: 'Arial'; // основной шрифт для текста
+$font-accent: 'Stapel';
+
+/* color palette */
+$color-primary: #232323;
+$color-primary-light: #434343;
+$color-secondary: #00adbb;
+$color-disable: #f4f4f4;
+$color-danger: #ff4811;
+$color-danger-dark: #FF0404;
+$color-danger-light: #fee;
+$color-warning: #fac311;
+
+/* ancillary color variables for this project */
+
+/* semantic color variables for this project */
+$color-bg-html: #fff;
+$color-bg-section: #fff;
+$color-bg-btn: #2578f4;
+$color-text: $color-primary;
+$color-text-light: #fff;
+$color-headline: #737470;
+$color-input-border: #c7ccd1;
+
+/* block sizes */
+$header-height-desktop: 86px;
+$header-height-mobile: 50px;
+
+/* indents */
+$container-indent: 0 20px;
+$section-indent: 60px 0;
+$section-indent-portable: 35px 0;
+
+/* z-indexes */
+$ui-index-0: 0; // Для сброса
+$ui-index-1: 1; // Для наползабщих элементов в общем потоке
+$ui-index-2: 2; // Для наползабщих элементов в общем потоке
+$ui-index-3: 3; // Для наползабщих элементов в общем потоке
+$ui-index-4: 4; // Для масок
+$ui-index-5: 5; // Для сайдбаров
+$ui-index-6: 6; // Для модалок
+$ui-index-7: 7; // Для перекрытия всего
+
+/* border-radius */
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 24px;

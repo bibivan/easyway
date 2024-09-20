@@ -1,0 +1,7 @@
+.main {
+  padding-top: $header-height-mobile;
+
+  @include desktop {
+    padding-top: $header-height-desktop;
+  }
+}

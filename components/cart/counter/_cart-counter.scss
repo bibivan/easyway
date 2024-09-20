@@ -1,0 +1,42 @@
+.cart-counter {
+  @include text-body;
+  @include link-states;
+
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+  font-size: 7px;
+  letter-spacing: -0.01em;
+  text-align: center;
+
+  @include desktop {
+    width: 29px;
+    height: 29px;
+  }
+
+  &__count {
+    @include flex-row-center-center;
+
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: $color-danger;
+    color: $color-text-light;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-align: center;
+
+    @include desktop {
+      top: -7px;
+      right: -7px;
+      width: 14px;
+      height: 14px;
+    }
+
+  }
+}

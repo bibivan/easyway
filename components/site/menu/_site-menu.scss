@@ -1,0 +1,25 @@
+.menu {
+    @include flex-column-top-start;
+    @include text-body;
+
+    position: fixed;
+    top: $header-height-mobile;
+    left: 0;
+    width: 100%;
+    height: calc(100% - #{$header-height-mobile});
+    background-color: $color-bg-html;
+
+    @include desktop {
+        display: none;
+    }
+
+    &__item {
+        padding: 7px 20px 6px;
+    }
+
+    &__link {
+        @include link-states;
+
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,64 @@
+// flex/direction/y-position/x-position
+
+@mixin flex-row-center-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-row-center-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column-top-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin flex-column-top-start {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@mixin flex-column-top-end {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+@mixin flex-row-center-start {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-column-stretch-start {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+@mixin text-body {
+  font-family: $font-base;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.4em;
+  text-align: left;
+}
+
+@mixin text-heading {
+  font-family: $font-accent;
+  font-weight: 700;
+}
+
+@mixin link-states {
+  color: $color-primary;
+  transition: color 0.2s ease-in-out;
+
+  &:active {
+    color: $color-primary-light;
+  }
+}
