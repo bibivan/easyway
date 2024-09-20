@@ -1,5 +1,10 @@
 .main {
+  min-height: 200vh;
   padding-top: $header-height-mobile;
+
+  @include desktop {
+    width: calc(100% - #{$scrollbar-width});
+  }
 
   @include desktop {
     padding-top: $header-height-desktop;

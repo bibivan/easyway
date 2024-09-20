@@ -2,11 +2,7 @@
 
 <template>
   <main class="main">
-    <NuxtLink
-      id="link"
-      to="some"
-      >Some</NuxtLink
-    >
+    <MainPageHero />
   </main>
 </template>
 <style scoped lang="scss">

@@ -1,4 +1,6 @@
 <template>
-  <SiteHeader />
-  <slot />
+  <PerfectScrollbar>
+    <SiteHeader />
+    <slot />
+  </PerfectScrollbar>
 </template>

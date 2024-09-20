@@ -1,0 +1,44 @@
+.hero {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+  background-color: #f0f0f0; // серый фон
+
+
+
+  &__images {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 300px;
+  }
+
+  &__image {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 5px solid rgb(255 255 255 / 60%); // прозрачный бордер
+    border-radius: 50%;
+    object-fit: cover;
+
+
+    &_1 {
+      z-index: 1;
+      left: 0;
+    }
+
+    &_2 {
+      z-index: 2;
+      left: 75px; // смещаем правее
+    }
+
+    &_3 {
+      z-index: 3;
+      left: 150px; // смещаем еще правее
+    }
+  }
+
+}

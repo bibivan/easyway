@@ -1,4 +1,5 @@
 import type { EBrand, TNullable } from '~/types/common'
+import { EGender } from '~/types/common'
 
 export enum IProductSizeAttr {
   XS = 'XS',
@@ -6,6 +7,13 @@ export enum IProductSizeAttr {
   M = 'M',
   L = 'L',
   XL = 'XL'
+}
+
+export enum IProductFilters {
+  SIZE = 'size',
+  COLOR = 'color',
+  GENDER = 'gender',
+  BRAND = 'BRAND'
 }
 
 export interface IProductRaw {
@@ -27,6 +35,7 @@ export interface IProductAttributes {
   color: string
   composition: string
   careInstructions: string
+  gender: EGender
 }
 
 export interface IProduct {
