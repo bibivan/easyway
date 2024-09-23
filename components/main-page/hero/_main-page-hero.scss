@@ -1,44 +1,100 @@
 .hero {
-  display: flex;
+  $bottom-indent-mobile: 17px;
+
+  @include flex-column-center-center;
+
+  position: relative;
   width: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: 50px 0;
-  background-color: #f0f0f0; // серый фон
+  min-height: 320px;
+  padding: 11px 0;
+  background-color: $section-bg-darker; // серый фон
 
-
-
-  &__images {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 500px;
-    height: 300px;
+  @include tablet {
+    height: 510px;
   }
 
-  &__image {
+  @include xs-desktop {
+    height: 690px;
+  }
+
+  &__swiper {
     position: absolute;
-    width: 150px;
-    height: 150px;
-    border: 5px solid rgb(255 255 255 / 60%); // прозрачный бордер
-    border-radius: 50%;
-    object-fit: cover;
+    z-index: $ui-index-1;
+    padding: 11px 0 $bottom-indent-mobile;
+    inset: 0;
+  }
 
+  &__swiper-pagination {
+    bottom: $bottom-indent-mobile;
 
-    &_1 {
-      z-index: 1;
-      left: 0;
+    :deep(.swiper-pagination-bullet) {
+      width: 6px;
+      height: 6px;
+      margin: 0 3px;
+      background-color: #171717;
+      opacity: 1;
     }
 
-    &_2 {
-      z-index: 2;
-      left: 75px; // смещаем правее
-    }
-
-    &_3 {
-      z-index: 3;
-      left: 150px; // смещаем еще правее
+    :deep(.swiper-pagination-bullet-active) {
+      width: 29px;
+      height: 6px;
+      border-radius: $border-radius-l;
     }
   }
 
+  &__banner {
+    height: 100%;
+  }
+
+  &__content {
+    @include flex-column-center-center;
+
+    position: relative;
+    z-index: $ui-index-2;
+  }
+
+  &__text {
+    position: relative;
+  }
+
+  &__note {
+    @include text-body;
+
+    position: absolute;
+    right: 100%;
+    bottom: 100%;
+    display: none;
+    width: 150px;
+    color: $color-text-light;
+    font-size: 15px;
+    text-align: right;
+
+    @include tablet {
+      display: block;
+    }
+  }
+
+  &__heading {
+    @include text-heading;
+
+    margin-bottom: 60px;
+    color: $color-text-light;
+    font-size: 64px;
+    line-height: 1;
+    opacity: 0.6;
+    text-align: center;
+    text-transform: uppercase;
+
+    @include tablet {
+      opacity: 1;
+    }
+  }
+
+  &__btn {
+    @include tablet {
+      max-width: 251px;
+      background-color: $color-bg-btn-light;
+      color: $color-text;
+    }
+  }
 }

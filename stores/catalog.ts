@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 import { defineStore } from 'pinia'
-import { EBrand, type IPaginatedDataRaw } from '~/types'
+import type { IGetCatalogPayload, IPaginatedDataRaw } from '~/types'
 import type { TDefaultStoreState, IPaginatedData, IProductRaw, IProduct } from '~/types'
 
 export const useCatalogStore = defineStore('catalog_store', () => {
@@ -11,14 +11,17 @@ export const useCatalogStore = defineStore('catalog_store', () => {
     error: null
   })
 
+  //getters
+  const catalog = computed(() => catalogState.data?.items)
+
   // mutations
 
   // actions
-  const getCatalogData = async (brand: EBrand) => {
+  const getCatalogData = async (params: IGetCatalogPayload) => {
     try {
-      const data = await useClientFetch<IPaginatedDataRaw<IProductRaw[]>>('/catalog/get/', {
+      const data = await useClientFetch<IPaginatedDataRaw<IProductRaw[]>>('/products/get/', {
         method: 'GET',
-        params: { 'filter[BRAND]': brand }
+        params
       })
 
       catalogState.data = {
@@ -33,6 +36,7 @@ export const useCatalogStore = defineStore('catalog_store', () => {
 
   return {
     catalogState,
+    catalog,
     getCatalogData
   }
 })

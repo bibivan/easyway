@@ -30,6 +30,20 @@
   align-items: flex-end;
 }
 
+@mixin flex-column-bottom-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@mixin flex-column-center-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 @mixin flex-row-center-start {
   display: flex;
   align-items: center;
@@ -52,6 +66,8 @@
 @mixin text-heading {
   font-family: $font-accent;
   font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.4em;
 }
 
 @mixin link-states {

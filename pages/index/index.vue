@@ -1,9 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <main class="main">
-    <MainPageHero />
-  </main>
+  <MainPageHero />
 </template>
 <style scoped lang="scss">
 @import 'index';

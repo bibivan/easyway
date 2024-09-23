@@ -37,3 +37,8 @@ export interface IPaginatedDataRaw<T> {
   items: T
   pagination: IPaginationRaw
 }
+
+export interface IGetCatalogPayload {
+  brand: string
+  gender?: EGender
+}

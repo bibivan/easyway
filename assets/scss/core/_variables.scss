@@ -10,7 +10,7 @@ $color-primary-light: #434343;
 $color-secondary: #00adbb;
 $color-disable: #f4f4f4;
 $color-danger: #ff4811;
-$color-danger-dark: #FF0404;
+$color-danger-dark: #ff0404;
 $color-danger-light: #fee;
 $color-warning: #fac311;
 
@@ -19,7 +19,9 @@ $color-warning: #fac311;
 /* semantic color variables for this project */
 $color-bg-html: #fff;
 $color-bg-section: #fff;
-$color-bg-btn: #2578f4;
+$section-bg-darker: #f4f4f4;
+$color-bg-btn: $color-primary;
+$color-bg-btn-light: #f7f7f7;
 $color-text: $color-primary;
 $color-text-light: #fff;
 $color-headline: #737470;
@@ -48,3 +50,4 @@ $ui-index-7: 7; // Для перекрытия всего
 
 /* border-radius */
 $border-radius-s: 5px;
+$border-radius-l: 15px;

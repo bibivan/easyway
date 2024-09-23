@@ -9,7 +9,7 @@ export enum IProductSizeAttr {
   XL = 'XL'
 }
 
-export enum IProductFilters {
+export enum EProductFilters {
   SIZE = 'size',
   COLOR = 'color',
   GENDER = 'gender',
@@ -45,8 +45,8 @@ export interface IProduct {
   brand: TNullable<EBrand>
   category: TNullable<string>
   description: TNullable<string>
-  id: TNullable<number>
-  name: TNullable<string>
+  id: number
+  name: string
   pictures: TNullable<string[]>
   price: TNullable<string>
   priceInt: TNullable<number>

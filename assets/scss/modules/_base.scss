@@ -79,6 +79,21 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.main {
+  position: relative;
+  z-index: $ui-index-1;
+  min-height: 200vh;
+  padding-top: $header-height-mobile;
+
+  @include desktop {
+    width: calc(100% - #{$scrollbar-width});
+  }
+
+  @include desktop {
+    padding-top: $header-height-desktop;
+  }
+}
+
 .section {
   width: 100%;
   padding: $section-indent;
@@ -95,11 +110,11 @@ body {
   margin: 0 auto;
 }
 
-
 .ps {
   height: 100vh;
 
   .ps__rail-y {
+    z-index: $ui-index-1;
     width: $scrollbar-width;
   }
 
@@ -113,13 +128,13 @@ body {
   }
 
   .ps__thumb-y,
-  .ps__rail-y:hover>.ps__thumb-y,
-  .ps__rail-y:focus>.ps__thumb-y,
+  .ps__rail-y:hover > .ps__thumb-y,
+  .ps__rail-y:focus > .ps__thumb-y,
   .ps__rail-y.ps--clicking .ps__thumb-y {
+    z-index: $ui-index-4;
     right: $scrollbar-indent;
     width: calc(#{$scrollbar-width} - #{$scrollbar-indent});
     border-radius: $border-radius-s;
     background-color: $color-primary;
   }
-
 }

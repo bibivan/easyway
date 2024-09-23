@@ -1,6 +1,9 @@
 <template>
   <PerfectScrollbar>
     <SiteHeader />
-    <slot />
+    <main class="main">
+      <slot />
+    </main>
   </PerfectScrollbar>
 </template>
+<script setup lang="ts"></script>

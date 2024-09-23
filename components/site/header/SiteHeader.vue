@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EBrand, EGender } from '~/types'
+import { EBrand, EGender, EProductFilters } from '~/types'
 
 const state = reactive({
   menuIsOpened: false
@@ -19,17 +19,17 @@ const state = reactive({
         <nav class="header__nav">
           <NuxtLink
             class="header__link"
-            :to="{ name: 'easyfit-catalog', params: { brand: EBrand.EASYFIT } }"
+            :to="{ name: 'easyfit-catalog' }"
             >Бренд-линейка easyfit</NuxtLink
           >
           <NuxtLink
             class="header__link"
-            :to="{ name: 'catalog', params: { gender: EGender.MALE } }"
+            :to="`catalog?${EProductFilters.GENDER}=${EGender.MALE}`"
             >Мужское</NuxtLink
           >
           <NuxtLink
             class="header__link"
-            :to="{ name: 'catalog', params: { gender: EGender.FEMALE } }"
+            :to="`catalog?${EProductFilters.GENDER}=${EGender.FEMALE}`"
             >Женское</NuxtLink
           >
 
