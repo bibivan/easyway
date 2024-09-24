@@ -1,30 +1,27 @@
 <script setup lang="ts">
-import { EBrand, EGender, type IGetCatalogPayload } from '~/types'
-
-const { params, meta } = useRoute()
 const catalogStore = useCatalogStore()
 const { catalog } = storeToRefs(catalogStore)
 
 await useAsyncData('catalog', () => {
-  const payload: IGetCatalogPayload = {
-    brand: meta.brand ? (meta.brand as string) : EBrand.EASYFIT
-  }
-
-  if (params.gender) payload.gender = params.gender as EGender
-
+  const payload = useBaseCatalogPayload()
   return catalogStore.getCatalogData(payload)
 })
 </script>
 
 <template>
-  <div v-if="catalog">
-    <div
-      v-for="item in catalog"
-      :key="item.id"
-    >
-      {{ item.id }}
+  <section class="section">
+    <div class="container">
+      <div class="catalog">
+        <CatalogItem
+          v-for="item in catalog"
+          :key="item.groupId"
+          :data="item"
+        />
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@import 'catalog';
+</style>

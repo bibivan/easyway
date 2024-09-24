@@ -1,12 +1,13 @@
 import type { EBrand, TNullable } from '~/types/common'
 import { EGender } from '~/types/common'
 
-export enum IProductSizeAttr {
+export enum EProductSizeAttr {
   XS = 'XS',
   S = 'S',
   M = 'M',
   L = 'L',
-  XL = 'XL'
+  XL = 'XL',
+  XXL = 'XXL'
 }
 
 export enum EProductFilters {
@@ -16,38 +17,64 @@ export enum EProductFilters {
   BRAND = 'BRAND'
 }
 
+export interface IProductAttributesRaw {
+  sfAttrs: {
+    name: string
+    value: string
+  }[]
+}
+
+export interface IProductSFAttrs {
+  size: EProductSizeAttr
+  color: string
+  description: string
+  composition: string
+  careInstructions: string
+  gender: EGender
+}
+
 export interface IProductRaw {
   ARTICLE: string
   ATTRIBUTES: string
   BARCODE: string
-  BRAND: EBrand
+  BRAND: string
   CATEGORY: string
   DESCRIPTION: string
   ID: string
+  GROUP_ID: string
   NAME: string
   PICTURES: string
   PRICE: string
   PRICE_INT: string
 }
 
-export interface IProductAttributes {
-  size: IProductSizeAttr
-  color: string
-  composition: string
-  careInstructions: string
-  gender: EGender
-}
-
 export interface IProduct {
   article: TNullable<string>
-  attributes: TNullable<IProductAttributes>
+  sfAttrs: TNullable<IProductSFAttrs>
   barcode: TNullable<number>
   brand: TNullable<EBrand>
   category: TNullable<string>
   description: TNullable<string>
   id: number
+  groupId: number
   name: string
   pictures: TNullable<string[]>
   price: TNullable<string>
   priceInt: TNullable<number>
+}
+
+export interface IProductGroupRaw {
+  SIZES: string[]
+  COLORS: string[]
+  GROUP_ID: string
+  CATEGORY: string
+  ITEMS: IProductRaw[]
+}
+
+export interface IProductGroup {
+  sizes: EProductSizeAttr[]
+  colors: string[]
+  groupId: number
+  category: string
+  items: IProduct[]
 }

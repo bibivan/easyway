@@ -1,11 +1,18 @@
 import { reactive } from 'vue'
 import { defineStore } from 'pinia'
-import type { IGetCatalogPayload, IPaginatedDataRaw } from '~/types'
-import type { TDefaultStoreState, IPaginatedData, IProductRaw, IProduct } from '~/types'
+import type {
+  TDefaultStoreState,
+  IGetCatalogPayload,
+  IPaginatedDataRaw,
+  IPaginatedData,
+  IProductGroupRaw,
+  IProductGroup
+} from '~/types'
+import { useCatalogMock } from '~/composables/useCatalogMock'
 
 export const useCatalogStore = defineStore('catalog_store', () => {
   // Data
-  const catalogState = reactive<TDefaultStoreState<IPaginatedData<IProduct[]>>>({
+  const catalogState = reactive<TDefaultStoreState<IPaginatedData<IProductGroup[]>>>({
     data: null,
     loading: false,
     error: null
@@ -19,14 +26,16 @@ export const useCatalogStore = defineStore('catalog_store', () => {
   // actions
   const getCatalogData = async (params: IGetCatalogPayload) => {
     try {
-      const data = await useClientFetch<IPaginatedDataRaw<IProductRaw[]>>('/products/get/', {
-        method: 'GET',
-        params
-      })
+      // const data = await useClientFetch<IPaginatedDataRaw<IProductGroupRaw[]>>('/products/get/', {
+      //   method: 'GET',
+      //   params
+      // })
+
+      const data = await useCatalogMock()
 
       catalogState.data = {
         pagination: paginationRawToPagination(data.pagination),
-        items: data.items.map((item: IProductRaw) => productRawToProduct(item))
+        items: data.items.map((item: IProductGroupRaw) => productGroupRawToProductGroup(item))
       }
     } catch (e) {
       console.error(e)

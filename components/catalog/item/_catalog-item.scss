@@ -1,0 +1,75 @@
+.catalog-item {
+  @include flex-column;
+  @include text-body;
+
+  overflow: hidden;
+  border-radius: $border-radius-s;
+  background-color: $section-bg-darker;
+
+  &__body {
+    @include flex-column;
+
+    padding: 10px;
+    font-size: 14px;
+    gap: 14px;
+
+    @include tablet {
+      font-size: 18px;
+      gap: 8px;
+    }
+  }
+
+  &__img {
+    border-radius: $border-radius-xs;
+  }
+
+  &__name {
+    overflow: hidden;
+    height: 42px;
+
+    @include tablet {
+      height: $line-height-base;
+    }
+  }
+
+  &__colors,
+  &__sizes {
+    display: none;
+    gap: 3px;
+
+    @include tablet {
+      display: flex;
+    }
+  }
+
+  &__colors {
+    gap: 3px;
+  }
+
+  &__sizes {
+    gap: 2px;
+  }
+
+  &__footer {
+    @include flex-row-center-between;
+  }
+
+  &__price {
+    font-weight: 700;
+  }
+
+  &__add {
+    width: 25px;
+    height: 25px;
+    padding: 6px 7px 7px 6px;
+    border-radius: $border-radius-s;
+    background-color: $color-bg-btn;
+    color: $color-text-light;
+
+    @include tablet {
+      width: 35px;
+      height: 35px;
+      padding: 9px 10px 10px 9px;
+    }
+  }
+}

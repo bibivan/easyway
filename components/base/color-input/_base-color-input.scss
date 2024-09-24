@@ -1,0 +1,51 @@
+.color-input {
+  &__input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  /* для элемента label связанного с .custom-radio */
+  &__label {
+    @include flex-row-center-between;
+    @include text-body;
+
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    gap: 10px;
+    transition: color 0.15s ease-in-out;
+
+    @include desktop {
+      font-size: 18px;
+    }
+
+    &::before {
+      display: block;
+      width: 15px;
+      height: 15px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      background-color: currentcolor;
+      content: '';
+      transition: border-color 0.15s ease-in-out;
+    }
+  }
+
+  /* стили для радиокнопки, находящейся в состоянии checked */
+  &__input:checked + &__label::before {
+    border-color: $color-primary;
+  }
+
+  /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+  &__input:focus:not(:checked) + &__label::before {
+    border-color: $color-primary-light;
+  }
+
+  /* стили для радиокнопки, находящейся в ховере и не находящейся в состоянии checked */
+  @include hover {
+    &__input:hover:not(:checked) + &__label::before {
+      border-color: $color-primary-light;
+    }
+  }
+}

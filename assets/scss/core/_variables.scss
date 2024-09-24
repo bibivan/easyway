@@ -3,6 +3,7 @@
 /* fonts */
 $font-base: 'Arial'; // основной шрифт для текста
 $font-accent: 'Stapel';
+$line-height-base: 1.4em;
 
 /* color palette */
 $color-primary: #232323;
@@ -49,5 +50,6 @@ $ui-index-6: 6; // Для модалок
 $ui-index-7: 7; // Для перекрытия всего
 
 /* border-radius */
+$border-radius-xs: 2px;
 $border-radius-s: 5px;
 $border-radius-l: 15px;
