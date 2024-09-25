@@ -23,7 +23,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '00ID0',
+            ID: '000',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XS, black',
             PICTURES:
@@ -39,7 +39,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '00ID1',
+            ID: '001',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, S, black',
             PICTURES:
@@ -55,7 +55,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '00ID2',
+            ID: '002',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, M, black',
             PICTURES:
@@ -71,7 +71,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '00ID3',
+            ID: '003',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, L, black',
             PICTURES:
@@ -87,7 +87,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '00ID4',
+            ID: '004',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XL, black',
             PICTURES:
@@ -103,7 +103,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '01ID0',
+            ID: '010',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XS, white',
             PICTURES:
@@ -119,7 +119,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '01ID1',
+            ID: '011',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, S, white',
             PICTURES:
@@ -135,7 +135,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '01ID2',
+            ID: '012',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, M, white',
             PICTURES:
@@ -151,7 +151,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '01ID3',
+            ID: '013',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, L, white',
             PICTURES:
@@ -167,7 +167,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '01ID4',
+            ID: '014',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XL, white',
             PICTURES:
@@ -183,7 +183,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '02ID0',
+            ID: '020',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XS, red',
             PICTURES: '["["]',
@@ -198,7 +198,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '02ID1',
+            ID: '021',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, S, red',
             PICTURES: '["["]',
@@ -213,7 +213,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '02ID2',
+            ID: '022',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, M, red',
             PICTURES: '["["]',
@@ -228,7 +228,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '02ID3',
+            ID: '023',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, L, red',
             PICTURES: '["["]',
@@ -243,7 +243,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '02ID4',
+            ID: '024',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XL, red',
             PICTURES: '["["]',
@@ -258,7 +258,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '03ID0',
+            ID: '030',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XS, green',
             PICTURES:
@@ -274,7 +274,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '03ID1',
+            ID: '031',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, S, green',
             PICTURES:
@@ -290,7 +290,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '03ID2',
+            ID: '032',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, M, green',
             PICTURES:
@@ -306,7 +306,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '03ID3',
+            ID: '033',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, L, green',
             PICTURES:
@@ -322,7 +322,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '03ID4',
+            ID: '034',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XL, green',
             PICTURES:
@@ -346,7 +346,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '10ID0',
+            ID: '100',
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, S, black',
             PICTURES:
@@ -362,7 +362,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '10ID1',
+            ID: '101',
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, M, black',
             PICTURES:
@@ -378,7 +378,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '10ID2',
+            ID: '102',
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, L, black',
             PICTURES:
@@ -394,7 +394,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '11ID0',
+            ID: '110',
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, S, white',
             PICTURES:
@@ -410,7 +410,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '11ID1',
+            ID: '111',
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, M, white',
             PICTURES:
@@ -426,7 +426,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '11ID2',
+            ID: '112',
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, L, white',
             PICTURES:
@@ -442,7 +442,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '13ID0',
+            ID: '130',
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, S, green',
             PICTURES:
@@ -458,7 +458,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '13ID1',
+            ID: '131',
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, M, green',
             PICTURES:
@@ -474,7 +474,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '13ID2',
+            ID: '132',
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, L, green',
             PICTURES:
@@ -498,7 +498,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
-            ID: '20ID0',
+            ID: '200',
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, XS, black',
             PICTURES:
@@ -514,7 +514,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
-            ID: '20ID1',
+            ID: '201',
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, S, black',
             PICTURES:
@@ -530,7 +530,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
-            ID: '20ID2',
+            ID: '202',
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, M, black',
             PICTURES:
@@ -546,7 +546,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
-            ID: '22ID0',
+            ID: '220',
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, XS, red',
             PICTURES:
@@ -562,7 +562,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
-            ID: '22ID1',
+            ID: '221',
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, S, red',
             PICTURES:
@@ -578,7 +578,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
-            ID: '22ID2',
+            ID: '222',
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, M, red',
             PICTURES:
@@ -594,7 +594,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
-            ID: '23ID0',
+            ID: '230',
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, XS, green',
             PICTURES:
@@ -610,7 +610,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
-            ID: '23ID1',
+            ID: '231',
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, S, green',
             PICTURES:
@@ -626,7 +626,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
-            ID: '23ID2',
+            ID: '232',
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, M, green',
             PICTURES:
@@ -650,7 +650,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
-            ID: '31ID0',
+            ID: '310',
             GROUP_ID: '3',
             NAME: 'Брюки гигант, S, white',
             PICTURES:
@@ -666,7 +666,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
-            ID: '31ID1',
+            ID: '311',
             GROUP_ID: '3',
             NAME: 'Брюки гигант, M, white',
             PICTURES:
@@ -682,7 +682,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
-            ID: '31ID2',
+            ID: '312',
             GROUP_ID: '3',
             NAME: 'Брюки гигант, L, white',
             PICTURES:
@@ -698,7 +698,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
-            ID: '32ID0',
+            ID: '320',
             GROUP_ID: '3',
             NAME: 'Брюки гигант, S, red',
             PICTURES:
@@ -714,7 +714,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
-            ID: '32ID1',
+            ID: '321',
             GROUP_ID: '3',
             NAME: 'Брюки гигант, M, red',
             PICTURES:
@@ -730,7 +730,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
-            ID: '32ID2',
+            ID: '322',
             GROUP_ID: '3',
             NAME: 'Брюки гигант, L, red',
             PICTURES:
@@ -746,7 +746,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
-            ID: '33ID0',
+            ID: '330',
             GROUP_ID: '3',
             NAME: 'Брюки гигант, S, green',
             PICTURES:
@@ -762,7 +762,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
-            ID: '33ID1',
+            ID: '331',
             GROUP_ID: '3',
             NAME: 'Брюки гигант, M, green',
             PICTURES:
@@ -778,7 +778,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
-            ID: '33ID2',
+            ID: '332',
             GROUP_ID: '3',
             NAME: 'Брюки гигант, L, green',
             PICTURES:
@@ -802,7 +802,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
-            ID: '40ID0',
+            ID: '400',
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, M, black',
             PICTURES:
@@ -818,7 +818,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
-            ID: '40ID1',
+            ID: '401',
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, L, black',
             PICTURES:
@@ -834,7 +834,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
-            ID: '40ID2',
+            ID: '402',
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, XL, black',
             PICTURES:
@@ -850,7 +850,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
-            ID: '41ID0',
+            ID: '410',
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, M, white',
             PICTURES:
@@ -866,7 +866,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
-            ID: '41ID1',
+            ID: '411',
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, L, white',
             PICTURES:
@@ -882,7 +882,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
-            ID: '41ID2',
+            ID: '412',
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, XL, white',
             PICTURES:
@@ -898,7 +898,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
-            ID: '42ID0',
+            ID: '420',
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, M, red',
             PICTURES:
@@ -914,7 +914,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
-            ID: '42ID1',
+            ID: '421',
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, L, red',
             PICTURES:
@@ -930,7 +930,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
-            ID: '42ID2',
+            ID: '422',
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, XL, red',
             PICTURES:
@@ -954,7 +954,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
-            ID: '50ID0',
+            ID: '500',
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, XS, black',
             PICTURES:
@@ -970,7 +970,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
-            ID: '50ID1',
+            ID: '501',
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, M, black',
             PICTURES:
@@ -986,7 +986,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
-            ID: '50ID2',
+            ID: '502',
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, L, black',
             PICTURES:
@@ -1002,7 +1002,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
-            ID: '51ID0',
+            ID: '510',
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, XS, white',
             PICTURES:
@@ -1018,7 +1018,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
-            ID: '51ID1',
+            ID: '511',
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, M, white',
             PICTURES:
@@ -1034,7 +1034,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
-            ID: '51ID2',
+            ID: '512',
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, L, white',
             PICTURES:
@@ -1050,7 +1050,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
-            ID: '53ID0',
+            ID: '530',
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, XS, green',
             PICTURES:
@@ -1066,7 +1066,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
-            ID: '53ID1',
+            ID: '531',
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, M, green',
             PICTURES:
@@ -1082,7 +1082,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
-            ID: '53ID2',
+            ID: '532',
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, L, green',
             PICTURES:
@@ -1106,7 +1106,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '60ID0',
+            ID: '600',
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, S, black',
             PICTURES:
@@ -1122,7 +1122,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '60ID1',
+            ID: '601',
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, M, black',
             PICTURES:
@@ -1138,7 +1138,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '60ID2',
+            ID: '602',
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, L, black',
             PICTURES:
@@ -1154,7 +1154,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '61ID0',
+            ID: '610',
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, S, white',
             PICTURES:
@@ -1170,7 +1170,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '61ID1',
+            ID: '611',
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, M, white',
             PICTURES:
@@ -1186,7 +1186,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '61ID2',
+            ID: '612',
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, L, white',
             PICTURES:
@@ -1202,7 +1202,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '63ID0',
+            ID: '630',
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, S, green',
             PICTURES:
@@ -1218,7 +1218,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '63ID1',
+            ID: '631',
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, M, green',
             PICTURES:
@@ -1234,7 +1234,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
-            ID: '63ID2',
+            ID: '632',
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, L, green',
             PICTURES:
@@ -1258,7 +1258,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '71ID00',
+            ID: '7100',
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, M, blue',
             PICTURES:
@@ -1274,7 +1274,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '71ID0',
+            ID: '710',
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, S, white',
             PICTURES:
@@ -1290,7 +1290,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '71ID1',
+            ID: '711',
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, M, white',
             PICTURES:
@@ -1306,7 +1306,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '71ID2',
+            ID: '712',
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, L, white',
             PICTURES:
@@ -1322,7 +1322,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '72ID0',
+            ID: '720',
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, S, red',
             PICTURES:
@@ -1338,7 +1338,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '72ID1',
+            ID: '721',
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, M, red',
             PICTURES:
@@ -1354,7 +1354,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '72ID2',
+            ID: '722',
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, L, red',
             PICTURES:
@@ -1370,7 +1370,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '73ID0',
+            ID: '730',
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, S, green',
             PICTURES:
@@ -1386,7 +1386,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '73ID1',
+            ID: '731',
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, M, green',
             PICTURES:
@@ -1402,7 +1402,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '73ID2',
+            ID: '732',
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, L, green',
             PICTURES:
@@ -1418,7 +1418,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             BRAND: 'easyway',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
-            ID: '73ID3',
+            ID: '733',
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, XL, green',
             PICTURES:

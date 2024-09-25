@@ -14,7 +14,7 @@
     cursor: pointer;
     font-size: 14px;
     gap: 10px;
-    transition: color 0.15s ease-in-out;
+    transition: color 0.2s ease-in-out;
 
     @include desktop {
       font-size: 18px;
@@ -27,8 +27,9 @@
       border: 2px solid transparent;
       border-radius: 50%;
       background-color: currentcolor;
+      box-shadow: 0 0 6px rgba($color-text, 0.3);
       content: '';
-      transition: border-color 0.15s ease-in-out;
+      transition: border-color 0.2s ease-in-out;
     }
   }
 

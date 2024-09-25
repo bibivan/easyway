@@ -1,0 +1,25 @@
+.cart-modal {
+  position: fixed;
+  z-index: $ui-index-6;
+  inset: 0;
+
+  &__overlay {
+    position: absolute;
+    z-index: $ui-index-1;
+    right: 0;
+    width: 200%;
+    height: 100%;
+    background-color: $color-primary;
+    opacity: 0.5;
+  }
+
+  &__dialog {
+    position: relative;
+    z-index: $ui-index-2;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background-color: $color-bg-section-darker;
+  }
+}

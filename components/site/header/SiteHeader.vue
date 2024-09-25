@@ -1,9 +1,18 @@
 <script setup lang="ts">
-import { EBrand, EGender, EProductFilters } from '~/types'
+import { EGender, EProductFilters } from '~/types'
+
+const { cartState } = useCartStore()
+const { globalScrollbarState } = useGlobalScrollbarStore()
 
 const state = reactive({
   menuIsOpened: false
 })
+
+const handleShowCart = () => {
+  cartState.isShown = true
+  globalScrollbarState.hidden = true
+  console.log('eher')
+}
 </script>
 
 <template>
@@ -52,12 +61,12 @@ const state = reactive({
           >
             <SvgProfile />
           </NuxtLink>
-          <NuxtLink
+          <button
             class="header__action header__action_cart"
-            to="/cart"
+            @click="handleShowCart"
           >
-            <CartCounter />
-          </NuxtLink>
+            <CartTotalItems />
+          </button>
 
           <button class="header__action header__action_burger">
             <SvgBurger

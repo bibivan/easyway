@@ -1,12 +1,27 @@
 <script setup lang="ts">
-defineProps<{ id: number }>()
+const props = defineProps<{ id: number }>()
+const { increaseItemsCount, decreaseItemsCount, cartState } = useCartStore()
+const thisCartItem = computed(() => cartState.data?.find((item) => item.id === props.id) || null)
 </script>
 
 <template>
-  <div class="counter">
-    <button class="counter__minus"><SvgMinus /></button>
-    <div class="counter__count">10</div>
-    <button class="counter__plus"><SvgPlus /></button>
+  <div
+    v-if="thisCartItem"
+    class="catalog-counter"
+  >
+    <button
+      class="catalog-counter__minus"
+      @click="decreaseItemsCount(id)"
+    >
+      <SvgMinus />
+    </button>
+    <div class="catalog-counter__count">{{ thisCartItem.cnt }}</div>
+    <button
+      class="catalog-counter__plus"
+      @click="increaseItemsCount(id)"
+    >
+      <SvgPlus />
+    </button>
   </div>
 </template>
 

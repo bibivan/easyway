@@ -1,4 +1,4 @@
-.cart-counter {
+.total-items {
   @include text-body;
   @include link-states;
 
@@ -37,6 +37,5 @@
       width: 14px;
       height: 14px;
     }
-
   }
 }

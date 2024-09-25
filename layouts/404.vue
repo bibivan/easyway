@@ -1,7 +1,14 @@
+<script lang="ts" setup>
+const { globalScrollbarState } = useGlobalScrollbarStore()
+</script>
+
 <template>
-  <PerfectScrollbar>
+  <PerfectScrollbar :suppress-scroll-y="globalScrollbarState.hidden">
     <SiteHeader />
-    <slot />
+    <main class="main">
+      <slot />
+      <CartModal />
+    </main>
   </PerfectScrollbar>
 </template>
 <script setup lang="ts"></script>

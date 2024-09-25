@@ -2,6 +2,8 @@
 import { EProductSizeAttr, type IProductGroup } from '~/types'
 
 const props = defineProps<{ data: IProductGroup }>()
+const { cartState, putToCart } = useCartStore()
+
 const state = reactive<{
   color: string
   size: EProductSizeAttr
@@ -16,6 +18,10 @@ const activeProduct = computed(() => {
   return props.data.items.find((item) => {
     return item.sfAttrs?.color === state.color && item.sfAttrs?.size === state.size
   })
+})
+
+const isInCart = computed(() => {
+  return cartState.data ? arrayHasElem(cartState.data, 'id', activeProduct.value?.id) : false
 })
 
 watch(
@@ -83,11 +89,26 @@ watch(
       </div>
       <div class="catalog-item__footer">
         <p class="catalog-item__price">{{ activeProduct.price }} ₽</p>
-        <button class="catalog-item__add">
+
+        <CatalogItemsCounter
+          v-if="isInCart"
+          :id="activeProduct.id"
+          class="catalog-item__counter"
+        />
+        <button
+          v-else
+          class="catalog-item__add"
+          @click="putToCart(activeProduct)"
+        >
+          <SvgCart />
+        </button>
+        <button
+          class="catalog-item__add catalog-item__add_visible_mobile"
+          @click="putToCart(activeProduct)"
+        >
           <SvgCart />
         </button>
       </div>
-      <!--      <CatalogItemsCounter :id="activeProduct.id" />-->
     </div>
   </div>
 </template>

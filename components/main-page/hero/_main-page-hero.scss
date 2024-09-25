@@ -7,7 +7,7 @@
   width: 100%;
   min-height: 320px;
   padding: 11px 0;
-  background-color: $section-bg-darker; // серый фон
+  background-color: $color-bg-section-darker; // серый фон
 
   @include tablet {
     height: 510px;

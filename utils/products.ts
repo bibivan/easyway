@@ -63,7 +63,7 @@ export const productRawToProduct = (data: IProductRaw): IProduct => {
     brand: toNullable(data.BRAND),
     category: toNullable(data.CATEGORY),
     description: toNullable(parseJSON(data.DESCRIPTION)),
-    id: toNullable(parseJSON(data.ID)),
+    id: toNullable(parseInt(data.ID, 10)),
     groupId: toNullable(parseJSON(data.GROUP_ID)),
     name: toNullable(data.NAME),
     pictures: toNullable(parseJSON(data.PICTURES)),

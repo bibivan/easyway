@@ -4,7 +4,7 @@
 
   overflow: hidden;
   border-radius: $border-radius-s;
-  background-color: $section-bg-darker;
+  background-color: $color-bg-section-darker;
 
   &__body {
     @include flex-column;
@@ -59,17 +59,34 @@
   }
 
   &__add {
+    display: none;
     width: 25px;
     height: 25px;
     padding: 6px 7px 7px 6px;
     border-radius: $border-radius-s;
     background-color: $color-bg-btn;
     color: $color-text-light;
+    transition: background-color 0.2s ease-in-out;
 
     @include tablet {
+      display: block;
       width: 35px;
       height: 35px;
       padding: 9px 10px 10px 9px;
+    }
+
+    @include hover {
+      &:hover {
+        background-color: $color-primary-light;
+      }
+    }
+
+    &_visible_mobile {
+      display: block;
+
+      @include tablet {
+        display: none;
+      }
     }
   }
 }

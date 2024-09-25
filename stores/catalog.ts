@@ -1,7 +1,5 @@
-import { reactive } from 'vue'
 import { defineStore } from 'pinia'
 import type {
-  TDefaultStoreState,
   IGetCatalogPayload,
   IPaginatedDataRaw,
   IPaginatedData,
@@ -9,14 +7,11 @@ import type {
   IProductGroup
 } from '~/types'
 import { useCatalogMock } from '~/composables/useCatalogMock'
+import { useStoreStateInstance } from '~/composables/useStoreStateInstance'
 
 export const useCatalogStore = defineStore('catalog_store', () => {
   // Data
-  const catalogState = reactive<TDefaultStoreState<IPaginatedData<IProductGroup[]>>>({
-    data: null,
-    loading: false,
-    error: null
-  })
+  const catalogState = useStoreStateInstance<IPaginatedData<IProductGroup[]>>()
 
   //getters
   const catalog = computed(() => catalogState.data?.items)
@@ -31,7 +26,7 @@ export const useCatalogStore = defineStore('catalog_store', () => {
       //   params
       // })
 
-      const data = await useCatalogMock()
+      const data: IPaginatedDataRaw<IProductGroupRaw[]> = await useCatalogMock()
 
       catalogState.data = {
         pagination: paginationRawToPagination(data.pagination),

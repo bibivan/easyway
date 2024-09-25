@@ -28,3 +28,11 @@ export const paginationRawToPagination = (obj: IPaginationRaw): IPagination => {
     total: Number(obj.total)
   }
 }
+
+export const arrayHasElem = <T extends Record<string, any>>(
+  array: T[],
+  key: keyof T,
+  value: any
+): boolean => {
+  return array.some((item) => item[key] === value)
+}
