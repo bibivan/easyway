@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { EGender, EProductFilters } from '~/types'
+import CartItemsAmount from '~/components/cart/items/amount/CartItemsAmount.vue'
 
 const { cartState } = useCartStore()
 const { globalScrollbarState } = useGlobalScrollbarStore()
@@ -64,7 +65,7 @@ const handleShowCart = () => {
             class="header__action header__action_cart"
             @click="handleShowCart"
           >
-            <CartTotalItems />
+            <CartItemsAmount />
           </button>
 
           <button class="header__action header__action_burger">

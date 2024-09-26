@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const props = defineProps<{ id: number }>()
-const { increaseItemsCount, decreaseItemsCount, cartState } = useCartStore()
+const {
+  increaseItemsCount: handleIncreaseItemsCount,
+  decreaseItemsCount: handleDecreaseItemsCount,
+  cartState
+} = useCartStore()
 const thisCartItem = computed(() => cartState.data?.find((item) => item.id === props.id) || null)
 </script>
 
@@ -11,14 +15,14 @@ const thisCartItem = computed(() => cartState.data?.find((item) => item.id === p
   >
     <button
       class="catalog-counter__minus"
-      @click="decreaseItemsCount(id)"
+      @click="handleDecreaseItemsCount(id)"
     >
       <SvgMinus />
     </button>
     <div class="catalog-counter__count">{{ thisCartItem.cnt }}</div>
     <button
       class="catalog-counter__plus"
-      @click="increaseItemsCount(id)"
+      @click="handleIncreaseItemsCount(id)"
     >
       <SvgPlus />
     </button>

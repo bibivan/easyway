@@ -9,3 +9,7 @@ export interface ICartItem {
   picture: string
   id: number
 }
+
+export interface IPromoResponseData {
+  result: number
+}

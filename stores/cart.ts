@@ -83,6 +83,7 @@ export const useCartStore = defineStore('cart_store', () => {
     cartItemsCount,
     cartTotalPrice,
     clearCart,
+    deleteCartItem,
     increaseItemsCount,
     decreaseItemsCount,
     putToCart

@@ -6,17 +6,14 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }]
     }
   },
-  modules: ['@pinia/nuxt', 'nuxt-swiper', 'vue3-perfect-scrollbar/nuxt'],
-  devtools: { enabled: true },
   css: ['~/assets/scss/main.scss'],
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@import "~/assets/scss/core";'
-        }
-      }
-    }
+  devtools: { enabled: true },
+  imports: {
+    dirs: ['utils/typeguards']
+  },
+  modules: ['@pinia/nuxt', 'nuxt-swiper', 'vue3-perfect-scrollbar/nuxt'],
+  pinia: {
+    storesDirs: ['./stores/**']
   },
   runtimeConfig: {
     public: {
@@ -27,14 +24,27 @@ export default defineNuxtConfig({
       yamapToken: process.env.NUXT_YAMAP_TOKEN
     }
   },
-  pinia: {
-    storesDirs: ['./stores/**']
-  },
+  ssr: true,
   typescript: {
     typeCheck: true
   },
-  imports: {
-    dirs: ['utils/typeguards']
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "~/assets/scss/core";'
+        }
+      }
+    }
   },
-  ssr: true
+  vue: {
+    compilerOptions: {
+      directiveTransforms: {
+        script: () => ({
+          props: [],
+          needRuntime: true
+        })
+      }
+    }
+  }
 })

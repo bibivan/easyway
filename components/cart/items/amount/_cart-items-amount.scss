@@ -1,4 +1,4 @@
-.total-items {
+.cart-items-amount {
   @include text-body;
   @include link-states;
 
@@ -15,7 +15,7 @@
     height: 29px;
   }
 
-  &__count {
+  &__value {
     @include flex-row-center-center;
 
     position: absolute;

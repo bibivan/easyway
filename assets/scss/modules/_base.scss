@@ -110,35 +110,3 @@ body {
   padding: $container-indent;
   margin: 0 auto;
 }
-
-.ps {
-  &.global-ps {
-    height: 100vh;
-  }
-
-  .ps__rail-y {
-    z-index: $ui-index-3;
-    width: $scrollbar-width;
-    background-color: $color-disable;
-  }
-
-  .ps__rail-x:hover,
-  .ps__rail-y:hover,
-  .ps__rail-x:focus,
-  .ps__rail-y:focus,
-  .ps__rail-x.ps--clicking,
-  .ps__rail-y.ps--clicking {
-    background-color: $color-disable;
-  }
-
-  .ps__thumb-y,
-  .ps__rail-y:hover > .ps__thumb-y,
-  .ps__rail-y:focus > .ps__thumb-y,
-  .ps__rail-y.ps--clicking .ps__thumb-y {
-    z-index: $ui-index-4;
-    right: $scrollbar-indent;
-    width: calc(#{$scrollbar-width} - #{$scrollbar-indent});
-    border-radius: $border-radius-s;
-    background-color: $color-primary;
-  }
-}

@@ -2,6 +2,8 @@
 import type { ICartItem } from '~/types'
 
 defineProps<{ data: ICartItem }>()
+
+const { deleteCartItem: handleDeleteCartItem } = useCartStore()
 </script>
 
 <template>
@@ -34,9 +36,15 @@ defineProps<{ data: ICartItem }>()
             {{ data.attributes.size }}
           </p>
         </div>
+        <div class="cart-item__price">{{ formatNumberWithSpaces(data.price) }} ₽</div>
       </div>
     </div>
-    <button class="cart-item__delete-btn"><SvgTrash /></button>
+    <button
+      class="cart-item__delete-btn"
+      @click="handleDeleteCartItem(data.id)"
+    >
+      <SvgTrash />
+    </button>
   </div>
 </template>
 

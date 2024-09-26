@@ -6,8 +6,6 @@ import type {
   IProductGroupRaw,
   IProductGroup
 } from '~/types'
-import { useCatalogMock } from '~/composables/useCatalogMock'
-import { useStoreStateInstance } from '~/composables/useStoreStateInstance'
 
 export const useCatalogStore = defineStore('catalog_store', () => {
   // Data

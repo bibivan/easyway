@@ -2,7 +2,7 @@
 import { EProductSizeAttr, type IProductGroup } from '~/types'
 
 const props = defineProps<{ data: IProductGroup }>()
-const { cartState, putToCart } = useCartStore()
+const { cartState, putToCart: handlePutToCart } = useCartStore()
 
 const state = reactive<{
   color: string
@@ -98,13 +98,13 @@ watch(
         <button
           v-else
           class="catalog-item__add"
-          @click="putToCart(activeProduct)"
+          @click="handlePutToCart(activeProduct)"
         >
           <SvgCart />
         </button>
         <button
           class="catalog-item__add catalog-item__add_visible_mobile"
-          @click="putToCart(activeProduct)"
+          @click="handlePutToCart(activeProduct)"
         >
           <SvgCart />
         </button>

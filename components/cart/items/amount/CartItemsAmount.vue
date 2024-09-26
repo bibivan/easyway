@@ -13,15 +13,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <span class="total-items">
+  <span class="cart-items-amount">
     <SvgCart />
     <span
       v-if="cartItemsCount"
-      class="total-items__count"
+      class="cart-items-amount__value"
       >{{ cartItemsCount }}</span
     >
   </span>
 </template>
 <style lang="scss" scoped>
-@import 'cart-total-items';
+@import 'cart-items-amount';
 </style>

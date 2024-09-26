@@ -1,10 +1,15 @@
 .cart-item {
   $delete-btn-size: 24px;
 
-  @include flex-row-stretch-start;
-
   position: relative;
   gap: 10px;
+
+  @include tablet {
+    padding: 15px 0;
+    border-bottom: 1px solid #969696;
+  }
+
+  @include flex-row-stretch-start;
 
   &__img-wrapper {
     @include flex-column-between-center;
@@ -54,6 +59,17 @@
     pointer-events: none;
   }
 
+  &__price {
+    @include text-body;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    @include tablet {
+      font-size: 24px;
+    }
+  }
+
   &__delete-btn {
     position: absolute;
     top: 0;
@@ -65,11 +81,13 @@
     transition: color 0.2s ease-in-out;
 
     @include tablet {
-      top: 5px;
+      top: 20px;
     }
 
     @include hover {
-      color: $color-danger-dark;
+      &:hover {
+        color: $color-danger-dark;
+      }
     }
   }
 }

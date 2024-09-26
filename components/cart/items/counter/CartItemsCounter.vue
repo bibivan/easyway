@@ -3,21 +3,24 @@ import type { ICartItem } from '~/types'
 
 defineProps<{ data: ICartItem }>()
 
-const { increaseItemsCount, decreaseItemsCount } = useCartStore()
+const {
+  increaseItemsCount: handleIncreaseItemsCount,
+  decreaseItemsCount: handleDecreaseItemsCount
+} = useCartStore()
 </script>
 
 <template>
   <div class="cart-counter">
     <button
       class="cart-counter__minus"
-      @click="decreaseItemsCount(data.id)"
+      @click="handleDecreaseItemsCount(data.id)"
     >
       <SvgMinus />
     </button>
     <div class="cart-counter__count">{{ data.cnt }}</div>
     <button
       class="cart-counter__plus"
-      @click="increaseItemsCount(data.id)"
+      @click="handleIncreaseItemsCount(data.id)"
     >
       <SvgPlus />
     </button>

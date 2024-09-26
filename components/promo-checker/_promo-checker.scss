@@ -1,0 +1,11 @@
+.promo-checker {
+  &__form {
+    @include flex-column;
+
+    gap: 15px;
+  }
+
+  &__input {
+    width: 100%;
+  }
+}
