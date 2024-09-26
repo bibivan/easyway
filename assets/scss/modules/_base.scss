@@ -112,11 +112,14 @@ body {
 }
 
 .ps {
-  height: 100vh;
+  &.global-ps {
+    height: 100vh;
+  }
 
   .ps__rail-y {
     z-index: $ui-index-3;
     width: $scrollbar-width;
+    background-color: $color-disable;
   }
 
   .ps__rail-x:hover,
@@ -125,7 +128,7 @@ body {
   .ps__rail-y:focus,
   .ps__rail-x.ps--clicking,
   .ps__rail-y.ps--clicking {
-    background-color: transparent !important;
+    background-color: $color-disable;
   }
 
   .ps__thumb-y,

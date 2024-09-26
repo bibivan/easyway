@@ -1,5 +1,15 @@
 // flex/direction/y-position/x-position
 
+@mixin flex-row-top-start {
+  display: flex;
+  align-items: flex-start;
+}
+
+@mixin flex-row-stretch-start {
+  display: flex;
+  align-items: stretch;
+}
+
 @mixin flex-row-center-center {
   display: flex;
   align-items: center;
@@ -53,6 +63,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column-between-start {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
 }
 

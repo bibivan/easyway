@@ -1,24 +1,53 @@
 .cart-item {
   $delete-btn-size: 24px;
 
+  @include flex-row-stretch-start;
+
   position: relative;
+  gap: 10px;
 
   &__img-wrapper {
     @include flex-column-between-center;
 
+    flex: 0 0 auto;
     gap: 5px;
+  }
+
+  &__image {
+    display: block;
+    width: 65px;
+    height: 70px;
+    border-radius: $border-radius-s;
   }
 
   &__name {
     @include text-body;
 
-    padding-left: $delete-btn-size;
+    padding-right: $delete-btn-size;
+    margin-bottom: auto;
     font-size: 16px;
     font-weight: 700;
 
     @include desktop {
       font-size: 24px;
     }
+  }
+
+  &__info {
+    @include flex-column-between-start;
+  }
+
+  &__attr {
+    @include text-body;
+
+    display: flex;
+    color: $color-text;
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  &__label {
+    font-weight: 700;
   }
 
   &__color {

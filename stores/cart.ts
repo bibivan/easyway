@@ -19,6 +19,8 @@ export const useCartStore = defineStore('cart_store', () => {
   })
 
   // Mutations
+  const clearCart = () => (cartState.data = null)
+
   const setToLocalStorage = () =>
     localStorage.setItem('easyway-cart', JSON.stringify(cartState.data))
 
@@ -66,7 +68,7 @@ export const useCartStore = defineStore('cart_store', () => {
         }
 
         cartState.data.push(newCartItem)
-        localStorage.setItem('cart', JSON.stringify(cartState.data))
+        setToLocalStorage()
         useNuxtApp().$toast('Товар добавлен')
       }
     } catch (e) {
@@ -80,6 +82,7 @@ export const useCartStore = defineStore('cart_store', () => {
     cartState,
     cartItemsCount,
     cartTotalPrice,
+    clearCart,
     increaseItemsCount,
     decreaseItemsCount,
     putToCart

@@ -3,7 +3,10 @@ const { globalScrollbarState } = useGlobalScrollbarStore()
 </script>
 
 <template>
-  <PerfectScrollbar :options="{ suppressScrollY: globalScrollbarState.hidden }">
+  <PerfectScrollbar
+    class="global-ps"
+    :options="{ suppressScrollY: globalScrollbarState.hidden }"
+  >
     <SiteHeader />
     <main class="main">
       <slot />

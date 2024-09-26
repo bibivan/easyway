@@ -24,6 +24,7 @@ defineProps<{ data: ICartItem }>()
             <BaseColorInput
               :id="'color_id_' + data.attributes.color"
               class="cart-item__color"
+              :style="{ color: data.attributes.color }"
               :value="data.attributes.color"
               type="radio"
             />

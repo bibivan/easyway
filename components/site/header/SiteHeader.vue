@@ -11,7 +11,6 @@ const state = reactive({
 const handleShowCart = () => {
   cartState.isShown = true
   globalScrollbarState.hidden = true
-  console.log('eher')
 }
 </script>
 

@@ -32,16 +32,16 @@
   &__count {
     @include flex-row-center-center;
 
-    min-width: 31px;
-    min-height: 15px;
+    width: 31px;
+    height: 15px;
     color: $color-primary;
     font-size: 12px;
     text-align: center;
   }
 
   @include tablet {
-    min-width: 55px;
-    min-height: 30px;
+    width: 55px;
+    height: 30px;
     font-size: 18px;
   }
 }
