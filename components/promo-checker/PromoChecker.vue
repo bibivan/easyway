@@ -5,7 +5,7 @@ import { useVuelidate } from '@vuelidate/core'
 defineProps<{ totalSum: number }>()
 
 const { isMobile } = storeToRefs(useDeviceTypeStore())
-const { promo, checkPromoCode, cancelPromo } = usePromoStore()
+const { promo, initPromoData, checkPromoCode, cancelPromo } = usePromoStore()
 const promoInputValue = ref<string>('')
 const $externalResults = ref()
 const validationTriggered = ref(false)
@@ -17,6 +17,7 @@ const validationRules = computed(() => ({
 const v$ = useVuelidate(validationRules, promo, { $externalResults })
 
 const handleSubmit = async () => {
+  v$.value.$reset()
   validationTriggered.value = true
   await checkPromoCode(promoInputValue.value)
   $externalResults.value = promo.error ? promo.error : ''
@@ -27,13 +28,24 @@ const handleCancelPromo = () => {
   promoInputValue.value = ''
   validationTriggered.value = false
   cancelPromo()
-  useNuxtApp().$toast('Промокод отменен')
   v$.value.$reset()
 }
 
 const handleResetValidation = () => {
   if (!promoInputValue.value) v$.value.$reset()
 }
+
+onMounted(() => {
+  initPromoData()
+  if (promo.data) validationTriggered.value = true
+})
+
+watch(
+  () => promo.data,
+  (val) => {
+    promoInputValue.value = val?.name ? val.name : ''
+  }
+)
 </script>
 
 <template>
@@ -79,7 +91,7 @@ const handleResetValidation = () => {
       class="promo-checker__info label-value-info"
     >
       <span class="label-value-info__label">Скидка</span>
-      <span class="label-value-info__value">-{{ promo.data }}%</span>
+      <span class="label-value-info__value">-{{ promo.data.value }}%</span>
     </div>
   </div>
 </template>
