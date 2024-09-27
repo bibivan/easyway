@@ -21,13 +21,6 @@
   }
 
   &__checkmark {
-    @include desktop {
-      top: 33px;
-      right: 41px;
-      width: 16px;
-      height: 18px;
-    }
-
     position: absolute;
     top: 18px;
     right: 13px;
@@ -35,12 +28,29 @@
     width: 6px;
     height: 4px;
     color: $color-input;
+
+    @include tablet {
+      top: 16px;
+      right: 18px;
+      width: 12px;
+      height: 18px;
+    }
   }
 
   &__error {
     color: $color-danger;
     font-family: $font-base;
     font-size: 12px;
+
+    &_position_absolute {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 0;
+    }
+
+    &_position_hide {
+      display: none;
+    }
   }
 
   &_success {

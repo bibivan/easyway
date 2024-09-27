@@ -2,19 +2,33 @@
 import { helpers } from '@vuelidate/validators'
 import { useVuelidate } from '@vuelidate/core'
 
-const { promo, checkPromoCode } = usePromoStore()
+defineProps<{ totalSum: number }>()
+
+const { isMobile } = storeToRefs(useDeviceTypeStore())
+const { promo, checkPromoCode, cancelPromo } = usePromoStore()
 const promoInputValue = ref<string>('')
+const $externalResults = ref()
+const validationTriggered = ref(false)
 
 const validationRules = computed(() => ({
-  data: helpers.withMessage(promo.error || '', () => !!promo.data)
+  data: helpers.withMessage('Ошибка', () => !!promo.error || validationTriggered.value)
 }))
 
-const v$ = useVuelidate(validationRules, promo)
+const v$ = useVuelidate(validationRules, promo, { $externalResults })
 
 const handleSubmit = async () => {
-  v$.value.$reset()
+  validationTriggered.value = true
   await checkPromoCode(promoInputValue.value)
+  $externalResults.value = promo.error ? promo.error : ''
   v$.value.$touch()
+}
+
+const handleCancelPromo = () => {
+  promoInputValue.value = ''
+  validationTriggered.value = false
+  cancelPromo()
+  useNuxtApp().$toast('Промокод отменен')
+  v$.value.$reset()
 }
 
 const handleResetValidation = () => {
@@ -35,17 +49,38 @@ const handleResetValidation = () => {
         class="promo-checker__input"
         placeholder="Промокод"
         type="text"
+        :disabled="!!promo.data"
         :error-instance="v$"
         @change="handleResetValidation"
       />
       <button
-        v-if="promoInputValue"
-        class="btn"
+        v-if="(promoInputValue || !isMobile) && !promo.data"
+        class="btn promo-checker__btn"
         @click="handleSubmit"
       >
         Применить
       </button>
+
+      <button
+        v-if="promo.data"
+        class="btn promo-checker__btn"
+        @click="handleCancelPromo"
+      >
+        Отменить
+      </button>
     </form>
+
+    <p class="promo-checker__info label-value-info">
+      <span class="label-value-info__label">Общий</span>
+      <span class="label-value-info__value">{{ formatNumberWithSpaces(totalSum) }} ₽</span>
+    </p>
+    <div
+      v-if="promo.data"
+      class="promo-checker__info label-value-info"
+    >
+      <span class="label-value-info__label">Скидка</span>
+      <span class="label-value-info__value">-{{ promo.data }}%</span>
+    </div>
   </div>
 </template>
 

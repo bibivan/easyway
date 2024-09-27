@@ -7,6 +7,7 @@
   @include tablet {
     padding: 15px 0;
     border-bottom: 1px solid #969696;
+    gap: 24px;
   }
 
   @include flex-row-stretch-start;
@@ -23,6 +24,12 @@
     width: 65px;
     height: 70px;
     border-radius: $border-radius-s;
+    object-fit: cover;
+
+    @include tablet {
+      width: 125px;
+      height: 125px;
+    }
   }
 
   &__name {
@@ -33,13 +40,21 @@
     font-size: 16px;
     font-weight: 700;
 
-    @include desktop {
+    @include tablet {
       font-size: 24px;
     }
   }
 
   &__info {
     @include flex-column-between-start;
+
+    width: 100%;
+  }
+
+  &__params {
+    @include flex-row-center-between;
+
+    width: 100%;
   }
 
   &__attr {
@@ -49,6 +64,11 @@
     color: $color-text;
     font-size: 12px;
     gap: 4px;
+
+    @include tablet {
+      font-size: 18px;
+      gap: 7px;
+    }
   }
 
   &__label {

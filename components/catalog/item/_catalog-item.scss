@@ -59,7 +59,6 @@
   }
 
   &__add {
-    display: none;
     width: 25px;
     height: 25px;
     padding: 6px 7px 7px 6px;
@@ -81,12 +80,8 @@
       }
     }
 
-    &_visible_mobile {
-      display: block;
-
-      @include tablet {
-        display: none;
-      }
+    &:disabled {
+      background-color: $color-primary-light;
     }
   }
 }

@@ -37,11 +37,11 @@
     color: $color-primary;
     font-size: 12px;
     text-align: center;
-  }
 
-  @include tablet {
-    width: 55px;
-    height: 30px;
-    font-size: 18px;
+    @include tablet {
+      width: 55px;
+      height: 30px;
+      font-size: 18px;
+    }
   }
 }

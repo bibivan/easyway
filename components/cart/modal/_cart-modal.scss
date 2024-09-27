@@ -31,7 +31,7 @@
   &__content {
     @include flex-column-top-stretch;
 
-    padding: 35px 20px;
+    padding: 20px;
     gap: 25px;
 
     @include tablet {
@@ -40,35 +40,25 @@
     }
   }
 
-  &__close {
-    position: absolute;
-    z-index: $ui-index-3;
-    top: 5px;
-    right: 5px;
-    width: 30px;
-    height: 30px;
-    padding: 5px;
-
-    @include tablet {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 35px;
-      height: 35px;
-    }
-  }
-
   &__head {
     @include flex-row-center-between;
+
+    gap: 8px;
+
+    @include tablet {
+      gap: 28px;
+    }
   }
 
   &__title {
     @include text-heading;
 
+    order: 2;
     color: $color-text;
-    font-size: 16px;
+    font-size: 18px;
 
     @include tablet {
+      order: 1;
       font-size: 36px;
     }
   }
@@ -76,12 +66,29 @@
   &__clear {
     @include text-body;
 
+    order: 2;
+    margin: 0 0 0 auto;
     color: $color-text;
     font-size: 12px;
     text-decoration: underline;
 
     @include tablet {
+      order: 3;
+      padding-top: 7px;
+      margin: 0 auto 0 0;
       font-size: 16px;
+    }
+  }
+
+  &__close {
+    width: 12px;
+    height: 12px;
+    order: 1;
+
+    @include tablet {
+      width: 25px;
+      height: 25px;
+      order: 3;
     }
   }
 
@@ -98,6 +105,24 @@
 
     @include tablet {
       padding-right: 25px;
+    }
+  }
+
+  &__initial-sum {
+    margin-right: 12px;
+    color: #bcbcbc;
+    text-decoration: line-through;
+
+    @include tablet {
+      margin-right: 22px;
+    }
+  }
+
+  &__total-sum {
+    font-size: 20px;
+
+    @include tablet {
+      font-size: 36px;
     }
   }
 }

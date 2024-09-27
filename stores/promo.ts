@@ -1,4 +1,5 @@
 import type { IPromoResponseData, TNullable } from '~/types'
+import { getRandomNumber } from '~/utils/common'
 
 export const usePromoStore = defineStore('promo_store', () => {
   const promo = reactive<{
@@ -16,7 +17,10 @@ export const usePromoStore = defineStore('promo_store', () => {
   }
   const calculateDiscountedSum = (sum: number) => sum - calculateDiscount(sum)
 
-  const cancelPromo = () => (promo.data = null)
+  const cancelPromo = () => {
+    promo.data = null
+    promo.error = null
+  }
 
   const checkPromoCode = async (code: string) => {
     try {
@@ -31,21 +35,20 @@ export const usePromoStore = defineStore('promo_store', () => {
       //   body: { promo: code }
       // })
 
-      const data = (await new Promise((resolve, reject) => {
-        return setTimeout(() => {
-          return code === 'e' ? resolve({ result: 10 }) : reject(false)
-        }, 0)
-      })) as IPromoResponseData
+      const data: { result: 10 } | false = await new Promise((resolve, reject) => {
+        if (getRandomNumber(1, 100) > 95) throw new Error('серверная ошибка')
+        return code === 'e' ? resolve({ result: 10 }) : reject(false)
+      })
 
-      if (data.result) {
+      if (data) {
         promo.data = data.result
       } else {
-        console.log(data)
         promo.error = 'Промокод не действителен'
       }
     } catch (e) {
-      console.error(e)
+      // console.error(e)
       promo.error = 'Ошибка при получении данных'
+      console.log('error')
     }
 
     promo.loading = false

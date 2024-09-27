@@ -12,6 +12,7 @@ const props = defineProps<{
   placeholder?: string
   requiredVal?: boolean
   errorInstance?: Validation
+  errorPosition?: 'absolute' | 'static' | 'hide'
   isEmail?: boolean
 }>()
 
@@ -75,7 +76,10 @@ if (!props.errorInstance) {
     <label
       v-if="isParentError"
       :for="id"
-      class="base-input__error"
+      :class="[
+        'base-input__error',
+        'base-input__error_position_' + errorPosition ? errorPosition : 'absolute'
+      ]"
     >
       {{ errorInstance?.$errors[0]?.$message }}
     </label>

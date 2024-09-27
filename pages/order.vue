@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <PromoChecker />
+  <div><h1>Order</h1></div>
 </template>
 
 <style scoped lang="scss"></style>
