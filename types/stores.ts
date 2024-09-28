@@ -1,4 +1,4 @@
-import type { TNullable } from '~/types/common'
+import type { TNullable } from '~/types'
 
 export type TDefaultStoreState<T extends any = any> = {
   data: TNullable<T>

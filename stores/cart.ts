@@ -19,7 +19,11 @@ export const useCartStore = defineStore('cart_store', () => {
   })
 
   // Mutations
-  const clearCart = () => (cartState.data = null)
+  const clearCart = () => {
+    cartState.data = null
+    localStorage.removeItem('easyway-cart')
+  }
+  const findItem = (itemId: number) => cartState.data?.find((item) => item.id === itemId)
 
   const setToLocalStorage = () =>
     localStorage.setItem('easyway-cart', JSON.stringify(cartState.data))
@@ -30,19 +34,20 @@ export const useCartStore = defineStore('cart_store', () => {
   }
 
   const increaseItemsCount = (itemId: number) => {
-    cartState.data?.forEach((item) => {
-      if (item.id === itemId) item.cnt++
-    })
+    const cartItem = findItem(itemId)
+    if (cartItem) cartItem.cnt++
     setToLocalStorage()
   }
 
   const decreaseItemsCount = (itemId: number) => {
-    cartState.data?.forEach((item) => {
-      if (item.id === itemId) {
-        return item.cnt > 1 ? item.cnt-- : deleteCartItem(itemId)
-      }
-    })
-    setToLocalStorage()
+    const cartItem = findItem(itemId)
+
+    if (cartItem && cartItem.cnt > 1) {
+      cartItem.cnt--
+      setToLocalStorage()
+    } else if (cartItem) {
+      deleteCartItem(itemId)
+    }
   }
 
   const putToCart = (item: IProduct) => {

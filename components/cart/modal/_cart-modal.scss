@@ -41,11 +41,12 @@
   }
 
   &__head {
-    @include flex-row-center-between;
+    @include flex-row-center-start;
 
     gap: 8px;
 
     @include tablet {
+      justify-content: space-between;
       gap: 28px;
     }
   }

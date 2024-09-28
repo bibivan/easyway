@@ -1,5 +1,4 @@
-import type { EBrand, TNullable } from '~/types/common'
-import { EGender } from '~/types/common'
+import type { EBrand, EGender, TNullable } from '~/types'
 
 export enum EProductSizeAttr {
   XS = 'XS',

@@ -2,7 +2,11 @@
 import { EProductSizeAttr, type IProductGroup } from '~/types'
 
 const props = defineProps<{ data: IProductGroup }>()
-const { cartState, putToCart: handlePutToCart } = useCartStore()
+const {
+  cartState,
+  putToCart: handlePutToCart,
+  deleteCartItem: handleDeleteCartItem
+} = useCartStore()
 const { isMobile } = storeToRefs(useDeviceTypeStore())
 
 const state = reactive<{
@@ -97,9 +101,15 @@ watch(
           class="catalog-item__counter"
         />
         <button
+          v-else-if="isInCart"
+          class="catalog-item__btn"
+          @click="handleDeleteCartItem(activeProduct.id)"
+        >
+          <SvgTrash />
+        </button>
+        <button
           v-else
-          class="catalog-item__add"
-          :disabled="isInCart"
+          class="catalog-item__btn"
           @click="handlePutToCart(activeProduct)"
         >
           <SvgCart />

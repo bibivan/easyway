@@ -6,7 +6,7 @@ const { cartState, clearCart: handleClearCart } = cartStore
 const { cartTotalPrice } = storeToRefs(cartStore)
 const { isMobile } = storeToRefs(useDeviceTypeStore())
 const { globalScrollbarState } = useGlobalScrollbarStore()
-const { promo, calculateDiscountedSum } = usePromoStore()
+const { promoState, calculateDiscountedSum } = usePromoStore()
 
 const totalSum = computed(() => formatNumberWithSpaces(cartTotalPrice.value))
 
@@ -33,23 +33,24 @@ const handleCloseModal = () => {
       <div class="cart-modal__dialog">
         <PerfectScrollbar class="cart-modal__dialog-ps">
           <div class="cart-modal__content">
+            <div class="cart-modal__head">
+              <h2 class="cart-modal__title">Корзина</h2>
+              <button
+                v-if="cartState.data"
+                class="cart-modal__clear"
+                @click="handleClearCart"
+              >
+                Очистить корзину
+              </button>
+              <button
+                class="cart-modal__close"
+                @click="handleCloseModal"
+              >
+                <SvgChevronLeft v-if="isMobile" />
+                <SvgCross v-else />
+              </button>
+            </div>
             <template v-if="cartState.data">
-              <div class="cart-modal__head">
-                <h2 class="cart-modal__title">Корзина</h2>
-                <button
-                  class="cart-modal__clear"
-                  @click="handleClearCart"
-                >
-                  Очистить корзину
-                </button>
-                <button
-                  class="cart-modal__close"
-                  @click="handleCloseModal"
-                >
-                  <SvgChevronLeft v-if="isMobile" />
-                  <SvgCross v-else />
-                </button>
-              </div>
               <PerfectScrollbar
                 class="cart-modal__items-ps"
                 :options="{ suppressScrollY: isMobile }"
@@ -67,7 +68,7 @@ const handleCloseModal = () => {
                 <span class="label-value-info__label">К оплате</span>
                 <span class="label-value-info__value">
                   <span
-                    v-if="promo.data"
+                    v-if="promoState.data.value"
                     class="cart-modal__initial-sum"
                   >
                     {{ totalSum }} ₽
