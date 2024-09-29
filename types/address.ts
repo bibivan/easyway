@@ -1,4 +1,5 @@
 import type { TNullable } from '~/types'
+import type { ValidationRuleWithParams } from '@vuelidate/core'
 
 export interface IAddressData {
   area: TNullable<string>
@@ -119,4 +120,10 @@ export interface IAddressInputState {
   inputValue: string
   requestTimeout: TNullable<ReturnType<typeof setTimeout>>
   highlightItemIndex: number
+}
+
+export interface IAddressInputValidationRules {
+  required: ValidationRuleWithParams
+  addressSelected: ValidationRuleWithParams
+  fullAddress?: ValidationRuleWithParams
 }

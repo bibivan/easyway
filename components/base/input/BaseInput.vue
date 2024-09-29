@@ -53,18 +53,18 @@ if (!props.errorInstance) {
 <template>
   <div
     :class="[
-      'base-input',
+      'input-block',
       {
-        'base-input_success': isSuccess,
-        'base-input_error': isParentError || isLocalError
+        'input-block_success': isSuccess,
+        'input-block_error': isParentError || isLocalError
       }
     ]"
   >
-    <SvgCheckmark class="base-input__checkmark" />
+    <SvgCheckmark class="input-block__checkmark" />
     <input
       :id="id"
       v-model="modelValue"
-      class="base-input__input"
+      class="input-block__input"
       :type="type"
       :disabled="disabled"
       :placeholder="placeholder"
@@ -77,8 +77,8 @@ if (!props.errorInstance) {
       v-if="isParentError"
       :for="id"
       :class="[
-        'base-input__error',
-        'base-input__error_position_' + errorPosition ? errorPosition : 'absolute'
+        'input-block__error',
+        'input-block__error_position_' + errorPosition ? errorPosition : 'absolute'
       ]"
     >
       {{ errorInstance?.$errors[0]?.$message }}
@@ -86,7 +86,7 @@ if (!props.errorInstance) {
     <label
       v-if="isLocalError"
       :for="id"
-      class="base-input__error"
+      class="input-block__error"
     >
       {{ v$.$errors[0]?.$message }}
     </label>

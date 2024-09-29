@@ -1,9 +1,12 @@
 <script setup lang="ts">
 defineEmits<{ onSendOrder: [void] }>()
 
+const { handleSendData } = useOrderFormSending()
 const { cartState, cartTotalPrice } = storeToRefs(useCartStore())
 const { orderState } = useOrderStore()
 const { promoState, initPromoData, calculateDiscount, calculateDiscountedSum } = usePromoStore()
+const { handleShowCart } = useCartOpening()
+
 const totalSum = computed(() => (orderState.price || 0) + (orderState.deliveryPrice || 0))
 
 onMounted(() => initPromoData())
@@ -11,7 +14,6 @@ onMounted(() => initPromoData())
 watch(
   () => promoState.data.value,
   () => {
-    console.log(calculateDiscountedSum(cartTotalPrice.value))
     orderState.price = calculateDiscountedSum(cartTotalPrice.value)
   },
   { immediate: true }
@@ -75,15 +77,16 @@ watch(
     <div class="checkout-cart__actions">
       <button
         class="checkout-cart__btn btn"
-        @click="$emit('onSendOrder')"
+        @click="handleSendData"
       >
         Оформить
       </button>
-      <NuxtLink
+      <button
         class="checkout-cart__btn btn btn_light"
-        to="/cart"
-        >Редактировать</NuxtLink
+        @click="handleShowCart"
       >
+        Редактировать
+      </button>
 
       <p class="checkout-cart__alert">
         После&nbsp;нажатия на&nbsp;кнопку «Оформить заказ», нельзя внести изменения в&nbsp;текущий

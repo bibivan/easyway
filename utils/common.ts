@@ -4,6 +4,26 @@ export const toNullable = (value: any) => {
   return value === '' || value === undefined || value === null ? null : value
 }
 
+export const isEmpty = (value: any): boolean => {
+  if (value === null || value === undefined) {
+    return true
+  }
+
+  if (typeof value === 'number') {
+    return value === 0
+  }
+
+  if (typeof value === 'string' || Array.isArray(value)) {
+    return value.length === 0
+  }
+
+  if (typeof value === 'object') {
+    return Object.keys(value).length === 0
+  }
+
+  return false
+}
+
 export const isValidJSON = (str: any): str is string => {
   try {
     JSON.parse(str)

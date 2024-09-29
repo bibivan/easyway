@@ -5,8 +5,10 @@
     <div class="container">
       <div class="order">
         <h1 class="order__title">Оформить заказ</h1>
-        <div>форма</div>
-        <CheckoutCart />
+        <div class="order__content">
+          <CheckoutForm class="order__form" />
+          <CheckoutCart class="order__cart" />
+        </div>
       </div>
     </div>
   </section>

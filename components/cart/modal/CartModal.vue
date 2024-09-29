@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import SvgChevronLeft from '~/components/svg/SvgChevronLeft.vue'
-
 const cartStore = useCartStore()
 const { cartState, clearCart: handleClearCart } = cartStore
 const { cartTotalPrice } = storeToRefs(cartStore)

@@ -1,0 +1,53 @@
+.address-list {
+  @include flex-column;
+  @include text-body;
+
+  border-radius: $border-radius-s;
+  background-color: $color-disable;
+
+  @include tablet {
+    border-radius: $border-radius-s;
+    font-size: 20px;
+  }
+
+  &__item {
+    @include text-body;
+
+    padding: 5px 10px;
+    color: $color-input;
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.2s ease-in-out;
+
+    @include tablet {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    @include hover {
+      &:hover {
+        background-color: $color-bg-input-filled;
+      }
+    }
+
+    &_focused {
+      background-color: $color-bg-input-filled;
+    }
+  }
+}
+
+.address-input {
+  overflow: visible;
+
+  &__block {
+    position: relative;
+    overflow: visible;
+  }
+
+  &__list {
+    position: absolute;
+    z-index: $ui-index-7;
+    top: calc(100% + 10px);
+    width: 100%;
+  }
+}

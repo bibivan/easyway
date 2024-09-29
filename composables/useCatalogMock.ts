@@ -1446,7 +1446,6 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
   //   items: transformedItems
   // }
   //
-  // console.log(updatedData)
 
   return new Promise((resolve) => setTimeout(() => resolve(mockData), 100))
 }

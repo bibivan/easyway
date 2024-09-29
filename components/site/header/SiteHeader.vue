@@ -1,18 +1,11 @@
 <script setup lang="ts">
 import { EGender, EProductFilters } from '~/types'
-import CartItemsAmount from '~/components/cart/items/amount/CartItemsAmount.vue'
 
-const { cartState } = useCartStore()
-const { globalScrollbarState } = useGlobalScrollbarStore()
+const { handleShowCart } = useCartOpening()
 
 const state = reactive({
   menuIsOpened: false
 })
-
-const handleShowCart = () => {
-  cartState.isShown = true
-  globalScrollbarState.hidden = true
-}
 </script>
 
 <template>

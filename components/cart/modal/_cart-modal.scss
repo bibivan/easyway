@@ -30,13 +30,12 @@
 
   &__content {
     @include flex-column-top-stretch;
+    @include base-gap;
 
     padding: 20px;
-    gap: 25px;
 
     @include tablet {
       padding: 60px;
-      gap: 35px;
     }
   }
 

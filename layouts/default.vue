@@ -14,4 +14,3 @@ const { globalScrollbarState } = useGlobalScrollbarStore()
     <CartModal />
   </PerfectScrollbar>
 </template>
-<script setup lang="ts"></script>

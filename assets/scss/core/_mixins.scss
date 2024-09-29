@@ -125,3 +125,11 @@
     color: $color-primary-light;
   }
 }
+
+@mixin base-gap {
+  gap: 25px;
+
+  @include tablet {
+    gap: 35px;
+  }
+}

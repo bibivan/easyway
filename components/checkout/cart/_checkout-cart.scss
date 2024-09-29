@@ -1,11 +1,6 @@
 .checkout-cart {
   @include flex-column;
-
-  gap: 25px;
-
-  @include tablet {
-    gap: 35px;
-  }
+  @include base-gap;
 
   &__heading {
     margin-bottom: 25px;
@@ -17,12 +12,7 @@
 
   &__items {
     @include flex-column;
-
-    gap: 25px;
-
-    @include tablet {
-      gap: 35px;
-    }
+    @include base-gap;
   }
 
   &__actions {
