@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { helpers } from '@vuelidate/validators'
 import { useVuelidate } from '@vuelidate/core'
-import BaseSpinner from '~/components/base/spinner/BaseSpinner.vue'
 
 defineProps<{ totalSum: number }>()
 

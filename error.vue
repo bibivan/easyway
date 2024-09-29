@@ -24,7 +24,7 @@
 h1,
 a {
   display: block;
-  color: $color-disable;
+  color: $color-bg-section-darker;
   margin-bottom: 10px;
   text-align: center;
 }

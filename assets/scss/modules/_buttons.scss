@@ -14,24 +14,32 @@
     background-color 0.2s ease-in-out,
     color 0.2s ease-in-out;
 
+  &:active {
+    background-color: $color-primary-light;
+  }
+
   @include hover {
     &:hover {
       background-color: $color-primary-light;
     }
   }
 
-  &:active {
-    background-color: $color-primary-light;
-  }
-
-  &_disabled,
-  &:disabled {
-    background-color: $color-disable;
-    color: $color-text;
-    cursor: not-allowed;
-  }
-
   &_light {
-    background-color: $color-bg-btn;
+    background-color: $color-bg-btn-light;
+    color: $color-text;
+
+    &:active {
+      background-color: $color-bg-btn-light;
+    }
+
+    @include hover {
+      &:hover {
+        background-color: $color-bg-btn-light;
+      }
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }

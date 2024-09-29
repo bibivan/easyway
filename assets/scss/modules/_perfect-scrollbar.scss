@@ -6,7 +6,7 @@
   .ps__rail-y {
     z-index: $ui-index-3;
     width: $scrollbar-width;
-    background-color: $color-disable !important;
+    background-color: $color-bg-section-darker !important;
 
     //  @include desktop {
     //    opacity: 1 !important;
@@ -20,7 +20,7 @@
   .ps__rail-y:focus,
   .ps__rail-x.ps--clicking,
   .ps__rail-y.ps--clicking {
-    background-color: $color-disable !important;
+    background-color: $color-bg-section-darker !important;
 
     //  @include desktop {
     //  opacity: 1 !important;

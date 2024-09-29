@@ -22,9 +22,7 @@ export const usePromoStore = defineStore('promo_store', () => {
     return promoState.data?.value ? Math.floor(sum * (promoState.data.value / 100)) : 0
   }
 
-  const calculateDiscountedSum = (sum: number) => {
-    return promoState.data?.value ? sum - calculateDiscount(sum) : sum
-  }
+  const calculateDiscountedSum = (sum: number) => sum - calculateDiscount(sum)
 
   const cancelPromo = () => {
     promoState.data = promoClearData

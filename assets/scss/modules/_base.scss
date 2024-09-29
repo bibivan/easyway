@@ -65,7 +65,17 @@ fieldset {
 }
 
 legend {
+  @include text-body;
+
   padding: 0;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: left;
+
+  @include tablet {
+    font-size: 24px;
+    letter-spacing: -0.02em;
+  }
 }
 
 body {

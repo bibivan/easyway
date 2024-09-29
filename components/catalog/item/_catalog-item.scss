@@ -35,7 +35,6 @@
   &__colors,
   &__sizes {
     display: none;
-    gap: 3px;
 
     @include tablet {
       display: flex;
@@ -43,7 +42,7 @@
   }
 
   &__colors {
-    gap: 3px;
+    gap: 6px;
   }
 
   &__sizes {

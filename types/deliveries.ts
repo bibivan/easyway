@@ -1,6 +1,8 @@
 import type { EPaymentType, TNullable, TRawDateString } from '~/types'
 
-export type TCountry = 'RUS'
+export enum ECountry {
+  'RUSSIA' = 'RUS'
+}
 
 export interface IDeliveryCourier {
   name: string
@@ -36,13 +38,14 @@ export interface IDeliveryPoint {
   schedule: string
   image: TNullable<string>
 }
+
 export interface IDeliveriesDataItem {
   name: string
   kladr: string
   fias: string
   region_name: string
   type_name: string
-  country: TCountry
+  country: ECountry
   weight: number
   parcel_size: [number, number, number]
   delivery_types: {

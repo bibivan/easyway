@@ -10,6 +10,7 @@
     @include flex-row-center-between;
     @include text-body;
 
+    position: relative;
     width: 100%;
     height: 100%;
     cursor: pointer;
@@ -23,31 +24,45 @@
 
     &::before {
       display: block;
-      width: 15px;
-      height: 15px;
+      width: 14px;
+      height: 14px;
       box-sizing: border-box;
-      border: 2px solid transparent;
       border-radius: 50%;
       background-color: currentcolor;
       box-shadow: 0 0 6px rgba($color-text, 0.3);
+      content: '';
+    }
+
+    &::after {
+      $outline-diameter: 20px;
+
+      position: absolute;
+      top: calc(50% - $outline-diameter / 2);
+      left: calc(50% - $outline-diameter / 2);
+      display: block;
+      width: $outline-diameter;
+      height: $outline-diameter;
+      box-sizing: border-box;
+      border: 2px solid transparent;
+      border-radius: 50%;
       content: '';
       transition: border-color 0.2s ease-in-out;
     }
   }
 
   /* стили для радиокнопки, находящейся в состоянии checked */
-  &__input:checked + &__label::before {
+  &__input:checked + &__label::after {
     border-color: $color-primary;
   }
 
   /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
-  &__input:focus:not(:checked) + &__label::before {
+  &__input:focus:not(:checked) + &__label::after {
     border-color: $color-primary-light;
   }
 
   /* стили для радиокнопки, находящейся в ховере и не находящейся в состоянии checked */
   @include hover {
-    &__input:hover:not(:checked) + &__label::before {
+    &__input:hover:not(:checked) + &__label::after {
       border-color: $color-primary-light;
     }
   }

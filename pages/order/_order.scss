@@ -1,0 +1,23 @@
+.order {
+  display: grid;
+  gap: 25px;
+  grid-template-columns: 1fr;
+
+  @include tablet {
+    gap: 35px 60px;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  &__title {
+    @include text-heading;
+
+    width: 100%;
+    color: $color-text;
+    font-size: 18px;
+
+    @include tablet {
+      font-size: 36px;
+      grid-column: 1 / -1;
+    }
+  }
+}
