@@ -43,9 +43,9 @@ watch(
 <template>
   <div class="delivery-couriers">
     <BaseRadio
-      v-for="deliveryCourier in orderState.deliveryCouriers"
+      v-for="(deliveryCourier, index) in orderState.deliveryCouriers"
       :id="deliveryCourier.transport_api_code + deliveryCourier.delivery_code"
-      :key="deliveryCourier.delivery_code"
+      :key="deliveryCourier.delivery_code + index"
       v-model="pickedCourier"
       :value="deliveryCourier.name"
       :label="deliveryCourier.name + ' доставка ' + deliveryCourier.delivery_date"

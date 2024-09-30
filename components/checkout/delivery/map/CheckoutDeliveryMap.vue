@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { YandexMap, YandexClusterer, YandexMarker } from 'vue-yandex-maps'
-import type { IDeliveryPoint, YaMapInstance } from '~/types'
+import type { IDeliveryPoint, TNullable, YaMapInstance } from '~/types'
 
-const { orderState } = useOrderStore()
 let mapInstance: YaMapInstance
+const { orderState } = useOrderStore()
 
 const initBtnEvenListeners = () => {
   document.addEventListener('click', (event: Event) => {
@@ -85,7 +85,7 @@ watch(
   >
     <YandexClusterer
       :key="orderState.addressData.data.geo_lat + orderState.addressData.data.geo_lon"
-      :options="{ preset: 'islands#blueClusterIcons' }"
+      :options="{ preset: 'islands#blackClusterIcons' }"
     >
       <YandexMarker
         v-for="(point, index) in orderState.deliveryPoints"
@@ -94,7 +94,7 @@ watch(
         :marker-id="'placemark' + index"
         :properties="getMarkerProperties(point, index)"
         :options="{
-          preset: 'islands#blueDeliveryIcon'
+          preset: 'islands#blackDeliveryIcon'
         }"
       >
         <template #component>

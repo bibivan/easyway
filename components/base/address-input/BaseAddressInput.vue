@@ -25,7 +25,7 @@ const props = withDefaults(
   {
     addressQuery: null,
     checkFullAddress: null,
-    errorPosition: undefined,
+    errorPosition: 'absolute',
     locationRestrictions: undefined,
     placeholder: 'Адрес',
     theme: undefined
@@ -76,7 +76,6 @@ const handleBlur = () => {
 }
 
 const handleSetCurrentAddress = (addressItem: IAddressSuggestion) => {
-  console.log('setAddress on click')
   state.highlightItemIndex = indexOfHiddenAddressInList
   state.dropdownIsOpened = false
   state.addressIsSelected = true
@@ -141,9 +140,11 @@ watch(
   <div
     class="address-input input-block"
     :class="[
-      'address-input address-input_' + theme,
+      'address-input',
       {
-        'input-block_success': !v$?.$silentErrors?.length
+        ['input-block_' + theme]: theme,
+        'input-block_valid': !v$?.$silentErrors?.length,
+        'input-block_invalid': !!v$?.$errors?.length && !state.isFocused
       }
     ]"
   >
@@ -164,10 +165,7 @@ watch(
       />
       <label
         v-if="v$.$errors?.length && !state.isFocused"
-        :class="[
-          'input-block__error',
-          'input-block__error_position_' + errorPosition ? errorPosition : 'absolute'
-        ]"
+        :class="['input-block__error', 'input-block__error_position_' + errorPosition]"
         :for="id"
         >{{ v$.$errors[0]?.$message }}</label
       >

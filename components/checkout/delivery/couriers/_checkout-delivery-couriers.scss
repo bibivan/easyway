@@ -1,3 +1,6 @@
 .delivery-couriers {
+  @include flex-column;
+
   position: relative;
+  gap: 15px;
 }

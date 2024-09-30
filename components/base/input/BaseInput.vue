@@ -13,6 +13,7 @@ const props = defineProps<{
   requiredVal?: boolean
   errorInstance?: Validation
   errorPosition?: TErrorPosition
+  theme?: string
   isEmail?: boolean
 }>()
 
@@ -31,9 +32,9 @@ const handleBlur = (event: Event) => {
   if (v$) v$.value.$touch()
 }
 
-const isParentError = computed(() => !!props.errorInstance?.$errors?.length && !isFocused.value)
-const isLocalError = computed(() => !!v$?.value.$errors?.length && !isFocused.value)
-const isSuccess = computed(() => {
+const isParentInvalid = computed(() => !!props.errorInstance?.$errors?.length && !isFocused.value)
+const isLocalInvalid = computed(() => !!v$?.value.$errors?.length && !isFocused.value)
+const isValid = computed(() => {
   return props.errorInstance
     ? !props.errorInstance?.$silentErrors?.length
     : !v$?.value.$silentErrors?.length && !!modelValue.value
@@ -55,8 +56,9 @@ if (!props.errorInstance) {
     :class="[
       'input-block',
       {
-        'input-block_success': isSuccess,
-        'input-block_error': isParentError || isLocalError
+        ['input-block_' + theme]: theme,
+        'input-block_valid': isValid,
+        'input-block_invalid': isParentInvalid || isLocalInvalid
       }
     ]"
   >
@@ -74,21 +76,14 @@ if (!props.errorInstance) {
       @focus="isFocused = true"
     />
     <label
-      v-if="isParentError"
       :for="id"
       :class="[
         'input-block__error',
         'input-block__error_position_' + errorPosition ? errorPosition : 'absolute'
       ]"
     >
-      {{ errorInstance?.$errors[0]?.$message }}
-    </label>
-    <label
-      v-if="isLocalError"
-      :for="id"
-      class="input-block__error"
-    >
-      {{ v$.$errors[0]?.$message }}
+      <template v-if="isParentInvalid">{{ errorInstance?.$errors[0]?.$message }}</template>
+      <template v-if="isLocalInvalid">{{ v$.$errors[0]?.$message }}</template>
     </label>
   </div>
 </template>

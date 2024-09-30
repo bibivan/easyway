@@ -11,7 +11,7 @@ const totalSum = computed(() => (orderState.price || 0) + (orderState.deliveryPr
 onMounted(() => initPromoData())
 
 watch(
-  () => promoState.data.value,
+  [() => promoState.data.value, cartTotalPrice],
   () => {
     orderState.price = calculateDiscountedSum(cartTotalPrice.value)
   },

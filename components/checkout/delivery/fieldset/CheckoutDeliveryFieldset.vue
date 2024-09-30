@@ -30,7 +30,7 @@ watch(
       v-model:address-data="orderState.addressData"
       class="checkout-delivery__address"
       :check-full-address="orderState.courierDelivery === EDeliveryType.COURIER"
-      address-query="Самара молодежная 9"
+      address-query="Самара молодежная"
     />
 
     <CheckoutDeliveryTypes />

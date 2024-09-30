@@ -52,7 +52,7 @@
     }
   }
 
-  &_success {
+  &_valid {
     #{$this}__input {
       border-color: $color-bg-input-filled;
       background-color: $color-bg-input-filled;
@@ -63,7 +63,7 @@
     }
   }
 
-  &_error {
+  &_invalid {
     #{$this}__input {
       border-color: $color-danger;
     }
