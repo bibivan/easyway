@@ -1,0 +1,10 @@
+.delivery-map {
+  @include desktop {
+    height: 490px;
+    border-radius: $border-radius-s;
+  }
+
+  width: 100%;
+  height: 180px;
+  border-radius: $border-radius-s;
+}

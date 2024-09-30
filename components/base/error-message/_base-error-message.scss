@@ -1,0 +1,22 @@
+.error-message {
+  @include text-body;
+
+  display: block;
+  color: $color-danger;
+  font-size: 12px;
+  line-height: 1;
+
+  &_position_absolute {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+  }
+
+  &_position_hide {
+    display: none;
+  }
+
+  &_position_static {
+    position: static;
+  }
+}

@@ -1,0 +1,90 @@
+.base-radio {
+  $this: &;
+
+  &__input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  /* для элемента label связанного с .custom-radio */
+  &__label {
+    @include text-body;
+
+    display: flex;
+    width: 100%;
+    color: $color-input;
+    cursor: pointer;
+    font-size: 14px;
+    gap: 10px;
+    transition: color 0.15s ease-in-out;
+
+    @include tablet {
+      font-size: 16px;
+    }
+
+    &::before {
+      display: block;
+      width: 15px;
+      height: 15px;
+      box-sizing: border-box;
+      border: 2px solid currentcolor;
+      border-radius: 50%;
+      background: center / 10px no-repeat;
+      content: '';
+      transition: border-color 0.15s ease-in-out;
+
+      @include tablet {
+        width: 20px;
+        height: 20px;
+        background: center / 18px no-repeat;
+      }
+    }
+  }
+
+  /* стили для радиокнопки, находящейся в состоянии checked */
+  &__input:checked + &__label {
+    color: $color-input;
+
+    &::before {
+      border-color: $color-input;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23#{$color-input}'/%3e%3c/svg%3e");
+    }
+  }
+
+  /* стили для радиокнопки, находящейся в состоянии disabled */
+  &__input:disabled + &__label {
+    color: $color-disable;
+
+    &::before {
+      background-color: $color-disable;
+    }
+  }
+
+  /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+  &__input:focus:not(:checked) + &__label {
+    color: $color-primary-light;
+
+    &::before {
+      border-color: $color-primary-light;
+    }
+  }
+
+  /* стили для радиокнопки, находящейся в ховере и не находящейся в состоянии checked */
+  &__input:hover:not(:checked) + &__label {
+    color: $color-primary-light;
+
+    &::before {
+      border-color: $color-primary-light;
+    }
+  }
+
+  /* стили для активной радиокнопки (при нажатии на неё) */
+  &__input:not(:disabled):active + &__label {
+    color: $color-primary-light;
+
+    &::before {
+      border-color: $color-primary-light;
+    }
+  }
+}

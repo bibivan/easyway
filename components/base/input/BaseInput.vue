@@ -2,7 +2,7 @@
 import { useVuelidate, type Validation } from '@vuelidate/core'
 import { email, helpers, required } from '@vuelidate/validators'
 import type { Ref } from 'vue'
-import type { TNullable } from '~/types'
+import type { TErrorPosition, TNullable } from '~/types'
 
 let v$: Ref<Validation>
 const props = defineProps<{
@@ -12,7 +12,7 @@ const props = defineProps<{
   placeholder?: string
   requiredVal?: boolean
   errorInstance?: Validation
-  errorPosition?: 'absolute' | 'static' | 'hide'
+  errorPosition?: TErrorPosition
   isEmail?: boolean
 }>()
 

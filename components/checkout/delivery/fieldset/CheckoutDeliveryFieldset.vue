@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IAddressSuggestion, TNullable } from '~/types'
+import { EDeliveryType, type IAddressSuggestion, type TNullable } from '~/types'
 
 const { orderState } = useOrderStore()
 
@@ -29,26 +29,11 @@ watch(
       id="checkout_address_input"
       v-model:address-data="orderState.addressData"
       class="checkout-delivery__address"
-      :check-full-address="orderState.courierDelivery"
+      :check-full-address="orderState.courierDelivery === EDeliveryType.COURIER"
+      address-query="Самара молодежная 9"
     />
 
-    <button
-      class="btn"
-      style="margin-top: 40px"
-      @click="orderState.courierDelivery = true"
-    >
-      courier
-    </button>
-
-    <button
-      class="btn"
-      style="margin-top: 40px"
-      @click="orderState.courierDelivery = false"
-    >
-      pickup point
-    </button>
-
-    <!--    <CheckoutDeliveryTypes />-->
+    <CheckoutDeliveryTypes />
   </fieldset>
 </template>
 

@@ -6,25 +6,29 @@ import type {
   IAddressInputValidationRules,
   IAddressSuggestion,
   ILocationRestrictionItem,
+  TErrorPosition,
   TNullable
 } from '~/types'
 
 const props = withDefaults(
   defineProps<{
-    id: string
     addressData: TNullable<IAddressSuggestion>
-    locationRestrictions?: ILocationRestrictionItem[]
     addressQuery?: TNullable<string>
     checkFullAddress?: TNullable<boolean>
     disabled?: boolean
-    theme?: string
+    errorPosition?: TErrorPosition
+    id: string
+    locationRestrictions?: ILocationRestrictionItem[]
     placeholder?: string
+    theme?: string
   }>(),
   {
-    locationRestrictions: undefined,
     addressQuery: null,
     checkFullAddress: null,
-    placeholder: 'Адрес'
+    errorPosition: undefined,
+    locationRestrictions: undefined,
+    placeholder: 'Адрес',
+    theme: undefined
   }
 )
 
@@ -160,7 +164,10 @@ watch(
       />
       <label
         v-if="v$.$errors?.length && !state.isFocused"
-        class="input-block__error"
+        :class="[
+          'input-block__error',
+          'input-block__error_position_' + errorPosition ? errorPosition : 'absolute'
+        ]"
         :for="id"
         >{{ v$.$errors[0]?.$message }}</label
       >

@@ -14,6 +14,7 @@
     @include text-body;
 
     padding: 5px 10px;
+    border-radius: $border-radius-s;
     color: $color-input;
     cursor: pointer;
     font-size: 14px;
@@ -49,5 +50,6 @@
     z-index: $ui-index-7;
     top: calc(100% + 10px);
     width: 100%;
+    border-radius: $border-radius-s;
   }
 }

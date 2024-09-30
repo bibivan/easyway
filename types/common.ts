@@ -42,3 +42,5 @@ export interface IGetCatalogPayload {
   brand: string
   gender?: EGender
 }
+
+export type TErrorPosition = 'absolute' | 'static' | 'hide'

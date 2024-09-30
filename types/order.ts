@@ -1,9 +1,10 @@
-import type {
-  TNullable,
-  IAddressSuggestion,
-  IDeliveryCourier,
-  IDeliveryPoint,
-  ICartItem
+import {
+  type TNullable,
+  type IAddressSuggestion,
+  type IDeliveryCourier,
+  type IDeliveryPoint,
+  type ICartItem,
+  EDeliveryType
 } from '~/types'
 
 export enum EPaymentType {
@@ -24,7 +25,7 @@ export interface IOrderState {
   middleName: TNullable<string>
   email: TNullable<string>
   comment: TNullable<string>
-  courierDelivery: TNullable<boolean>
+  courierDelivery: TNullable<EDeliveryType>
   deliveryCouriers: TNullable<IDeliveryCourier[]>
   deliveryPoints: TNullable<IDeliveryPoint[]>
   pickedCourier: TNullable<IDeliveryCourier>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 defineEmits<{ onSendOrder: [void] }>()
 
-const { handleSendData } = useOrderFormSending()
 const { cartState, cartTotalPrice } = storeToRefs(useCartStore())
 const { orderState } = useOrderStore()
 const { promoState, initPromoData, calculateDiscount, calculateDiscountedSum } = usePromoStore()
@@ -22,7 +21,7 @@ watch(
 
 <template>
   <fieldset class="fieldset checkout-cart">
-    <legend class="fieldset__legend checkout-cart__heading">ЗАКАЗ</legend>
+    <legend class="fieldset__legend checkout-cart__heading">Заказ</legend>
     <ul class="checkout-cart__items">
       <li
         v-for="item in cartState.data"
@@ -76,8 +75,8 @@ watch(
 
     <div class="checkout-cart__actions">
       <button
+        id="send_order_btn"
         class="checkout-cart__btn btn"
-        @click="handleSendData"
       >
         Оформить
       </button>

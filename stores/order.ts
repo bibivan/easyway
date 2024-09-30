@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import type { ICartItem, IOrderState, ISendOrderPayload } from '~/types'
+import { EDeliveryType, type ICartItem, type IOrderState, type ISendOrderPayload } from '~/types'
 
 export const useOrderStore = defineStore('order_store', () => {
   const orderState: IOrderState = reactive({
@@ -51,7 +51,7 @@ export const useOrderStore = defineStore('order_store', () => {
       PLACE_ID: orderState.placeId as number,
       SEND_ORDER_TO_SDT: true,
       RU_POST_DELIVERY: orderState.ruPostDelivery as boolean,
-      COURIER_DELIVERY: orderState.courierDelivery as boolean,
+      COURIER_DELIVERY: orderState.courierDelivery === EDeliveryType.COURIER,
       B2B_CLIENT: false,
       LOYALTY_POINT: 0,
       DELIVERY_INTERVAL: 0,

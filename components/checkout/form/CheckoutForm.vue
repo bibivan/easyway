@@ -1,5 +1,17 @@
 <script setup lang="ts">
-const { handleSendData } = useOrderFormSending()
+import { useVuelidate } from '@vuelidate/core'
+
+const v$ = useVuelidate()
+
+const handleSendData = async () => {
+  const result = await v$.value.$validate()
+  console.log(result)
+}
+
+onMounted(() => {
+  const sendBtn = document.getElementById('send_order_btn')
+  if (sendBtn) sendBtn.addEventListener('click', () => handleSendData())
+})
 </script>
 <template>
   <form
@@ -7,14 +19,6 @@ const { handleSendData } = useOrderFormSending()
     @submit.prevent="handleSendData"
   >
     <CheckoutDeliveryFieldset />
-    <button
-      class="btn"
-      type="submit"
-      style="margin-top: 40px"
-      @submit="handleSendData"
-    >
-      submit
-    </button>
   </form>
 </template>
 

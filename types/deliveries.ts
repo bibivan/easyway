@@ -4,6 +4,11 @@ export enum ECountry {
   'RUSSIA' = 'RUS'
 }
 
+export enum EDeliveryType {
+  'COURIER' = 'courier',
+  'PICKUP' = 'pickup'
+}
+
 export interface IDeliveryCourier {
   name: string
   delivery_code: string
@@ -56,4 +61,12 @@ export interface IDeliveriesDataItem {
 export interface IDeliveriesDataRaw {
   data: IDeliveriesDataItem[]
   success: boolean
+}
+
+export interface YaMapInstance {
+  setCenter: (
+    coords: [number, number],
+    zoom: number,
+    settings: { checkZoomRange?: boolean; duration: number }
+  ) => {}
 }
