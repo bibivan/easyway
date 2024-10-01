@@ -41,7 +41,10 @@ watch(
 </script>
 
 <template>
-  <div class="delivery-couriers">
+  <div
+    v-if="orderState.deliveryCouriers"
+    class="form__radios delivery-couriers"
+  >
     <BaseRadio
       v-for="(deliveryCourier, index) in orderState.deliveryCouriers"
       :id="deliveryCourier.transport_api_code + deliveryCourier.delivery_code"
@@ -49,7 +52,6 @@ watch(
       v-model="pickedCourier"
       :value="deliveryCourier.name"
       :label="deliveryCourier.name + ' доставка ' + deliveryCourier.delivery_date"
-      theme="easynutrition"
     />
   </div>
 </template>

@@ -3,34 +3,23 @@ import { useVuelidate } from '@vuelidate/core'
 import { helpers, required } from '@vuelidate/validators'
 import type {
   IAddressInputState,
-  IAddressInputValidationRules,
   IAddressSuggestion,
   ILocationRestrictionItem,
   TErrorPosition,
   TNullable
 } from '~/types'
 
-const props = withDefaults(
-  defineProps<{
-    addressData: TNullable<IAddressSuggestion>
-    addressQuery?: TNullable<string>
-    checkFullAddress?: TNullable<boolean>
-    disabled?: boolean
-    errorPosition?: TErrorPosition
-    id: string
-    locationRestrictions?: ILocationRestrictionItem[]
-    placeholder?: string
-    theme?: string
-  }>(),
-  {
-    addressQuery: null,
-    checkFullAddress: null,
-    errorPosition: 'absolute',
-    locationRestrictions: undefined,
-    placeholder: 'Адрес',
-    theme: undefined
-  }
-)
+const props = defineProps<{
+  addressData: TNullable<IAddressSuggestion>
+  addressQuery?: TNullable<string>
+  checkFullAddress?: TNullable<boolean>
+  disabled?: boolean
+  errorPosition?: TErrorPosition
+  id: string
+  locationRestrictions?: ILocationRestrictionItem[]
+  placeholder?: string
+  theme?: string
+}>()
 
 const emit = defineEmits<{
   'update:addressData': [IAddressSuggestion]
@@ -42,36 +31,30 @@ const inputRef = ref<HTMLInputElement>()
 const state = reactive<IAddressInputState>({
   dropdownIsOpened: false,
   addressIsSelected: false,
-  isFocused: false,
   requestTimeout: null,
   inputValue: '',
   addressSuggestions: [] as IAddressSuggestion[],
   highlightItemIndex: indexOfHiddenAddressInList
 })
 
-const validationRules = computed(() => {
-  const inputValue: IAddressInputValidationRules = {
+const validationRules = computed(() => ({
+  inputValue: {
     required: helpers.withMessage('Введите адрес', required),
     addressSelected: helpers.withMessage(
       'Выберите адрес из выпадающего списка',
       () => !!state.addressIsSelected
-    )
+    ),
+    fullAddress: helpers.withMessage('Для доставки курьером введите полный адрес', () => {
+      return props.checkFullAddress ? !!props.addressData?.data?.house : true
+    })
   }
-
-  if (props.checkFullAddress) {
-    inputValue.fullAddress = helpers.withMessage(
-      'Для доставки курьером введите полный адрес',
-      () => !!props.addressData?.data?.house
-    )
-  }
-
-  return { inputValue }
-})
+}))
 
 const v$ = useVuelidate(validationRules, state)
+const { isValid, hasError, isFocused, errorMessage } = useInputValidation(v$.value)
 
 const handleBlur = () => {
-  state.isFocused = false
+  isFocused.value = false
   v$.value.$reset()
 }
 
@@ -143,8 +126,8 @@ watch(
       'address-input',
       {
         ['input-block_' + theme]: theme,
-        'input-block_valid': !v$?.$silentErrors?.length,
-        'input-block_invalid': !!v$?.$errors?.length && !state.isFocused
+        'input-block_valid': isValid,
+        'input-block_invalid': hasError
       }
     ]"
   >
@@ -157,17 +140,17 @@ watch(
         class="input-block__input"
         type="text"
         :disabled="disabled"
-        :placeholder="placeholder"
+        :placeholder="placeholder ? placeholder : 'Адрес'"
         @input="handleInput"
-        @focus="state.isFocused = true"
+        @focus="isFocused = true"
         @blur="handleBlur"
         @keydown="onMoveFocus"
       />
       <label
-        v-if="v$.$errors?.length && !state.isFocused"
+        v-if="hasError"
         :class="['input-block__error', 'input-block__error_position_' + errorPosition]"
         :for="id"
-        >{{ v$.$errors[0]?.$message }}</label
+        >{{ errorMessage }}</label
       >
     </div>
 

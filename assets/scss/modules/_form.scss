@@ -1,0 +1,33 @@
+.form {
+  @include flex-column;
+  @include base-gap;
+
+  &__fieldset {
+    @include flex-column;
+  }
+
+  &__legend {
+    @include text-body;
+
+    margin-bottom: 25px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+
+    @include tablet {
+      margin-bottom: 35px;
+      font-size: 24px;
+      letter-spacing: -0.02em;
+    }
+  }
+
+  &__subtitle {
+  }
+
+  &__radios,
+  &__inputs {
+    @include flex-column;
+
+    gap: 15px;
+  }
+}

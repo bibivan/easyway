@@ -63,16 +63,6 @@ watch(
   { deep: true }
 )
 
-// wheel stopping
-const tabContent = ref<TNullable<HTMLElement>>(null)
-watch(tabContent, () => {
-  if (tabContent.value) {
-    tabContent.value.addEventListener('wheel', (event) => {
-      event.stopPropagation()
-    })
-  }
-})
-
 // валидация
 const validationRules = computed(() => ({
   courierDelivery: {
@@ -111,10 +101,9 @@ const v$ = useVuelidate(validationRules, orderState)
 
     <div
       v-if="isNotNull(orderState.courierDelivery)"
-      ref="tabContent"
       class="delivery-types__tab-content"
     >
-      <ClientOnly v-if="orderState.deliveryCouriers">
+      <ClientOnly>
         <CheckoutDeliveryCouriers
           v-show="
             orderState.courierDelivery === EDeliveryType.COURIER &&
@@ -122,7 +111,7 @@ const v$ = useVuelidate(validationRules, orderState)
           "
         />
       </ClientOnly>
-      <ClientOnly v-if="orderState.deliveryPoints">
+      <ClientOnly>
         <CheckoutDeliveryPoints v-show="orderState.courierDelivery === EDeliveryType.PICKUP" />
       </ClientOnly>
     </div>

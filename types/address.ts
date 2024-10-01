@@ -116,7 +116,6 @@ export interface IAddressInputState {
   addressSuggestions: IAddressSuggestion[]
   dropdownIsOpened: boolean
   addressIsSelected: boolean
-  isFocused: boolean
   inputValue: string
   requestTimeout: TNullable<ReturnType<typeof setTimeout>>
   highlightItemIndex: number

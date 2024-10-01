@@ -20,8 +20,8 @@ watch(
 </script>
 
 <template>
-  <fieldset class="fieldset checkout-cart">
-    <legend class="fieldset__legend checkout-cart__heading">Заказ</legend>
+  <fieldset class="form__fieldset checkout-cart">
+    <legend class="form__legend checkout-cart__heading">Заказ</legend>
     <ul class="checkout-cart__items">
       <li
         v-for="item in cartState.data"

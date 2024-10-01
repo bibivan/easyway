@@ -1,0 +1,12 @@
+.base-textarea {
+  &__input {
+    min-height: 135px;
+    resize: none;
+
+    &::placeholder {
+      color: $color-input;
+      font-family: $font-base;
+      font-size: 12px;
+    }
+  }
+}

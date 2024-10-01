@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useVuelidate } from '@vuelidate/core'
 import { helpers } from '@vuelidate/validators'
-import { EDeliveryType } from '~/types'
+import { EDeliveryType, type TNullable } from '~/types'
 
 const { orderState } = useOrderStore()
 
@@ -27,11 +27,24 @@ watch(
     return
   }
 )
+
+// wheel stopping
+const tabContent = ref<TNullable<HTMLElement>>(null)
+watch(tabContent, () => {
+  if (tabContent.value) {
+    tabContent.value.addEventListener('wheel', (event) => {
+      event.stopPropagation()
+    })
+  }
+})
 </script>
 
 <template>
-  <div class="delivery-points">
-    <CheckoutDeliveryMap />
+  <div
+    ref="tabContent"
+    class="delivery-points"
+  >
+    <CheckoutDeliveryMap v-if="orderState.deliveryPoints" />
   </div>
 </template>
 

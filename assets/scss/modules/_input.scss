@@ -16,7 +16,9 @@
     font-size: 12px;
 
     &::placeholder {
-      color: inherit;
+      color: $color-input;
+      font-family: $font-base;
+      font-size: 12px;
     }
   }
 

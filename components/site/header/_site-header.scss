@@ -3,6 +3,7 @@
   z-index: $ui-index-2;
   width: 100%;
   background-color: $color-bg-html;
+  box-shadow: 0 0 15px rgba($color-primary, 0.1);
   color: $color-text;
 
   @include desktop {

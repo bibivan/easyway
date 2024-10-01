@@ -22,15 +22,14 @@ watch(
 </script>
 
 <template>
-  <fieldset class="fieldset checkout-delivery">
-    <legend class="fieldset__legend">Адрес и&nbsp;доставка</legend>
+  <fieldset class="form__fieldset checkout-delivery">
+    <legend class="form__legend">Адрес и&nbsp;доставка</legend>
 
     <BaseAddressInput
       id="checkout_address_input"
       v-model:address-data="orderState.addressData"
       class="checkout-delivery__address"
       :check-full-address="orderState.courierDelivery === EDeliveryType.COURIER"
-      address-query="Самара молодежная"
     />
 
     <CheckoutDeliveryTypes />
@@ -38,5 +37,5 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-@import 'checkout-delivery-fieldset';
+@import 'checkout-delivery';
 </style>

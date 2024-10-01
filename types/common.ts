@@ -1,19 +1,10 @@
-export type TNullable<T> = T | null
+import type { ComputedRef, Ref } from 'vue'
 
-export enum EBrand {
-  EASYFIT = 'easyfit',
-  EASYWAY = 'easyway',
-  EASYNUTRITION = 'easynutrition'
-}
+export type TNullable<T> = T | null
 
 export enum ERequestStatus {
   FAILED = 'failed',
   SUCCESS = 'success'
-}
-
-export enum EGender {
-  MALE = 'male',
-  FEMALE = 'female'
 }
 
 export interface IPagination {
@@ -38,9 +29,18 @@ export interface IPaginatedDataRaw<T> {
   pagination: IPaginationRaw
 }
 
-export interface IGetCatalogPayload {
-  brand: string
-  gender?: EGender
+export type TErrorPosition = 'absolute' | 'static' | 'hide'
+
+export interface IInputValidationState {
+  isFocused: Ref<boolean>
+  isValid: ComputedRef<boolean>
+  errorMessage: ComputedRef<string | Ref<string> | undefined>
+  hasError: ComputedRef<boolean>
+  handleBlur: (e: Event) => void
 }
 
-export type TErrorPosition = 'absolute' | 'static' | 'hide'
+export interface IInputEmitEvents {
+  input: [Event]
+  change: [Event]
+  blur: [Event]
+}

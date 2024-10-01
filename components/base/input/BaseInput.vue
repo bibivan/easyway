@@ -2,9 +2,10 @@
 import { useVuelidate, type Validation } from '@vuelidate/core'
 import { email, helpers, required } from '@vuelidate/validators'
 import type { Ref } from 'vue'
-import type { TErrorPosition, TNullable } from '~/types'
+import type { IInputValidationState, TErrorPosition, TNullable } from '~/types'
 
 let v$: Ref<Validation>
+let inputValidation: IInputValidationState
 const props = defineProps<{
   id: string
   disabled?: boolean
@@ -24,23 +25,10 @@ const emit = defineEmits<{
 }>()
 
 const modelValue = defineModel<TNullable<T>>()
-const isFocused = ref<boolean>(false)
 
-const handleBlur = (event: Event) => {
-  emit('blur', event)
-  isFocused.value = false
-  if (v$) v$.value.$touch()
-}
-
-const isParentInvalid = computed(() => !!props.errorInstance?.$errors?.length && !isFocused.value)
-const isLocalInvalid = computed(() => !!v$?.value.$errors?.length && !isFocused.value)
-const isValid = computed(() => {
-  return props.errorInstance
-    ? !props.errorInstance?.$silentErrors?.length
-    : !v$?.value.$silentErrors?.length && !!modelValue.value
-})
-
-if (!props.errorInstance) {
+if (props.errorInstance) {
+  inputValidation = useInputValidation(props.errorInstance, emit)
+} else {
   const validationRules = computed(() => ({
     modelValue: {
       required: props.requiredVal ? helpers.withMessage('Обязательное поле', required) : () => true,
@@ -48,17 +36,19 @@ if (!props.errorInstance) {
     }
   }))
   v$ = useVuelidate(validationRules, { modelValue })
+  inputValidation = useInputValidation(v$.value, emit)
 }
+const { isValid, hasError, isFocused, errorMessage, handleBlur } = inputValidation
 </script>
 
 <template>
   <div
     :class="[
-      'input-block',
+      'base-input input-block',
       {
         ['input-block_' + theme]: theme,
         'input-block_valid': isValid,
-        'input-block_invalid': isParentInvalid || isLocalInvalid
+        'input-block_invalid': hasError
       }
     ]"
   >
@@ -82,8 +72,7 @@ if (!props.errorInstance) {
         'input-block__error_position_' + errorPosition ? errorPosition : 'absolute'
       ]"
     >
-      <template v-if="isParentInvalid">{{ errorInstance?.$errors[0]?.$message }}</template>
-      <template v-if="isLocalInvalid">{{ v$.$errors[0]?.$message }}</template>
+      {{ errorMessage }}
     </label>
   </div>
 </template>

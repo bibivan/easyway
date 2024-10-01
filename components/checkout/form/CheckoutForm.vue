@@ -16,9 +16,11 @@ onMounted(() => {
 <template>
   <form
     action="#"
+    class="form"
     @submit.prevent="handleSendData"
   >
-    <CheckoutDeliveryFieldset />
+    <CheckoutDelivery />
+    <CheckoutClient />
   </form>
 </template>
 
