@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { EDeliveryType, type IAddressSuggestion, type TNullable } from '~/types'
 
-const { orderState } = useOrderStore()
+const { orderState, clearOrder } = useOrderStore()
 
 const setAddressData = (addressData: TNullable<IAddressSuggestion>) => {
   if (!addressData) return
@@ -15,6 +15,8 @@ const setAddressData = (addressData: TNullable<IAddressSuggestion>) => {
   orderState.addressString = addressData.unrestricted_value
 }
 
+onMounted(() => clearOrder())
+
 watch(
   () => orderState.addressData,
   (val) => setAddressData(val)
@@ -27,9 +29,9 @@ watch(
 
     <BaseAddressInput
       id="checkout_address_input"
-      v-model:address-data="orderState.addressData"
       class="checkout-delivery__address"
       :check-full-address="orderState.courierDelivery === EDeliveryType.COURIER"
+      @on-update-address-data="orderState.addressData = $event"
     />
 
     <CheckoutDeliveryTypes />

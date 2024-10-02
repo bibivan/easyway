@@ -18,12 +18,6 @@ const props = withDefaults(
   }
 )
 
-const emit = defineEmits<{
-  input: [Event]
-  change: [Event]
-  blur: [Event]
-}>()
-
 const modelValue = defineModel<TNullable<string | number>>()
 
 const validationRules = computed(() => ({
@@ -33,7 +27,7 @@ const validationRules = computed(() => ({
 }))
 const v$ = useVuelidate(validationRules, { modelValue })
 
-const { isValid, hasError, isFocused, errorMessage, handleBlur } = useInputValidation(v$, emit)
+const { isValid, hasError, errorMessage } = useInputValidation(v$)
 </script>
 
 <template>
@@ -53,11 +47,9 @@ const { isValid, hasError, isFocused, errorMessage, handleBlur } = useInputValid
       v-model="modelValue"
       class="input-block__input base-textarea__input"
       :disabled="disabled"
-      :placeholder="placeholder ? placeholder : ''"
-      @input="$emit('input', $event)"
-      @change="$emit('change', $event)"
-      @blur="handleBlur"
-      @focus="isFocused = true"
+      :placeholder="placeholder"
+      @blur="v$.$touch()"
+      @focus="v$.$reset()"
     />
     <BaseErrorMessage
       v-if="hasError && !noErrorMessage"

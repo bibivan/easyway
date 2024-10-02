@@ -113,7 +113,8 @@ export interface ILocationRestrictionItem {
 }
 
 export interface IAddressInputState {
-  addressSuggestions: IAddressSuggestion[]
+  selectedAddressData: TNullable<IAddressSuggestion>
+  addressSuggestions: TNullable<IAddressSuggestion[]>
   dropdownIsOpened: boolean
   addressIsSelected: boolean
   inputValue: string

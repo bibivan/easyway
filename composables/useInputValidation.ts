@@ -1,28 +1,15 @@
 import type { Validation } from '@vuelidate/core'
-import type { IInputEmitEvents } from '~/types'
 import type { Ref } from 'vue'
 
-export const useInputValidation = (
-  v$: Ref<Validation>,
-  emit?: <K extends keyof IInputEmitEvents>(event: K, ...payload: IInputEmitEvents[K]) => void
-) => {
-  const isFocused = ref<boolean>(false)
-  const hasError = computed(() => !!v$.value?.$error && !isFocused.value)
+export const useInputValidation = (v$: Ref<Validation>) => {
+  const hasError = computed(() => v$.value?.$error)
   const isValid = computed(() => !v$.value?.$invalid)
   const errorMessage = computed(() => v$.value?.$errors[0]?.$message)
 
-  const handleBlur = (event: Event) => {
-    if (emit) emit('blur', event)
-    isFocused.value = false
-    v$.value.$touch()
-  }
-
   return {
-    isFocused,
     hasError,
     isValid,
-    errorMessage,
-    handleBlur
+    errorMessage
   }
 }
 

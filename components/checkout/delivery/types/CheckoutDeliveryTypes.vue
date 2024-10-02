@@ -55,6 +55,8 @@ const getDeliveries = async (fiases: Array<TNullable<string>>) => {
   }
 }
 
+const handleSetDeliveryType = (type: EDeliveryType) => (orderState.courierDelivery = type)
+
 watch(
   () => orderState.fiases,
   async (val) => {
@@ -67,6 +69,16 @@ watch(
 const validationRules = computed(() => ({
   courierDelivery: {
     required: helpers.withMessage('Выберите способ доставки', () => !!orderState.courierDelivery)
+  },
+  pickedCourier: {
+    required: helpers.withMessage('Выберите курьерскую службу', () =>
+      orderState.courierDelivery === EDeliveryType.COURIER ? !!orderState?.pickedCourier : true
+    )
+  },
+  pickedPoint: {
+    required: helpers.withMessage('Выберите пункт выдачи', () =>
+      orderState.courierDelivery === EDeliveryType.PICKUP ? !!orderState.pickedPoint : true
+    )
   }
 }))
 const v$ = useVuelidate(validationRules, orderState)
@@ -78,29 +90,29 @@ const v$ = useVuelidate(validationRules, orderState)
       <button
         class="delivery-types__tab"
         :class="{
-          'delivery-types__tab_active': orderState.courierDelivery === EDeliveryType.COURIER
+          'delivery-types__tab_active': orderState.courierDelivery === EDeliveryType.PICKUP
         }"
-        @click.prevent="orderState.courierDelivery = EDeliveryType.COURIER"
+        @click.prevent="handleSetDeliveryType(EDeliveryType.PICKUP)"
       >
-        Курьер
+        Пункт выдачи
       </button>
       <button
         class="delivery-types__tab"
         :class="{
-          'delivery-types__tab_active': orderState.courierDelivery === EDeliveryType.PICKUP
+          'delivery-types__tab_active': orderState.courierDelivery === EDeliveryType.COURIER
         }"
-        @click.prevent="orderState.courierDelivery = EDeliveryType.PICKUP"
+        @click.prevent="handleSetDeliveryType(EDeliveryType.COURIER)"
       >
-        Пункт выдачи
+        Курьер
       </button>
       <BaseErrorMessage
         class="delivery-types__error"
-        :error-meassage="v$.$errors[0]?.$message"
+        :message="v$.$errors[0]?.$message"
       />
     </div>
 
     <div
-      v-if="isNotNull(orderState.courierDelivery)"
+      v-if="isNotNull(orderState.courierDelivery) && orderState.addressData"
       class="delivery-types__tab-content"
     >
       <ClientOnly>

@@ -1,19 +1,7 @@
 <script setup lang="ts">
-import { useVuelidate } from '@vuelidate/core'
-import { helpers } from '@vuelidate/validators'
-import { EDeliveryType, type TNullable } from '~/types'
+import type { TNullable } from '~/types'
 
 const { orderState } = useOrderStore()
-
-// валидация
-const validationRules = computed(() => ({
-  pickedPoint: {
-    required: helpers.withMessage('Выберите пункт выдачи', () =>
-      orderState.courierDelivery === EDeliveryType.PICKUP ? !!orderState.pickedPoint : true
-    )
-  }
-}))
-useVuelidate(validationRules, orderState)
 
 watch(
   () => orderState.pickedPoint,

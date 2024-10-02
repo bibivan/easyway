@@ -1,20 +1,8 @@
 <script setup lang="ts">
-import { helpers } from '@vuelidate/validators'
-import { useVuelidate } from '@vuelidate/core'
-import { EDeliveryType, type TNullable } from '~/types'
+import type { TNullable } from '~/types'
+
 const { orderState } = useOrderStore()
 const pickedCourier = ref<TNullable<string>>(null)
-
-// валидация
-const validationRules = computed(() => ({
-  pickedCourier: {
-    required: helpers.withMessage('Выберите курьерскую службу', () =>
-      orderState.courierDelivery === EDeliveryType.COURIER ? !!orderState?.pickedCourier : true
-    )
-  }
-}))
-
-useVuelidate(validationRules, orderState)
 
 watch(pickedCourier, (val) => {
   if (orderState.deliveryCouriers) {

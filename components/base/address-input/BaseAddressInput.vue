@@ -11,7 +11,6 @@ import {
 
 const props = withDefaults(
   defineProps<{
-    addressData: TNullable<IAddressSuggestion>
     addressQuery?: TNullable<string>
     checkFullAddress?: TNullable<boolean>
     disabled?: boolean
@@ -25,18 +24,19 @@ const props = withDefaults(
 )
 
 const emit = defineEmits<{
-  'update:addressData': [IAddressSuggestion]
+  onUpdateAddressData: [IAddressSuggestion]
 }>()
 
 const indexOfFirstAddressInList = 0
 const indexOfHiddenAddressInList = -1
 const inputRef = ref<HTMLInputElement>()
 const state = reactive<IAddressInputState>({
+  selectedAddressData: null,
   dropdownIsOpened: false,
   addressIsSelected: false,
   requestTimeout: null,
   inputValue: '',
-  addressSuggestions: [] as IAddressSuggestion[],
+  addressSuggestions: null,
   highlightItemIndex: indexOfHiddenAddressInList
 })
 
@@ -48,25 +48,26 @@ const validationRules = computed(() => ({
       () => !!state.addressIsSelected
     ),
     fullAddress: helpers.withMessage('Для доставки курьером введите полный адрес', () => {
-      return props.checkFullAddress ? !!props.addressData?.data?.house : true
+      return props.checkFullAddress ? !!state.selectedAddressData?.data?.house : true
     })
   }
 }))
 
 const v$ = useVuelidate(validationRules, state)
-const { isValid, hasError, isFocused, errorMessage } = useInputValidation(v$)
-
-const handleBlur = () => {
-  isFocused.value = false
-  v$.value.$reset()
-}
+const { isValid, hasError, errorMessage } = useInputValidation(v$)
 
 const handleSetCurrentAddress = (addressItem: IAddressSuggestion) => {
   state.highlightItemIndex = indexOfHiddenAddressInList
   state.dropdownIsOpened = false
   state.addressIsSelected = true
+  state.selectedAddressData = addressItem
   state.inputValue = addressItem.value
-  emit('update:addressData', addressItem)
+  emit('onUpdateAddressData', addressItem)
+  v$.value.$touch()
+}
+
+const handleBlur = () => {
+  if (state.dropdownIsOpened) return
   v$.value.$touch()
 }
 
@@ -96,15 +97,18 @@ const getSuggestions = (val: string) => {
 }
 
 const onMoveFocus = (e: KeyboardEvent) => {
+  if (!state.addressSuggestions) return
   if (e.code === 'ArrowUp' && state.highlightItemIndex > indexOfFirstAddressInList) {
+    e.preventDefault()
     --state.highlightItemIndex
   }
   if (e.code === 'ArrowDown' && state.highlightItemIndex < state.addressSuggestions?.length - 1) {
+    e.preventDefault()
     ++state.highlightItemIndex
   }
   if (e.code === 'Enter') {
+    e.preventDefault()
     handleSetCurrentAddress(state.addressSuggestions[state.highlightItemIndex])
-    inputRef.value?.blur()
   }
 }
 
@@ -143,10 +147,10 @@ watch(
         class="input-block__input"
         type="text"
         :disabled="disabled"
-        :placeholder="placeholder ? placeholder : ''"
+        :placeholder="placeholder"
         @input="handleInput"
-        @focus="isFocused = true"
         @blur="handleBlur"
+        @focus="v$.$reset()"
         @keydown="onMoveFocus"
       />
       <BaseErrorMessage

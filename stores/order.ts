@@ -67,9 +67,16 @@ export const useOrderStore = defineStore('order_store', () => {
     })
   }
 
+  const clearOrder = () => {
+    Object.keys(orderState).forEach((key) => {
+      orderState[key as keyof IOrderState] = null
+    })
+  }
+
   return {
     orderState,
     getOrderPayload,
-    sendOrder
+    sendOrder,
+    clearOrder
   }
 })
