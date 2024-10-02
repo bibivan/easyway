@@ -29,14 +29,9 @@ export interface IPaginatedDataRaw<T> {
   pagination: IPaginationRaw
 }
 
-export type TErrorPosition = 'absolute' | 'static' | 'hide'
-
-export interface IInputValidationState {
-  isFocused: Ref<boolean>
-  isValid: ComputedRef<boolean>
-  errorMessage: ComputedRef<string | Ref<string> | undefined>
-  hasError: ComputedRef<boolean>
-  handleBlur: (e: Event) => void
+export enum EErrorPosition {
+  ABSOLUTE = 'absolute',
+  static = 'static'
 }
 
 export interface IInputEmitEvents {

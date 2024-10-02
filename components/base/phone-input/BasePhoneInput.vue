@@ -2,17 +2,21 @@
 import Inputmask from 'inputmask'
 import { useVuelidate, type Validation } from '@vuelidate/core'
 import { minLength, helpers, required } from '@vuelidate/validators'
-import type { TErrorPosition, TNullable } from '~/types'
+import { EErrorPosition, type TNullable } from '~/types'
 
-const props = defineProps<{
-  id: string
-  disabled?: boolean
-  theme?: string
-  placeholder?: string
-  requiredVal?: boolean
-  errorInstance?: Validation
-  errorPosition?: TErrorPosition
-}>()
+const props = withDefaults(
+  defineProps<{
+    id: string
+    disabled?: boolean
+    errorPosition?: EErrorPosition
+    placeholder?: string
+    requiredVal?: boolean
+    theme?: string
+  }>(),
+  {
+    placeholder: 'Телефон'
+  }
+)
 
 const emit = defineEmits<{
   input: [Event]
@@ -34,10 +38,7 @@ const validationRules = computed(() => ({
   }
 }))
 const v$ = useVuelidate(validationRules, { modelValue })
-const { isValid, hasError, isFocused, errorMessage, handleBlur } = useInputValidation(
-  v$.value,
-  emit
-)
+const { isValid, hasError, isFocused, errorMessage, handleBlur } = useInputValidation(v$, emit)
 
 onMounted(() => {
   Inputmask({
@@ -67,20 +68,17 @@ onMounted(() => {
       class="input-block__input"
       type="text"
       :disabled="disabled"
-      :placeholder="placeholder ? placeholder : 'Телефон'"
+      :placeholder="placeholder ? placeholder : ''"
       @input="$emit('input', $event)"
       @change="$emit('change', $event)"
       @blur="handleBlur"
       @focus="isFocused = true"
     />
-    <label
-      :for="id"
-      :class="[
-        'input-block__error',
-        'input-block__error_position_' + errorPosition ? errorPosition : 'absolute'
-      ]"
-    >
-      {{ errorMessage }}
-    </label>
+    <BaseErrorMessage
+      v-if="hasError"
+      class="input-block__error"
+      :message="errorMessage"
+      :error-position="errorPosition"
+    />
   </div>
 </template>

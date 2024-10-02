@@ -1,17 +1,22 @@
 <script setup lang="ts">
-import { useVuelidate, type Validation } from '@vuelidate/core'
+import { useVuelidate } from '@vuelidate/core'
 import { helpers, required } from '@vuelidate/validators'
-import type { TErrorPosition, TNullable } from '~/types'
+import { EErrorPosition, type TNullable } from '~/types'
 
-const props = defineProps<{
-  id: string
-  disabled?: boolean
-  errorPosition?: TErrorPosition
-  theme?: string
-  placeholder?: string
-  requiredVal?: boolean
-  errorInstance?: Validation
-}>()
+const props = withDefaults(
+  defineProps<{
+    disabled?: boolean
+    errorPosition?: EErrorPosition
+    id: string
+    noErrorMessage?: boolean
+    placeholder?: string
+    requiredVal?: boolean
+    theme?: string
+  }>(),
+  {
+    placeholder: 'Комментарий'
+  }
+)
 
 const emit = defineEmits<{
   input: [Event]
@@ -28,10 +33,7 @@ const validationRules = computed(() => ({
 }))
 const v$ = useVuelidate(validationRules, { modelValue })
 
-const { isValid, hasError, isFocused, errorMessage, handleBlur } = useInputValidation(
-  v$.value,
-  emit
-)
+const { isValid, hasError, isFocused, errorMessage, handleBlur } = useInputValidation(v$, emit)
 </script>
 
 <template>
@@ -51,21 +53,19 @@ const { isValid, hasError, isFocused, errorMessage, handleBlur } = useInputValid
       v-model="modelValue"
       class="input-block__input base-textarea__input"
       :disabled="disabled"
-      :placeholder="placeholder ? placeholder : 'Комментарий'"
+      :placeholder="placeholder ? placeholder : ''"
       @input="$emit('input', $event)"
       @change="$emit('change', $event)"
       @blur="handleBlur"
       @focus="isFocused = true"
     />
-    <label
-      :for="id"
-      :class="[
-        'input-block__error',
-        'input-block__error_position_' + errorPosition ? errorPosition : 'absolute'
-      ]"
-    >
-      {{ errorMessage }}
-    </label>
+    <BaseErrorMessage
+      v-if="hasError && !noErrorMessage"
+      class="input-block__error"
+      :message="errorMessage"
+      :error-position="errorPosition"
+    />
+    <slot />
   </div>
 </template>
 

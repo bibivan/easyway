@@ -1,25 +1,28 @@
 <script setup lang="ts">
 import { useVuelidate } from '@vuelidate/core'
 import { helpers, required } from '@vuelidate/validators'
-import type {
-  IAddressInputState,
-  IAddressSuggestion,
-  ILocationRestrictionItem,
-  TErrorPosition,
-  TNullable
+import {
+  EErrorPosition,
+  type IAddressInputState,
+  type IAddressSuggestion,
+  type ILocationRestrictionItem,
+  type TNullable
 } from '~/types'
 
-const props = defineProps<{
-  addressData: TNullable<IAddressSuggestion>
-  addressQuery?: TNullable<string>
-  checkFullAddress?: TNullable<boolean>
-  disabled?: boolean
-  errorPosition?: TErrorPosition
-  id: string
-  locationRestrictions?: ILocationRestrictionItem[]
-  placeholder?: string
-  theme?: string
-}>()
+const props = withDefaults(
+  defineProps<{
+    addressData: TNullable<IAddressSuggestion>
+    addressQuery?: TNullable<string>
+    checkFullAddress?: TNullable<boolean>
+    disabled?: boolean
+    errorPosition?: EErrorPosition
+    id: string
+    locationRestrictions?: ILocationRestrictionItem[]
+    placeholder?: string
+    theme?: string
+  }>(),
+  { placeholder: 'Адрес' }
+)
 
 const emit = defineEmits<{
   'update:addressData': [IAddressSuggestion]
@@ -51,7 +54,7 @@ const validationRules = computed(() => ({
 }))
 
 const v$ = useVuelidate(validationRules, state)
-const { isValid, hasError, isFocused, errorMessage } = useInputValidation(v$.value)
+const { isValid, hasError, isFocused, errorMessage } = useInputValidation(v$)
 
 const handleBlur = () => {
   isFocused.value = false
@@ -126,7 +129,7 @@ watch(
       'address-input',
       {
         ['input-block_' + theme]: theme,
-        'input-block_valid': isValid,
+        'input-block_valid': isValid && !!state.inputValue,
         'input-block_invalid': hasError
       }
     ]"
@@ -140,18 +143,18 @@ watch(
         class="input-block__input"
         type="text"
         :disabled="disabled"
-        :placeholder="placeholder ? placeholder : 'Адрес'"
+        :placeholder="placeholder ? placeholder : ''"
         @input="handleInput"
         @focus="isFocused = true"
         @blur="handleBlur"
         @keydown="onMoveFocus"
       />
-      <label
+      <BaseErrorMessage
         v-if="hasError"
-        :class="['input-block__error', 'input-block__error_position_' + errorPosition]"
-        :for="id"
-        >{{ errorMessage }}</label
-      >
+        class="input-block__error"
+        :message="errorMessage"
+        :error-position="errorPosition"
+      />
     </div>
 
     <ClientOnly>

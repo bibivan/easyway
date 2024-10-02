@@ -1,21 +1,19 @@
 <script setup lang="ts" generic="T extends number | string">
 import { useVuelidate, type Validation } from '@vuelidate/core'
 import { email, helpers, required } from '@vuelidate/validators'
+import { EErrorPosition, type TNullable } from '~/types'
 import type { Ref } from 'vue'
-import type { IInputValidationState, TErrorPosition, TNullable } from '~/types'
 
-let v$: Ref<Validation>
-let inputValidation: IInputValidationState
 const props = defineProps<{
-  id: string
   disabled?: boolean
-  type: 'text' | 'number'
+  errorPosition?: EErrorPosition
+  id: string
+  isEmail?: boolean
+  noErrorMessage?: boolean
   placeholder?: string
   requiredVal?: boolean
-  errorInstance?: Validation
-  errorPosition?: TErrorPosition
   theme?: string
-  isEmail?: boolean
+  type: 'text' | 'number'
 }>()
 
 const emit = defineEmits<{
@@ -26,19 +24,14 @@ const emit = defineEmits<{
 
 const modelValue = defineModel<TNullable<T>>()
 
-if (props.errorInstance) {
-  inputValidation = useInputValidation(props.errorInstance, emit)
-} else {
-  const validationRules = computed(() => ({
-    modelValue: {
-      required: props.requiredVal ? helpers.withMessage('Обязательное поле', required) : () => true,
-      email: props.isEmail ? helpers.withMessage('Неправильный Email', email) : () => true
-    }
-  }))
-  v$ = useVuelidate(validationRules, { modelValue })
-  inputValidation = useInputValidation(v$.value, emit)
-}
-const { isValid, hasError, isFocused, errorMessage, handleBlur } = inputValidation
+const validationRules = computed(() => ({
+  modelValue: {
+    required: props.requiredVal ? helpers.withMessage('Обязательное поле', required) : () => true,
+    email: props.isEmail ? helpers.withMessage('Неправильный Email', email) : () => true
+  }
+}))
+const v$: Ref<Validation> = useVuelidate(validationRules, { modelValue })
+const { isValid, hasError, isFocused, errorMessage, handleBlur } = useInputValidation(v$, emit)
 </script>
 
 <template>
@@ -47,7 +40,7 @@ const { isValid, hasError, isFocused, errorMessage, handleBlur } = inputValidati
       'base-input input-block',
       {
         ['input-block_' + theme]: theme,
-        'input-block_valid': isValid,
+        'input-block_valid': isValid && !!modelValue,
         'input-block_invalid': hasError
       }
     ]"
@@ -65,15 +58,13 @@ const { isValid, hasError, isFocused, errorMessage, handleBlur } = inputValidati
       @blur="handleBlur"
       @focus="isFocused = true"
     />
-    <label
-      :for="id"
-      :class="[
-        'input-block__error',
-        'input-block__error_position_' + errorPosition ? errorPosition : 'absolute'
-      ]"
-    >
-      {{ errorMessage }}
-    </label>
+    <BaseErrorMessage
+      v-if="hasError && !noErrorMessage"
+      class="input-block__error"
+      :message="errorMessage"
+      :error-position="errorPosition"
+    />
+    <slot />
   </div>
 </template>
 

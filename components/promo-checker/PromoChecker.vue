@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { helpers } from '@vuelidate/validators'
+import { helpers, required } from '@vuelidate/validators'
 import { useVuelidate } from '@vuelidate/core'
 
 defineProps<{ totalSum: number }>()
@@ -10,7 +10,8 @@ const $externalResults = ref()
 const validationTriggered = ref(false)
 
 const validationRules = computed(() => ({
-  value: helpers.withMessage('Ошибка', () => !!promoState.error || validationTriggered.value)
+  value: helpers.withMessage('Ошибка', () => !!promoState.error || validationTriggered.value),
+  code: helpers.withMessage('Введите промокод', required)
 }))
 
 const v$ = useVuelidate(validationRules, promoState.data, { $externalResults })
@@ -21,8 +22,8 @@ const handleSubmit = async () => {
     validationTriggered.value = true
     await checkPromoCode(promoState.data.code)
     $externalResults.value = promoState.error ? promoState.error : ''
-    v$.value.$touch()
   }
+  v$.value.$touch()
 }
 
 const handleCancelPromo = () => {
@@ -52,10 +53,12 @@ onMounted(() => {
         class="promo-checker__input"
         placeholder="Промокод"
         type="text"
+        :no-error-message="true"
         :disabled="!!promoState.data.value"
-        :error-instance="v$"
         @blur="handleResetValidation"
-      />
+      >
+        <BaseErrorMessage :error-meassage="v$.$errors[0]?.$message" />
+      </BaseInput>
       <button
         v-if="(promoState.data.code || !isMobile) && !promoState.data.value"
         class="btn promo-checker__btn"

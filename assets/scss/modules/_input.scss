@@ -39,21 +39,6 @@
     }
   }
 
-  &__error {
-    color: $color-danger;
-    font-size: 12px;
-
-    &_position_absolute {
-      position: absolute;
-      top: calc(100% + 5px);
-      left: 0;
-    }
-
-    &_position_hide {
-      display: none;
-    }
-  }
-
   &_valid {
     #{$this}__input {
       border-color: $color-bg-input-filled;

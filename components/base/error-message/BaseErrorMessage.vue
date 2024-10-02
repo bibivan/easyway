@@ -1,35 +1,22 @@
 <script lang="ts" setup>
-import type { Validation } from '@vuelidate/core'
-import type { TErrorPosition } from '~/types'
+import { EErrorPosition } from '~/types'
+import type { Ref } from 'vue'
 
 withDefaults(
   defineProps<{
-    errorInstance: Validation
-    validatedProperty?: string
-    nestedValidatedProperty?: string
-    position?: TErrorPosition
-    className?: string
+    message?: string | Ref<string>
+    errorPosition?: EErrorPosition
   }>(),
   {
-    position: 'absolute',
-    className: '',
-    validatedProperty: undefined,
-    nestedValidatedProperty: undefined
+    errorPosition: EErrorPosition.ABSOLUTE
   }
 )
 </script>
 
 <template>
-  <template v-if="validatedProperty">
-    <div :class="`${className} error-message error-message_position_${position}`">
-      {{ errorInstance[validatedProperty]?.$errors[0]?.$message }}
-    </div>
-  </template>
-  <template v-else>
-    <div :class="`${className} error-message error-message_position_${position}`">
-      {{ errorInstance.$errors[0]?.$message }}
-    </div>
-  </template>
+  <span :class="['error-message', 'error-message_position_' + errorPosition]">
+    {{ message }}
+  </span>
 </template>
 
 <style scoped lang="scss">

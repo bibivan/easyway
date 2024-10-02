@@ -95,7 +95,7 @@ const v$ = useVuelidate(validationRules, orderState)
       </button>
       <BaseErrorMessage
         class="delivery-types__error"
-        :error-instance="v$"
+        :error-meassage="v$.$errors[0]?.$message"
       />
     </div>
 
