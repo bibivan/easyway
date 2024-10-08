@@ -1,8 +1,7 @@
 <script setup lang="ts" generic="T extends number | string">
-import { useVuelidate, type Validation } from '@vuelidate/core'
-import { email, helpers, required } from '@vuelidate/validators'
+import { useVuelidate } from '@vuelidate/core'
+import { email, helpers, requiredIf } from '@vuelidate/validators'
 import { EErrorPosition, type TNullable } from '~/types'
-import type { Ref } from 'vue'
 
 const props = defineProps<{
   disabled?: boolean
@@ -16,16 +15,24 @@ const props = defineProps<{
   type: 'text' | 'number'
 }>()
 
+const emit = defineEmits<{
+  input: [Event]
+  change: [Event]
+  blur: [Event]
+  focus: [Event]
+}>()
+
 const modelValue = defineModel<TNullable<T>>()
 
 const validationRules = computed(() => ({
   modelValue: {
-    required: props.requiredVal ? helpers.withMessage('Обязательное поле', required) : () => true,
+    required: helpers.withMessage('Обязательное поле', requiredIf(props.requiredVal)),
     email: props.isEmail ? helpers.withMessage('Неправильный Email', email) : () => true
   }
 }))
-const v$: Ref<Validation> = useVuelidate(validationRules, { modelValue })
-const { isValid, hasError, errorMessage } = useInputValidation(v$)
+
+const v$ = useVuelidate(validationRules, { modelValue })
+const { isValid, hasError, errorMessage, handleBlur, handleFocus } = useValidationInfo(v$, emit)
 </script>
 
 <template>
@@ -34,7 +41,7 @@ const { isValid, hasError, errorMessage } = useInputValidation(v$)
       'base-input input-block',
       {
         ['input-block_' + theme]: theme,
-        'input-block_valid': isValid && !!modelValue,
+        'input-block_valid': isValid && !!modelValue && !noErrorMessage,
         'input-block_invalid': hasError
       }
     ]"
@@ -47,8 +54,10 @@ const { isValid, hasError, errorMessage } = useInputValidation(v$)
       :type="type"
       :disabled="disabled"
       :placeholder="placeholder"
-      @blur="v$.$touch()"
-      @focus="v$.$reset()"
+      @input="emit('input', $event)"
+      @change="emit('change', $event)"
+      @blur="handleBlur"
+      @focus="handleFocus"
     />
     <BaseErrorMessage
       v-if="hasError && !noErrorMessage"

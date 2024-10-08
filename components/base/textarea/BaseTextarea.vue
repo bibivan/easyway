@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useVuelidate } from '@vuelidate/core'
-import { helpers, required } from '@vuelidate/validators'
+import { helpers, requiredIf } from '@vuelidate/validators'
 import { EErrorPosition, type TNullable } from '~/types'
 
 const props = withDefaults(
@@ -18,16 +18,21 @@ const props = withDefaults(
   }
 )
 
+const emit = defineEmits<{
+  input: [Event]
+  change: [Event]
+  blur: [Event]
+  focus: [Event]
+}>()
+
 const modelValue = defineModel<TNullable<string | number>>()
 
 const validationRules = computed(() => ({
-  modelValue: {
-    required: props.requiredVal ? helpers.withMessage('Обязательное поле', required) : () => true
-  }
+  modelValue: helpers.withMessage('Обязательное поле', requiredIf(props.requiredVal))
 }))
-const v$ = useVuelidate(validationRules, { modelValue })
 
-const { isValid, hasError, errorMessage } = useInputValidation(v$)
+const v$ = useVuelidate(validationRules, { modelValue })
+const { isValid, hasError, errorMessage, handleBlur, handleFocus } = useValidationInfo(v$, emit)
 </script>
 
 <template>
@@ -48,8 +53,10 @@ const { isValid, hasError, errorMessage } = useInputValidation(v$)
       class="input-block__input base-textarea__input"
       :disabled="disabled"
       :placeholder="placeholder"
-      @blur="v$.$touch()"
-      @focus="v$.$reset()"
+      @input="emit('input', $event)"
+      @change="emit('change', $event)"
+      @blur="handleBlur"
+      @focus="handleFocus"
     />
     <BaseErrorMessage
       v-if="hasError && !noErrorMessage"

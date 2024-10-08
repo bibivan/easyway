@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Inputmask from 'inputmask'
 import { useVuelidate, type Validation } from '@vuelidate/core'
-import { minLength, helpers, required } from '@vuelidate/validators'
+import { minLength, helpers, required, requiredIf } from '@vuelidate/validators'
 import { EErrorPosition, type TNullable } from '~/types'
 
 const props = withDefaults(
@@ -27,12 +27,12 @@ const modelValue = defineModel<TNullable<string>>({
 
 const validationRules = computed(() => ({
   modelValue: {
-    required: props.requiredVal ? helpers.withMessage('Обязательное поле', required) : () => true,
+    required: helpers.withMessage('Обязательное поле', requiredIf(props.requiredVal)),
     minLength: helpers.withMessage('Номер слишком короткий', minLength(phoneLength))
   }
 }))
 const v$ = useVuelidate(validationRules, { modelValue })
-const { isValid, hasError, errorMessage } = useInputValidation(v$)
+const { isValid, hasError, errorMessage } = useValidationInfo(v$)
 
 onMounted(() => {
   Inputmask({

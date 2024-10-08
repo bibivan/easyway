@@ -35,7 +35,5 @@ export enum EErrorPosition {
 }
 
 export interface IInputEmitEvents {
-  input: [Event]
-  change: [Event]
-  blur: [Event]
+  [key: string]: any[]
 }

@@ -1,0 +1,7 @@
+.checkout-payment {
+  @include base-gap;
+
+  &__types {
+    position: relative;
+  }
+}

@@ -82,20 +82,12 @@ const validationRules = computed(() => ({
   }
 }))
 const v$ = useVuelidate(validationRules, orderState)
+const { hasError, errorMessage } = useValidationInfo(v$)
 </script>
 
 <template>
   <div class="delivery-types">
     <div class="delivery-types__tabs">
-      <button
-        class="delivery-types__tab"
-        :class="{
-          'delivery-types__tab_active': orderState.courierDelivery === EDeliveryType.PICKUP
-        }"
-        @click.prevent="handleSetDeliveryType(EDeliveryType.PICKUP)"
-      >
-        Пункт выдачи
-      </button>
       <button
         class="delivery-types__tab"
         :class="{
@@ -105,9 +97,19 @@ const v$ = useVuelidate(validationRules, orderState)
       >
         Курьер
       </button>
+      <button
+        class="delivery-types__tab"
+        :class="{
+          'delivery-types__tab_active': orderState.courierDelivery === EDeliveryType.PICKUP
+        }"
+        @click.prevent="handleSetDeliveryType(EDeliveryType.PICKUP)"
+      >
+        Пункт выдачи
+      </button>
       <BaseErrorMessage
+        v-if="hasError"
         class="delivery-types__error"
-        :message="v$.$errors[0]?.$message"
+        :message="errorMessage"
       />
     </div>
 

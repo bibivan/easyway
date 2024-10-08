@@ -3,9 +3,8 @@ import { getRandomNumber } from '~/utils/common'
 
 export const usePromoStore = defineStore('promo_store', () => {
   //data
-  const promoClearData = { value: null, code: null }
   const promoState = reactive<IPromoStoreState>({
-    data: promoClearData,
+    data: { value: null, code: null },
     loading: false,
     error: null
   })
@@ -25,7 +24,8 @@ export const usePromoStore = defineStore('promo_store', () => {
   const calculateDiscountedSum = (sum: number) => sum - calculateDiscount(sum)
 
   const cancelPromo = () => {
-    promoState.data = promoClearData
+    promoState.data.value = null
+    promoState.data.code = null
     promoState.error = null
     sessionStorage.removeItem('easyway-promo')
   }
@@ -37,19 +37,18 @@ export const usePromoStore = defineStore('promo_store', () => {
     try {
       promoState.error = null
 
-      // const data = await $fetch<IPromoResponseData>('https://promo.aimagic.today/check-promo', {
-      //   method: 'POST',
-      //   headers: {
-      //     Authorization: `Bearer someToken`
-      //   },
-      //   body: { promo: code }
-      // })
-      const getData = (): IPromoResponseData => {
-        // if (getRandomNumber(1, 100) > 50) throw new Error('серверная ошибка')
-        return code === 'e' ? { result: 10 } : false
-      }
-
-      const data: IPromoResponseData = getData()
+      const data = await $fetch<IPromoResponseData>('https://promo.aimagic.today/check-promo/', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer someToken`
+        },
+        body: { promo: code }
+      })
+      // const getData = (): IPromoResponseData => {
+      //   if (getRandomNumber(1, 100) > 50) throw new Error('серверная ошибка')
+      //   return code === 'e' ? { result: 10 } : false
+      // }
+      // const data: IPromoResponseData = getData()
 
       if (data) {
         promoState.data.value = data.result

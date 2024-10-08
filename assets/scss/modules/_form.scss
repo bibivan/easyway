@@ -22,9 +22,23 @@
   }
 
   &__subtitle {
+    @include text-body;
+
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+
+    @include tablet {
+      font-size: 18px;
+    }
   }
 
-  &__radios,
+  &__radios {
+    @include flex-column;
+
+    gap: 15px;
+  }
+
   &__inputs {
     @include flex-column;
 

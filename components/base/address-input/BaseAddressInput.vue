@@ -54,7 +54,7 @@ const validationRules = computed(() => ({
 }))
 
 const v$ = useVuelidate(validationRules, state)
-const { isValid, hasError, errorMessage } = useInputValidation(v$)
+const { isValid, hasError, errorMessage } = useValidationInfo(v$)
 
 const handleSetCurrentAddress = (addressItem: IAddressSuggestion) => {
   state.highlightItemIndex = indexOfHiddenAddressInList

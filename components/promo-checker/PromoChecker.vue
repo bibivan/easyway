@@ -6,38 +6,32 @@ defineProps<{ totalSum: number }>()
 
 const { isMobile } = storeToRefs(useDeviceTypeStore())
 const { promoState, initPromoData, checkPromoCode, cancelPromo } = usePromoStore()
-const $externalResults = ref()
-const validationTriggered = ref(false)
+const $externalResults = ref({ code: '' })
 
 const validationRules = computed(() => ({
-  value: helpers.withMessage('Ошибка', () => !!promoState.error || validationTriggered.value),
-  code: helpers.withMessage('Введите промокод', required)
+  code: {
+    required: helpers.withMessage('Введите промокод', required)
+  }
 }))
 
 const v$ = useVuelidate(validationRules, promoState.data, { $externalResults })
+const { isValid, hasError, errorMessage } = useValidationInfo(v$)
 
 const handleSubmit = async () => {
   if (promoState.data.code) {
-    v$.value.$reset()
-    validationTriggered.value = true
     await checkPromoCode(promoState.data.code)
-    $externalResults.value = promoState.error ? promoState.error : ''
+    if (promoState.error) $externalResults.value.code = promoState.error
+    else $externalResults.value.code = ''
   }
   v$.value.$touch()
 }
 
 const handleCancelPromo = () => {
-  validationTriggered.value = false
   cancelPromo()
   v$.value.$reset()
 }
 
-const handleResetValidation = () => v$.value.$reset()
-
-onMounted(() => {
-  initPromoData()
-  if (promoState.data.value) validationTriggered.value = true
-})
+onMounted(() => initPromoData())
 </script>
 
 <template>
@@ -51,16 +45,20 @@ onMounted(() => {
         id="promo_checker_input"
         v-model="promoState.data.code"
         class="promo-checker__input"
+        :class="{
+          'input-block_valid': isValid && !!promoState.data.value,
+          'input-block_invalid': hasError
+        }"
         placeholder="Промокод"
         type="text"
         :no-error-message="true"
         :disabled="!!promoState.data.value"
-        @blur="handleResetValidation"
+        @focus="v$.$reset()"
       >
-        <BaseErrorMessage :error-meassage="v$.$errors[0]?.$message" />
+        <BaseErrorMessage :message="errorMessage" />
       </BaseInput>
       <button
-        v-if="(promoState.data.code || !isMobile) && !promoState.data.value"
+        v-if="!promoState.data.value"
         class="btn promo-checker__btn"
         @click="handleSubmit"
       >

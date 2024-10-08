@@ -72,10 +72,12 @@
 
   /* стили для радиокнопки, находящейся в ховере и не находящейся в состоянии checked */
   &__input:hover:not(:checked) + &__label {
-    color: $color-primary-light;
+    @include hover {
+      color: $color-primary-light;
 
-    &::before {
-      border-color: $color-primary-light;
+      &::before {
+        border-color: $color-primary-light;
+      }
     }
   }
 

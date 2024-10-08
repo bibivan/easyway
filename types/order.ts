@@ -11,6 +11,11 @@ export enum EPaymentType {
   CARD = 2
 }
 
+export interface IPaymentType {
+  name: string
+  id: number
+}
+
 export interface IOrderState {
   addressData: TNullable<IAddressSuggestion>
   addressString: TNullable<string>
