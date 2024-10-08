@@ -1,5 +1,4 @@
 import type { NitroFetchOptions, NitroFetchRequest } from 'nitropack'
-import { isObject } from '~/utils/typeguards/common'
 
 export const useClientFetch = <T>(
   path: string,

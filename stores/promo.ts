@@ -1,5 +1,4 @@
 import type { IPromoResponseData, IPromoStoreState } from '~/types'
-import { getRandomNumber } from '~/utils/common'
 
 export const usePromoStore = defineStore('promo_store', () => {
   //data

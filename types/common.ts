@@ -1,5 +1,3 @@
-import type { ComputedRef, Ref } from 'vue'
-
 export type TNullable<T> = T | null
 
 export enum ERequestStatus {
