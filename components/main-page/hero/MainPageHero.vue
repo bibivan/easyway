@@ -1,9 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { isMobile } = storeToRefs(useDeviceTypeStore())
+</script>
 
 <template>
   <section class="hero section">
     <Swiper
-      class="hero__swiper"
+      class="base-swiper hero__swiper"
       :draggable="true"
       :grab-cursor="true"
       :loop="true"
@@ -49,14 +51,14 @@
           ]"
       /></SwiperSlide>
 
-      <div class="hero__swiper-pagination swiper-pagination"></div>
+      <div class="hero__swiper-pagination swiper-pagination base-swiper__pagination" />
     </Swiper>
 
     <div class="container">
       <div class="hero__content">
         <div class="hero__text">
           <p class="hero__note">feel the energy of summer with new sportswear<br />collection</p>
-          <p class="hero__heading">New&nbsp;in sport</p>
+          <p class="hero__heading">New&nbsp;in <br v-if="isMobile" />sport</p>
         </div>
         <button class="btn hero__btn">Купить</button>
       </div>

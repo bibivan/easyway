@@ -100,8 +100,8 @@ body {
   width: 100%;
   padding: $section-indent;
 
-  @include portable {
-    padding: $section-indent-portable;
+  @include desktop {
+    padding: $section-indent-desktop;
   }
 }
 

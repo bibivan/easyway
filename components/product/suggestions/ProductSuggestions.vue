@@ -51,9 +51,13 @@ const { data, error } = await useAsyncData<IProductGroup[]>(props.suggestionsNam
               class="product-suggestions__swiper"
               :draggable="true"
               :grab-cursor="true"
-              :slides-per-view="4"
+              :slides-per-view="2"
               :space-between="10"
               :initial-slide="0"
+              :breakpoints="{
+                768: { slidesPerView: 3 },
+                800: { slidesPerView: 4 }
+              }"
             >
               <SwiperSlide
                 v-for="item in data"

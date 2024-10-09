@@ -1,0 +1,16 @@
+.base-swiper {
+  &__pagination {
+    font-size: 6px;
+    line-height: 1;
+
+    .swiper-pagination-bullet {
+      margin: 0 3px;
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .swiper-pagination-bullet-active {
+      border-radius: $border-radius-l;
+    }
+  }
+}

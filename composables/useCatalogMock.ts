@@ -27,7 +27,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XS, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Футболка Апполон, XS, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Футболка Апполон, XS, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, XS, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, XS, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, XS, black, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -43,7 +43,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, S, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Футболка Апполон, S, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Футболка Апполон, S, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, S, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, S, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, S, black, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -59,7 +59,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, M, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Футболка Апполон, M, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Футболка Апполон, M, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, M, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, M, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, M, black, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -75,7 +75,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, L, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Футболка Апполон, L, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Футболка Апполон, L, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, L, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, L, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, L, black, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -91,7 +91,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XL, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Футболка Апполон, XL, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Футболка Апполон, XL, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, XL, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, XL, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Апполон, XL, black, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -107,7 +107,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XS, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Футболка Апполон, XS, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Футболка Апполон, XS, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, XS, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, XS, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, XS, white, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -123,7 +123,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, S, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Футболка Апполон, S, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Футболка Апполон, S, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, S, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, S, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, S, white, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -139,7 +139,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, M, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Футболка Апполон, M, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Футболка Апполон, M, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, M, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, M, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, M, white, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -155,7 +155,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, L, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Футболка Апполон, L, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Футболка Апполон, L, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, L, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, L, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, L, white, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -171,7 +171,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XL, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Футболка Апполон, XL, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Футболка Апполон, XL, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, XL, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, XL, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Апполон, XL, white, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -186,7 +186,8 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             ID: '020',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XS, red',
-            PICTURES: '["["]',
+            PICTURES:
+              '["https://placehold.co/400x440/red/fff?text=Футболка Апполон, XS, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, XS, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, XS, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, XS, red, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -201,7 +202,8 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             ID: '021',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, S, red',
-            PICTURES: '["["]',
+            PICTURES:
+              '["https://placehold.co/400x440/red/fff?text=Футболка Апполон, S, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, S, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, S, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, S, red, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -216,7 +218,8 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             ID: '022',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, M, red',
-            PICTURES: '["["]',
+            PICTURES:
+              '["https://placehold.co/400x440/red/fff?text=Футболка Апполон, M, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, M, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, M, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, M, red, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -231,7 +234,8 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             ID: '023',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, L, red',
-            PICTURES: '["["]',
+            PICTURES:
+              '["https://placehold.co/400x440/red/fff?text=Футболка Апполон, L, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, L, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, L, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, L, red, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -246,7 +250,8 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             ID: '024',
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XL, red',
-            PICTURES: '["["]',
+            PICTURES:
+              '["https://placehold.co/400x440/red/fff?text=Футболка Апполон, XL, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, XL, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, XL, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Футболка Апполон, XL, red, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -262,7 +267,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XS, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Футболка Апполон, XS, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Футболка Апполон, XS, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, XS, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, XS, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, XS, green, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -278,7 +283,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, S, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Футболка Апполон, S, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Футболка Апполон, S, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, S, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, S, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, S, green, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -294,7 +299,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, M, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Футболка Апполон, M, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Футболка Апполон, M, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, M, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, M, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, M, green, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -310,7 +315,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, L, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Футболка Апполон, L, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Футболка Апполон, L, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, L, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, L, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, L, green, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -326,7 +331,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '0',
             NAME: 'Футболка Апполон, XL, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Футболка Апполон, XL, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Футболка Апполон, XL, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, XL, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, XL, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Апполон, XL, green, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           }
@@ -350,7 +355,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, S, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Шорты спринтер, S, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Шорты спринтер, S, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Шорты спринтер, S, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Шорты спринтер, S, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Шорты спринтер, S, black, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -366,7 +371,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, M, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Шорты спринтер, M, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Шорты спринтер, M, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Шорты спринтер, M, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Шорты спринтер, M, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Шорты спринтер, M, black, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -382,7 +387,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, L, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Шорты спринтер, L, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Шорты спринтер, L, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Шорты спринтер, L, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Шорты спринтер, L, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Шорты спринтер, L, black, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -398,7 +403,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, S, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Шорты спринтер, S, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Шорты спринтер, S, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты спринтер, S, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты спринтер, S, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты спринтер, S, white, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -414,7 +419,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, M, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Шорты спринтер, M, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Шорты спринтер, M, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты спринтер, M, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты спринтер, M, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты спринтер, M, white, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -430,7 +435,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, L, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Шорты спринтер, L, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Шорты спринтер, L, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты спринтер, L, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты спринтер, L, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты спринтер, L, white, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -446,7 +451,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, S, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Шорты спринтер, S, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Шорты спринтер, S, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты спринтер, S, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты спринтер, S, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты спринтер, S, green, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -462,7 +467,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, M, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Шорты спринтер, M, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Шорты спринтер, M, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты спринтер, M, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты спринтер, M, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты спринтер, M, green, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -478,7 +483,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '1',
             NAME: 'Шорты спринтер, L, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Шорты спринтер, L, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Шорты спринтер, L, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты спринтер, L, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты спринтер, L, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты спринтер, L, green, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           }
@@ -502,7 +507,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, XS, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Легинсы крутышка, XS, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Легинсы крутышка, XS, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Легинсы крутышка, XS, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Легинсы крутышка, XS, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Легинсы крутышка, XS, black, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -518,7 +523,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, S, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Легинсы крутышка, S, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Легинсы крутышка, S, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Легинсы крутышка, S, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Легинсы крутышка, S, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Легинсы крутышка, S, black, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -534,7 +539,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, M, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Легинсы крутышка, M, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Легинсы крутышка, M, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Легинсы крутышка, M, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Легинсы крутышка, M, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Легинсы крутышка, M, black, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -550,7 +555,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, XS, red',
             PICTURES:
-              '["https://placehold.co/400x440/red/fff?text=Легинсы крутышка, XS, red&font=Arial"]',
+              '["https://placehold.co/400x440/red/fff?text=Легинсы крутышка, XS, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Легинсы крутышка, XS, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Легинсы крутышка, XS, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Легинсы крутышка, XS, red, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -566,7 +571,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, S, red',
             PICTURES:
-              '["https://placehold.co/400x440/red/fff?text=Легинсы крутышка, S, red&font=Arial"]',
+              '["https://placehold.co/400x440/red/fff?text=Легинсы крутышка, S, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Легинсы крутышка, S, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Легинсы крутышка, S, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Легинсы крутышка, S, red, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -582,7 +587,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, M, red',
             PICTURES:
-              '["https://placehold.co/400x440/red/fff?text=Легинсы крутышка, M, red&font=Arial"]',
+              '["https://placehold.co/400x440/red/fff?text=Легинсы крутышка, M, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Легинсы крутышка, M, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Легинсы крутышка, M, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Легинсы крутышка, M, red, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -598,7 +603,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, XS, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Легинсы крутышка, XS, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Легинсы крутышка, XS, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Легинсы крутышка, XS, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Легинсы крутышка, XS, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Легинсы крутышка, XS, green, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -614,7 +619,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, S, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Легинсы крутышка, S, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Легинсы крутышка, S, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Легинсы крутышка, S, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Легинсы крутышка, S, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Легинсы крутышка, S, green, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -630,7 +635,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '2',
             NAME: 'Легинсы крутышка, M, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Легинсы крутышка, M, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Легинсы крутышка, M, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Легинсы крутышка, M, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Легинсы крутышка, M, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Легинсы крутышка, M, green, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           }
@@ -654,7 +659,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '3',
             NAME: 'Брюки гигант, S, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Брюки гигант, S, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Брюки гигант, S, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Брюки гигант, S, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Брюки гигант, S, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Брюки гигант, S, white, 4&font=Arial"]',
             PRICE: '2500',
             PRICE_INT: '2500'
           },
@@ -670,7 +675,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '3',
             NAME: 'Брюки гигант, M, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Брюки гигант, M, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Брюки гигант, M, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Брюки гигант, M, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Брюки гигант, M, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Брюки гигант, M, white, 4&font=Arial"]',
             PRICE: '2500',
             PRICE_INT: '2500'
           },
@@ -686,7 +691,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '3',
             NAME: 'Брюки гигант, L, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Брюки гигант, L, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Брюки гигант, L, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Брюки гигант, L, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Брюки гигант, L, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Брюки гигант, L, white, 4&font=Arial"]',
             PRICE: '2500',
             PRICE_INT: '2500'
           },
@@ -702,7 +707,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '3',
             NAME: 'Брюки гигант, S, red',
             PICTURES:
-              '["https://placehold.co/400x440/red/fff?text=Брюки гигант, S, red&font=Arial"]',
+              '["https://placehold.co/400x440/red/fff?text=Брюки гигант, S, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Брюки гигант, S, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Брюки гигант, S, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Брюки гигант, S, red, 4&font=Arial"]',
             PRICE: '2500',
             PRICE_INT: '2500'
           },
@@ -718,7 +723,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '3',
             NAME: 'Брюки гигант, M, red',
             PICTURES:
-              '["https://placehold.co/400x440/red/fff?text=Брюки гигант, M, red&font=Arial"]',
+              '["https://placehold.co/400x440/red/fff?text=Брюки гигант, M, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Брюки гигант, M, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Брюки гигант, M, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Брюки гигант, M, red, 4&font=Arial"]',
             PRICE: '2500',
             PRICE_INT: '2500'
           },
@@ -734,7 +739,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '3',
             NAME: 'Брюки гигант, L, red',
             PICTURES:
-              '["https://placehold.co/400x440/red/fff?text=Брюки гигант, L, red&font=Arial"]',
+              '["https://placehold.co/400x440/red/fff?text=Брюки гигант, L, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Брюки гигант, L, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Брюки гигант, L, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Брюки гигант, L, red, 4&font=Arial"]',
             PRICE: '2500',
             PRICE_INT: '2500'
           },
@@ -750,7 +755,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '3',
             NAME: 'Брюки гигант, S, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Брюки гигант, S, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Брюки гигант, S, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Брюки гигант, S, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Брюки гигант, S, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Брюки гигант, S, green, 4&font=Arial"]',
             PRICE: '2500',
             PRICE_INT: '2500'
           },
@@ -766,7 +771,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '3',
             NAME: 'Брюки гигант, M, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Брюки гигант, M, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Брюки гигант, M, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Брюки гигант, M, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Брюки гигант, M, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Брюки гигант, M, green, 4&font=Arial"]',
             PRICE: '2500',
             PRICE_INT: '2500'
           },
@@ -782,7 +787,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '3',
             NAME: 'Брюки гигант, L, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Брюки гигант, L, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Брюки гигант, L, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Брюки гигант, L, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Брюки гигант, L, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Брюки гигант, L, green, 4&font=Arial"]',
             PRICE: '2500',
             PRICE_INT: '2500'
           }
@@ -806,7 +811,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, M, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Пояс атлетический, M, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Пояс атлетический, M, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Пояс атлетический, M, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Пояс атлетический, M, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Пояс атлетический, M, black, 4&font=Arial"]',
             PRICE: '500',
             PRICE_INT: '500'
           },
@@ -822,7 +827,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, L, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Пояс атлетический, L, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Пояс атлетический, L, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Пояс атлетический, L, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Пояс атлетический, L, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Пояс атлетический, L, black, 4&font=Arial"]',
             PRICE: '500',
             PRICE_INT: '500'
           },
@@ -838,7 +843,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, XL, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Пояс атлетический, XL, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Пояс атлетический, XL, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Пояс атлетический, XL, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Пояс атлетический, XL, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Пояс атлетический, XL, black, 4&font=Arial"]',
             PRICE: '500',
             PRICE_INT: '500'
           },
@@ -854,7 +859,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, M, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Пояс атлетический, M, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Пояс атлетический, M, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Пояс атлетический, M, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Пояс атлетический, M, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Пояс атлетический, M, white, 4&font=Arial"]',
             PRICE: '500',
             PRICE_INT: '500'
           },
@@ -870,7 +875,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, L, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Пояс атлетический, L, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Пояс атлетический, L, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Пояс атлетический, L, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Пояс атлетический, L, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Пояс атлетический, L, white, 4&font=Arial"]',
             PRICE: '500',
             PRICE_INT: '500'
           },
@@ -886,7 +891,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, XL, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Пояс атлетический, XL, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Пояс атлетический, XL, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Пояс атлетический, XL, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Пояс атлетический, XL, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Пояс атлетический, XL, white, 4&font=Arial"]',
             PRICE: '500',
             PRICE_INT: '500'
           },
@@ -902,7 +907,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, M, red',
             PICTURES:
-              '["https://placehold.co/400x440/red/fff?text=Пояс атлетический, M, red&font=Arial"]',
+              '["https://placehold.co/400x440/red/fff?text=Пояс атлетический, M, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Пояс атлетический, M, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Пояс атлетический, M, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Пояс атлетический, M, red, 4&font=Arial"]',
             PRICE: '500',
             PRICE_INT: '500'
           },
@@ -918,7 +923,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, L, red',
             PICTURES:
-              '["https://placehold.co/400x440/red/fff?text=Пояс атлетический, L, red&font=Arial"]',
+              '["https://placehold.co/400x440/red/fff?text=Пояс атлетический, L, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Пояс атлетический, L, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Пояс атлетический, L, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Пояс атлетический, L, red, 4&font=Arial"]',
             PRICE: '500',
             PRICE_INT: '500'
           },
@@ -934,7 +939,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '4',
             NAME: 'Пояс атлетический, XL, red',
             PICTURES:
-              '["https://placehold.co/400x440/red/fff?text=Пояс атлетический, XL, red&font=Arial"]',
+              '["https://placehold.co/400x440/red/fff?text=Пояс атлетический, XL, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Пояс атлетический, XL, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Пояс атлетический, XL, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Пояс атлетический, XL, red, 4&font=Arial"]',
             PRICE: '500',
             PRICE_INT: '500'
           }
@@ -958,7 +963,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, XS, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Лонгслив победитель, XS, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Лонгслив победитель, XS, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Лонгслив победитель, XS, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Лонгслив победитель, XS, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Лонгслив победитель, XS, black, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -974,7 +979,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, M, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Лонгслив победитель, M, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Лонгслив победитель, M, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Лонгслив победитель, M, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Лонгслив победитель, M, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Лонгслив победитель, M, black, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -990,7 +995,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, L, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Лонгслив победитель, L, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Лонгслив победитель, L, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Лонгслив победитель, L, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Лонгслив победитель, L, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Лонгслив победитель, L, black, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -1006,7 +1011,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, XS, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Лонгслив победитель, XS, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Лонгслив победитель, XS, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Лонгслив победитель, XS, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Лонгслив победитель, XS, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Лонгслив победитель, XS, white, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -1022,7 +1027,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, M, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Лонгслив победитель, M, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Лонгслив победитель, M, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Лонгслив победитель, M, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Лонгслив победитель, M, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Лонгслив победитель, M, white, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -1038,7 +1043,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, L, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Лонгслив победитель, L, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Лонгслив победитель, L, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Лонгслив победитель, L, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Лонгслив победитель, L, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Лонгслив победитель, L, white, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -1054,7 +1059,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, XS, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Лонгслив победитель, XS, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Лонгслив победитель, XS, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Лонгслив победитель, XS, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Лонгслив победитель, XS, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Лонгслив победитель, XS, green, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -1070,7 +1075,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, M, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Лонгслив победитель, M, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Лонгслив победитель, M, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Лонгслив победитель, M, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Лонгслив победитель, M, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Лонгслив победитель, M, green, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           },
@@ -1086,7 +1091,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '5',
             NAME: 'Лонгслив победитель, L, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Лонгслив победитель, L, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Лонгслив победитель, L, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Лонгслив победитель, L, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Лонгслив победитель, L, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Лонгслив победитель, L, green, 4&font=Arial"]',
             PRICE: '2000',
             PRICE_INT: '2000'
           }
@@ -1110,7 +1115,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, S, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Футболка Крепыш, S, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Футболка Крепыш, S, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Крепыш, S, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Крепыш, S, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Крепыш, S, black, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -1126,7 +1131,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, M, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Футболка Крепыш, M, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Футболка Крепыш, M, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Крепыш, M, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Крепыш, M, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Крепыш, M, black, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -1142,7 +1147,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, L, black',
             PICTURES:
-              '["https://placehold.co/400x440/black/fff?text=Футболка Крепыш, L, black&font=Arial"]',
+              '["https://placehold.co/400x440/black/fff?text=Футболка Крепыш, L, black, 1&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Крепыш, L, black, 2&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Крепыш, L, black, 3&font=Arial","https://placehold.co/400x440/black/fff?text=Футболка Крепыш, L, black, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -1158,7 +1163,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, S, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Футболка Крепыш, S, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Футболка Крепыш, S, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Крепыш, S, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Крепыш, S, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Крепыш, S, white, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -1174,7 +1179,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, M, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Футболка Крепыш, M, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Футболка Крепыш, M, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Крепыш, M, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Крепыш, M, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Крепыш, M, white, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -1190,7 +1195,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, L, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Футболка Крепыш, L, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Футболка Крепыш, L, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Крепыш, L, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Крепыш, L, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Футболка Крепыш, L, white, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -1206,7 +1211,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, S, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Футболка Крепыш, S, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Футболка Крепыш, S, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Крепыш, S, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Крепыш, S, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Крепыш, S, green, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -1222,7 +1227,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, M, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Футболка Крепыш, M, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Футболка Крепыш, M, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Крепыш, M, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Крепыш, M, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Крепыш, M, green, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           },
@@ -1238,7 +1243,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '6',
             NAME: 'Футболка Крепыш, L, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Футболка Крепыш, L, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Футболка Крепыш, L, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Крепыш, L, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Крепыш, L, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Футболка Крепыш, L, green, 4&font=Arial"]',
             PRICE: '1500',
             PRICE_INT: '1500'
           }
@@ -1262,7 +1267,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, M, blue',
             PICTURES:
-              '["https://placehold.co/400x440/blue/000?text=Шорты чемпион, M, blue&font=Arial"]',
+              '["https://placehold.co/400x440/blue/000?text=Шорты чемпион, M, blue, 1&font=Arial","https://placehold.co/400x440/blue/000?text=Шорты чемпион, M, blue, 2&font=Arial","https://placehold.co/400x440/blue/000?text=Шорты чемпион, M, blue, 3&font=Arial","https://placehold.co/400x440/blue/000?text=Шорты чемпион, M, blue, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -1278,7 +1283,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, S, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Шорты чемпион, S, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Шорты чемпион, S, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты чемпион, S, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты чемпион, S, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты чемпион, S, white, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -1294,7 +1299,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, M, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Шорты чемпион, M, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Шорты чемпион, M, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты чемпион, M, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты чемпион, M, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты чемпион, M, white, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -1310,7 +1315,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, L, white',
             PICTURES:
-              '["https://placehold.co/400x440/gray/000?text=Шорты чемпион, L, white&font=Arial"]',
+              '["https://placehold.co/400x440/azure/000?text=Шорты чемпион, L, white, 1&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты чемпион, L, white, 2&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты чемпион, L, white, 3&font=Arial","https://placehold.co/400x440/azure/000?text=Шорты чемпион, L, white, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -1326,7 +1331,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, S, red',
             PICTURES:
-              '["https://placehold.co/400x440/red/fff?text=Шорты чемпион, S, red&font=Arial"]',
+              '["https://placehold.co/400x440/red/fff?text=Шорты чемпион, S, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Шорты чемпион, S, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Шорты чемпион, S, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Шорты чемпион, S, red, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -1342,7 +1347,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, M, red',
             PICTURES:
-              '["https://placehold.co/400x440/red/fff?text=Шорты чемпион, M, red&font=Arial"]',
+              '["https://placehold.co/400x440/red/fff?text=Шорты чемпион, M, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Шорты чемпион, M, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Шорты чемпион, M, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Шорты чемпион, M, red, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -1358,7 +1363,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, L, red',
             PICTURES:
-              '["https://placehold.co/400x440/red/fff?text=Шорты чемпион, L, red&font=Arial"]',
+              '["https://placehold.co/400x440/red/fff?text=Шорты чемпион, L, red, 1&font=Arial","https://placehold.co/400x440/red/fff?text=Шорты чемпион, L, red, 2&font=Arial","https://placehold.co/400x440/red/fff?text=Шорты чемпион, L, red, 3&font=Arial","https://placehold.co/400x440/red/fff?text=Шорты чемпион, L, red, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -1374,7 +1379,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, S, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Шорты чемпион, S, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Шорты чемпион, S, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты чемпион, S, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты чемпион, S, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты чемпион, S, green, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -1390,7 +1395,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, M, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Шорты чемпион, M, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Шорты чемпион, M, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты чемпион, M, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты чемпион, M, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты чемпион, M, green, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -1406,7 +1411,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, L, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Шорты чемпион, L, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Шорты чемпион, L, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты чемпион, L, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты чемпион, L, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты чемпион, L, green, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           },
@@ -1422,7 +1427,7 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
             GROUP_ID: '7',
             NAME: 'Шорты чемпион, XL, green',
             PICTURES:
-              '["https://placehold.co/400x440/green/fff?text=Шорты чемпион, XL, green&font=Arial"]',
+              '["https://placehold.co/400x440/green/fff?text=Шорты чемпион, XL, green, 1&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты чемпион, XL, green, 2&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты чемпион, XL, green, 3&font=Arial","https://placehold.co/400x440/green/fff?text=Шорты чемпион, XL, green, 4&font=Arial"]',
             PRICE: '1000',
             PRICE_INT: '1000'
           }
@@ -1431,21 +1436,29 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
     ]
   }
 
-  // const transformedItems = mockData.items.map((group) => {
-  //   group.ITEMS = group.ITEMS.map((product) => {
-  //     const pictures = parseJSON(product.PICTURES)
-  //     product.PICTURES = JSON.stringify([pictures[0].replace('someLink', product.NAME)])
-  //     return product
-  //   })
-  //
-  //   return group
-  // })
-  //
-  // const updatedData: IPaginatedDataRaw<IProductGroupRaw[]> = {
-  //   pagination: mockData.pagination,
-  //   items: transformedItems
-  // }
-  //
+  const transformedItems = mockData.items.map((group) => {
+    group.ITEMS = group.ITEMS.map((product) => {
+      const pictures = parseJSON(product.PICTURES)
+      const updatePictures: string[] = [] as string[]
+      console.log(typeof pictures[0])
+
+      for (let index = 0; index < 4; index++) {
+        updatePictures[index] = pictures[0].replace('&font', `, ${index + 1}&font`)
+      }
+
+      product.PICTURES = JSON.stringify(updatePictures)
+      return product
+    })
+
+    return group
+  })
+
+  const updatedData: IPaginatedDataRaw<IProductGroupRaw[]> = {
+    pagination: mockData.pagination,
+    items: transformedItems
+  }
+
+  console.log(updatedData)
 
   return new Promise((resolve) => setTimeout(() => resolve(mockData), 100))
 }

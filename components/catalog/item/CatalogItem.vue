@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EProductSizeAttr, type IProductGroup } from '~/types'
+import type { IProductGroup } from '~/types'
 
 const props = defineProps<{ data: IProductGroup }>()
 const {
@@ -8,46 +8,11 @@ const {
   deleteCartItem: handleDeleteCartItem
 } = useCartStore()
 const { isMobile } = storeToRefs(useDeviceTypeStore())
-
-const state = reactive<{
-  color: string
-  size: EProductSizeAttr
-  foo: string[]
-}>({
-  color: props.data.items[0].sfAttrs?.color || props.data.colors[0],
-  size: props.data.items[0].sfAttrs?.size || props.data.sizes[0],
-  foo: [props.data.colors[0]]
-})
-
-const activeProduct = computed(() => {
-  return props.data.items.find((item) => {
-    return item.sfAttrs?.color === state.color && item.sfAttrs?.size === state.size
-  })
-})
+const { state, activeProduct } = useActiveProduct(toRef(props, 'data'))
 
 const isInCart = computed(() => {
-  return cartState.data ? arrayHasElem(cartState.data, 'id', activeProduct.value?.id) : false
+  return cartState.data ? arrayHasElem(cartState.data, 'id', activeProduct?.value?.id) : false
 })
-
-watch(
-  () => state.color,
-  () => {
-    if (!activeProduct.value) {
-      const itemByColor = props.data.items.find((item) => item.sfAttrs?.color === state.color)
-      if (itemByColor?.sfAttrs) state.size = itemByColor.sfAttrs.size
-    }
-  }
-)
-
-watch(
-  () => state.size,
-  () => {
-    if (!activeProduct.value) {
-      const itemBySize = props.data.items.find((item) => item.sfAttrs?.size === state.size)
-      if (itemBySize?.sfAttrs) state.color = itemBySize.sfAttrs.color
-    }
-  }
-)
 </script>
 
 <template>
@@ -64,7 +29,10 @@ watch(
       />
     </NuxtLink>
 
-    <div class="catalog-item__body">
+    <div
+      v-if="state"
+      class="catalog-item__body"
+    >
       <NuxtLink
         :to="{ name: 'product-group-id', params: { id: data.groupId } }"
         class="catalog-item__name"

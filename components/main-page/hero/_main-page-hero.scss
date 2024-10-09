@@ -1,12 +1,10 @@
 .hero {
-  $bottom-indent-mobile: 17px;
-
   @include flex-column-center-center;
 
   position: relative;
   width: 100%;
-  min-height: 320px;
-  padding: 11px 0;
+  min-height: 330px;
+  padding: 0;
   background-color: $color-bg-section-darker; // серый фон
 
   @include tablet {
@@ -20,25 +18,28 @@
   &__swiper {
     position: absolute;
     z-index: $ui-index-1;
-    padding: 11px 0 $bottom-indent-mobile;
+    padding: 11px 0;
     inset: 0;
+
+    @include tablet {
+      padding: 25px 0;
+    }
   }
 
   &__swiper-pagination {
-    bottom: $bottom-indent-mobile;
+    bottom: 25px;
+
+    @include xs-desktop {
+      bottom: 37px;
+    }
 
     :deep(.swiper-pagination-bullet) {
-      width: 6px;
-      height: 6px;
-      margin: 0 3px;
       background-color: #171717;
       opacity: 1;
     }
 
     :deep(.swiper-pagination-bullet-active) {
       width: 29px;
-      height: 6px;
-      border-radius: $border-radius-l;
     }
   }
 
@@ -69,7 +70,7 @@
     font-size: 15px;
     text-align: right;
 
-    @include tablet {
+    @include xs-desktop {
       display: block;
     }
   }
@@ -88,11 +89,19 @@
     @include tablet {
       opacity: 1;
     }
+
+    @include xs-desktop {
+      font-size: 87px;
+      line-height: 1;
+    }
   }
 
   &__btn {
-    @include tablet {
+    @include xxl-mobile {
       max-width: 251px;
+    }
+
+    @include tablet {
       background-color: $color-bg-btn-light;
       color: $color-text;
     }

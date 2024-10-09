@@ -45,15 +45,19 @@
     min-height: 170px;
 
     #{$this}__send-btn {
+      max-width: 130px;
+
       @include sm-mobile {
-        max-width: 130px;
+        max-width: none;
       }
     }
   }
 }
 
 .ymaps-2-1-79-b-cluster-tabs__section_type_nav {
+  width: 95px !important;
+
   @include sm-mobile {
-    width: 95px !important;
+    width: auto !important;
   }
 }

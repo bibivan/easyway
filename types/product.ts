@@ -77,3 +77,8 @@ export interface IProductGroup {
   category: string
   items: IProduct[]
 }
+
+export interface IProductGroupState {
+  color: string
+  size: EProductSizeAttr
+}

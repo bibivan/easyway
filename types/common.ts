@@ -1,4 +1,7 @@
+import type { ComputedRef, Ref, WritableComputedRef } from 'vue'
+
 export type TNullable<T> = T | null
+export type TGenericRef<T> = Ref<T> | ComputedRef<T> | WritableComputedRef<T>
 
 export enum ERequestStatus {
   FAILED = 'failed',
