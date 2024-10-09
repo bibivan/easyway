@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import ProductImages from '~/components/product/images/ProductImages.vue'
-
 const route = useRoute()
 const productGroupStore = useProductGroupStore()
 const { productGroupState, getProductData } = productGroupStore
