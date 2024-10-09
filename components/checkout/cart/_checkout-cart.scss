@@ -82,7 +82,7 @@
   &__desc {
     @include text-body;
 
-    color: #a3a3a3;
+    color: $color-note;
     font-size: 12px;
     letter-spacing: -0.02em;
 

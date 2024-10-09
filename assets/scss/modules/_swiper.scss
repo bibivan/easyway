@@ -7,9 +7,11 @@
       margin: 0 3px;
       font-size: inherit;
       line-height: inherit;
+      opacity: 1;
     }
 
     .swiper-pagination-bullet-active {
+      width: 29px;
       border-radius: $border-radius-l;
     }
   }

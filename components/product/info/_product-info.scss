@@ -1,0 +1,39 @@
+.product-info {
+  padding: 25px 0;
+
+  &__head {
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: auto auto;
+  }
+
+  &__name,
+  &__price {
+    @include text-body;
+
+    color: $color-text;
+    font-size: 18px;
+    font-weight: 700;
+
+    @include tablet {
+      font-size: 24px;
+    }
+  }
+
+  &__article {
+    @include text-body;
+
+    color: $color-note;
+    font-size: 12px;
+
+    @include tablet {
+      font-size: 16px;
+    }
+  }
+
+  &__colors,
+  &__sizes {
+    display: flex;
+    gap: 5px;
+  }
+}

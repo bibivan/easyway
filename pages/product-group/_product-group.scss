@@ -1,13 +1,11 @@
 .product {
+  @include tablet {
+    padding: $section-indent-desktop;
+  }
+
   &__info {
     @include flex-column;
 
     gap: 10px;
-  }
-
-  &__colors,
-  &__sizes {
-    display: flex;
-    gap: 5px;
   }
 }

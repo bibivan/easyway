@@ -1436,29 +1436,29 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
     ]
   }
 
-  const transformedItems = mockData.items.map((group) => {
-    group.ITEMS = group.ITEMS.map((product) => {
-      const pictures = parseJSON(product.PICTURES)
-      const updatePictures: string[] = [] as string[]
-      console.log(typeof pictures[0])
-
-      for (let index = 0; index < 4; index++) {
-        updatePictures[index] = pictures[0].replace('&font', `, ${index + 1}&font`)
-      }
-
-      product.PICTURES = JSON.stringify(updatePictures)
-      return product
-    })
-
-    return group
-  })
-
-  const updatedData: IPaginatedDataRaw<IProductGroupRaw[]> = {
-    pagination: mockData.pagination,
-    items: transformedItems
-  }
-
-  console.log(updatedData)
+  // const transformedItems = mockData.items.map((group) => {
+  //   group.ITEMS = group.ITEMS.map((product) => {
+  //     const pictures = parseJSON(product.PICTURES)
+  //     const updatePictures: string[] = [] as string[]
+  //     console.log(typeof pictures[0])
+  //
+  //     for (let index = 0; index < 4; index++) {
+  //       updatePictures[index] = pictures[0].replace('&font', `, ${index + 1}&font`)
+  //     }
+  //
+  //     product.PICTURES = JSON.stringify(updatePictures)
+  //     return product
+  //   })
+  //
+  //   return group
+  // })
+  //
+  // const updatedData: IPaginatedDataRaw<IProductGroupRaw[]> = {
+  //   pagination: mockData.pagination,
+  //   items: transformedItems
+  // }
+  //
+  // console.log(updatedData)
 
   return new Promise((resolve) => setTimeout(() => resolve(mockData), 100))
 }

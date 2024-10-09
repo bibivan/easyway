@@ -5,10 +5,10 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
 </script>
 
 <template>
-  <div class="product__images">
+  <div class="product-images">
     <Swiper
       v-if="isMobile"
-      class="base-swiper product__swiper"
+      class="base-swiper product-images__swiper"
       :draggable="true"
       :grab-cursor="true"
       :loop="true"
@@ -20,7 +20,7 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
         disableOnInteraction: false
       }"
       :pagination="{
-        el: '.product__swiper-pagination',
+        el: '.product-images__swiper-pagination',
         clickable: true
       }"
     >
@@ -31,19 +31,25 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
         <img
           :src="img"
           alt="product-image"
-          class="product__img"
+          class="product-images__img"
         />
       </SwiperSlide>
 
-      <div class="product__swiper-pagination swiper-pagination base-swiper__pagination" />
+      <div class="product-images__swiper-pagination swiper-pagination base-swiper__pagination" />
     </Swiper>
     <template v-else>
       <img
         v-for="(img, index) in images"
         :key="'product-image-' + index"
+        :class="{
+          'product-images__img_w_full': index === 0,
+          'product-images__img_row_2': index === 1,
+          'product-images__img_row_3': index === 2,
+          'product-images__img_span_row_2': index === 3
+        }"
         :src="img"
         alt="product-image"
-        class="product__img"
+        class="product-images__img"
       />
     </template>
   </div>

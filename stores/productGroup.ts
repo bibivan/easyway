@@ -23,9 +23,12 @@ export const useProductGroupStore = defineStore('product_store', () => {
 
       const data: IPaginatedDataRaw<IProductGroupRaw[]> = await useCatalogMock()
 
-      productGroupState.data = data.items.map((item: IProductGroupRaw) => {
-        return productGroupRawToProductGroup(item)
-      })[0]
+      productGroupState.data =
+        data.items
+          .map((item: IProductGroupRaw) => {
+            return productGroupRawToProductGroup(item)
+          })
+          .find((item) => item.groupId === parseInt(params.groupId, 10)) || null
     } catch (e) {
       console.error(e)
       productGroupState.error = e

@@ -1,12 +1,11 @@
 <script setup lang="ts">
 const route = useRoute()
 const productGroupStore = useProductGroupStore()
-const { productGroupState, getProductData } = productGroupStore
 const { productGroup } = storeToRefs(productGroupStore)
 
 await useAsyncData('product', () => {
-  return getProductData({
-    ID: Array.isArray(route.params.id) ? route.params.id[0] : route.params.id
+  return productGroupStore.getProductData({
+    groupId: Array.isArray(route.params.id) ? route.params.id[0] : route.params.id
   })
 })
 
@@ -22,42 +21,16 @@ const { state, activeProduct } = useActiveProduct(productGroup)
       <div class="product__content">
         <ProductImages
           v-if="activeProduct?.pictures"
+          class="product__images"
           :images="activeProduct.pictures"
         />
-        <div
-          v-if="activeProduct"
+        <ProductInfo
+          v-if="state && activeProduct"
+          v-model:color="state.color"
+          v-model:size="state.size"
+          :product="activeProduct"
           class="product__info"
-        >
-          <h1>{{ activeProduct.name }}</h1>
-
-          <div
-            v-if="productGroup && state"
-            class="product__colors"
-          >
-            <BaseColorInput
-              v-for="color in productGroup.colors"
-              :id="activeProduct.groupId + color"
-              :key="activeProduct.groupId + color"
-              v-model="state.color"
-              :style="{ color: color }"
-              :value="color"
-              type="radio"
-            />
-          </div>
-          <div
-            v-if="productGroup && state"
-            class="product__sizes"
-          >
-            <BaseSizeInput
-              v-for="size in productGroup.sizes"
-              :id="activeProduct.groupId + size"
-              :key="activeProduct.groupId + size"
-              v-model="state.size"
-              :value="size"
-              type="radio"
-            />
-          </div>
-        </div>
+        />
       </div>
     </div>
   </section>
