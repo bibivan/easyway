@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-const { globalScrollbarState } = useGlobalScrollbarStore()
+const { globalScrollIsHidden } = useGlobalScrollbarStore()
 </script>
 
 <template>
-  <PerfectScrollbar :suppress-scroll-y="globalScrollbarState.hidden">
+  <PerfectScrollbar :suppress-scroll-y="globalScrollIsHidden">
     <SiteHeader />
     <main class="main">
       <slot />

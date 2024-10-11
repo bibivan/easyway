@@ -1,13 +1,13 @@
 import type { NitroFetchOptions, NitroFetchRequest } from 'nitropack'
 
-export const useClientFetch = <T>(
+export const useBaseFetch = <T>(
   path: string,
   options: Partial<NitroFetchOptions<NitroFetchRequest>> = {}
 ) => {
   const config = useRuntimeConfig()
 
   const apiFetch = $fetch.create<T>({
-    baseURL: config.public.baseURL as string,
+    baseURL: config.public.baseURL,
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json',

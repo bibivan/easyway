@@ -18,7 +18,14 @@ const modelValue = defineModel<TNullable<T>>()
 </script>
 
 <template>
-  <div :class="'base-radio base-radio_' + theme">
+  <div
+    :class="[
+      'base-radio',
+      {
+        ['base-radio_' + theme]: theme
+      }
+    ]"
+  >
     <input
       :id="id"
       v-model="modelValue"

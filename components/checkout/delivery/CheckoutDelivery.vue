@@ -1,24 +1,24 @@
 <script setup lang="ts">
 import { EDeliveryType, type IAddressSuggestion, type TNullable } from '~/types'
 
-const { orderState, clearOrder } = useOrderStore()
+const { order, clearOrder } = useOrderStore()
 
 const setAddressData = (addressData: TNullable<IAddressSuggestion>) => {
   if (!addressData) return
-  orderState.fiases = [
+  order.value.fiases = [
     addressData.data.settlement_fias_id,
     addressData.data.city_fias_id,
     addressData.data.area_fias_id,
     addressData.data.region_fias_id
   ]
-  orderState.postalCode = addressData.data?.postal_code
-  orderState.addressString = addressData.unrestricted_value
+  order.value.postalCode = addressData.data?.postal_code
+  order.value.addressString = addressData.unrestricted_value
 }
 
 onMounted(() => clearOrder())
 
 watch(
-  () => orderState.addressData,
+  () => order.value.addressData,
   (val) => setAddressData(val)
 )
 </script>
@@ -30,8 +30,8 @@ watch(
     <BaseAddressInput
       id="checkout_address_input"
       class="checkout-delivery__address"
-      :check-full-address="orderState.courierDelivery === EDeliveryType.COURIER"
-      @on-update-address-data="orderState.addressData = $event"
+      :check-full-address="order.courierDelivery === EDeliveryType.COURIER"
+      @on-update-address-data="order.addressData = $event"
     />
 
     <CheckoutDeliveryTypes />

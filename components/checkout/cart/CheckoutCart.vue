@@ -1,19 +1,19 @@
 <script setup lang="ts">
 defineEmits<{ onSendOrder: [void] }>()
 
-const { cartState, cartTotalPrice } = storeToRefs(useCartStore())
-const { orderState } = useOrderStore()
-const { promoState, initPromoData, calculateDiscount, calculateDiscountedSum } = usePromoStore()
+const { cartData, cartTotalPrice } = useCartStore()
+const { order } = useOrderStore()
+const { promo, initPromoData, calculateDiscount, calculateDiscountedSum } = usePromoStore()
 const { handleShowCart } = useCartOpening()
 
-const totalSum = computed(() => (orderState.price || 0) + (orderState.deliveryPrice || 0))
+const totalSum = computed(() => (order.value.price || 0) + (order.value.deliveryPrice || 0))
 
 onMounted(() => initPromoData())
 
 watch(
-  [() => promoState.data.value, cartTotalPrice],
+  [() => promo.value.amount, cartTotalPrice],
   () => {
-    orderState.price = calculateDiscountedSum(cartTotalPrice.value)
+    order.value.price = calculateDiscountedSum(cartTotalPrice.value)
   },
   { immediate: true }
 )
@@ -24,7 +24,7 @@ watch(
     <legend class="form__legend checkout-cart__heading">Заказ</legend>
     <ul class="checkout-cart__items">
       <li
-        v-for="item in cartState.data"
+        v-for="item in cartData"
         :key="item.id"
         class="checkout-cart__item checkout-cart-item"
       >
@@ -35,34 +35,31 @@ watch(
         <span class="checkout-cart-item__price">{{ item.cnt * item.price }}₽</span>
       </li>
       <li
-        v-if="
-          orderState.deliveryPrice &&
-          (orderState?.pickedCourier?.name || orderState?.pickedPoint?.name)
-        "
+        v-if="order.deliveryPrice && (order?.pickedCourier?.name || order?.pickedPoint?.name)"
         class="checkout-cart__item checkout-cart-item"
       >
         <div class="checkout-cart-item__info">
           <span class="checkout-cart-item__name">Доставка</span>
           <span
-            v-if="orderState?.pickedCourier"
+            v-if="order?.pickedCourier"
             class="checkout-cart-item__desc"
-            >{{ orderState.pickedCourier.name }}</span
+            >{{ order.pickedCourier.name }}</span
           >
           <span
-            v-if="orderState?.pickedPoint"
+            v-if="order?.pickedPoint"
             class="checkout-cart-item__desc"
-            >{{ orderState.pickedPoint.name }}</span
+            >{{ order.pickedPoint.name }}</span
           >
         </div>
-        <span class="checkout-cart-item__price">{{ orderState.deliveryPrice }}₽</span>
+        <span class="checkout-cart-item__price">{{ order.deliveryPrice }}₽</span>
       </li>
       <li
-        v-if="promoState.data.value"
+        v-if="promo.amount"
         class="checkout-cart__item checkout-cart-item"
       >
         <div class="checkout-cart-item__info">
           <span class="checkout-cart-item__name">Скидка</span>
-          <span class="checkout-cart-item__desc">Промокод: {{ promoState.data.code }}</span>
+          <span class="checkout-cart-item__desc">Промокод: {{ promo.code }}</span>
         </div>
         <span class="checkout-cart-item__price">-{{ calculateDiscount(cartTotalPrice) }}₽</span>
       </li>

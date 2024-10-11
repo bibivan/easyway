@@ -16,7 +16,7 @@ export interface IPaymentType {
   id: number
 }
 
-export interface IOrderState {
+export interface IOrder {
   addressData: TNullable<IAddressSuggestion>
   addressString: TNullable<string>
   fiases: TNullable<Array<TNullable<string>>>
@@ -102,6 +102,6 @@ export interface ISendOrderResponse {
 }
 
 export interface IPromoData {
-  value: TNullable<number>
+  amount: TNullable<number>
   code: TNullable<string>
 }

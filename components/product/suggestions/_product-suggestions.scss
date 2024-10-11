@@ -39,21 +39,13 @@
     }
   }
 
-  &__body {
-    //overflow: visible;
-  }
-
   &__swiper {
     overflow: visible;
-
-    .swiper-wrapper {
-      //overflow: visible;
-    }
   }
 
   &__list {
     display: grid;
-    gap: 10px;
+    gap: 3px;
     grid-template-columns: 1fr 1fr;
 
     @include tablet {

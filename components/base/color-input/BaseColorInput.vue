@@ -1,6 +1,8 @@
-<script setup lang="ts" generic="T, K">
+<script setup lang="ts" generic="T extends string | string[]">
+import { isWhiteColor } from '~/utils/common'
+
 defineProps<{
-  value: string | number | boolean | K
+  value: string
   id: string
   theme?: string
   type: 'checkbox' | 'radio'
@@ -27,6 +29,7 @@ const modelValue = defineModel<T>()
     />
     <label
       class="color-input__label"
+      :class="{ 'color-input__label_color_white': isWhiteColor(value) }"
       :for="id"
     />
   </div>

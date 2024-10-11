@@ -3,16 +3,16 @@ import { YandexMap, YandexClusterer, YandexMarker } from 'vue-yandex-maps'
 import type { IDeliveryPoint, TNullable, YaMapInstance } from '~/types'
 
 let mapInstance: YaMapInstance
-const { orderState } = useOrderStore()
+const { order } = useOrderStore()
 
 const initBtnEvenListeners = () => {
   document.addEventListener('click', (event: Event) => {
     const targetElement = event.target as EventTarget &
       HTMLButtonElement & { dataset: { pickupPointIndex: number } }
     const pointIndex = +targetElement?.dataset?.pickupPointIndex
-    if (pointIndex && orderState.deliveryPoints) {
+    if (pointIndex && order.value.deliveryPoints) {
       event.preventDefault()
-      orderState.pickedPoint = orderState.deliveryPoints[pointIndex as number]
+      order.value.pickedPoint = order.value.deliveryPoints[pointIndex as number]
       targetElement.classList.add('btn--disabled')
       targetElement.disabled = true
       targetElement.textContent = 'Выбрано'
@@ -41,9 +41,9 @@ const getMarkerProperties = (point: IDeliveryPoint, index: number) => ({
 })
 
 const setMapCenter = (zoom: number) => {
-  if (orderState?.addressData?.data.geo_lat && orderState?.addressData.data.geo_lon) {
+  if (order.value?.addressData?.data.geo_lat && order.value?.addressData.data.geo_lon) {
     mapInstance.setCenter(
-      [+orderState?.addressData.data.geo_lat, +orderState?.addressData.data.geo_lon],
+      [+order.value?.addressData.data.geo_lat, +order.value?.addressData.data.geo_lon],
       zoom,
       {
         checkZoomRange: true,
@@ -60,7 +60,7 @@ const setMapInstance = (map: YaMapInstance) => {
 }
 
 watch(
-  [() => orderState.addressData?.data?.geo_lat, () => orderState.addressData?.data?.geo_lon],
+  [() => order.value.addressData?.data?.geo_lat, () => order.value.addressData?.data?.geo_lon],
   (val, oldVal) => {
     if (!oldVal.length || mapInstance) return
     setMapCenter(14)
@@ -70,7 +70,7 @@ watch(
 
 <template>
   <YandexMap
-    v-if="orderState.addressData?.data.geo_lon && orderState.addressData.data.geo_lat"
+    v-if="order.addressData?.data.geo_lon && order.addressData.data.geo_lat"
     class="delivery-map"
     :settings="{
       apiKey: '007525b7-2cfa-454c-b495-a51e31ae118b',
@@ -80,15 +80,15 @@ watch(
       version: '2.1'
     }"
     :controls="['zoomControl']"
-    :coordinates="[+orderState.addressData.data.geo_lat, +orderState.addressData.data.geo_lon]"
+    :coordinates="[+order.addressData.data.geo_lat, +order.addressData.data.geo_lon]"
     @created="setMapInstance"
   >
     <YandexClusterer
-      :key="orderState.addressData.data.geo_lat + orderState.addressData.data.geo_lon"
+      :key="order.addressData.data.geo_lat + order.addressData.data.geo_lon"
       :options="{ preset: 'islands#blackClusterIcons' }"
     >
       <YandexMarker
-        v-for="(point, index) in orderState.deliveryPoints"
+        v-for="(point, index) in order.deliveryPoints"
         :key="point.name + index"
         :coordinates="point.gps"
         :marker-id="'placemark' + index"

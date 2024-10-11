@@ -1,39 +1,50 @@
 <script setup lang="ts">
-const route = useRoute()
-const productGroupStore = useProductGroupStore()
-const { productGroup } = storeToRefs(productGroupStore)
+import { EFetchStatus, EGender } from '~/types'
 
-await useAsyncData('product', () => {
-  return productGroupStore.getProductData({
-    groupId: Array.isArray(route.params.id) ? route.params.id[0] : route.params.id
-  })
-})
-
+const { status, error, data: productGroup, refresh } = useProductGroupStore()
 const { state, activeProduct } = useActiveProduct(productGroup)
+const refr = () => {
+  console.log('ref')
+  refresh()
+}
 </script>
 
 <template>
-  <section
-    v-if="productGroup"
-    class="product"
-  >
+  <button @click="refr">refresh</button>
+  <section class="product">
     <div class="container">
       <div class="product__content">
-        <ProductImages
-          v-if="activeProduct?.pictures"
-          class="product__images"
-          :images="activeProduct.pictures"
-        />
-        <ProductInfo
-          v-if="state && activeProduct"
-          v-model:color="state.color"
-          v-model:size="state.size"
-          :product="activeProduct"
-          class="product__info"
-        />
+        <BaseSpinner v-if="status === EFetchStatus.PENDING" />
+        <div v-if="status === EFetchStatus.ERROR">Ошибка{{ error?.message }}</div>
+        <template v-if="status === EFetchStatus.SUCCESS">
+          <ProductImages
+            v-if="activeProduct?.pictures"
+            class="product__images"
+            :images="activeProduct.pictures"
+          />
+          <ProductInfo
+            v-if="state && activeProduct"
+            v-model:color="state.color"
+            v-model:size="state.size"
+            :product="activeProduct"
+            class="product__info"
+          />
+        </template>
       </div>
     </div>
   </section>
+  <ProductSuggestions
+    suggestions-name="your-look"
+    suggestions-label="Собери образ"
+    :with-slider="true"
+    :params="{ gender: EGender.FEMALE }"
+  />
+  <ProductSuggestions
+    suggestions-name="similar"
+    suggestions-label="Похожее"
+    :with-slider="true"
+    :params="{ gender: EGender.FEMALE }"
+  />
 </template>
 
 <style scoped lang="scss">

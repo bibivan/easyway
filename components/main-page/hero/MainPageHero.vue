@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { isMobile } = storeToRefs(useDeviceTypeStore())
+const { isMobile } = useDeviceTypeStore()
 </script>
 
 <template>

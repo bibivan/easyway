@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T, K">
 import { useVuelidate } from '@vuelidate/core'
-import { helpers, required } from '@vuelidate/validators'
+import { helpers } from '@vuelidate/validators'
 import { EErrorPosition } from '~/types'
 
 const props = defineProps<{
@@ -23,16 +23,25 @@ const slots = useSlots()
 const modelValue = defineModel<T>()
 
 const validationRules = computed(() => ({
-  modelValue: props.requiredVal
-    ? helpers.withMessage('Обязательный параметр', (value) => value === true)
-    : () => true
+  modelValue: {
+    required: props.requiredVal
+      ? helpers.withMessage('Обязательный параметр', (value) => value === true)
+      : () => true
+  }
 }))
 const v$ = useVuelidate(validationRules, { modelValue })
 const { hasError, errorMessage } = useValidationInfo(v$)
 </script>
 
 <template>
-  <div :class="'base-checkbox base-checkbox_' + theme">
+  <div
+    :class="[
+      'base-checkbox',
+      {
+        ['base-checkbox_' + theme]: theme
+      }
+    ]"
+  >
     <input
       :id="id"
       v-model="modelValue"

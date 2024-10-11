@@ -7,62 +7,47 @@
 
   /* для элемента label связанного с .custom-radio */
   &__label {
-    @include flex-row-center-between;
-    @include text-body;
+    @include flex-row-center-center;
 
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 23px;
+    height: 23px;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    content: '';
     cursor: pointer;
-    font-size: 14px;
-    gap: 10px;
-    transition: color 0.2s ease-in-out;
-
-    @include desktop {
-      font-size: 18px;
-    }
+    transition: border-color 0.2s ease-in-out;
 
     &::before {
       display: block;
-      width: 14px;
-      height: 14px;
+      width: calc(100% - 4px);
+      height: calc(100% - 4px);
       box-sizing: border-box;
       border-radius: 50%;
       background-color: currentcolor;
-      box-shadow: 0 0 6px rgba($color-text, 0.3);
       content: '';
+      transition: color 0.2s ease-in-out;
     }
 
-    &::after {
-      $outline-diameter: 20px;
-
-      position: absolute;
-      top: calc(50% - $outline-diameter / 2);
-      left: calc(50% - $outline-diameter / 2);
-      display: block;
-      width: $outline-diameter;
-      height: $outline-diameter;
-      box-sizing: border-box;
-      border: 2px solid transparent;
-      border-radius: 50%;
-      content: '';
-      transition: border-color 0.2s ease-in-out;
+    &_color_white::before {
+      border: 1px solid $color-primary;
     }
   }
 
   /* стили для радиокнопки, находящейся в состоянии checked */
-  &__input:checked + &__label::after {
+  &__input:checked + &__label {
     border-color: $color-primary;
   }
 
   /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
-  &__input:focus:not(:checked) + &__label::after {
+  &__input:focus:not(:checked) + &__label {
     border-color: $color-primary-light;
   }
 
   /* стили для радиокнопки, находящейся в ховере и не находящейся в состоянии checked */
   @include hover {
-    &__input:hover:not(:checked) + &__label::after {
+    &__input:hover:not(:checked) + &__label {
       border-color: $color-primary-light;
     }
   }

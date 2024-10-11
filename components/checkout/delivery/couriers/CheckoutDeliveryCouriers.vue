@@ -1,28 +1,29 @@
 <script setup lang="ts">
 import type { TNullable } from '~/types'
 
-const { orderState } = useOrderStore()
+const { order } = useOrderStore()
 const pickedCourier = ref<TNullable<string>>(null)
 
 watch(pickedCourier, (val) => {
-  if (orderState.deliveryCouriers) {
-    orderState.deliveryCouriers.find((item) => item.name === val)
+  if (order.value.deliveryCouriers) {
+    order.value.pickedCourier =
+      order.value.deliveryCouriers.find((item) => item.name === val) || order.value.pickedCourier
   }
 })
 
 watch(
-  () => orderState.pickedCourier,
+  () => order.value.pickedCourier,
   (val) => {
     if (val) {
       // const postCourierDeliveryIds = [7, 22]
       const postCourierDeliveryIds = [7]
 
-      if (postCourierDeliveryIds.includes(val.delivery_id)) orderState.ruPostDelivery = true
+      if (postCourierDeliveryIds.includes(val.delivery_id)) order.value.ruPostDelivery = true
 
-      orderState.deliveryPrice = val.cost
-      orderState.placeId = val.place_id
-      orderState.addressString = orderState.addressData?.unrestricted_value || null
-      orderState.pickedPointAddress = null
+      order.value.deliveryPrice = val.cost
+      order.value.placeId = val.place_id
+      order.value.addressString = order.value.addressData?.unrestricted_value || null
+      order.value.pickedPointAddress = null
     }
   }
 )
@@ -30,11 +31,11 @@ watch(
 
 <template>
   <div
-    v-if="orderState.deliveryCouriers"
+    v-if="order.deliveryCouriers"
     class="form__radios delivery-couriers"
   >
     <BaseRadio
-      v-for="(deliveryCourier, index) in orderState.deliveryCouriers"
+      v-for="(deliveryCourier, index) in order.deliveryCouriers"
       :id="deliveryCourier.transport_api_code + deliveryCourier.delivery_code"
       :key="deliveryCourier.delivery_code + index"
       v-model="pickedCourier"

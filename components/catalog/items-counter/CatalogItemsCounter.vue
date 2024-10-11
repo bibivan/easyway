@@ -3,9 +3,9 @@ const props = defineProps<{ id: number }>()
 const {
   increaseItemsCount: handleIncreaseItemsCount,
   decreaseItemsCount: handleDecreaseItemsCount,
-  cartState
+  cartData
 } = useCartStore()
-const thisCartItem = computed(() => cartState.data?.find((item) => item.id === props.id) || null)
+const thisCartItem = computed(() => cartData.value?.find((item) => item.id === props.id) || null)
 </script>
 
 <template>

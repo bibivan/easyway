@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import type { TNullable } from '~/types'
 
-const { orderState } = useOrderStore()
+const { order } = useOrderStore()
 
 watch(
-  () => orderState.pickedPoint,
+  () => order.value.pickedPoint,
   (val) => {
     if (val) {
-      orderState.deliveryPrice = val.cost
-      orderState.placeId = val.place_id
-      orderState.addressString = val.address
-      orderState.pickedPointAddress = val.address
+      order.value.deliveryPrice = val.cost
+      order.value.placeId = val.place_id
+      order.value.addressString = val.address
+      order.value.pickedPointAddress = val.address
     }
     return
   }
@@ -32,7 +32,7 @@ watch(tabContent, () => {
     ref="tabContent"
     class="delivery-points"
   >
-    <CheckoutDeliveryMap v-if="orderState.deliveryPoints" />
+    <CheckoutDeliveryMap v-if="order.deliveryPoints" />
   </div>
 </template>
 

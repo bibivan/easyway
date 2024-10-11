@@ -1,4 +1,4 @@
-import type { TNullable, IProductSFAttrs, IPromoData } from '~/types'
+import type { IProductSFAttrs } from '~/types'
 
 export interface ICartItem {
   name: string
@@ -10,10 +10,4 @@ export interface ICartItem {
   id: number
 }
 
-export interface IPromoStoreState {
-  data: IPromoData
-  loading: boolean
-  error: TNullable<string>
-}
-
-export type IPromoResponseData = { result: number } | false
+export type IPromoResponseData = { result: number | false }

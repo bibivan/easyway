@@ -113,3 +113,16 @@ export const formatNumberWithSpaces = (num: number): string =>
 export const getRandomNumber = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
+
+export const isWhiteColor = (color: string): boolean => {
+  // Проверка на белый цвет в формате HEX
+  const hexPattern = /^#(?:f{3}|f{6}|fff|ffffff)$/i
+
+  // Проверка на белый цвет в формате RGB или RGBA
+  const rgbPattern = /^rgba?\(\s*255\s*,\s*255\s*,\s*255\s*(?:,\s*(0|1|1.0|0?\.\d+)\s*)?\)$/i
+
+  // Проверка на строку "white"
+  const namedWhitePattern = /^white$/i
+
+  return hexPattern.test(color) || rgbPattern.test(color) || namedWhitePattern.test(color)
+}

@@ -2,7 +2,7 @@
 import { helpers, required } from '@vuelidate/validators'
 import { useVuelidate } from '@vuelidate/core'
 
-const { orderState } = useOrderStore()
+const { order } = useOrderStore()
 const paymentData = usePaymentTypesData()
 const isConfirmed = ref<boolean>(false)
 
@@ -11,8 +11,8 @@ const validationRules = computed(() => ({
     required: helpers.withMessage('Обязательный параметр', required)
   }
 }))
-const v$ = useVuelidate(validationRules, orderState)
-const { hasError, errorMessage } = useValidationInfo(v$)
+const v$ = useVuelidate(validationRules, order)
+const { hasError, errorMessage } = useValidationInfo(ref(v$.value.paymentType))
 </script>
 
 <template>
@@ -25,7 +25,7 @@ const { hasError, errorMessage } = useValidationInfo(v$)
         v-for="paymentType in paymentData"
         :id="'payment_type_' + paymentType.id"
         :key="'payment-type-' + paymentType.id"
-        v-model="orderState.paymentType"
+        v-model="order.paymentType"
         :value="paymentType.id"
         :label="paymentType.name"
       />

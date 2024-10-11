@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IProductGroup, IProductGroupRaw } from '~/types'
+import { EFetchStatus, type IProductGroup, type IProductGroupRaw } from '~/types'
 
 const props = defineProps<{
   suggestionsName: string
@@ -9,25 +9,24 @@ const props = defineProps<{
 }>()
 
 const { isDesktop } = useDeviceTypeStore()
-const loading = ref<boolean>(false)
 
-const { data, error } = await useAsyncData<IProductGroup[]>(props.suggestionsName, async () => {
-  // if (getRandomNumber(1, 100) > 50) throw new Error('500 Internal Server Error')
+const { data, error, status } = await useAsyncData<IProductGroup[]>(
+  props.suggestionsName,
+  async () => {
+    // const data = await useBaseFetch<IPaginatedDataRaw<IProductGroupRaw[]>>('/products/get/', {
+    //   method: 'GET',
+    //   params
+    // })
 
-  loading.value = true
-  // const data = await useClientFetch<IPaginatedDataRaw<IProductGroupRaw[]>>('/products/get/', {
-  //   method: 'GET',
-  //   params
-  // })
-  const data = await useCatalogMock()
-  const transformedData = data?.items.map((item: IProductGroupRaw) =>
-    productGroupRawToProductGroup(item)
-  )
-  // .slice(0, 4)
+    const data = useCatalogMock()
 
-  loading.value = true
-  return transformedData
-})
+    return data?.items.map((item: IProductGroupRaw) => {
+      return productGroupRawToProductGroup(item)
+    })
+  }
+)
+
+const desktopData = computed(() => data.value?.slice(0, 4))
 </script>
 
 <template>
@@ -45,7 +44,9 @@ const { data, error } = await useAsyncData<IProductGroup[]>(props.suggestionsNam
           </NuxtLink>
         </div>
         <div class="product-suggestions__body">
-          <template v-if="data">
+          <BaseSpinner v-if="status === EFetchStatus.PENDING" />
+          <template v-if="status === EFetchStatus.ERROR">{{ error?.message }}</template>
+          <template v-if="status === EFetchStatus.SUCCESS">
             <Swiper
               v-if="!isDesktop && withSlider"
               class="product-suggestions__swiper"
@@ -71,14 +72,11 @@ const { data, error } = await useAsyncData<IProductGroup[]>(props.suggestionsNam
               class="product-suggestions__list"
             >
               <CatalogItem
-                v-for="item in data"
+                v-for="item in desktopData"
                 :key="item.groupId"
                 :data="item"
               />
             </div>
-          </template>
-          <template v-if="error">
-            {{ error.message || 'Произошла ошибка при запросе данных' }}
           </template>
         </div>
       </div>

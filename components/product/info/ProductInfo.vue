@@ -3,7 +3,7 @@ import type { IProduct } from '~/types'
 
 defineProps<{ product: IProduct }>()
 
-const { productGroup } = storeToRefs(useProductGroupStore())
+const { data: productGroup } = useProductGroupStore()
 const modelColor = defineModel<string>('color')
 const modelSize = defineModel<string>('size')
 </script>
@@ -18,30 +18,36 @@ const modelSize = defineModel<string>('size')
 
     <div
       v-if="productGroup"
-      class="product-info__colors"
+      class="product-info__items-wrapper"
     >
-      <BaseColorInput
-        v-for="color in productGroup.colors"
-        :id="'product_color_' + color"
-        :key="'product-color-' + color"
-        v-model="modelColor"
-        :style="{ color: color }"
-        :value="color"
-        type="radio"
-      />
+      <h2 class="product-info__subtitle">Цвет</h2>
+      <div class="product-info__colors">
+        <BaseColorInput
+          v-for="color in productGroup.colors"
+          :id="'product_color_' + color"
+          :key="'product-color-' + color"
+          v-model="modelColor"
+          :style="{ color: color }"
+          :value="color"
+          type="radio"
+        />
+      </div>
     </div>
     <div
       v-if="productGroup"
-      class="product-info__sizes"
+      class="product-info__items-wrapper"
     >
-      <BaseSizeInput
-        v-for="size in productGroup.sizes"
-        :id="'product_size_' + size"
-        :key="'product-size-' + size"
-        v-model="modelSize"
-        :value="size"
-        type="radio"
-      />
+      <h2 class="product-info__subtitle">Размер</h2>
+      <div class="product-info__sizes">
+        <BaseSizeInput
+          v-for="size in productGroup.sizes"
+          :id="'product_size_' + size"
+          :key="'product-size-' + size"
+          v-model="modelSize"
+          :value="size"
+          type="radio"
+        />
+      </div>
     </div>
   </div>
 </template>

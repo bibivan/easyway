@@ -1,9 +1,9 @@
-import type { Validation } from '@vuelidate/core'
+import type { Validation, BaseValidation } from '@vuelidate/core'
 import type { Ref } from 'vue'
 import type { IInputEmitEvents } from '~/types'
 
 export const useValidationInfo = (
-  v$: Ref<Validation>,
+  v$: Ref<Validation> | Ref<BaseValidation>,
   emit?: <K extends keyof IInputEmitEvents>(event: K, ...payload: IInputEmitEvents[K]) => void
 ) => {
   const hasError = computed(() => v$.value?.$error)

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { orderState } = useOrderStore()
+const { order } = useOrderStore()
 </script>
 
 <template>
@@ -9,28 +9,28 @@ const { orderState } = useOrderStore()
     <div class="form__inputs">
       <BaseInput
         id="checkout_surname_input"
-        v-model="orderState.surname"
+        v-model="order.surname"
         :required-val="true"
         placeholder="Фамилия"
         type="text"
       />
       <BaseInput
         id="checkout_name_input"
-        v-model="orderState.name"
+        v-model="order.name"
         :required-val="true"
         placeholder="Имя"
         type="text"
       />
       <BaseInput
         id="checkout_middle_name_input"
-        v-model="orderState.middleName"
+        v-model="order.middleName"
         :required-val="true"
         placeholder="Отчество"
         type="text"
       />
       <BaseInput
         id="checkout_email_input"
-        v-model="orderState.email"
+        v-model="order.email"
         :required-val="true"
         placeholder="Email"
         :is-email="true"
@@ -38,12 +38,12 @@ const { orderState } = useOrderStore()
       />
       <BasePhoneInput
         id="checkout_phone_input"
-        v-model="orderState.phone"
+        v-model="order.phone"
         :required-val="true"
       />
       <BaseTextarea
         id="checkout_comment_textarea"
-        v-model="orderState.comment"
+        v-model="order.comment"
       />
     </div>
   </fieldset>

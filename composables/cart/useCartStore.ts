@@ -1,35 +1,30 @@
-import type { ICartItem, IProduct, TDefaultStoreState } from '~/types'
-import { defineStore } from 'pinia'
+import type { ICartItem, IProduct, TNullable } from '~/types'
 
-export const useCartStore = defineStore('cart_store', () => {
+export const useCartStore = () => {
   // Data
-  const cartState = reactive<TDefaultStoreState<ICartItem[]> & { isShown: boolean }>({
-    data: null,
-    loading: false,
-    isShown: false,
-    error: null
-  })
+  const cartData = useState<TNullable<ICartItem[]>>('cart_data', () => null)
+  const cartIsShown = useState<boolean>('cart_is_shown', () => false)
 
   // Getters
   const cartItemsCount = computed(() => {
-    return cartState.data?.reduce((acc: number, curVal) => acc + curVal.cnt, 0) || 0
+    return cartData.value?.reduce((acc: number, curVal) => acc + curVal.cnt, 0) || 0
   })
   const cartTotalPrice = computed(() => {
-    return cartState.data?.reduce((acc: number, curVal) => acc + +curVal.price * curVal.cnt, 0) || 0
+    return cartData.value?.reduce((acc: number, curVal) => acc + +curVal.price * curVal.cnt, 0) || 0
   })
 
   // Mutations
   const clearCart = () => {
-    cartState.data = null
+    cartData.value = null
     localStorage.removeItem('easyway-cart')
   }
-  const findItem = (itemId: number) => cartState.data?.find((item) => item.id === itemId)
+  const findItem = (itemId: number) => cartData.value?.find((item) => item.id === itemId)
 
   const setToLocalStorage = () =>
-    localStorage.setItem('easyway-cart', JSON.stringify(cartState.data))
+    localStorage.setItem('easyway-cart', JSON.stringify(cartData.value))
 
   const deleteCartItem = (itemId: number) => {
-    cartState.data = cartState.data?.filter((item) => item.id !== itemId) || cartState.data
+    cartData.value = cartData.value?.filter((item) => item.id !== itemId) || cartData.value
     setToLocalStorage()
   }
 
@@ -54,8 +49,8 @@ export const useCartStore = defineStore('cart_store', () => {
     if (!item.sfAttrs) return useNuxtApp().$toast('Отсутствуют аттрибуты. Продукт не добавлен')
 
     try {
-      if (!cartState.data) cartState.data = [] as ICartItem[]
-      const isInCart = arrayHasElem(cartState.data, 'id', item.id)
+      if (!cartData.value) cartData.value = [] as ICartItem[]
+      const isInCart = arrayHasElem(cartData.value, 'id', item.id)
 
       if (isInCart) useNuxtApp().$toast('Товар уже в корзине')
       else {
@@ -72,19 +67,18 @@ export const useCartStore = defineStore('cart_store', () => {
           id: item.id
         }
 
-        cartState.data.push(newCartItem)
+        cartData.value.push(newCartItem)
         setToLocalStorage()
         useNuxtApp().$toast('Товар добавлен')
       }
     } catch (e) {
-      cartState.error = e
-      console.error(e)
       useNuxtApp().$toast('Неверный формат продукта. Товар не добавлен')
     }
   }
 
   return {
-    cartState,
+    cartData,
+    cartIsShown,
     cartItemsCount,
     cartTotalPrice,
     clearCart,
@@ -93,4 +87,4 @@ export const useCartStore = defineStore('cart_store', () => {
     decreaseItemsCount,
     putToCart
   }
-})
+}

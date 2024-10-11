@@ -10,7 +10,7 @@ import {
   type TNullable
 } from '~/types'
 
-const { orderState } = useOrderStore()
+const { order } = useOrderStore()
 
 const separateCouriersAndPickupPoints = (data: IDeliveriesDataItem) => {
   const deliveries = Object.values(data.delivery_types)
@@ -28,9 +28,9 @@ const separateCouriersAndPickupPoints = (data: IDeliveriesDataItem) => {
     }
   })
 
-  orderState.deliveryCouriers = deliveryCouriers
-  orderState.deliveryPoints = deliveryPoints
-  orderState.fias = data.fias
+  order.value.deliveryCouriers = deliveryCouriers
+  order.value.deliveryPoints = deliveryPoints
+  order.value.fias = data.fias
 }
 
 // todo: решить вопрос с весом и размерами заказа
@@ -38,11 +38,11 @@ const separateCouriersAndPickupPoints = (data: IDeliveriesDataItem) => {
 const getDeliveries = async (fiases: Array<TNullable<string>>) => {
   for (const fias of fiases) {
     if (fias) {
-      const { data, success } = await useClientFetch<IDeliveriesDataRaw>('pickup-sdt/get-pickups', {
+      const { data, success } = await useBaseFetch<IDeliveriesDataRaw>('pickup-sdt/get-pickups', {
         method: 'POST',
         body: {
           fias: fias,
-          payment_type: orderState.paymentType,
+          payment_type: order.value.paymentType,
           company: 0,
           weight: 100,
           parcel_size: [10, 10, 10],
@@ -55,10 +55,10 @@ const getDeliveries = async (fiases: Array<TNullable<string>>) => {
   }
 }
 
-const handleSetDeliveryType = (type: EDeliveryType) => (orderState.courierDelivery = type)
+const handleSetDeliveryType = (type: EDeliveryType) => (order.value.courierDelivery = type)
 
 watch(
-  () => orderState.fiases,
+  () => order.value.fiases,
   async (val) => {
     if (val) await getDeliveries(val)
   },
@@ -68,20 +68,20 @@ watch(
 // валидация
 const validationRules = computed(() => ({
   courierDelivery: {
-    required: helpers.withMessage('Выберите способ доставки', () => !!orderState.courierDelivery)
+    required: helpers.withMessage('Выберите способ доставки', () => !!order.value.courierDelivery)
   },
   pickedCourier: {
     required: helpers.withMessage('Выберите курьерскую службу', () =>
-      orderState.courierDelivery === EDeliveryType.COURIER ? !!orderState?.pickedCourier : true
+      order.value.courierDelivery === EDeliveryType.COURIER ? !!order.value?.pickedCourier : true
     )
   },
   pickedPoint: {
     required: helpers.withMessage('Выберите пункт выдачи', () =>
-      orderState.courierDelivery === EDeliveryType.PICKUP ? !!orderState.pickedPoint : true
+      order.value.courierDelivery === EDeliveryType.PICKUP ? !!order.value.pickedPoint : true
     )
   }
 }))
-const v$ = useVuelidate(validationRules, orderState)
+const v$ = useVuelidate(validationRules, order)
 const { hasError, errorMessage } = useValidationInfo(v$)
 </script>
 
@@ -91,7 +91,7 @@ const { hasError, errorMessage } = useValidationInfo(v$)
       <button
         class="delivery-types__tab"
         :class="{
-          'delivery-types__tab_active': orderState.courierDelivery === EDeliveryType.COURIER
+          'delivery-types__tab_active': order.courierDelivery === EDeliveryType.COURIER
         }"
         @click.prevent="handleSetDeliveryType(EDeliveryType.COURIER)"
       >
@@ -100,7 +100,7 @@ const { hasError, errorMessage } = useValidationInfo(v$)
       <button
         class="delivery-types__tab"
         :class="{
-          'delivery-types__tab_active': orderState.courierDelivery === EDeliveryType.PICKUP
+          'delivery-types__tab_active': order.courierDelivery === EDeliveryType.PICKUP
         }"
         @click.prevent="handleSetDeliveryType(EDeliveryType.PICKUP)"
       >
@@ -114,19 +114,16 @@ const { hasError, errorMessage } = useValidationInfo(v$)
     </div>
 
     <div
-      v-if="isNotNull(orderState.courierDelivery) && orderState.addressData"
+      v-if="isNotNull(order.courierDelivery) && order.addressData"
       class="delivery-types__tab-content"
     >
       <ClientOnly>
         <CheckoutDeliveryCouriers
-          v-show="
-            orderState.courierDelivery === EDeliveryType.COURIER &&
-            orderState.addressData?.data?.house
-          "
+          v-show="order.courierDelivery === EDeliveryType.COURIER && order.addressData?.data?.house"
         />
       </ClientOnly>
       <ClientOnly>
-        <CheckoutDeliveryPoints v-show="orderState.courierDelivery === EDeliveryType.PICKUP" />
+        <CheckoutDeliveryPoints v-show="order.courierDelivery === EDeliveryType.PICKUP" />
       </ClientOnly>
     </div>
   </div>

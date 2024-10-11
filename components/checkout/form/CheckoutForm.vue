@@ -3,7 +3,7 @@ import { useVuelidate } from '@vuelidate/core'
 import type { ISendOrderResponse } from '~/types'
 
 const { getOrderPayload, sendOrder, clearOrder } = useOrderStore()
-const { cartState } = useCartStore()
+const { cartData } = useCartStore()
 
 const v$ = useVuelidate()
 const state = reactive({
@@ -15,18 +15,18 @@ const handleSendData = async () => {
   const result = await v$.value.$validate()
 
   if (!result) return
-  if (!cartState.data) return
+  if (!cartData.value) return
 
   try {
     state.dataIsSending = true
 
-    // const payload = getOrderPayload(cartState.data)
+    // const payload = getOrderPayload(cartData.value)
     //
     // const { SF } = await sendOrder<ISendOrderResponse>(payload)
     //
     // if (!SF.orderId) return (state.checkoutError = true)
     //
-    // const { Link: link } = await useClientFetch<{ Link: string }>('payment/get-url', {
+    // const { Link: link } = await useBaseFetch<{ Link: string }>('payment/get-url', {
     //   method: 'POST',
     //   body: {
     //     orderId: SF.orderId

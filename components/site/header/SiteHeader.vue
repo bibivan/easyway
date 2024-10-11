@@ -26,12 +26,18 @@ const state = reactive({
           >
           <NuxtLink
             class="header__link"
-            :to="`catalog?${EProductFilters.GENDER}=${EGender.MALE}`"
+            :to="{
+              name: `catalog-${EProductFilters.GENDER}`,
+              params: { [EProductFilters.GENDER]: EGender.MALE }
+            }"
             >Мужское</NuxtLink
           >
           <NuxtLink
             class="header__link"
-            :to="`catalog?${EProductFilters.GENDER}=${EGender.FEMALE}`"
+            :to="{
+              name: `catalog-${EProductFilters.GENDER}`,
+              params: { [EProductFilters.GENDER]: EGender.FEMALE }
+            }"
             >Женское</NuxtLink
           >
 

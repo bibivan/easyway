@@ -1,10 +1,8 @@
 <script setup lang="ts">
-const cartStore = useCartStore()
-const { cartState, clearCart: handleClearCart } = cartStore
-const { cartTotalPrice } = storeToRefs(cartStore)
-const { isMobile } = storeToRefs(useDeviceTypeStore())
-const { globalScrollbarState } = useGlobalScrollbarStore()
-const { promoState, calculateDiscountedSum } = usePromoStore()
+const { cartData, cartIsShown, cartTotalPrice, clearCart: handleClearCart } = useCartStore()
+const { isMobile } = useDeviceTypeStore()
+const { globalScrollIsHidden } = useGlobalScrollbarStore()
+const { promo, calculateDiscountedSum } = usePromoStore()
 
 const totalSum = computed(() => formatNumberWithSpaces(cartTotalPrice.value))
 
@@ -13,15 +11,15 @@ const discountedSum = computed(() => {
 })
 
 const handleCloseModal = () => {
-  cartState.isShown = false
-  globalScrollbarState.hidden = false
+  cartIsShown.value = false
+  globalScrollIsHidden.value = false
 }
 </script>
 
 <template>
   <transition name="slide-right">
     <div
-      v-if="cartState.isShown"
+      v-if="cartIsShown"
       class="cart-modal"
     >
       <div
@@ -34,7 +32,7 @@ const handleCloseModal = () => {
             <div class="cart-modal__head">
               <h2 class="cart-modal__title">Корзина</h2>
               <button
-                v-if="cartState.data"
+                v-if="cartData"
                 class="cart-modal__clear"
                 @click="handleClearCart"
               >
@@ -48,14 +46,14 @@ const handleCloseModal = () => {
                 <SvgCross v-else />
               </button>
             </div>
-            <template v-if="cartState.data">
+            <template v-if="cartData">
               <PerfectScrollbar
                 class="cart-modal__items-ps"
                 :options="{ suppressScrollY: isMobile }"
               >
                 <div class="cart-modal__items">
                   <CartItem
-                    v-for="item in cartState.data"
+                    v-for="item in cartData"
                     :key="item.id"
                     :data="item"
                   />
@@ -66,7 +64,7 @@ const handleCloseModal = () => {
                 <span class="label-value-info__label">К оплате</span>
                 <span class="label-value-info__value">
                   <span
-                    v-if="promoState.data.value"
+                    v-if="promo.amount"
                     class="cart-modal__initial-sum"
                   >
                     {{ totalSum }} ₽

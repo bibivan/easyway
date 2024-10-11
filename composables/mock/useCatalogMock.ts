@@ -1,8 +1,8 @@
 import type { IPaginatedDataRaw, IProductGroupRaw } from '~/types'
 import { attrsRawToAttrs } from '~/utils/products'
 
-export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>> => {
-  const mockData: IPaginatedDataRaw<IProductGroupRaw[]> = {
+export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
+  return {
     pagination: {
       page: 1,
       pages: 1,
@@ -1459,6 +1459,4 @@ export const useCatalogMock = (): Promise<IPaginatedDataRaw<IProductGroupRaw[]>>
   // }
   //
   // console.log(updatedData)
-
-  return new Promise((resolve) => setTimeout(() => resolve(mockData), 100))
 }

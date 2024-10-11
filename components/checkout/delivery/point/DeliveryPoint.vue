@@ -3,7 +3,7 @@ import type { IDeliveryPoint } from '~/types'
 
 defineProps<{ data: IDeliveryPoint }>()
 
-const { orderState } = useOrderStore()
+const { order } = useOrderStore()
 </script>
 
 <template>
@@ -22,10 +22,10 @@ const { orderState } = useOrderStore()
   </p>
   <button
     class="yandex-balloon__send-btn"
-    :disabled="data === orderState.pickedPoint"
-    @click.stop="orderState.pickedPoint = data"
+    :disabled="data === order.pickedPoint"
+    @click.stop="order.pickedPoint = data"
   >
-    <template v-if="data === orderState.pickedPoint"> Выбрано </template>
+    <template v-if="data === order.pickedPoint"> Выбрано </template>
     <template v-else> Доставить сюда </template>
   </button>
 </template>

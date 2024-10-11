@@ -31,9 +31,50 @@
     }
   }
 
-  &__colors,
+  &__items-wrapper {
+    @include flex-column;
+
+    gap: 15px;
+  }
+
+  &__subtitle {
+    @include text-body;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    @include tablet {
+      font-size: 18px;
+    }
+  }
+
+  &__colors {
+    display: flex;
+    gap: 3px;
+
+    :deep(.color-input__label) {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
   &__sizes {
     display: flex;
-    gap: 5px;
+    gap: 6px;
+
+    @include tablet {
+      gap: 12px;
+    }
+
+    :deep(.size-input__label) {
+      width: 36px;
+      height: 36px;
+      background-color: $color-bg-btn-light;
+
+      @include tablet {
+        width: 50px;
+        height: 50px;
+      }
+    }
   }
 }
