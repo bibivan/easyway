@@ -38,7 +38,7 @@ const separateCouriersAndPickupPoints = (data: IDeliveriesDataItem) => {
 const getDeliveries = async (fiases: Array<TNullable<string>>) => {
   for (const fias of fiases) {
     if (fias) {
-      const { data, success } = await useBaseFetch<IDeliveriesDataRaw>('pickup-sdt/get-pickups', {
+      const { data, success } = await useClientFetch<IDeliveriesDataRaw>('pickup-sdt/get-pickups', {
         method: 'POST',
         body: {
           fias: fias,

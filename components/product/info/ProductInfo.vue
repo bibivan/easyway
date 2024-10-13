@@ -3,7 +3,7 @@ import type { IProduct } from '~/types'
 
 defineProps<{ product: IProduct }>()
 
-const { data: productGroup } = useProductGroupStore()
+const { data } = await useProductGroupStore()
 const modelColor = defineModel<string>('color')
 const modelSize = defineModel<string>('size')
 </script>
@@ -17,13 +17,13 @@ const modelSize = defineModel<string>('size')
     </div>
 
     <div
-      v-if="productGroup"
+      v-if="data"
       class="product-info__items-wrapper"
     >
       <h2 class="product-info__subtitle">Цвет</h2>
       <div class="product-info__colors">
         <BaseColorInput
-          v-for="color in productGroup.colors"
+          v-for="color in data.colors"
           :id="'product_color_' + color"
           :key="'product-color-' + color"
           v-model="modelColor"
@@ -34,13 +34,13 @@ const modelSize = defineModel<string>('size')
       </div>
     </div>
     <div
-      v-if="productGroup"
+      v-if="data"
       class="product-info__items-wrapper"
     >
       <h2 class="product-info__subtitle">Размер</h2>
       <div class="product-info__sizes">
         <BaseSizeInput
-          v-for="size in productGroup.sizes"
+          v-for="size in data.sizes"
           :id="'product_size_' + size"
           :key="'product-size-' + size"
           v-model="modelSize"

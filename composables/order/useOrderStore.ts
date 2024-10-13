@@ -61,7 +61,7 @@ export const useOrderStore = () => {
   }
 
   const sendOrder = async <ISendOrderResponse>(payload: ISendOrderPayload) => {
-    return await useBaseFetch<ISendOrderResponse>('orders/add', {
+    return await useClientFetch<ISendOrderResponse>('orders/add', {
       method: 'POST',
       body: payload
     })

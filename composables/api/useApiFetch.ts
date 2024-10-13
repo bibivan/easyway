@@ -1,28 +1,19 @@
-type useFetchType = typeof useFetch
+import type { UseFetchOptions } from 'nuxt/app'
+import { defu } from 'defu'
+import type { $Fetch, NitroFetchRequest } from 'nitropack'
 
-export const useApiFetch: useFetchType = (path, options = {}) => {
-  options.baseURL = getBaseUrl()
-
-  if (options.method === 'GET') {
-    options.query = {
-      ...options.query,
-      token: getShopToken()
-    }
-  } else {
-    options.body = {
-      ...(typeof options?.body === 'object' && options?.body),
-      token: getShopToken()
-    }
+export function useApiFetch<ResT, DataT>(
+  request: NitroFetchRequest,
+  options: UseFetchOptions<ResT, DataT> = {}
+) {
+  const defaults: typeof options = {
+    baseURL: getBaseUrl(),
+    $fetch: useNuxtApp().$api as $Fetch<unknown, NitroFetchRequest>
   }
-  return useFetch(path, options)
-}
 
-// type useFetchType = typeof useFetch
-//
-// export const useApiFetch: useFetchType = (path, options = {}) => {
-//   const config = useRuntimeConfig()
-//
-//   // modify options as needed
-//   options.baseURL = config.public.baseURL
-//   return useFetch(path, options)
-// }
+  // Получаем токен
+  const optionsWithToken = addTokenToRequest<ResT, DataT>(options) as UseFetchOptions<ResT, DataT>
+  const params = defu(optionsWithToken, defaults)
+
+  return useFetch(request, params)
+}

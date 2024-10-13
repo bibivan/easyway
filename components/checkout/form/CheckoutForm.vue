@@ -26,7 +26,7 @@ const handleSendData = async () => {
     //
     // if (!SF.orderId) return (state.checkoutError = true)
     //
-    // const { Link: link } = await useBaseFetch<{ Link: string }>('payment/get-url', {
+    // const { Link: link } = await useClientFetch<{ Link: string }>('payment/get-url', {
     //   method: 'POST',
     //   body: {
     //     orderId: SF.orderId

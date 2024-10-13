@@ -1,13 +1,18 @@
-import type { IPaginatedDataRaw, IProductGroupRaw } from '~/types'
+import type { IPaginatedData, IPaginatedDataRaw, IProductGroup, IProductGroupRaw } from '~/types'
 
 export const useCatalogStore = () => {
   const route = useRoute()
+  const brandParam = computed(() => route.meta.brand)
+  const genderParam = computed(() => route.params.gender)
 
-  const catalogState = useApiFetch('products/get', {
+  const catalogState = useApiFetch<
+    IPaginatedDataRaw<IProductGroupRaw[]>,
+    IPaginatedData<IProductGroup[]>
+  >('products/get', {
     method: 'GET',
     params: {
-      'filter[BRAND]': route.meta.brand,
-      'filter[gender][]': route.params.gender
+      'filter[BRAND]': brandParam,
+      'filter[gender][]': genderParam
     },
     transform: (data: IPaginatedDataRaw<IProductGroupRaw[]>) => {
       data = useCatalogMock()

@@ -13,7 +13,7 @@ const { isDesktop } = useDeviceTypeStore()
 const { data, error, status } = await useAsyncData<IProductGroup[]>(
   props.suggestionsName,
   async () => {
-    // const data = await useBaseFetch<IPaginatedDataRaw<IProductGroupRaw[]>>('/products/get/', {
+    // const data = await useClientFetch<IPaginatedDataRaw<IProductGroupRaw[]>>('/products/get/', {
     //   method: 'GET',
     //   params
     // })

@@ -22,6 +22,7 @@ export const useActiveProduct = (data: TGenericRef<TNullable<IProductGroup>>) =>
   watch(
     () => state.color,
     () => {
+      console.log('in watch')
       if (!activeProduct.value) {
         const itemByColor = data.value?.items.find((item) => item.sfAttrs?.color === state.color)
         if (itemByColor?.sfAttrs) state.size = itemByColor.sfAttrs.size
@@ -32,6 +33,7 @@ export const useActiveProduct = (data: TGenericRef<TNullable<IProductGroup>>) =>
   watch(
     () => state.size,
     () => {
+      console.log('in watch')
       if (!activeProduct.value) {
         const itemBySize = data.value?.items.find((item) => item.sfAttrs?.size === state.size)
         if (itemBySize?.sfAttrs) state.color = itemBySize.sfAttrs.color

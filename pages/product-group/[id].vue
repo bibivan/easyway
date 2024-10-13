@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { EFetchStatus, EGender } from '~/types'
 
-const { status, error, data: productGroup, refresh } = useProductGroupStore()
+const { status, error, data: productGroup, refresh } = await useProductGroupStore()
 const { state, activeProduct } = useActiveProduct(productGroup)
-const refr = () => {
-  console.log('ref')
-  refresh()
-}
+
+console.log(activeProduct?.value)
 </script>
 
 <template>
-  <button @click="refr">refresh</button>
+  <button @click="refresh()">refresh</button>
   <section class="product">
     <div class="container">
       <div class="product__content">
