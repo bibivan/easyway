@@ -6,8 +6,7 @@ export const useCatalogStore = () => {
   const genderParam = computed(() => route.params.gender)
 
   return useApiFetch<IPaginatedDataRaw<IProductGroupRaw[]>, IPaginatedData<IProductGroup[]>>(
-    // 'products/get',
-    'products',
+    'products/get',
     {
       method: 'GET',
       params: {
