@@ -1,2 +1,79 @@
-.promo-banner {
+.promo {
+  &__content {
+    @include flex-column-center-center;
+
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    border-radius: $border-radius-s;
+    background-color: #f0d5c9;
+    color: $color-text-light;
+
+    @include tablet {
+      min-height: 540px;
+    }
+  }
+
+  &__text {
+    position: relative;
+    z-index: $ui-index-2;
+  }
+
+  &__heading {
+    @include text-heading;
+
+    margin-bottom: 12px;
+    font-size: 30px;
+    line-height: 1.1em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__description {
+    @include text-body;
+
+    margin-bottom: 36px;
+    font-size: 16px;
+    line-height: 1.1em;
+    text-align: center;
+
+    @include tablet {
+      font-size: 20px;
+    }
+  }
+
+  &__banner {
+    position: absolute;
+    z-index: $ui-index-0;
+    inset: 0;
+    object-fit: cover;
+    object-position: center;
+
+    &_rotated {
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: auto;
+      transform: rotate(19deg) translate(-75%, -40%);
+    }
+  }
+
+  &__overlay-text {
+    @include text-heading;
+
+    position: absolute;
+    z-index: $ui-index-1;
+    top: 27px;
+    left: 56px;
+    display: none;
+    font-size: 272px;
+    line-height: 1.1em;
+    opacity: 0.4;
+    text-transform: uppercase;
+
+    @include md-desktop {
+      display: block;
+      width: calc(100% - 112px);
+    }
+  }
 }

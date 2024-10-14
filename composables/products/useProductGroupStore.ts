@@ -8,7 +8,8 @@ export const useProductGroupStore = () => {
   })
 
   return useApiFetch<IPaginatedDataRaw<IProductGroupRaw[]>, TNullable<IProductGroup>>(
-    'products/get',
+    // 'products/get',
+    'products',
     {
       method: 'GET',
       params: {
