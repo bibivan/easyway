@@ -10,8 +10,8 @@ const {
 const { isMobile } = useDeviceTypeStore()
 const { state, activeProduct } = useActiveProduct(toRef(props, 'data'))
 
-const isInCart = computed(() => {
-  return cartData.value ? arrayHasElem(cartData.value, 'id', activeProduct?.value?.id) : false
+const productIsInCart = computed(() => {
+  return arrayHasElem(cartData.value || [], 'id', activeProduct?.value?.id)
 })
 </script>
 
@@ -64,12 +64,12 @@ const isInCart = computed(() => {
         <p class="catalog-item__price">{{ activeProduct.price }} ₽</p>
 
         <CatalogItemsCounter
-          v-if="isInCart && !isMobile"
+          v-if="productIsInCart && !isMobile"
           :id="activeProduct.id"
           class="catalog-item__counter"
         />
         <button
-          v-else-if="isInCart"
+          v-else-if="productIsInCart"
           class="catalog-item__btn"
           @click="handleDeleteCartItem(activeProduct.id)"
         >

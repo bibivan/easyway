@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { EFetchStatus, EGender } from '~/types'
 
-const { status, error, data: productGroup, refresh } = await useProductGroupStore()
+const { status, error, data: productGroup, refresh } = useProductGroupStore()
+await refresh()
 const { state, activeProduct } = useActiveProduct(productGroup)
-
-console.log(activeProduct?.value)
 </script>
 
 <template>
-  <button @click="refresh()">refresh</button>
   <section class="product">
     <div class="container">
       <div class="product__content">
@@ -21,9 +19,11 @@ console.log(activeProduct?.value)
             :images="activeProduct.pictures"
           />
           <ProductInfo
-            v-if="state && activeProduct"
+            v-if="state && activeProduct && productGroup"
             v-model:color="state.color"
             v-model:size="state.size"
+            :colors="productGroup.colors"
+            :sizes="productGroup.sizes"
             :product="activeProduct"
             class="product__info"
           />

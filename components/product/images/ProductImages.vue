@@ -11,14 +11,9 @@ const { isMobile } = useDeviceTypeStore()
       class="base-swiper product-images__swiper"
       :draggable="true"
       :grab-cursor="true"
-      :loop="true"
-      :modules="[SwiperPagination, SwiperAutoplay]"
+      :modules="[SwiperPagination]"
       :space-between="20"
       :initial-slide="0"
-      :autoplay="{
-        delay: 250000,
-        disableOnInteraction: false
-      }"
       :pagination="{
         el: '.product-images__swiper-pagination',
         clickable: true

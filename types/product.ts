@@ -67,6 +67,7 @@ export interface IProductGroupRaw {
   COLORS: string[]
   GROUP_ID: string
   CATEGORY: string
+  GENDER: string
   ITEMS: IProductRaw[]
 }
 
@@ -75,6 +76,7 @@ export interface IProductGroup {
   colors: string[]
   groupId: number
   category: string
+  gender: EGender
   items: IProduct[]
 }
 

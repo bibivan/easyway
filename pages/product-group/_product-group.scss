@@ -1,11 +1,18 @@
 .product {
   @include tablet {
-    padding: $section-indent-desktop;
+    padding: $section-indent-desktop 0;
+  }
+
+  &__content {
+    @include tablet {
+      display: flex;
+      gap: $section-indent-desktop;
+    }
   }
 
   &__info {
-    @include flex-column;
-
-    gap: 10px;
+    @include desktop {
+      flex-grow: 1;
+    }
   }
 }

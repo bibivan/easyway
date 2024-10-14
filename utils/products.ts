@@ -78,6 +78,7 @@ export const productGroupRawToProductGroup = (data: IProductGroupRaw): IProductG
     colors: parseJSON(data.COLORS),
     groupId: parseJSON(data.GROUP_ID),
     category: toNullable(data.CATEGORY),
+    gender: toNullable(data.GENDER),
     items: data.ITEMS.map((item: IProductRaw) => productRawToProduct(item))
   }
 }

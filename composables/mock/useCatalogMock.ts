@@ -14,6 +14,7 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         COLORS: ['black', 'white', 'red', 'green'],
         GROUP_ID: '0',
         CATEGORY: 'Футболки',
+        GENDER: 'MALE',
         ITEMS: [
           {
             ARTICLE: 'article-0-00',
@@ -342,6 +343,7 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         COLORS: ['black', 'white', 'green'],
         GROUP_ID: '1',
         CATEGORY: 'Шорты',
+        GENDER: 'MALE',
         ITEMS: [
           {
             ARTICLE: 'article-1-00',
@@ -494,6 +496,7 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         COLORS: ['black', 'red', 'green'],
         GROUP_ID: '2',
         CATEGORY: 'Легинсы',
+        GENDER: 'MALE',
         ITEMS: [
           {
             ARTICLE: 'article-2-00',
@@ -646,6 +649,7 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         COLORS: ['white', 'red', 'green'],
         GROUP_ID: '3',
         CATEGORY: 'Брюки',
+        GENDER: 'MALE',
         ITEMS: [
           {
             ARTICLE: 'article-3-10',
@@ -798,6 +802,7 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         COLORS: ['black', 'white', 'red'],
         GROUP_ID: '4',
         CATEGORY: 'Аксессуары',
+        GENDER: 'MALE',
         ITEMS: [
           {
             ARTICLE: 'article-4-00',
@@ -950,6 +955,7 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         COLORS: ['black', 'white', 'green'],
         GROUP_ID: '5',
         CATEGORY: 'Лонгсливы',
+        GENDER: 'MALE',
         ITEMS: [
           {
             ARTICLE: 'article-5-00',
@@ -1102,6 +1108,7 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         COLORS: ['black', 'white', 'green'],
         GROUP_ID: '6',
         CATEGORY: 'Футболки',
+        GENDER: 'MALE',
         ITEMS: [
           {
             ARTICLE: 'article-6-00',
@@ -1254,6 +1261,7 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         COLORS: ['blue', 'white', 'red', 'green'],
         GROUP_ID: '7',
         CATEGORY: 'Шорты',
+        GENDER: 'MALE',
         ITEMS: [
           {
             ARTICLE: 'article-7-100',

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { EFetchStatus } from '~/types'
 
-const { catalogState, catalogItems } = useCatalogStore()
-const { status, error } = catalogState
+const { status, error, data: catalogData } = useCatalogStore()
 </script>
 
 <template>
@@ -14,7 +13,7 @@ const { status, error } = catalogState
         class="catalog"
       >
         <CatalogItem
-          v-for="item in catalogItems"
+          v-for="item in catalogData?.items"
           :key="item.groupId"
           :data="item"
         />

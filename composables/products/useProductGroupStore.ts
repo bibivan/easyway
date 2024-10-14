@@ -1,17 +1,21 @@
 import type { IPaginatedDataRaw, IProductGroup, IProductGroupRaw, TNullable } from '~/types'
 
-export const useProductGroupStore = async () => {
+export const useProductGroupStore = () => {
   const route = useRoute()
-  const groupId = computed(() => route.params.groupId)
+  const id = computed<number>(() => {
+    const id = Array.isArray(route.params.id) ? route.params.id[0] : route.params.id
+    return parseInt(id, 10)
+  })
 
   return useApiFetch<IPaginatedDataRaw<IProductGroupRaw[]>, TNullable<IProductGroup>>(
-    'products/get',
+    // 'products/get',
+    'products',
     {
       method: 'GET',
       params: {
-        id: groupId
+        id
       },
-      // immediate: false,
+      immediate: false,
       transform: (data: IPaginatedDataRaw<IProductGroupRaw[]>) => {
         data = useCatalogMock()
         return (
@@ -19,7 +23,7 @@ export const useProductGroupStore = async () => {
             .map((item: IProductGroupRaw) => {
               return productGroupRawToProductGroup(item)
             })
-            .find((item) => item.groupId === parseInt(route.params.id as string, 10)) || null
+            .find((item) => item.groupId === id?.value) || null
         )
       }
     }

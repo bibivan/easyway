@@ -11,6 +11,7 @@
 
   @include desktop {
     max-width: 640px;
+    flex-shrink: 0;
   }
 
   &__swiper-pagination {

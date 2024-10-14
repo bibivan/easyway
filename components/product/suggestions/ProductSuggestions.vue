@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { EFetchStatus, type IProductGroup, type IProductGroupRaw } from '~/types'
+import {
+  EFetchStatus,
+  EGender,
+  EProductFilters,
+  type IProductGroup,
+  type IProductGroupRaw
+} from '~/types'
 
 const props = defineProps<{
   suggestionsName: string
@@ -25,7 +31,6 @@ const { data, error, status } = await useAsyncData<IProductGroup[]>(
     })
   }
 )
-
 const desktopData = computed(() => data.value?.slice(0, 4))
 </script>
 
@@ -36,8 +41,12 @@ const desktopData = computed(() => data.value?.slice(0, 4))
         <div class="product-suggestions__head">
           <h2 class="product-suggestions__heading">{{ suggestionsLabel }}</h2>
           <NuxtLink
+            v-if="data"
             class="product-suggestions__link"
-            to="catalog"
+            :to="{
+              name: `catalog-${EProductFilters.GENDER}`,
+              params: { [EProductFilters.GENDER]: data[0].gender || EGender.FEMALE }
+            }"
           >
             Смотреть все
             <SvgChevronRight />

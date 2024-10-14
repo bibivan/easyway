@@ -98,10 +98,10 @@ body {
 .section {
   overflow: hidden;
   width: 100%;
-  padding: $section-indent;
+  padding: $section-indent 0;
 
   @include desktop {
-    padding: $section-indent-desktop;
+    padding: $section-indent-desktop 0;
   }
 }
 

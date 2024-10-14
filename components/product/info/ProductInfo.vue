@@ -1,11 +1,22 @@
 <script setup lang="ts">
-import type { IProduct } from '~/types'
+import { EProductSizeAttr, type IProduct } from '~/types'
 
-defineProps<{ product: IProduct }>()
+const props = defineProps<{
+  product: IProduct
+  colors: string[]
+  sizes: EProductSizeAttr[]
+}>()
 
-const { data } = await useProductGroupStore()
+const { cartData, putToCart: handlePutToCart, deleteCartItem } = useCartStore()
+
 const modelColor = defineModel<string>('color')
 const modelSize = defineModel<string>('size')
+const productIsInCart = computed(() => arrayHasElem(cartData.value || [], 'id', props.product.id))
+
+const handleDeleteCartItem = () => {
+  deleteCartItem(props.product.id)
+  useNuxtApp().$toast('Товар удален из коризны')
+}
 </script>
 
 <template>
@@ -16,14 +27,11 @@ const modelSize = defineModel<string>('size')
       <p class="product-info__article">{{ product.article }}</p>
     </div>
 
-    <div
-      v-if="data"
-      class="product-info__items-wrapper"
-    >
+    <div class="product-info__items-wrapper">
       <h2 class="product-info__subtitle">Цвет</h2>
       <div class="product-info__colors">
         <BaseColorInput
-          v-for="color in data.colors"
+          v-for="color in colors"
           :id="'product_color_' + color"
           :key="'product-color-' + color"
           v-model="modelColor"
@@ -33,14 +41,11 @@ const modelSize = defineModel<string>('size')
         />
       </div>
     </div>
-    <div
-      v-if="data"
-      class="product-info__items-wrapper"
-    >
+    <div class="product-info__items-wrapper">
       <h2 class="product-info__subtitle">Размер</h2>
       <div class="product-info__sizes">
         <BaseSizeInput
-          v-for="size in data.sizes"
+          v-for="size in sizes"
           :id="'product_size_' + size"
           :key="'product-size-' + size"
           v-model="modelSize"
@@ -48,6 +53,48 @@ const modelSize = defineModel<string>('size')
           type="radio"
         />
       </div>
+    </div>
+
+    <div class="product-info__description product-info__items-wrapper">
+      <h2 class="product-info__subtitle">Описание</h2>
+      <p class="product-info__text">
+        {{ product.sfAttrs?.description }}
+      </p>
+    </div>
+    <div class="product-info__composition product-info__items-wrapper">
+      <h2 class="product-info__subtitle">Состав:</h2>
+      <p class="product-info__text">
+        {{ product.sfAttrs?.composition }}
+      </p>
+    </div>
+    <div class="product-info__care product-info__items-wrapper">
+      <h2 class="product-info__subtitle">Состав:</h2>
+      <p class="product-info__text">
+        {{ product.sfAttrs?.careInstructions }}
+      </p>
+    </div>
+
+    <div class="product-info__actions">
+      <button
+        v-if="productIsInCart"
+        class="btn"
+        @click="handleDeleteCartItem"
+      >
+        Удалить из корзины
+      </button>
+      <button
+        v-else
+        class="btn"
+        @click="handlePutToCart(product)"
+      >
+        В корзину
+      </button>
+      <button
+        v-if="false"
+        class="btn"
+      >
+        <SvgFavorite />
+      </button>
     </div>
   </div>
 </template>
