@@ -41,7 +41,7 @@ const collaborators = useCollaboratorsMock()
   <section class="section">
     <div class="container">
       <div class="collaborators">
-        <GlobalHeading
+        <CommonHeading
           class="collaborators__heading"
           title="Образы"
           :to="{
@@ -69,7 +69,7 @@ const collaborators = useCollaboratorsMock()
   <section class="section">
     <div class="container">
       <div class="collaborators">
-        <GlobalHeading
+        <CommonHeading
           class="collaborators__heading"
           title="Амбассадоры"
           :to="{

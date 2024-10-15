@@ -32,5 +32,5 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
-@import 'global-message-frame';
+@import 'common-message-frame';
 </style>

@@ -2,15 +2,14 @@
 
 <template>
   <NuxtLayout name="404">
-    <GlobalMessageFrame
+    <CommonMessageFrame
       title="Упс! страница не&nbsp;найдена("
-      description="Похоже, запрашиваемая вами страница не&nbsp;найдена. Но&nbsp;на&nbsp;нашем сайте много
-              другой интересной информации"
+      description="Похоже, запрашиваемая вами страница не&nbsp;найдена. Но&nbsp;на&nbsp;нашем сайте много другой интересной информации"
       btn-content="На главную"
       to="/"
     >
-      <Svg404 class="status" />
-    </GlobalMessageFrame>
+      <SvgNotFoundStatus class="status" />
+    </CommonMessageFrame>
   </NuxtLayout>
 </template>
 

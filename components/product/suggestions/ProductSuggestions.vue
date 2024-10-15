@@ -34,7 +34,7 @@ const desktopData = computed(() => data.value?.slice(0, 4))
   <section class="section">
     <div class="container">
       <div class="product-suggestions">
-        <GlobalHeading
+        <CommonHeading
           v-if="data"
           :title="suggestionsLabel"
           :to="to"

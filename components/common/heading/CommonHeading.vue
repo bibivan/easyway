@@ -8,10 +8,10 @@ defineProps<{
 </script>
 
 <template>
-  <div class="global-heading">
-    <h2 class="global-heading__title">{{ title }}</h2>
+  <div class="common-heading">
+    <h2 class="common-heading__title">{{ title }}</h2>
     <NuxtLink
-      class="global-heading__link"
+      class="common-heading__link"
       :to="to"
     >
       Смотреть все
@@ -21,5 +21,5 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
-@import 'global-heading';
+@import 'common-heading';
 </style>
