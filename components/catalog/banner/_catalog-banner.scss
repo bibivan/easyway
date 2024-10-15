@@ -1,4 +1,4 @@
-.promo {
+.catalog-banner {
   &__content {
     @include flex-column-center-center;
 
@@ -42,7 +42,7 @@
     }
   }
 
-  &__banner {
+  &__img {
     position: absolute;
     z-index: $ui-index-0;
     inset: 0;
@@ -74,6 +74,14 @@
     @include md-desktop {
       display: block;
       width: calc(100% - 112px);
+    }
+  }
+
+  &__link {
+    max-width: 194px;
+
+    @include tablet {
+      max-width: 220px;
     }
   }
 }

@@ -2,43 +2,6 @@
   @include flex-column;
   @include base-gap;
 
-  &__head {
-    @include flex-row-center-between;
-  }
-
-  &__heading {
-    @include text-body;
-
-    font-size: 16px;
-    font-weight: 700;
-
-    @include tablet {
-      font-size: 24px;
-    }
-  }
-
-  &__link {
-    @include flex-row-center-between;
-    @include text-body;
-
-    font-size: 12px;
-    gap: 10px;
-
-    @include tablet {
-      font-size: 16px;
-    }
-
-    svg {
-      width: 5px;
-      height: 9px;
-
-      @include tablet {
-        width: 7px;
-        height: 14px;
-      }
-    }
-  }
-
   &__swiper {
     overflow: visible;
   }

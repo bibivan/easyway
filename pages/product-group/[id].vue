@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { EFetchStatus, EGender } from '~/types'
+import { EFetchStatus, EGender, EProductFilters } from '~/types'
 
-const { status, error, data: productGroup, refresh } = useProductGroupStore()
+const route = useRoute()
+const id = parseInt(Array.isArray(route.params.id) ? route.params.id[0] : route.params.id, 10)
+
+const { status, error, data: productGroup, refresh } = useProductGroup(id)
 await refresh()
 const { state, activeProduct } = useActiveProduct(productGroup)
+
+if (process.server) console.log(id)
 </script>
 
 <template>
@@ -36,12 +41,20 @@ const { state, activeProduct } = useActiveProduct(productGroup)
     suggestions-label="Собери образ"
     :with-slider="true"
     :params="{ gender: EGender.FEMALE }"
+    :to="{
+      name: `catalog-${EProductFilters.GENDER}`,
+      params: { [EProductFilters.GENDER]: EGender.FEMALE }
+    }"
   />
   <ProductSuggestions
     suggestions-name="similar"
     suggestions-label="Похожее"
     :with-slider="true"
     :params="{ gender: EGender.FEMALE }"
+    :to="{
+      name: `catalog-${EProductFilters.GENDER}`,
+      params: { [EProductFilters.GENDER]: EGender.FEMALE }
+    }"
   />
 </template>
 

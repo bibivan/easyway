@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { RouteLocationRaw } from 'vue-router'
 import {
   EFetchStatus,
   EGender,
@@ -12,6 +13,7 @@ const props = defineProps<{
   suggestionsLabel: string
   params: Record<string, string>
   withSlider?: boolean
+  to: RouteLocationRaw
 }>()
 
 const { isDesktop } = useDeviceTypeStore()
@@ -38,20 +40,11 @@ const desktopData = computed(() => data.value?.slice(0, 4))
   <section class="section">
     <div class="container">
       <div class="product-suggestions">
-        <div class="product-suggestions__head">
-          <h2 class="product-suggestions__heading">{{ suggestionsLabel }}</h2>
-          <NuxtLink
-            v-if="data"
-            class="product-suggestions__link"
-            :to="{
-              name: `catalog-${EProductFilters.GENDER}`,
-              params: { [EProductFilters.GENDER]: data[0].gender || EGender.FEMALE }
-            }"
-          >
-            Смотреть все
-            <SvgChevronRight />
-          </NuxtLink>
-        </div>
+        <CommonHeading
+          v-if="data"
+          :title="suggestionsLabel"
+          :to="to"
+        />
         <div class="product-suggestions__body">
           <BaseSpinner v-if="status === EFetchStatus.PENDING" />
           <template v-if="status === EFetchStatus.ERROR">{{ error?.message }}</template>

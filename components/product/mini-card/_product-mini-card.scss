@@ -1,0 +1,124 @@
+.mini-card {
+  @include flex-column-bottom-center;
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: $border-radius-s;
+
+  &__overlay {
+    position: absolute;
+    z-index: $ui-index-0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: $border-radius-s;
+    background-color: $color-primary;
+    opacity: 0;
+  }
+
+  &__open-btn {
+    @include flex-row-center-center;
+
+    position: absolute;
+    top: 14px;
+    left: calc(50% - 10px);
+    width: 20px;
+    height: 20px;
+    padding: 6px;
+    border-radius: 50%;
+    backdrop-filter: blur(60px);
+    background-color: rgba($color-bg-section, 0.2);
+    color: $color-text-light;
+
+    @include tablet {
+      top: calc(50% - 22px);
+      left: calc(50% - 22px);
+      width: 44px;
+      height: 44px;
+      padding: 14px;
+    }
+  }
+
+  &__dialog {
+    position: relative;
+    z-index: $ui-index-1;
+    display: grid;
+    max-width: 330px;
+    padding: 10px 40px 10px 10px;
+    border-radius: $border-radius-s;
+    background-color: $color-bg-section;
+    box-shadow: 0 0 6px rgba($color-primary, 0.3);
+    gap: 14px;
+    grid-template-columns: 113px auto;
+  }
+
+  &__img {
+    width: 100%;
+    height: 134px;
+    border-radius: $border-radius-s;
+    object-fit: cover;
+  }
+
+  &__text {
+    @include flex-column-between-start;
+
+    height: 100%;
+  }
+
+  &__name {
+    @include text-body;
+
+    overflow: hidden;
+    max-height: 44px;
+    font-size: 16px;
+
+    @include tablet {
+      max-height: 50px;
+      font-size: 18px;
+    }
+  }
+
+  &__to-favorites {
+    color: $color-note;
+  }
+
+  &__price {
+    font-size: 16px;
+    font-weight: 700;
+
+    @include tablet {
+      font-size: 18px;
+    }
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+
+    @include tablet {
+      padding: 0;
+    }
+  }
+
+  &_opened {
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+
+    @include desktop {
+      position: relative;
+      justify-content: flex-end;
+    }
+
+    .mini-card__overlay {
+      opacity: 0.6;
+    }
+  }
+}

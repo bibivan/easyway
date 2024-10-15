@@ -1,12 +1,6 @@
 import type { IPaginatedDataRaw, IProductGroup, IProductGroupRaw, TNullable } from '~/types'
 
-export const useProductGroupStore = () => {
-  const route = useRoute()
-  const id = computed<number>(() => {
-    const id = Array.isArray(route.params.id) ? route.params.id[0] : route.params.id
-    return parseInt(id, 10)
-  })
-
+export const useProductGroup = (id: number) => {
   return useApiFetch<IPaginatedDataRaw<IProductGroupRaw[]>, TNullable<IProductGroup>>(
     // 'products/get',
     'products',
@@ -23,7 +17,7 @@ export const useProductGroupStore = () => {
             .map((item: IProductGroupRaw) => {
               return productGroupRawToProductGroup(item)
             })
-            .find((item) => item.groupId === id?.value) || null
+            .find((item) => item.groupId === id) || null
         )
       }
     }

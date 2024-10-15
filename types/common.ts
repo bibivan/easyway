@@ -40,3 +40,8 @@ export enum EErrorPosition {
 export interface IInputEmitEvents {
   [key: string]: any[]
 }
+
+export interface ICollaborator {
+  img: string
+  name: string
+}

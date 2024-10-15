@@ -1,0 +1,17 @@
+.collaborators {
+  @include flex-column;
+  @include base-gap;
+
+  position: relative;
+  z-index: $ui-index-3;
+
+  &__list {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+
+    @include desktop {
+      display: flex;
+    }
+  }
+}
