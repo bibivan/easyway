@@ -1,0 +1,97 @@
+.footer {
+  &__content {
+    @include base-gap;
+
+    display: grid;
+    grid-template-columns: auto;
+
+    @include tablet {
+      justify-content: space-between;
+      gap: 40px;
+      grid-template-columns: minmax(auto, 270px) minmax(auto, 950px);
+    }
+  }
+
+  &__about {
+    @include tablet {
+      @include flex-column-between-start;
+
+      height: 100%;
+      gap: 20px;
+    }
+  }
+
+  &__socials {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr;
+
+    @include tablet {
+      margin-bottom: auto;
+    }
+  }
+
+  &__social {
+    &_easyway {
+      color: $color-primary;
+    }
+
+    &_easyfit {
+      color: $color-easyfit;
+    }
+  }
+
+  &__menus {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+
+    @include desktop {
+      grid-template-columns: repeat(4, auto);
+    }
+  }
+}
+
+.footer-menu {
+  @include flex-column;
+
+  gap: 10px;
+
+  @include tablet {
+    gap: 24px;
+  }
+
+  &__headline {
+    @include text-body;
+
+    color: $color-text;
+    font-size: 16px;
+    font-weight: 700;
+
+    @include tablet {
+      font-size: 20px;
+    }
+  }
+
+  &__items {
+    @include flex-column;
+
+    gap: 10px;
+
+    @include tablet {
+      gap: 12px;
+    }
+  }
+
+  &__item {
+    @include text-body;
+
+    color: $color-text;
+    font-size: 14px;
+    transition: color 0.2s ease-in-out;
+
+    @include tablet {
+      font-size: 16px;
+    }
+  }
+}

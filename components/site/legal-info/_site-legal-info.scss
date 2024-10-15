@@ -1,0 +1,21 @@
+.legal-info {
+  @include flex-column;
+
+  @include tablet {
+    flex-direction: column-reverse;
+    font-size: 14px;
+    gap: 20px;
+  }
+
+  &__text {
+    @include text-body;
+
+    color: $color-text;
+    font-size: 12px;
+    font-style: normal;
+
+    @include tablet {
+      font-size: 14px;
+    }
+  }
+}

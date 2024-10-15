@@ -2,30 +2,20 @@
 
 <template>
   <NuxtLayout name="404">
-    <div class="main">
-      <section class="section">
-        <div class="container">
-          <div>
-            <h1>Похоже, запрашиваемая вами страница не найдена.</h1>
-            <NuxtLink
-              class="link"
-              to="/"
-            >
-              На главную
-            </NuxtLink>
-          </div>
-        </div>
-      </section>
-    </div>
+    <GlobalMessageFrame
+      title="Упс! страница не&nbsp;найдена("
+      description="Похоже, запрашиваемая вами страница не&nbsp;найдена. Но&nbsp;на&nbsp;нашем сайте много
+              другой интересной информации"
+      btn-content="На главную"
+      to="/"
+    >
+      <Svg404 class="status" />
+    </GlobalMessageFrame>
   </NuxtLayout>
 </template>
 
 <style lang="scss" scoped>
-h1,
-a {
-  display: block;
+.status {
   color: $color-bg-section-darker;
-  margin-bottom: 10px;
-  text-align: center;
 }
 </style>

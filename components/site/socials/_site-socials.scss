@@ -1,0 +1,43 @@
+.socials {
+  @include flex-column-between-start;
+
+  gap: 14px;
+
+  @include tablet {
+    gap: 22px;
+  }
+
+  &__brand-logo {
+    @include flex-row-center-center;
+
+    display: block;
+    max-width: 124px;
+    height: 33px;
+    color: inherit;
+
+    @include tablet {
+      max-width: 134px;
+      height: 31px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 10px;
+
+    @include tablet {
+      gap: 15px;
+    }
+  }
+
+  &__link {
+    width: 30px;
+    height: 30px;
+    color: inherit;
+
+    @include tablet {
+      width: 35px;
+      height: 35px;
+    }
+  }
+}

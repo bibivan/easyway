@@ -9,6 +9,7 @@ const { globalScrollIsHidden } = useGlobalScrollbarStore()
       <slot />
       <CartModal />
     </main>
+    <SiteFooter />
   </PerfectScrollbar>
 </template>
 <script setup lang="ts"></script>

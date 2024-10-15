@@ -1,0 +1,35 @@
+.message {
+  margin: 0 auto;
+
+  @include flex-column;
+
+  gap: 15px;
+
+  @include tablet {
+    max-width: 516px;
+    gap: 45px;
+  }
+
+  &__headline {
+    @include text-heading;
+
+    font-size: 18px;
+    text-align: center;
+
+    @include tablet {
+      font-size: 36px;
+    }
+  }
+
+  &__description {
+    @include text-body;
+
+    color: $color-note;
+    font-size: 14px;
+    text-align: center;
+
+    @include tablet {
+      font-size: 18px;
+    }
+  }
+}

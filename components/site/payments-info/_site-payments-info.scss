@@ -1,0 +1,53 @@
+.payment {
+  @include flex-row-center-between;
+
+  gap: 30px;
+
+  @include tablet {
+    gap: 20px;
+  }
+
+  &__method {
+    height: auto;
+    object-fit: contain;
+
+    //  max-width: 73px;
+    //  max-height: 18px;
+    //  @include tablet {
+    //    max-width: 66px;
+    //    max-height: 20px;
+    //  }
+
+    &_master-card {
+      width: 30px;
+
+      @include tablet {
+        width: 33px;
+      }
+    }
+
+    &_visa {
+      width: 42px;
+
+      @include tablet {
+        width: 47px;
+      }
+    }
+
+    &_uniteller {
+      width: 66px;
+
+      @include tablet {
+        width: 73px;
+      }
+    }
+
+    &_mir {
+      width: 41px;
+
+      @include xs-desktop {
+        width: 46px;
+      }
+    }
+  }
+}

@@ -11,6 +11,7 @@ const { globalScrollIsHidden } = useGlobalScrollbarStore()
     <main class="main">
       <slot />
     </main>
+    <SiteFooter />
     <CartModal />
   </PerfectScrollbar>
 </template>

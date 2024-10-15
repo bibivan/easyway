@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from 'vue-router'
-import {
-  EFetchStatus,
-  EGender,
-  EProductFilters,
-  type IProductGroup,
-  type IProductGroupRaw
-} from '~/types'
+import { EFetchStatus, type IProductGroup, type IProductGroupRaw } from '~/types'
 
 const props = defineProps<{
   suggestionsName: string
@@ -40,7 +34,7 @@ const desktopData = computed(() => data.value?.slice(0, 4))
   <section class="section">
     <div class="container">
       <div class="product-suggestions">
-        <CommonHeading
+        <GlobalHeading
           v-if="data"
           :title="suggestionsLabel"
           :to="to"

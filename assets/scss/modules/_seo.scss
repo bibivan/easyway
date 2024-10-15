@@ -1,0 +1,86 @@
+.seo {
+  &__title {
+    @include text-heading;
+
+    margin-bottom: $line-height-base;
+    color: $color-text;
+    font-size: 18px;
+    text-transform: uppercase;
+
+    @include desktop {
+      font-size: 36px;
+    }
+  }
+
+  &__subtitle,
+  &__text,
+  &__ul,
+  &__ol {
+    @include text-body;
+
+    margin-bottom: $line-height-base;
+    color: $color-text;
+    font-size: 16px;
+
+    @include desktop {
+      font-size: 18px;
+    }
+  }
+
+  &__text {
+    b,
+    strong,
+    &_bold {
+      font-weight: 700;
+    }
+  }
+
+  &__subtitle {
+    display: block;
+    font-weight: 700;
+  }
+
+  &__text + &__title,
+  &__ul + &__title,
+  &__ol + &__title {
+    margin-top: calc(2 * #{$line-height-base});
+  }
+
+  &__ul,
+  &__ol {
+    @include flex-column;
+  }
+
+  &__ol {
+    counter-reset: myCounter;
+  }
+
+  &__li {
+    position: relative;
+    display: inline-block;
+    padding-left: 1em;
+    color: $color-text;
+    font: inherit;
+
+    &::before {
+      margin-right: 1em;
+    }
+  }
+
+  &__ul &__li {
+    &::before {
+      content: '●';
+    }
+  }
+
+  &__ol &__li {
+    &::before {
+      content: counter(myCounter);
+      counter-increment: myCounter;
+    }
+  }
+
+  &__link {
+    color: $color-text;
+  }
+}
