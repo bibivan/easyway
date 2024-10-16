@@ -16,10 +16,7 @@ const closeModal = () => {
 
 <template>
   <div class="payment-process">
-    <BaseSpinner
-      v-if="dataSending"
-      theme="easynutrition"
-    />
+    <BaseSpinner v-if="dataSending" />
     <div
       v-else-if="checkoutError"
       class="payment-process__dialog"

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{ images: string[] }>()
 
-const { isMobile } = useDeviceTypeStore()
+const { isMobile } = storeToRefs(useDeviceTypeStore())
 </script>
 
 <template>

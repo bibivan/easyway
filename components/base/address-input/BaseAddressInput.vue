@@ -18,7 +18,6 @@ const props = withDefaults(
     id: string
     locationRestrictions?: ILocationRestrictionItem[]
     placeholder?: string
-    theme?: string
   }>(),
   { placeholder: 'Адрес' }
 )
@@ -132,7 +131,6 @@ watch(
     :class="[
       'address-input',
       {
-        ['input-block_' + theme]: theme,
         'input-block_valid': isValid && !!state.inputValue,
         'input-block_invalid': hasError
       }

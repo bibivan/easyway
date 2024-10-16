@@ -1,7 +1,19 @@
 <script setup lang="ts">
-import { EFetchStatus } from '~/types'
+import { EFetchStatus, EProductFilters } from '~/types'
+import { watch } from 'vue'
 
-const { status, error, data: catalogData } = useCatalogStore()
+const route = useRoute()
+const { status, error, data: catalogData } = useCatalog()
+
+watch(
+  () => route?.query[EProductFilters.BRAND],
+  (value) => {
+    const theme = Array.isArray(value) ? value[0] : value || ''
+
+    document?.body.setAttribute('data-theme', theme || '')
+  },
+  { immediate: true }
+)
 </script>
 
 <template>

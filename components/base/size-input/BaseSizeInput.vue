@@ -2,7 +2,6 @@
 defineProps<{
   value: string | number | boolean | K
   id: string
-  theme?: string
   type: 'checkbox' | 'radio'
 }>()
 
@@ -15,7 +14,7 @@ const modelValue = defineModel<T>()
 </script>
 
 <template>
-  <div :class="'size-input size-input_' + theme">
+  <div class="size-input">
     <input
       :id="id"
       v-model="modelValue"

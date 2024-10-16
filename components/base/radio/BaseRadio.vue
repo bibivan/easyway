@@ -4,7 +4,6 @@ import type { TNullable } from '~/types'
 defineProps<{
   value: string | number | boolean | K
   id: string
-  theme?: string
   checked?: boolean
   label?: string
 }>()
@@ -18,14 +17,7 @@ const modelValue = defineModel<TNullable<T>>()
 </script>
 
 <template>
-  <div
-    :class="[
-      'base-radio',
-      {
-        ['base-radio_' + theme]: theme
-      }
-    ]"
-  >
+  <div class="base-radio">
     <input
       :id="id"
       v-model="modelValue"

@@ -10,9 +10,9 @@ const initBtnEvenListeners = () => {
     const targetElement = event.target as EventTarget &
       HTMLButtonElement & { dataset: { pickupPointIndex: number } }
     const pointIndex = +targetElement?.dataset?.pickupPointIndex
-    if (pointIndex && order.value.deliveryPoints) {
+    if (pointIndex && order.deliveryPoints) {
       event.preventDefault()
-      order.value.pickedPoint = order.value.deliveryPoints[pointIndex as number]
+      order.pickedPoint = order.deliveryPoints[pointIndex as number]
       targetElement.classList.add('btn--disabled')
       targetElement.disabled = true
       targetElement.textContent = 'Выбрано'
@@ -41,9 +41,9 @@ const getMarkerProperties = (point: IDeliveryPoint, index: number) => ({
 })
 
 const setMapCenter = (zoom: number) => {
-  if (order.value?.addressData?.data.geo_lat && order.value?.addressData.data.geo_lon) {
+  if (order?.addressData?.data.geo_lat && order?.addressData.data.geo_lon) {
     mapInstance.setCenter(
-      [+order.value?.addressData.data.geo_lat, +order.value?.addressData.data.geo_lon],
+      [+order?.addressData.data.geo_lat, +order?.addressData.data.geo_lon],
       zoom,
       {
         checkZoomRange: true,
@@ -60,7 +60,7 @@ const setMapInstance = (map: YaMapInstance) => {
 }
 
 watch(
-  [() => order.value.addressData?.data?.geo_lat, () => order.value.addressData?.data?.geo_lon],
+  [() => order.addressData?.data?.geo_lat, () => order.addressData?.data?.geo_lon],
   (val, oldVal) => {
     if (!oldVal.length || mapInstance) return
     setMapCenter(14)

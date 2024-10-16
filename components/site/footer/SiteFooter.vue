@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { EGender, EProductFilters } from '~/types'
+import { EBrand, EGender, EProductFilters } from '~/types'
 
-const { isMobile } = useDeviceTypeStore()
+const { isMobile } = storeToRefs(useDeviceTypeStore())
 </script>
 
 <template>
@@ -39,18 +39,18 @@ const { isMobile } = useDeviceTypeStore()
             <div class="footer-menu__items">
               <NuxtLink
                 class="footer-menu__item"
-                to="/#about_brand"
-                >easynutrition</NuxtLink
+                to="/"
+                >EASYWAY</NuxtLink
               >
               <NuxtLink
                 class="footer-menu__item"
-                :to="{ path: '/customer-information', hash: '#collaboration' }"
-                >Сотрудничество</NuxtLink
-              >
-              <NuxtLink
-                class="footer-menu__item"
-                :to="{ path: '/customer-information', hash: '#vacancies' }"
-                >Вакансии</NuxtLink
+                :to="{
+                  name: 'catalog',
+                  query: {
+                    [EProductFilters.BRAND]: EBrand.EASYFIT
+                  }
+                }"
+                >Бренд-линейка easyfit</NuxtLink
               >
             </div>
           </div>
@@ -58,19 +58,23 @@ const { isMobile } = useDeviceTypeStore()
             <p class="footer-menu__headline">Каталог</p>
             <div class="footer-menu__items">
               <NuxtLink
-                class="links__item"
+                class="footer-menu__item"
                 :to="{
-                  name: `catalog-${EProductFilters.GENDER}`,
-                  params: { [EProductFilters.GENDER]: EGender.MALE }
+                  name: 'catalog',
+                  query: {
+                    [EProductFilters.GENDER]: EGender.MALE
+                  }
                 }"
               >
                 Мужское
               </NuxtLink>
               <NuxtLink
-                class="links__item"
+                class="footer-menu__item"
                 :to="{
-                  name: `catalog-${EProductFilters.GENDER}`,
-                  params: { [EProductFilters.GENDER]: EGender.FEMALE }
+                  name: 'catalog',
+                  query: {
+                    [EProductFilters.GENDER]: EGender.FEMALE
+                  }
                 }"
               >
                 Женское

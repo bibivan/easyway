@@ -7,8 +7,6 @@ const id = parseInt(Array.isArray(route.params.id) ? route.params.id[0] : route.
 const { status, error, data: productGroup, refresh } = useProductGroup(id)
 await refresh()
 const { state, activeProduct } = useActiveProduct(productGroup)
-
-if (process.server) console.log(id)
 </script>
 
 <template>
@@ -40,20 +38,20 @@ if (process.server) console.log(id)
     suggestions-name="your-look"
     suggestions-label="Собери образ"
     :with-slider="true"
-    :params="{ gender: EGender.FEMALE }"
+    :query="{ gender: EGender.FEMALE }"
     :to="{
-      name: `catalog-${EProductFilters.GENDER}`,
-      params: { [EProductFilters.GENDER]: EGender.FEMALE }
+      name: 'catalog',
+      query: { [EProductFilters.GENDER]: EGender.FEMALE }
     }"
   />
   <ProductSuggestions
     suggestions-name="similar"
     suggestions-label="Похожее"
     :with-slider="true"
-    :params="{ gender: EGender.FEMALE }"
+    :query="{ gender: EGender.FEMALE }"
     :to="{
-      name: `catalog-${EProductFilters.GENDER}`,
-      params: { [EProductFilters.GENDER]: EGender.FEMALE }
+      name: 'catalog',
+      query: { [EProductFilters.GENDER]: EGender.FEMALE }
     }"
   />
 </template>

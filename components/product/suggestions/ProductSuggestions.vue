@@ -5,19 +5,19 @@ import { EFetchStatus, type IProductGroup, type IProductGroupRaw } from '~/types
 const props = defineProps<{
   suggestionsName: string
   suggestionsLabel: string
-  params: Record<string, string>
+  query: Record<string, string>
   withSlider?: boolean
   to: RouteLocationRaw
 }>()
 
-const { isDesktop } = useDeviceTypeStore()
+const { isDesktop } = storeToRefs(useDeviceTypeStore())
 
 const { data, error, status } = await useAsyncData<IProductGroup[]>(
   props.suggestionsName,
   async () => {
     // const data = await useClientFetch<IPaginatedDataRaw<IProductGroupRaw[]>>('/products/get/', {
     //   method: 'GET',
-    //   params
+    //   query
     // })
 
     const data = useCatalogMock()

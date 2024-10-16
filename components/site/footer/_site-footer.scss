@@ -95,3 +95,9 @@
     }
   }
 }
+
+:global([data-theme='easyfit'] .footer-menu__item:hover) {
+  @include hover {
+    color: $color-easyfit; // Зада
+  }
+}

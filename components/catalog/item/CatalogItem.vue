@@ -7,7 +7,7 @@ const {
   putToCart: handlePutToCart,
   deleteCartItem: handleDeleteCartItem
 } = useCartStore()
-const { isMobile } = useDeviceTypeStore()
+const { isMobile } = storeToRefs(useDeviceTypeStore())
 const { state, activeProduct } = useActiveProduct(toRef(props, 'data'))
 
 const productIsInCart = computed(() => {
@@ -70,14 +70,14 @@ const productIsInCart = computed(() => {
         />
         <button
           v-else-if="productIsInCart"
-          class="catalog-item__btn"
+          class="catalog-item__btn btn"
           @click="handleDeleteCartItem(activeProduct.id)"
         >
           <SvgTrash />
         </button>
         <button
           v-else
-          class="catalog-item__btn"
+          class="catalog-item__btn btn"
           @click="handlePutToCart(activeProduct)"
         >
           <SvgCart />

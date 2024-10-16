@@ -11,7 +11,6 @@ const props = withDefaults(
     noErrorMessage?: boolean
     placeholder?: string
     requiredVal?: boolean
-    theme?: string
   }>(),
   {
     placeholder: 'Комментарий'
@@ -40,7 +39,6 @@ const { isValid, hasError, errorMessage, handleBlur, handleFocus } = useValidati
     :class="[
       'base-textarea input-block',
       {
-        ['input-block_' + theme]: theme,
         'input-block_valid': isValid && !!modelValue,
         'input-block_invalid': hasError
       }

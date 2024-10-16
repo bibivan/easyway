@@ -11,7 +11,6 @@ const props = defineProps<{
   noErrorMessage?: boolean
   placeholder?: string
   requiredVal?: boolean
-  theme?: string
   type: 'text' | 'number'
 }>()
 
@@ -40,7 +39,6 @@ const { isValid, hasError, errorMessage, handleBlur, handleFocus } = useValidati
     :class="[
       'base-input input-block',
       {
-        ['input-block_' + theme]: theme,
         'input-block_valid': isValid && !!modelValue && !noErrorMessage,
         'input-block_invalid': hasError
       }

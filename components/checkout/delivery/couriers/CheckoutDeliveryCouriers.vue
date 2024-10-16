@@ -5,25 +5,25 @@ const { order } = useOrderStore()
 const pickedCourier = ref<TNullable<string>>(null)
 
 watch(pickedCourier, (val) => {
-  if (order.value.deliveryCouriers) {
-    order.value.pickedCourier =
-      order.value.deliveryCouriers.find((item) => item.name === val) || order.value.pickedCourier
+  if (order.deliveryCouriers) {
+    order.pickedCourier =
+      order.deliveryCouriers.find((item) => item.name === val) || order.pickedCourier
   }
 })
 
 watch(
-  () => order.value.pickedCourier,
+  () => order.pickedCourier,
   (val) => {
     if (val) {
       // const postCourierDeliveryIds = [7, 22]
       const postCourierDeliveryIds = [7]
 
-      if (postCourierDeliveryIds.includes(val.delivery_id)) order.value.ruPostDelivery = true
+      if (postCourierDeliveryIds.includes(val.delivery_id)) order.ruPostDelivery = true
 
-      order.value.deliveryPrice = val.cost
-      order.value.placeId = val.place_id
-      order.value.addressString = order.value.addressData?.unrestricted_value || null
-      order.value.pickedPointAddress = null
+      order.deliveryPrice = val.cost
+      order.placeId = val.place_id
+      order.addressString = order.addressData?.unrestricted_value || null
+      order.pickedPointAddress = null
     }
   }
 )

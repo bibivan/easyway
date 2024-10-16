@@ -1,6 +1,6 @@
 import type { IPaginatedData, IPaginatedDataRaw, IProductGroup, IProductGroupRaw } from '~/types'
 
-export const useCatalogStore = () => {
+export const useCatalog = () => {
   const route = useRoute()
   const brandParam = computed(() => route.meta.brand)
   const genderParam = computed(() => route.params.gender)
@@ -10,7 +10,7 @@ export const useCatalogStore = () => {
     'products',
     {
       method: 'GET',
-      params: {
+      query: {
         'filter[BRAND]': brandParam,
         'filter[gender][]': genderParam
       },

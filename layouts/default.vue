@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { globalScrollIsHidden } = useGlobalScrollbarStore()
+const { globalScrollIsHidden } = storeToRefs(useGlobalScrollbarStore())
 </script>
 
 <template>

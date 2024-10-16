@@ -1,8 +1,8 @@
 <script setup lang="ts">
+const { promoState, calculateDiscountedSum } = usePromoStore()
 const { cartData, cartIsShown, cartTotalPrice, clearCart: handleClearCart } = useCartStore()
-const { isMobile } = useDeviceTypeStore()
-const { globalScrollIsHidden } = useGlobalScrollbarStore()
-const { promo, calculateDiscountedSum } = usePromoStore()
+const { isMobile } = storeToRefs(useDeviceTypeStore())
+const { globalScrollIsHidden } = storeToRefs(useGlobalScrollbarStore())
 
 const totalSum = computed(() => formatNumberWithSpaces(cartTotalPrice.value))
 
@@ -64,7 +64,7 @@ const handleCloseModal = () => {
                 <span class="label-value-info__label">К оплате</span>
                 <span class="label-value-info__value">
                   <span
-                    v-if="promo.amount"
+                    v-if="promoState.data.amount"
                     class="cart-modal__initial-sum"
                   >
                     {{ totalSum }} ₽

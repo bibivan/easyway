@@ -1,8 +1,8 @@
 import dayjs from 'dayjs'
 import { EDeliveryType, type ICartItem, type IOrder, type ISendOrderPayload } from '~/types'
 
-export const useOrderStore = () => {
-  const order = useState<IOrder>('order_store', () => ({
+export const useOrderStore = defineStore('order_store', () => {
+  const order = reactive<IOrder>({
     addressData: null,
     addressString: null,
     fiases: null,
@@ -28,34 +28,34 @@ export const useOrderStore = () => {
     deliveryPrice: null,
     price: null,
     orderWeight: null
-  }))
+  })
 
   const getOrderPayload = (cartContent: ICartItem[]) => {
     return {
-      FIAS: order.value.fias as string,
-      KLADR: order.value.kladr || '',
+      FIAS: order.fias as string,
+      KLADR: order.kladr || '',
       DATE_CREATE: dayjs().format('DD.MM.YY HH:mm:ss'),
       STATUS: 'new',
-      NAME: order.value.name as string,
-      LAST_NAME: order.value.surname as string,
-      MIDDLE_NAME: order.value.middleName as string,
-      PHONE: '7' + order.value.phone?.slice(-10),
-      EMAIL: order.value.email as string,
-      DELIVERY_PRICE: order.value.deliveryPrice as number,
+      NAME: order.name as string,
+      LAST_NAME: order.surname as string,
+      MIDDLE_NAME: order.middleName as string,
+      PHONE: '7' + order.phone?.slice(-10),
+      EMAIL: order.email as string,
+      DELIVERY_PRICE: order.deliveryPrice as number,
       WEIGHT: 100, // todo: решить вопрос с ценой и весами
-      PRICE: order.value.price as number,
-      ADDRESS: order.value.addressString as string,
-      PVZ_ADDRESS: order.value.pickedPointAddress as string,
+      PRICE: order.price as number,
+      ADDRESS: order.addressString as string,
+      PVZ_ADDRESS: order.pickedPointAddress as string,
       PAID: false,
-      PAYMENT_TYPE: order.value.paymentType as number,
-      PLACE_ID: order.value.placeId as number,
+      PAYMENT_TYPE: order.paymentType as number,
+      PLACE_ID: order.placeId as number,
       SEND_ORDER_TO_SDT: true,
-      RU_POST_DELIVERY: order.value.ruPostDelivery as boolean,
-      COURIER_DELIVERY: order.value.courierDelivery === EDeliveryType.COURIER,
+      RU_POST_DELIVERY: order.ruPostDelivery as boolean,
+      COURIER_DELIVERY: order.courierDelivery === EDeliveryType.COURIER,
       B2B_CLIENT: false,
       LOYALTY_POINT: 0,
       DELIVERY_INTERVAL: 0,
-      COMMENT: order.value.comment || '',
+      COMMENT: order.comment || '',
       PRODUCTS: cartContent
     }
   }
@@ -68,8 +68,8 @@ export const useOrderStore = () => {
   }
 
   const clearOrder = () => {
-    Object.keys(order.value).forEach((key) => {
-      order.value[key as keyof IOrder] = null
+    Object.keys(order).forEach((key) => {
+      order[key as keyof IOrder] = null
     })
   }
 
@@ -79,4 +79,4 @@ export const useOrderStore = () => {
     sendOrder,
     clearOrder
   }
-}
+})

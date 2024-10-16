@@ -11,7 +11,10 @@ export default defineNuxtConfig({
   imports: {
     dirs: ['utils/typeguards']
   },
-  modules: ['nuxt-swiper', 'vue3-perfect-scrollbar/nuxt'],
+  modules: ['@pinia/nuxt', 'nuxt-swiper', 'vue3-perfect-scrollbar/nuxt'],
+  pinia: {
+    storesDirs: ['./stores/**']
+  },
   runtimeConfig: {
     public: {
       baseURL: process.env.NUXT_API_URL,

@@ -11,7 +11,6 @@ const props = withDefaults(
     errorPosition?: EErrorPosition
     placeholder?: string
     requiredVal?: boolean
-    theme?: string
   }>(),
   {
     placeholder: 'Телефон'
@@ -48,7 +47,6 @@ onMounted(() => {
       'base-phone-input',
       'input-block',
       {
-        ['input-block_' + theme]: theme,
         'input-block_valid': isValid,
         'input-block_invalid': hasError
       }

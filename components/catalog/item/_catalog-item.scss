@@ -84,3 +84,17 @@
     }
   }
 }
+
+:global([data-theme='easyfit'] .catalog-item__btn) {
+  background-color: $color-easyfit;
+}
+
+:global([data-theme='easyfit'] .catalog-item__btn:active) {
+  background-color: $color-easyfit;
+}
+
+:global([data-theme='easyfit'] .catalog-item__btn:hover) {
+  @include hover {
+    background-color: $color-easyfit;
+  }
+}

@@ -1,7 +1,7 @@
 import type { TNullable } from '~/types'
 
-export const useDeviceTypeStore = () => {
-  const windowWidth = useState<TNullable<number>>('device_type_store', () => null)
+export const useDeviceTypeStore = defineStore('device_type_store', () => {
+  const windowWidth = ref<TNullable<number>>(null)
 
   const handleResize = debounce(() => {
     windowWidth.value = window.innerWidth
@@ -31,4 +31,4 @@ export const useDeviceTypeStore = () => {
     isTablet,
     isDesktop
   }
-}
+})

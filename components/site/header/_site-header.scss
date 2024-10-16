@@ -140,3 +140,13 @@
     }
   }
 }
+
+:global([data-theme='easyfit'] .header__link:hover) {
+  @include hover {
+    color: $color-easyfit; // Зада
+  }
+}
+
+:global([data-theme='easyfit'] .header__link::before) {
+  background-color: $color-easyfit; // Меняем цвет линии под ссылкой
+}

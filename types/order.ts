@@ -105,3 +105,9 @@ export interface IPromoData {
   amount: TNullable<number>
   code: TNullable<string>
 }
+
+export interface IPromoStoreState {
+  data: IPromoData
+  loading: boolean
+  error: TNullable<string>
+}

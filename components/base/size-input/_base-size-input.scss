@@ -52,3 +52,17 @@
     }
   }
 }
+
+:global([data-theme='easyfit'] .size-input__input:checked + .size-input__label) {
+  background-color: $color-easyfit;
+}
+
+:global([data-theme='easyfit'] .size-input__input:focus:not(:checked) + .size-input__label) {
+  background-color: $color-easyfit;
+}
+
+@include hover {
+  :global([data-theme='easyfit'] .size-input__input:hover:not(:checked) + .size-input__label) {
+    background-color: $color-easyfit;
+  }
+}

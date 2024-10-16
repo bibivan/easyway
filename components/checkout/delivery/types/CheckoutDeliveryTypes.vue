@@ -28,9 +28,9 @@ const separateCouriersAndPickupPoints = (data: IDeliveriesDataItem) => {
     }
   })
 
-  order.value.deliveryCouriers = deliveryCouriers
-  order.value.deliveryPoints = deliveryPoints
-  order.value.fias = data.fias
+  order.deliveryCouriers = deliveryCouriers
+  order.deliveryPoints = deliveryPoints
+  order.fias = data.fias
 }
 
 // todo: решить вопрос с весом и размерами заказа
@@ -42,7 +42,7 @@ const getDeliveries = async (fiases: Array<TNullable<string>>) => {
         method: 'POST',
         body: {
           fias: fias,
-          payment_type: order.value.paymentType,
+          payment_type: order.paymentType,
           company: 0,
           weight: 100,
           parcel_size: [10, 10, 10],
@@ -55,10 +55,10 @@ const getDeliveries = async (fiases: Array<TNullable<string>>) => {
   }
 }
 
-const handleSetDeliveryType = (type: EDeliveryType) => (order.value.courierDelivery = type)
+const handleSetDeliveryType = (type: EDeliveryType) => (order.courierDelivery = type)
 
 watch(
-  () => order.value.fiases,
+  () => order.fiases,
   async (val) => {
     if (val) await getDeliveries(val)
   },
@@ -68,16 +68,16 @@ watch(
 // валидация
 const validationRules = computed(() => ({
   courierDelivery: {
-    required: helpers.withMessage('Выберите способ доставки', () => !!order.value.courierDelivery)
+    required: helpers.withMessage('Выберите способ доставки', () => !!order.courierDelivery)
   },
   pickedCourier: {
     required: helpers.withMessage('Выберите курьерскую службу', () =>
-      order.value.courierDelivery === EDeliveryType.COURIER ? !!order.value?.pickedCourier : true
+      order.courierDelivery === EDeliveryType.COURIER ? !!order?.pickedCourier : true
     )
   },
   pickedPoint: {
     required: helpers.withMessage('Выберите пункт выдачи', () =>
-      order.value.courierDelivery === EDeliveryType.PICKUP ? !!order.value.pickedPoint : true
+      order.courierDelivery === EDeliveryType.PICKUP ? !!order.pickedPoint : true
     )
   }
 }))

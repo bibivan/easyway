@@ -4,7 +4,6 @@ import { isWhiteColor } from '~/utils/common'
 defineProps<{
   value: string
   id: string
-  theme?: string
   type: 'checkbox' | 'radio'
 }>()
 
@@ -17,7 +16,7 @@ const modelValue = defineModel<T>()
 </script>
 
 <template>
-  <div :class="'color-input color-input_' + theme">
+  <div class="color-input">
     <input
       :id="id"
       v-model="modelValue"

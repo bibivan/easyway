@@ -4,7 +4,7 @@ import { useVuelidate } from '@vuelidate/core'
 
 defineProps<{ totalSum: number }>()
 
-const { promo, error, loading, initPromoData, checkPromoCode, cancelPromo } = usePromoStore()
+const { promoState, initPromoData, checkPromoCode, cancelPromo } = usePromoStore()
 const $externalResults = ref({ code: '' })
 
 const validationRules = computed(() => ({
@@ -13,13 +13,13 @@ const validationRules = computed(() => ({
   }
 }))
 
-const v$ = useVuelidate(validationRules, promo.value, { $externalResults })
+const v$ = useVuelidate(validationRules, promoState.data, { $externalResults })
 const { isValid, hasError, errorMessage } = useValidationInfo(v$)
 
 const handleSubmit = async () => {
-  if (promo.value.code) {
-    await checkPromoCode()
-    if (error.value) $externalResults.value.code = error.value
+  if (promoState.data.code) {
+    await checkPromoCode(promoState.data.code)
+    if (promoState.error) $externalResults.value.code = promoState.error
     else $externalResults.value.code = ''
   }
   v$.value.$touch()
@@ -42,34 +42,34 @@ onMounted(() => initPromoData())
     >
       <BaseInput
         id="promo_checker_input"
-        v-model="promo.code"
+        v-model="promoState.data.code"
         class="promo-checker__input"
         :class="{
-          'input-block_valid': isValid && !!promo.amount,
+          'input-block_valid': isValid && !!promoState.data.amount,
           'input-block_invalid': hasError
         }"
         placeholder="Промокод"
         type="text"
         :no-error-message="true"
-        :disabled="!!promo.amount"
+        :disabled="!!promoState.data.amount"
         @focus="v$.$reset()"
       >
         <BaseErrorMessage :message="errorMessage" />
       </BaseInput>
       <button
-        v-if="!promo.amount"
+        v-if="!promoState.data.amount"
         class="btn promo-checker__btn"
         @click="handleSubmit"
       >
         <BaseSpinner
-          v-if="loading"
+          v-if="promoState.loading"
           class="promo-checker__loading"
         />
         <template v-else> Применить </template>
       </button>
 
       <button
-        v-if="promo.amount"
+        v-if="promoState.data.amount"
         class="btn promo-checker__btn"
         @click="handleCancelPromo"
       >
@@ -82,11 +82,11 @@ onMounted(() => initPromoData())
       <span class="label-value-info__value">{{ formatNumberWithSpaces(totalSum) }} ₽</span>
     </p>
     <div
-      v-if="promo.amount"
+      v-if="promoState.data.amount"
       class="promo-checker__info label-value-info"
     >
       <span class="label-value-info__label">Скидка</span>
-      <span class="label-value-info__value">-{{ promo.amount }}%</span>
+      <span class="label-value-info__value">-{{ promoState.data.amount }}%</span>
     </div>
   </div>
 </template>

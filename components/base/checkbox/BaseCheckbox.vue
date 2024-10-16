@@ -10,7 +10,6 @@ const props = defineProps<{
   label?: string
   noErrorMessage?: boolean
   requiredVal?: boolean
-  theme?: string
   value?: string | number | boolean | K
 }>()
 
@@ -34,14 +33,7 @@ const { hasError, errorMessage } = useValidationInfo(v$)
 </script>
 
 <template>
-  <div
-    :class="[
-      'base-checkbox',
-      {
-        ['base-checkbox_' + theme]: theme
-      }
-    ]"
-  >
+  <div class="base-checkbox">
     <input
       :id="id"
       v-model="modelValue"

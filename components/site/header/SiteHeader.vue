@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EGender, EProductFilters } from '~/types'
+import { EBrand, EGender, EProductFilters } from '~/types'
 
 const { handleShowCart } = useCartOpening()
 
@@ -21,22 +21,26 @@ const state = reactive({
         <nav class="header__nav">
           <NuxtLink
             class="header__link"
-            :to="{ name: 'easyfit-catalog' }"
-            >Бренд-линейка easyfit</NuxtLink
+            :to="{
+              name: 'catalog',
+              query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
+            }"
           >
+            Бренд-линейка easyfit
+          </NuxtLink>
           <NuxtLink
             class="header__link"
             :to="{
-              name: `catalog-${EProductFilters.GENDER}`,
-              params: { [EProductFilters.GENDER]: EGender.MALE }
+              name: 'catalog',
+              query: { [EProductFilters.GENDER]: EGender.MALE }
             }"
             >Мужское</NuxtLink
           >
           <NuxtLink
             class="header__link"
             :to="{
-              name: `catalog-${EProductFilters.GENDER}`,
-              params: { [EProductFilters.GENDER]: EGender.FEMALE }
+              name: 'catalog',
+              query: { [EProductFilters.GENDER]: EGender.FEMALE }
             }"
             >Женское</NuxtLink
           >

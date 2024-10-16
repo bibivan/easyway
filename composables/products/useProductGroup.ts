@@ -6,7 +6,7 @@ export const useProductGroup = (id: number) => {
     'products',
     {
       method: 'GET',
-      params: {
+      query: {
         id
       },
       immediate: false,

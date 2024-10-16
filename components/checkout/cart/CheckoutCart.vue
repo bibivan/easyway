@@ -3,17 +3,17 @@ defineEmits<{ onSendOrder: [void] }>()
 
 const { cartData, cartTotalPrice } = useCartStore()
 const { order } = useOrderStore()
-const { promo, initPromoData, calculateDiscount, calculateDiscountedSum } = usePromoStore()
+const { promoState, initPromoData, calculateDiscount, calculateDiscountedSum } = usePromoStore()
 const { handleShowCart } = useCartOpening()
 
-const totalSum = computed(() => (order.value.price || 0) + (order.value.deliveryPrice || 0))
+const totalSum = computed(() => (order.price || 0) + (order.deliveryPrice || 0))
 
 onMounted(() => initPromoData())
 
 watch(
-  [() => promo.value.amount, cartTotalPrice],
+  [() => promoState.data.amount, cartTotalPrice],
   () => {
-    order.value.price = calculateDiscountedSum(cartTotalPrice.value)
+    order.price = calculateDiscountedSum(cartTotalPrice.value)
   },
   { immediate: true }
 )
@@ -54,12 +54,12 @@ watch(
         <span class="checkout-cart-item__price">{{ order.deliveryPrice }}₽</span>
       </li>
       <li
-        v-if="promo.amount"
+        v-if="promoState.data.amount"
         class="checkout-cart__item checkout-cart-item"
       >
         <div class="checkout-cart-item__info">
           <span class="checkout-cart-item__name">Скидка</span>
-          <span class="checkout-cart-item__desc">Промокод: {{ promo.code }}</span>
+          <span class="checkout-cart-item__desc">Промокод: {{ promoState.data.code }}</span>
         </div>
         <span class="checkout-cart-item__price">-{{ calculateDiscount(cartTotalPrice) }}₽</span>
       </li>

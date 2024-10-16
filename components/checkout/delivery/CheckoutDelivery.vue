@@ -5,20 +5,20 @@ const { order, clearOrder } = useOrderStore()
 
 const setAddressData = (addressData: TNullable<IAddressSuggestion>) => {
   if (!addressData) return
-  order.value.fiases = [
+  order.fiases = [
     addressData.data.settlement_fias_id,
     addressData.data.city_fias_id,
     addressData.data.area_fias_id,
     addressData.data.region_fias_id
   ]
-  order.value.postalCode = addressData.data?.postal_code
-  order.value.addressString = addressData.unrestricted_value
+  order.postalCode = addressData.data?.postal_code
+  order.addressString = addressData.unrestricted_value
 }
 
 onMounted(() => clearOrder())
 
 watch(
-  () => order.value.addressData,
+  () => order.addressData,
   (val) => setAddressData(val)
 )
 </script>

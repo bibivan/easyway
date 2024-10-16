@@ -9,10 +9,10 @@ const collaborators = useCollaboratorsMock()
     suggestions-name="New"
     suggestions-label="Новинки"
     :with-slider="true"
-    :params="{ gender: EGender.FEMALE }"
+    :query="{ gender: EGender.FEMALE }"
     :to="{
-      name: `catalog-${EProductFilters.GENDER}`,
-      params: { [EProductFilters.GENDER]: EGender.FEMALE }
+      name: 'catalog',
+      query: { [EProductFilters.GENDER]: EGender.FEMALE }
     }"
   />
   <CatalogBanner
@@ -21,8 +21,8 @@ const collaborators = useCollaboratorsMock()
     image="https://s3-alpha-sig.figma.com/img/eb29/4b75/1566dec526060dfa98f1048c62038a59?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NNnsOJKuAsBeANfv-Fg86XetxYevicZ8F46ZWh3XDmdD~JJJTTRSdlT9PEDATkj-HmEi9xCnPt9jN4ZmTfOZjqkBMGIaMYssPD-UwWvUjDqNTgfNM8f7~RRNnqCC3hZI2w7U4ubbrBgwopaShgRTSJ8zyW50EA9464QxgKrxlhaNfQ8BxgXNJb7NM8WHcJADQcMLYixUYwUeivnM1dj63x3SkNt7C48lejZ8RSgAWRjqJcHquF2CQKFUGb~ywDmi7Y0tJAH8QRtR1XABl2XZ0dGn5~NgfgyOaPwI4bpbHgplRATFI~QQYsQvPw2DIpwlQ3Oxldk4F6rN3T3bG4cdkQ__"
     title="TOTAL BLACK"
     :to="{
-      name: `catalog-${EProductFilters.GENDER}`,
-      params: { [EProductFilters.GENDER]: EGender.FEMALE }
+      name: 'catalog',
+      query: { [EProductFilters.GENDER]: EGender.FEMALE }
     }"
   />
 
@@ -33,8 +33,8 @@ const collaborators = useCollaboratorsMock()
     overlay-text="EASYFIT"
     title="EASYFIT"
     :to="{
-      name: `catalog-${EProductFilters.GENDER}`,
-      params: { [EProductFilters.GENDER]: EGender.FEMALE }
+      name: 'catalog',
+      query: { [EProductFilters.GENDER]: EGender.FEMALE }
     }"
   />
 
@@ -45,8 +45,8 @@ const collaborators = useCollaboratorsMock()
           class="collaborators__heading"
           title="Образы"
           :to="{
-            name: `catalog-${EProductFilters.GENDER}`,
-            params: { [EProductFilters.GENDER]: EGender.FEMALE }
+            name: 'catalog',
+            query: { [EProductFilters.GENDER]: EGender.FEMALE }
           }"
         />
         <ul class="collaborators__list">
@@ -73,8 +73,8 @@ const collaborators = useCollaboratorsMock()
           class="collaborators__heading"
           title="Амбассадоры"
           :to="{
-            name: `catalog-${EProductFilters.GENDER}`,
-            params: { [EProductFilters.GENDER]: EGender.FEMALE }
+            name: 'catalog',
+            query: { [EProductFilters.GENDER]: EGender.FEMALE }
           }"
         />
         <ul class="collaborators__list">

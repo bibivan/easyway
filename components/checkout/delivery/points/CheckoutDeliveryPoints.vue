@@ -4,13 +4,13 @@ import type { TNullable } from '~/types'
 const { order } = useOrderStore()
 
 watch(
-  () => order.value.pickedPoint,
+  () => order.pickedPoint,
   (val) => {
     if (val) {
-      order.value.deliveryPrice = val.cost
-      order.value.placeId = val.place_id
-      order.value.addressString = val.address
-      order.value.pickedPointAddress = val.address
+      order.deliveryPrice = val.cost
+      order.placeId = val.place_id
+      order.addressString = val.address
+      order.pickedPointAddress = val.address
     }
     return
   }
