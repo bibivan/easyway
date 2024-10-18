@@ -126,3 +126,32 @@ export const isWhiteColor = (color: string): boolean => {
 
   return hexPattern.test(color) || rgbPattern.test(color) || namedWhitePattern.test(color)
 }
+
+export const smoothScroll = (container: HTMLElement, targetPosition: number, duration: number) => {
+  const startPosition = container.scrollTop
+  const distance = targetPosition - startPosition
+  let startTime: number | null = null
+
+  const animation = (currentTime: number) => {
+    if (startTime === null) startTime = currentTime
+    const timeElapsed = currentTime - startTime
+    const progress = Math.min(timeElapsed / duration, 1) // Ограничиваем прогресс до 1
+
+    container.scrollTop = startPosition + distance * progress
+
+    if (timeElapsed < duration) {
+      requestAnimationFrame(animation)
+    }
+  }
+
+  requestAnimationFrame(animation)
+}
+
+export const getRandomColor = (): string => {
+  const letters = '0123456789ABCDEF'
+  let color = '#'
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)]
+  }
+  return color
+}

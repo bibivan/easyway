@@ -25,10 +25,12 @@ export const useDeviceTypeStore = defineStore('device_type_store', () => {
     () => windowWidth.value !== null && windowWidth.value > 767 && windowWidth.value < 1025
   )
   const isDesktop = computed(() => windowWidth.value !== null && windowWidth.value > 1024)
+  const isDesktopMd = computed(() => windowWidth.value !== null && windowWidth.value >= 1440)
 
   return {
     isMobile,
     isTablet,
-    isDesktop
+    isDesktop,
+    isDesktopMd
   }
 })

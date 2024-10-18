@@ -13,6 +13,13 @@
     .swiper-pagination-bullet-active {
       width: 29px;
       border-radius: $border-radius-l;
+      background-color: white;
     }
+  }
+
+  &__scrollbar {
+    --swiper-scrollbar-bottom: 0;
+    --swiper-scrollbar-size: 5px;
+    --swiper-scrollbar-drag-bg-color: #{$color-primary};
   }
 }

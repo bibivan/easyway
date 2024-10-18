@@ -1,0 +1,92 @@
+.our-mission {
+  position: relative;
+  background-color: $color-primary;
+
+  @include desktop {
+    @include flex-row-top-end;
+
+    padding: 65px 40px;
+    background-color: $color-primary;
+    background-image: url('public/img/about/about-our-mission-bg.jpg');
+    background-position: -245px -380px;
+    background-repeat: no-repeat;
+    background-size: 113%;
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    min-width: 500px;
+    height: 100%;
+    background: linear-gradient(90deg, rgb(17 17 17 / 0%) 10%, #111 84.21%);
+    content: '';
+  }
+
+  &__content {
+    @include flex-column;
+
+    position: relative;
+    z-index: $ui-index-1;
+
+    @include desktop {
+      max-width: 506px;
+    }
+  }
+
+  &__heading {
+    margin-bottom: 20px;
+    color: $color-text-light;
+
+    @include desktop {
+      order: 1;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__description {
+    color: $color-text-light;
+
+    @include desktop {
+      order: 2;
+      margin-bottom: 50px;
+    }
+  }
+
+  &__circles {
+    display: flex;
+    margin-bottom: 30px;
+
+    @include desktop {
+      order: 3;
+      margin-bottom: 0;
+    }
+  }
+
+  &__circle {
+    width: 75px;
+    height: 75px;
+    border: 2px solid $color-bg-section;
+    border-radius: 50%;
+
+    @include tablet {
+      width: 100px;
+      height: 100px;
+    }
+
+    &_with_img {
+      border: none;
+    }
+
+    &_with_icon {
+      padding: 17px 22px;
+      background-color: $color-primary;
+      color: $color-text-light;
+    }
+
+    &_bg_light {
+      background-color: $color-bg-section;
+    }
+  }
+}

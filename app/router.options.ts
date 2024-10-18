@@ -3,6 +3,8 @@ import type { TNullable } from '~/types'
 
 export default <RouterConfig>{
   async scrollBehavior(to, from, savedPosition) {
+    if (process.client && window.innerWidth >= 1025) return
+
     // Если есть сохраненная позиция (например, при нажатии на кнопку назад)
     if (savedPosition) {
       return { left: savedPosition.left, top: savedPosition.top, behavior: 'smooth' }

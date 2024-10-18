@@ -39,16 +39,15 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
             <div class="footer-menu__items">
               <NuxtLink
                 class="footer-menu__item"
-                to="/"
+                :to="{
+                  name: 'about-easyway'
+                }"
                 >EASYWAY</NuxtLink
               >
               <NuxtLink
                 class="footer-menu__item"
                 :to="{
-                  name: 'catalog',
-                  query: {
-                    [EProductFilters.BRAND]: EBrand.EASYFIT
-                  }
+                  name: 'about-easyfit'
                 }"
                 >Бренд-линейка easyfit</NuxtLink
               >

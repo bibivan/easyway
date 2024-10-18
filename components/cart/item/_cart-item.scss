@@ -4,7 +4,7 @@
   position: relative;
   gap: 10px;
 
-  @include tablet {
+  @include desktop {
     padding: 15px 0;
     border-bottom: 1px solid #969696;
     gap: 24px;
@@ -26,7 +26,7 @@
     border-radius: $border-radius-s;
     object-fit: cover;
 
-    @include tablet {
+    @include desktop {
       width: 125px;
       height: 125px;
     }
@@ -40,7 +40,7 @@
     font-size: 16px;
     font-weight: 700;
 
-    @include tablet {
+    @include desktop {
       font-size: 24px;
     }
   }
@@ -65,7 +65,7 @@
     font-size: 12px;
     gap: 4px;
 
-    @include tablet {
+    @include desktop {
       font-size: 18px;
       gap: 7px;
     }
@@ -85,7 +85,7 @@
     font-size: 16px;
     font-weight: 700;
 
-    @include tablet {
+    @include desktop {
       font-size: 24px;
     }
   }
@@ -100,7 +100,7 @@
     color: $color-primary;
     transition: color 0.2s ease-in-out;
 
-    @include tablet {
+    @include desktop {
       top: 20px;
     }
 

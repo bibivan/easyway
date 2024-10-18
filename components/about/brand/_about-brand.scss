@@ -1,0 +1,57 @@
+.about-brand {
+  $width-image-desktop: 418px;
+
+  position: relative;
+  overflow: hidden;
+
+  @include desktop {
+    display: block;
+    padding-left: $width-image-desktop;
+  }
+
+  &::before {
+    z-index: $ui-index-0;
+    display: block;
+    width: 100%;
+    padding-top: 30%;
+    background-image: url('public/img/about/about-brand-1.jpg');
+    background-position: center;
+    background-size: cover;
+    content: '';
+
+    @include desktop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: $width-image-desktop;
+      height: 100%;
+      background-image: url('public/img/about/about-brand-2.jpg');
+      background-position: right;
+      transform: scaleX(-1);
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: $ui-index-1;
+    padding: 30px 20px;
+
+    @include desktop {
+      padding: 65px 40px;
+    }
+  }
+
+  &__heading {
+    margin-bottom: 20px;
+
+    @include desktop {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__description {
+    @include flex-column;
+
+    gap: $line-height-base;
+  }
+}

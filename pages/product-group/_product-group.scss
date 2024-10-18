@@ -11,8 +11,11 @@
   }
 
   &__info {
+    padding: $section-indent 0;
+
     @include desktop {
       flex-grow: 1;
+      padding: 0;
     }
   }
 }

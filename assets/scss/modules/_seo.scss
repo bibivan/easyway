@@ -5,7 +5,7 @@
     margin-bottom: $line-height-base;
     color: $color-text;
     font-size: 18px;
-    text-transform: uppercase;
+    text-transform: capitalize;
 
     @include desktop {
       font-size: 36px;
