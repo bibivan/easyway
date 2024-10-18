@@ -1,7 +1,9 @@
 <script setup lang="ts">
 defineEmits<{ onSendOrder: [void] }>()
 
-const { cartData, cartTotalPrice } = useCartStore()
+const cartStore = useCartStore()
+const { cartTotalPrice } = storeToRefs(cartStore)
+const { cartState } = cartStore
 const { order } = useOrderStore()
 const { promoState, initPromoData, calculateDiscount, calculateDiscountedSum } = usePromoStore()
 const { handleShowCart } = useCartOpening()
@@ -24,7 +26,7 @@ watch(
     <legend class="form__legend checkout-cart__heading">Заказ</legend>
     <ul class="checkout-cart__items">
       <li
-        v-for="item in cartData"
+        v-for="item in cartState.data"
         :key="item.id"
         class="checkout-cart__item checkout-cart-item"
       >

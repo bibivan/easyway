@@ -1,6 +1,8 @@
 <script setup lang="ts">
+const cartStore = useCartStore()
+const { cartTotalPrice } = storeToRefs(cartStore)
+const { cartState, clearCart: handleClearCart } = cartStore
 const { promoState, calculateDiscountedSum } = usePromoStore()
-const { cartData, cartIsShown, cartTotalPrice, clearCart: handleClearCart } = useCartStore()
 const { isMobile, isDesktop } = storeToRefs(useDeviceTypeStore())
 const { globalScrollIsHidden } = storeToRefs(useGlobalScrollbarStore())
 
@@ -11,7 +13,7 @@ const discountedSum = computed(() => {
 })
 
 const handleCloseModal = () => {
-  cartIsShown.value = false
+  cartState.isShown = false
   if (isDesktop.value) globalScrollIsHidden.value = false
   if (!isDesktop.value) document.body.classList.remove('body_no-scroll')
 }
@@ -20,7 +22,7 @@ const handleCloseModal = () => {
 <template>
   <transition name="slide-right">
     <div
-      v-if="cartIsShown"
+      v-if="cartState.isShown"
       class="cart-modal"
     >
       <div
@@ -33,7 +35,7 @@ const handleCloseModal = () => {
             <div class="cart-modal__head">
               <h2 class="cart-modal__title">Корзина</h2>
               <button
-                v-if="cartData"
+                v-if="cartState.data"
                 class="cart-modal__clear"
                 @click="handleClearCart"
               >
@@ -47,14 +49,14 @@ const handleCloseModal = () => {
                 <SvgCross v-else />
               </button>
             </div>
-            <template v-if="cartData">
+            <template v-if="cartState.data">
               <PerfectScrollbar
                 class="cart-modal__items-ps"
                 :options="{ suppressScrollY: isMobile }"
               >
                 <div class="cart-modal__items">
                   <CartItem
-                    v-for="item in cartData"
+                    v-for="item in cartState.data"
                     :key="item.id"
                     :data="item"
                   />

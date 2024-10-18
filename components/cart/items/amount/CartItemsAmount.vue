@@ -1,11 +1,13 @@
 <script setup lang="ts">
-const { cartData, cartItemsCount } = useCartStore()
+const cartStore = useCartStore()
+const { cartState } = cartStore
+const { cartItemsCount } = storeToRefs(cartStore)
 
 onMounted(() => {
   const cartJSON = localStorage.getItem('easyway-cart')
 
   if (isValidJSON(cartJSON)) {
-    cartData.value = parseJSON(localStorage.getItem('easyway-cart'))
+    cartState.data = parseJSON(localStorage.getItem('easyway-cart'))
   }
 })
 </script>

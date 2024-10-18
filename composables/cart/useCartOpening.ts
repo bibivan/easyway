@@ -1,10 +1,10 @@
 export const useCartOpening = () => {
-  const { cartIsShown } = useCartStore()
+  const { cartState } = useCartStore()
   const { globalScrollIsHidden } = storeToRefs(useGlobalScrollbarStore())
   const { isDesktop } = storeToRefs(useDeviceTypeStore())
   const handleShowCart = () => {
     console.log('in func', isDesktop.value)
-    cartIsShown.value = true
+    cartState.isShown = true
     if (isDesktop.value) globalScrollIsHidden.value = true
     if (!isDesktop.value) {
       console.log('here')

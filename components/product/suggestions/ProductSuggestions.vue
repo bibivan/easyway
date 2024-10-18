@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from 'vue-router'
-import { EFetchStatus, type IProductGroup, type IProductGroupRaw } from '~/types'
+import {
+  EFetchStatus,
+  type IPaginatedDataRaw,
+  type IProductGroup,
+  type IProductGroupRaw
+} from '~/types'
 
 const props = defineProps<{
   suggestionsName: string
@@ -12,21 +17,18 @@ const props = defineProps<{
 
 const { isDesktop } = storeToRefs(useDeviceTypeStore())
 
-const { data, error, status } = await useAsyncData<IProductGroup[]>(
-  props.suggestionsName,
-  async () => {
-    // const data = await useClientFetch<IPaginatedDataRaw<IProductGroupRaw[]>>('/products/get/', {
-    //   method: 'GET',
-    //   query
-    // })
-
+const { data, error, status } = await useApiFetch<
+  IPaginatedDataRaw<IProductGroupRaw[]>,
+  IProductGroup[]
+>('products', {
+  transform: () => {
     const data = useCatalogMock()
 
     return data?.items.map((item: IProductGroupRaw) => {
       return productGroupRawToProductGroup(item)
     })
   }
-)
+})
 const desktopData = computed(() => data.value?.slice(0, 4))
 </script>
 

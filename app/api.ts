@@ -1,5 +1,5 @@
 export default defineNuxtPlugin(() => {
-  const $api = $fetch.create({
+  const api = $fetch.create({
     method: 'GET',
     mode: 'cors',
     headers: {
@@ -10,7 +10,7 @@ export default defineNuxtPlugin(() => {
   // Expose to useNuxtApp().$customFetch
   return {
     provide: {
-      customFetch: $api
+      api
     }
   }
 })

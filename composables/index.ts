@@ -1,7 +1,5 @@
-export { useClientFetch } from './api/useClientFetch'
 export { useApiFetch } from './api/useApiFetch'
 export { useDadataFetch } from './api/useDadataFetch'
-export { useCartStore } from './cart/useCartStore'
 export { useCartOpening } from './cart/useCartOpening'
 export { useValidationInfo } from './common/useValidationInfo'
 export { useCatalogMock } from './mock/useCatalogMock'

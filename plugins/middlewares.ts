@@ -8,7 +8,7 @@ export default defineNuxtPlugin(() => {
     (to, from) => {
       useRoute()
 
-      if (process.client && window.innerWidth < 1025) return
+      if (process.client) return
 
       // Функция с рекурсией для попыток прокрутки
       const tryScrollToElement = (attempts: number = 0) => {
@@ -33,7 +33,7 @@ export default defineNuxtPlugin(() => {
         }
       }
 
-      if (process.client) {
+      if (process.client && window.innerWidth > 1024) {
         tryScrollToElement()
       }
     },

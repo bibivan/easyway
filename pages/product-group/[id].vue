@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { EFetchStatus, EGender, EProductFilters } from '~/types'
+import { EBrand, EFetchStatus, EGender, EProductFilters } from '~/types'
 
 const route = useRoute()
-const id = parseInt(Array.isArray(route.params.id) ? route.params.id[0] : route.params.id, 10)
+const id = computed(() => {
+  return parseInt(Array.isArray(route.params.id) ? route.params.id[0] : route.params.id, 10)
+})
+const brand = computed(() => {
+  const brand = route.query[EProductFilters.BRAND]
+  return Array.isArray(brand) ? brand[0] : brand
+})
 
-const { status, error, data: productGroup, refresh } = useProductGroup(id)
+const { status, error, data: productGroup, refresh } = useProductGroup(id?.value)
 await refresh()
 const { state, activeProduct } = useActiveProduct(productGroup)
 </script>
@@ -38,7 +44,10 @@ const { state, activeProduct } = useActiveProduct(productGroup)
     suggestions-name="your-look"
     suggestions-label="Собери образ"
     :with-slider="true"
-    :query="{ gender: EGender.FEMALE }"
+    :query="{
+      [EProductFilters.GENDER]: EGender.FEMALE,
+      [EProductFilters.BRAND]: brand || EBrand.EASYWAY
+    }"
     :to="{
       name: 'catalog',
       query: { [EProductFilters.GENDER]: EGender.FEMALE }
@@ -48,7 +57,10 @@ const { state, activeProduct } = useActiveProduct(productGroup)
     suggestions-name="similar"
     suggestions-label="Похожее"
     :with-slider="true"
-    :query="{ gender: EGender.FEMALE }"
+    :query="{
+      [EProductFilters.GENDER]: EGender.FEMALE,
+      [EProductFilters.BRAND]: brand || EBrand.EASYWAY
+    }"
     :to="{
       name: 'catalog',
       query: { [EProductFilters.GENDER]: EGender.FEMALE }

@@ -1,30 +1,35 @@
 import type { ICartItem, IProduct, TNullable } from '~/types'
 
-export const useCartStore = () => {
+export const useCartStore = defineStore('cart_store', () => {
   // Data
-  const cartData = useState<TNullable<ICartItem[]>>('cart_data', () => null)
-  const cartIsShown = useState<boolean>('cart_is_shown', () => false)
+  const cartState = reactive<{
+    data: TNullable<ICartItem[]>
+    isShown: boolean
+  }>({
+    data: null,
+    isShown: false
+  })
 
   // Getters
   const cartItemsCount = computed(() => {
-    return cartData.value?.reduce((acc: number, curVal) => acc + curVal.cnt, 0) || 0
+    return cartState.data?.reduce((acc: number, curVal) => acc + curVal.cnt, 0) || 0
   })
   const cartTotalPrice = computed(() => {
-    return cartData.value?.reduce((acc: number, curVal) => acc + +curVal.price * curVal.cnt, 0) || 0
+    return cartState.data?.reduce((acc: number, curVal) => acc + +curVal.price * curVal.cnt, 0) || 0
   })
 
   // Mutations
   const clearCart = () => {
-    cartData.value = null
+    cartState.data = null
     localStorage.removeItem('easyway-cart')
   }
-  const findItem = (itemId: number) => cartData.value?.find((item) => item.id === itemId)
+  const findItem = (itemId: number) => cartState.data?.find((item) => item.id === itemId)
 
   const setToLocalStorage = () =>
-    localStorage.setItem('easyway-cart', JSON.stringify(cartData.value))
+    localStorage.setItem('easyway-cart', JSON.stringify(cartState.data))
 
   const deleteCartItem = (itemId: number) => {
-    cartData.value = cartData.value?.filter((item) => item.id !== itemId) || cartData.value
+    cartState.data = cartState.data?.filter((item) => item.id !== itemId) || cartState.data
     setToLocalStorage()
   }
 
@@ -49,8 +54,8 @@ export const useCartStore = () => {
     if (!item.sfAttrs) return useNuxtApp().$toast('Отсутствуют аттрибуты. Продукт не добавлен')
 
     try {
-      if (!cartData.value) cartData.value = [] as ICartItem[]
-      const isInCart = arrayHasElem(cartData.value, 'id', item.id)
+      if (!cartState.data) cartState.data = [] as ICartItem[]
+      const isInCart = arrayHasElem(cartState.data, 'id', item.id)
 
       if (isInCart) useNuxtApp().$toast('Товар уже в корзине')
       else {
@@ -67,7 +72,7 @@ export const useCartStore = () => {
           id: item.id
         }
 
-        cartData.value.push(newCartItem)
+        cartState.data.push(newCartItem)
         setToLocalStorage()
         useNuxtApp().$toast('Товар добавлен')
       }
@@ -77,8 +82,7 @@ export const useCartStore = () => {
   }
 
   return {
-    cartData,
-    cartIsShown,
+    cartState,
     cartItemsCount,
     cartTotalPrice,
     clearCart,
@@ -87,4 +91,4 @@ export const useCartStore = () => {
     decreaseItemsCount,
     putToCart
   }
-}
+})

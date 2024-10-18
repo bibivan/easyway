@@ -38,19 +38,25 @@ const separateCouriersAndPickupPoints = (data: IDeliveriesDataItem) => {
 const getDeliveries = async (fiases: Array<TNullable<string>>) => {
   for (const fias of fiases) {
     if (fias) {
-      const { data, success } = await useClientFetch<IDeliveriesDataRaw>('pickup-sdt/get-pickups', {
-        method: 'POST',
-        body: {
-          fias: fias,
-          payment_type: order.paymentType,
-          company: 0,
-          weight: 100,
-          parcel_size: [10, 10, 10],
-          order_sum: 1000
+      const { data: pickupsData } = await useApiFetch<IDeliveriesDataRaw, IDeliveriesDataRaw>(
+        'pickup-sdt/get-pickups',
+        {
+          method: 'POST',
+          body: {
+            fias: fias,
+            payment_type: order.paymentType,
+            company: 0,
+            weight: 100,
+            parcel_size: [10, 10, 10],
+            order_sum: 1000
+          }
         }
-      })
+      )
 
-      if (success) return separateCouriersAndPickupPoints(data[0])
+      if (pickupsData.value) {
+        const { data, success } = pickupsData.value
+        if (success) return separateCouriersAndPickupPoints(data[0])
+      }
     }
   }
 }

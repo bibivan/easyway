@@ -3,7 +3,7 @@ import type { IProductGroup } from '~/types'
 
 const props = defineProps<{ data: IProductGroup }>()
 const {
-  cartData,
+  cartState,
   putToCart: handlePutToCart,
   deleteCartItem: handleDeleteCartItem
 } = useCartStore()
@@ -11,7 +11,7 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
 const { state, activeProduct } = useActiveProduct(toRef(props, 'data'))
 
 const productIsInCart = computed(() => {
-  return arrayHasElem(cartData.value || [], 'id', activeProduct?.value?.id)
+  return arrayHasElem(cartState.data || [], 'id', activeProduct?.value?.id)
 })
 </script>
 

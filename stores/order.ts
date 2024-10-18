@@ -1,5 +1,11 @@
 import dayjs from 'dayjs'
-import { EDeliveryType, type ICartItem, type IOrder, type ISendOrderPayload } from '~/types'
+import {
+  EDeliveryType,
+  type ICartItem,
+  type IOrder,
+  type ISendOrderPayload,
+  type ISendOrderResponse
+} from '~/types'
 
 export const useOrderStore = defineStore('order_store', () => {
   const order = reactive<IOrder>({
@@ -60,17 +66,40 @@ export const useOrderStore = defineStore('order_store', () => {
     }
   }
 
-  const sendOrder = async <ISendOrderResponse>(payload: ISendOrderPayload) => {
-    return await useClientFetch<ISendOrderResponse>('orders/add', {
-      method: 'POST',
-      body: payload
-    })
-  }
-
   const clearOrder = () => {
     Object.keys(order).forEach((key) => {
       order[key as keyof IOrder] = null
     })
+  }
+
+  const sendOrder = async (cartData: ICartItem[]) => {
+    const payload = getOrderPayload(cartData)
+    const orderResponse = await useApiFetch<ISendOrderResponse, ISendOrderResponse>('orders/add', {
+      method: 'POST',
+      body: payload
+    })
+
+    const sf = orderResponse.data.value?.SF
+    if (orderResponse.error.value || !sf?.orderId) {
+      useNuxtApp().$toast('Не удалось отправить заказ')
+      throw new Error()
+    }
+
+    const linkResponse = await useApiFetch<{ Link: string }, { Link: string }>('payment/get-url', {
+      method: 'POST',
+      body: {
+        orderId: sf.orderId
+      }
+    })
+
+    const link = linkResponse.data.value?.Link
+    if (link) {
+      clearOrder()
+      await navigateTo(link, { external: true })
+    } else {
+      useNuxtApp().$toast('Не удалось отправить заказ')
+      throw new Error()
+    }
   }
 
   return {

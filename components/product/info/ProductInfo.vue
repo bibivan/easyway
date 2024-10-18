@@ -7,11 +7,11 @@ const props = defineProps<{
   sizes: EProductSizeAttr[]
 }>()
 
-const { cartData, putToCart: handlePutToCart, deleteCartItem } = useCartStore()
+const { cartState, putToCart: handlePutToCart, deleteCartItem } = useCartStore()
 
 const modelColor = defineModel<string>('color')
 const modelSize = defineModel<string>('size')
-const productIsInCart = computed(() => arrayHasElem(cartData.value || [], 'id', props.product.id))
+const productIsInCart = computed(() => arrayHasElem(cartState.data || [], 'id', props.product.id))
 
 const handleDeleteCartItem = () => {
   deleteCartItem(props.product.id)
