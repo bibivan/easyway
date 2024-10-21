@@ -113,7 +113,11 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1400px;
-  padding: $container-indent;
+  max-width: 1360px;
+  padding: 0 $container-indent;
   margin: 0 auto;
+
+  @include desktop {
+    padding: 0 $container-indent-desktop;
+  }
 }

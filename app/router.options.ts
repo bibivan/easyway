@@ -3,9 +3,7 @@ import type { TNullable } from '~/types'
 
 export default <RouterConfig>{
   async scrollBehavior(to, from, savedPosition) {
-    const defaultPosition = { left: 0, top: 0, behavior: 'smooth' }
-
-    if (process.client && window.innerWidth > 1024) return defaultPosition
+    if (process.client && window.innerWidth > 1024) return { left: 0, top: 0, behavior: 'smooth' }
 
     // Если есть сохраненная позиция (например, при нажатии на кнопку назад)
     if (savedPosition) {
@@ -38,6 +36,6 @@ export default <RouterConfig>{
     }
 
     // По умолчанию скроллим в начало страницы
-    return defaultPosition
+    return { left: 0, top: 0, behavior: 'smooth' }
   }
 }

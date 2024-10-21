@@ -6,6 +6,12 @@
 }
 
 .about-slider {
+  &__container {
+    overflow: hidden;
+    max-width: 1440px;
+    padding: 0;
+  }
+
   &__swiper {
     overflow: visible;
     padding-bottom: 35px;
@@ -19,8 +25,9 @@
   &__slide {
     width: 1000px;
 
-    &_w_full {
+    &_w_lg {
       width: 100%;
+      max-width: 1440px;
     }
   }
 

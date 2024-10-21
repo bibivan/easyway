@@ -1,0 +1,210 @@
+.about-history {
+  position: relative;
+  overflow: hidden;
+  padding: 260px 0 0;
+
+  @include tablet {
+    padding: 460px 0 0;
+  }
+
+  @include desktop {
+    padding: 0;
+
+    @include flex-row-center-end;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    z-index: $ui-index-0;
+    top: -50px;
+    left: 0;
+    display: none;
+    width: 100%;
+    padding: 187% 0 0;
+    background-image: url('public/img/about/about-history-lg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 155%;
+    content: '';
+
+    @include tablet {
+      top: -20%;
+      background-size: cover;
+    }
+
+    @include desktop {
+      top: -129px;
+      width: 648px;
+      height: 863px;
+      padding: 0;
+      background-position: left;
+      background-size: cover;
+    }
+  }
+
+  &::before {
+    left: 0;
+
+    @include desktop {
+      display: block;
+    }
+  }
+
+  &::after {
+    display: block;
+    transform: scaleX(-1);
+
+    @include desktop {
+      left: 648px;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+    z-index: $ui-index-1;
+    width: 100%;
+    backdrop-filter: blur(10px);
+
+    @include desktop {
+      max-width: 1000px;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      z-index: $ui-index-0;
+      top: 0;
+      display: block;
+      width: 100%;
+      content: '';
+
+      @include desktop {
+        height: 100%;
+      }
+    }
+
+    &::before {
+      top: 0;
+      height: 45%;
+      background: linear-gradient(180deg, rgb(17 17 17 / 0%) 0%, #111 84.21%);
+
+      @include desktop {
+        top: 0;
+        left: 146px;
+        width: 500px;
+        height: 100%;
+        background: linear-gradient(90deg, rgb(17 17 17 / 0%) 0%, #111 84.21%);
+      }
+    }
+
+    &::after {
+      top: 45%;
+      height: 55%;
+      background: #111;
+
+      @include desktop {
+        top: 0;
+        right: 0;
+        width: 374px;
+        height: 100%;
+        background: linear-gradient(270deg, #282828 0%, #111 98%);
+      }
+    }
+  }
+
+  &__content {
+    @include flex-column;
+
+    position: relative;
+    z-index: $ui-index-1;
+    min-height: 650px;
+    padding: 50px 20px;
+    color: $color-text-light;
+    gap: 30px;
+
+    @include desktop {
+      padding: 65px;
+      backdrop-filter: blur(18px);
+      background-color: rgba($color-primary, 0.5);
+      gap: 50px;
+    }
+  }
+
+  &__head {
+    @include flex-row-center-between;
+
+    gap: 207px;
+  }
+
+  &__heading {
+  }
+
+  &__figure {
+    width: 290px;
+    height: 110px;
+    flex-shrink: 0;
+    border: 2px solid $color-text-light;
+    border-radius: 55px;
+  }
+
+  &__img {
+    display: block;
+    width: 159px;
+    height: 100%;
+    border: 2px solid $color-text-light;
+    border-radius: 55px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__body {
+    @include flex-column;
+
+    gap: 33px;
+
+    @include tablet {
+      max-width: 400px;
+    }
+
+    @include desktop {
+      max-width: none;
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__event {
+    @include desktop {
+      width: 130px;
+    }
+  }
+}
+
+:deep(.about-history__event_xl .vector__circle) {
+  @include desktop {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+:deep(.about-history__event_lg .vector__circle) {
+  @include desktop {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+:deep(.about-history__event_md .vector__circle) {
+  @include desktop {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+:deep(.about-history__event_sm .vector__circle) {
+  @include desktop {
+    width: 12px;
+    height: 12px;
+  }
+}

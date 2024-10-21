@@ -43,36 +43,40 @@ const onSwiperInit = (swiper: SwiperClass) => {
           </div>
         </div>
       </section>
-      <Swiper
-        class="base-swiper about-slider__swiper"
-        :draggable="true"
-        :grab-cursor="true"
-        :initial-slide="0"
-        :modules="[SwiperScrollbar]"
-        :scrollbar="{
-          el: '.swiper-scrollbar',
-          hide: false
-        }"
-        slides-per-view="auto"
-        @swiper="onSwiperInit"
-      >
-        <SwiperSlide
-          v-for="(tab, idx) in tabs"
-          :key="'swiper-slide-' + idx"
-          class="about-slider__slide"
+      <div class="container about-slider__container">
+        <Swiper
+          class="base-swiper about-slider__swiper"
+          :draggable="true"
+          :grab-cursor="true"
+          :initial-slide="0"
+          :modules="[SwiperScrollbar]"
+          :scrollbar="{
+            el: '.swiper-scrollbar',
+            hide: false
+          }"
+          slides-per-view="auto"
+          @swiper="onSwiperInit"
         >
-          <component
-            :is="tab.component"
-            class="about-slider__inner-slide"
-          />
-        </SwiperSlide>
+          <SwiperSlide
+            v-for="(tab, idx) in tabs"
+            :key="'swiper-slide-' + idx"
+            class="about-slider__slide"
+            :class="{ 'about-slider__slide_w_lg': idx === 2 }"
+          >
+            <component
+              :is="tab.component"
+              class="about-slider__inner-slide"
+            />
+          </SwiperSlide>
 
-        <div class="swiper-scrollbar about-slider__scrollbar" />
-      </Swiper>
+          <div class="swiper-scrollbar about-slider__scrollbar" />
+        </Swiper>
+      </div>
     </div>
     <template v-else>
       <AboutMission />
       <AboutBrand />
+      <AboutHistory />
     </template>
   </main>
 </template>
