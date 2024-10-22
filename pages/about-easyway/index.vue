@@ -77,6 +77,9 @@ const onSwiperInit = (swiper: SwiperClass) => {
       <AboutMission />
       <AboutBrand />
       <AboutHistory />
+      <AboutStyle />
+      <AboutQuality />
+      <AboutCommunity />
     </template>
   </main>
 </template>

@@ -1,0 +1,52 @@
+.about-style {
+  position: relative;
+  overflow: hidden;
+  padding: 62.5% 0 0;
+  background-image: url('public/img/about/about-style.jpg');
+  background-position: 35% 45%;
+  background-size: 300%;
+
+  @include lg-mobile {
+    background-position: 35% 50%;
+  }
+
+  @include tablet {
+    padding: 30% 0 0;
+    background-position: center;
+    background-size: cover;
+  }
+
+  @include desktop {
+    display: grid;
+    justify-content: end;
+    padding: 0;
+    background-position: right 45%;
+    background-size: 115%;
+    grid-template-columns: minmax(auto, 630px);
+  }
+
+  &__container {
+    backdrop-filter: blur(10px);
+    background: rgba(#0f0f0f, 50%);
+
+    @include desktop {
+      min-height: 100%;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: $ui-index-1;
+    min-height: 445px;
+    padding: 55px 0;
+    color: $color-text-light;
+
+    @include tablet {
+      min-height: auto;
+    }
+
+    @include desktop {
+      padding: 65px 0;
+    }
+  }
+}

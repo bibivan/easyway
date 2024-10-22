@@ -1,9 +1,9 @@
 import type { RouterConfig } from '@nuxt/schema'
-import type { TNullable } from '~/types'
 
 export default <RouterConfig>{
   async scrollBehavior(to, from, savedPosition) {
-    if (process.client && window.innerWidth > 1024) return { left: 0, top: 0, behavior: 'smooth' }
+    const defaultPosition = { left: 0, top: 0, behavior: 'smooth' }
+    if (process.client && window.innerWidth > 1024) return defaultPosition
 
     // Если есть сохраненная позиция (например, при нажатии на кнопку назад)
     if (savedPosition) {
@@ -14,7 +14,7 @@ export default <RouterConfig>{
     if (to.hash) {
       // Отложенная проверка на наличие элемента
       const findElement = async (hash: string, attempts = 10) => {
-        const element: TNullable<Element> = document.querySelector(hash)
+        const element = document.querySelector(hash)
         if (element && 'offsetTop' in element && typeof element.offsetTop === 'number') {
           return {
             top: element.offsetTop - 90, // Отступ сверху
@@ -36,6 +36,6 @@ export default <RouterConfig>{
     }
 
     // По умолчанию скроллим в начало страницы
-    return { left: 0, top: 0, behavior: 'smooth' }
+    return defaultPosition
   }
 }

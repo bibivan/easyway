@@ -8,8 +8,8 @@
 @font-face {
   font-display: swap;
   font-family: Arial;
-  font-weight: 400;
   font-style: italic;
+  font-weight: 400;
   src: url('assets/fonts/Arial-Regular-Italic.woff2') format('woff2');
 }
 
@@ -18,6 +18,13 @@
   font-family: Arial;
   font-weight: 700;
   src: url('assets/fonts/Arial-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Arial;
+  font-weight: 900;
+  src: url('assets/fonts/Arial-Black.woff2') format('woff2');
 }
 
 @font-face {

@@ -137,22 +137,44 @@
     gap: 207px;
   }
 
-  &__heading {
-  }
-
   &__figure {
+    position: relative;
     width: 290px;
     height: 110px;
     flex-shrink: 0;
     border: 2px solid $color-text-light;
     border-radius: 55px;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: calc(100% + 128px);
+      display: block;
+      content: '';
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      width: 42px;
+      height: 42px;
+      border: 2px solid $color-bg-btn-light;
+      border-radius: 50%;
+    }
+
+    &::after {
+      right: 100%;
+      width: 128px;
+      height: 2px;
+      background-color: $color-bg-btn-light;
+    }
   }
 
   &__img {
     display: block;
     width: 159px;
     height: 100%;
-    border: 2px solid $color-text-light;
+    border: 2px solid $color-bg-btn-light;
     border-radius: 55px;
     object-fit: cover;
     object-position: center;

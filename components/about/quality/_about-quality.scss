@@ -1,0 +1,39 @@
+.about-quality {
+  position: relative;
+  overflow: hidden;
+
+  @include desktop {
+    display: flex;
+  }
+
+  &::before {
+    z-index: $ui-index-0;
+    display: block;
+    width: 100%;
+    max-width: 290px;
+    background-image: url('public/img/about/about-quality.jpg');
+    background-position: center;
+    background-size: cover;
+    content: '';
+    transform: scaleX(-1);
+
+    @include desktop {
+      display: block;
+    }
+  }
+
+  &__section {
+    background-color: $color-bg-section;
+
+    @include desktop {
+      min-width: 710px;
+      height: 100%;
+      padding: 65px 0;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: $ui-index-1;
+  }
+}

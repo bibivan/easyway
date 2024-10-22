@@ -1,0 +1,84 @@
+.about-community {
+  position: relative;
+  overflow: hidden;
+  padding: 81.25% 0 0;
+
+  @include desktop {
+    display: grid;
+    justify-content: end;
+    padding: 0;
+    grid-template-columns: 655px;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    z-index: $ui-index-0;
+    left: 0;
+    display: block;
+    width: 100%;
+    padding-top: 132.5%;
+    background-image: url('public/img/about/about-community.jpg');
+    background-size: cover;
+    content: '';
+
+    @include desktop {
+      width: 857px;
+      height: 100%;
+      padding-top: 0;
+      background-position: right -315px;
+      background-size: 130%;
+    }
+  }
+
+  &::before {
+    z-index: $ui-index-1;
+    top: 0;
+  }
+
+  &::after {
+    z-index: $ui-index-0;
+    top: 50%;
+    transform: scale(1, -1);
+
+    @include desktop {
+      top: 0;
+      left: 857px;
+      transform: scale(-1, 1);
+    }
+  }
+
+  &__section {
+    position: relative;
+    z-index: $ui-index-2;
+    overflow: visible;
+    backdrop-filter: blur(24px);
+    background-color: rgba(#0f0f0f, 50%);
+
+    @include desktop {
+      height: 100%;
+      padding: 65px 0 100px;
+    }
+
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: 85px;
+      display: none;
+      width: 200%;
+      height: 2px;
+      background-color: $color-bg-section;
+      content: '';
+
+      @include desktop {
+        display: block;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: $ui-index-1;
+    color: $color-text-light;
+  }
+}

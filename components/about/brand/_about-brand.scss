@@ -41,18 +41,4 @@
       padding: 65px 40px;
     }
   }
-
-  &__heading {
-    margin-bottom: 20px;
-
-    @include desktop {
-      margin-bottom: 30px;
-    }
-  }
-
-  &__description {
-    @include flex-column;
-
-    gap: $line-height-base;
-  }
 }
