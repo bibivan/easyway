@@ -1,66 +1,42 @@
 <script setup lang="ts">
-const { isMobile } = storeToRefs(useDeviceTypeStore())
+import type { RouteLocationRaw } from 'vue-router'
+defineProps<{
+  images: [string, string]
+  note: string
+  title: string
+  to: RouteLocationRaw
+}>()
 </script>
 
 <template>
   <section class="hero section">
-    <Swiper
-      class="base-swiper hero__swiper"
-      :draggable="true"
-      :grab-cursor="true"
-      :loop="true"
-      :modules="[SwiperPagination, SwiperAutoplay]"
-      :space-between="20"
-      :initial-slide="0"
-      :autoplay="{
-        delay: 2500,
-        disableOnInteraction: false
-      }"
-      :pagination="{
-        el: '.hero__swiper-pagination',
-        clickable: true
-      }"
-    >
-      <SwiperSlide
-        ><MainPageHeroBanner
-          class="hero__banner"
-          :images="[
-            'https://place-hold.it/600x600/#23232/#fff',
-            'https://place-hold.it/600x600/#23232/#fff',
-            'https://place-hold.it/600x600/#23232/#fff'
-          ]"
-      /></SwiperSlide>
-
-      <SwiperSlide
-        ><MainPageHeroBanner
-          class="hero__banner"
-          :images="[
-            'https://place-hold.it/600x600/#23232/#fff',
-            'https://place-hold.it/600x600/#23232/#fff',
-            'https://place-hold.it/600x600/#23232/#fff'
-          ]"
-      /></SwiperSlide>
-
-      <SwiperSlide
-        ><MainPageHeroBanner
-          class="hero__banner"
-          :images="[
-            'https://place-hold.it/600x600/#23232/#fff',
-            'https://place-hold.it/600x600/#23232/#fff',
-            'https://place-hold.it/600x600/#23232/#fff'
-          ]"
-      /></SwiperSlide>
-
-      <div class="hero__swiper-pagination swiper-pagination base-swiper__pagination" />
-    </Swiper>
-
-    <div class="container">
-      <div class="hero__content">
-        <div class="hero__text">
-          <p class="hero__note">feel the energy of summer with new sportswear<br />collection</p>
-          <p class="hero__heading">New&nbsp;in <br v-if="isMobile" />sport</p>
+    <div class="hero__wrapper">
+      <div class="hero__banner">
+        <div class="hero__image hero__image_1">
+          <p class="hero__note">{{ note }}</p>
         </div>
-        <button class="btn hero__btn">Купить</button>
+        <img
+          :src="images[0]"
+          alt="Image 1"
+          class="hero__image hero__image_2"
+        />
+        <img
+          :src="images[1]"
+          alt="Image 2"
+          class="hero__image hero__image_3"
+        />
+      </div>
+    </div>
+    <div class="hero__container container">
+      <div class="hero__content">
+        <p class="hero__heading">{{ title }}</p>
+
+        <NuxtLink
+          class="btn hero__btn"
+          :to="to"
+        >
+          Купить
+        </NuxtLink>
       </div>
     </div>
   </section>

@@ -1,10 +1,53 @@
 <script lang="ts" setup>
-import { EGender, EProductFilters } from '~/types/index.js'
+import { EBrand, EGender, EProductFilters } from '~/types/index.js'
 const collaborators = useCollaboratorsMock()
+const community = useCommunityMock()
+const { isMobile } = useDeviceTypeStore()
 </script>
 
 <template>
-  <MainPageHero />
+  <Swiper
+    class="base-swiper hero-swiper"
+    :draggable="true"
+    :grab-cursor="true"
+    :loop="true"
+    :modules="[SwiperPagination, SwiperAutoplay]"
+    :space-between="20"
+    :initial-slide="0"
+    :autoplay="{
+      delay: 250000,
+      disableOnInteraction: false
+    }"
+    :pagination="{
+      el: '.hero-swiper__pagination',
+      clickable: true
+    }"
+  >
+    <SwiperSlide>
+      <MainPageHero
+        :title="`New\u00A0in ${isMobile ? '\n' : ''}sport`"
+        :note="'feel the energy of summer with new sportswear\ncollection'"
+        :to="{
+          name: 'catalog',
+          query: { [EProductFilters.BRAND]: EBrand.EASYWAY }
+        }"
+        :images="['./img/hero/main/3.jpg', './img/hero/main/4.jpg']"
+      />
+    </SwiperSlide>
+    <SwiperSlide>
+      <MainPageHero
+        title="easyfit"
+        note="Бренд-линейка easyfit"
+        :to="{
+          name: 'catalog',
+          query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
+        }"
+        :images="['./img/hero/main/1.jpg', './img/hero/main/2.jpg']"
+      />
+    </SwiperSlide>
+
+    <div class="hero-swiper__pagination swiper-pagination base-swiper__pagination" />
+  </Swiper>
   <ProductSuggestions
     suggestions-name="New"
     suggestions-label="Новинки"
@@ -79,7 +122,7 @@ const collaborators = useCollaboratorsMock()
         />
         <ul class="collaborators__list">
           <li
-            v-for="(collaborator, index) in collaborators"
+            v-for="(collaborator, index) in community"
             :key="'imagery-' + index"
             class="collaborators__item"
           >

@@ -15,59 +15,24 @@
     height: 690px;
   }
 
-  &__swiper {
+  &__wrapper {
     position: absolute;
     z-index: $ui-index-1;
-    padding: 11px 0;
+    padding: 11px 0 46px;
     inset: 0;
 
-    @include tablet {
-      padding: 25px 0;
+    @include desktop {
+      padding: 25px 0 72px;
     }
   }
 
-  &__swiper-pagination {
-    bottom: 25px;
-
-    @include xs-desktop {
-      bottom: 37px;
-    }
-
-    :deep(.swiper-pagination-bullet) {
-      background-color: #171717;
-    }
-  }
-
-  &__banner {
-    height: 100%;
-  }
-
-  &__content {
-    @include flex-column-center-center;
-
+  &__container {
     position: relative;
     z-index: $ui-index-2;
   }
 
-  &__text {
-    position: relative;
-  }
-
-  &__note {
-    @include text-body;
-
-    position: absolute;
-    right: 100%;
-    bottom: 100%;
-    display: none;
-    width: 150px;
-    color: $color-text-light;
-    font-size: 15px;
-    text-align: right;
-
-    @include xs-desktop {
-      display: block;
-    }
+  &__content {
+    @include flex-column-center-center;
   }
 
   &__heading {
@@ -80,12 +45,14 @@
     opacity: 0.6;
     text-align: center;
     text-transform: uppercase;
+    white-space: pre-wrap;
 
     @include tablet {
       opacity: 1;
     }
 
     @include xs-desktop {
+      margin-bottom: 30px;
       font-size: 87px;
       line-height: 1;
     }
@@ -99,6 +66,79 @@
     @include tablet {
       background-color: $color-bg-btn-light;
       color: $color-text;
+    }
+  }
+
+  &__banner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__note {
+    @include text-body;
+
+    max-width: 150px;
+    color: $color-text-light;
+    font-size: 15px;
+    text-align: right;
+    white-space: pre-wrap;
+  }
+
+  &__image {
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 208px;
+    height: 208px;
+    border: 5px solid $color-bg-section; // прозрачный бордер
+    border-radius: 50%;
+    object-fit: cover;
+
+    @include tablet {
+      width: 430px;
+      height: 430px;
+    }
+
+    @include xs-desktop {
+      width: 593px;
+      height: 593px;
+    }
+
+    &_1 {
+      @include flex-row-bottom-end;
+
+      z-index: 1;
+      display: none;
+      background-color: #6c6c6a;
+
+      @include desktop {
+        display: flex;
+        padding: 0 260px 268px 20px;
+        transform: translateX(-100%);
+      }
+
+      @include xs-desktop {
+        padding: 0 340px 328px 20px;
+      }
+    }
+
+    &_2 {
+      z-index: 2;
+      transform: translateX(-66.66%);
+
+      @include desktop {
+        transform: translateX(-50%);
+      }
+    }
+
+    &_3 {
+      z-index: 3;
+      transform: translateX(-33.3333%);
+
+      @include desktop {
+        transform: translateX(0);
+      }
     }
   }
 }

@@ -1,0 +1,22 @@
+$default: 'Toastify';
+
+.base-toastify {
+  --toastify-color-dark: #{$color-primary};
+
+  &__item.#{$default}__toast-theme--dark {
+    padding: 14px;
+    box-shadow: none;
+  }
+
+  &__body {
+    @include text-heading;
+
+    font-size: 14px;
+  }
+
+  .#{$default}__toast-icon {
+    width: 32px;
+    height: auto;
+    margin-inline-end: 16px;
+  }
+}

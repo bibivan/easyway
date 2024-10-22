@@ -1,4 +1,5 @@
 import type { ICartItem, IProduct, TNullable } from '~/types'
+import { SvgFilledCart } from '#components'
 
 export const useCartStore = defineStore('cart_store', () => {
   // Data
@@ -74,7 +75,10 @@ export const useCartStore = defineStore('cart_store', () => {
 
         cartState.data.push(newCartItem)
         setToLocalStorage()
-        useNuxtApp().$toast('Товар добавлен')
+        useNuxtApp().$toast.success('Товар добавлен в корзину', {
+          theme: 'dark',
+          icon: () => h(SvgFilledCart)
+        })
       }
     } catch (e) {
       useNuxtApp().$toast('Неверный формат продукта. Товар не добавлен')

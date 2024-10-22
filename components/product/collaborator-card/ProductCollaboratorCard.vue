@@ -7,12 +7,14 @@ defineProps<{
 
 <template>
   <div class="collaborator-card">
-    <img
-      :src="img"
-      :alt="name"
-      class="collaborator-card__img"
-    />
-    <div class="collaborator-card__inner-wrapper">
+    <div class="collaborator-card__image-wrapper">
+      <img
+        :src="img"
+        :alt="name"
+        class="collaborator-card__img"
+      />
+    </div>
+    <div class="collaborator-card__content-wrapper">
       <slot />
     </div>
     <p class="collaborator-card__name">{{ name }}</p>

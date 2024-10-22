@@ -1,3 +1,17 @@
+.hero-swiper {
+  &__pagination {
+    bottom: 25px;
+
+    @include xs-desktop {
+      bottom: 37px;
+    }
+
+    :deep(.swiper-pagination-bullet) {
+      background-color: #171717;
+    }
+  }
+}
+
 .collaborators {
   @include flex-column;
   @include base-gap;
@@ -11,7 +25,7 @@
     grid-template-columns: 1fr 1fr;
 
     @include tablet {
-      display: flex;
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }
