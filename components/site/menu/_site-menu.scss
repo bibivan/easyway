@@ -1,25 +1,57 @@
 .menu {
-    @include flex-column-top-start;
-    @include text-body;
+  @include flex-column-top-start;
+  @include text-body;
 
-    position: fixed;
-    top: $header-height-mobile;
-    left: 0;
+  position: fixed;
+  z-index: $ui-index-1;
+  top: $header-height-mobile;
+  left: 0;
+  width: 100%;
+  height: calc(100% - #{$header-height-mobile});
+  background-color: $color-bg-html;
+
+  @include desktop {
+    display: none;
+  }
+
+  &__item {
+    @include flex-column;
+
     width: 100%;
-    height: calc(100% - #{$header-height-mobile});
-    background-color: $color-bg-html;
+    height: auto;
+    padding: 7px 20px 6px;
+    transition: background-color 0.2s ease-in-out;
 
-    @include desktop {
-        display: none;
+    &_active {
+      background-color: $color-bg-section-darker;
     }
+  }
 
-    &__item {
-        padding: 7px 20px 6px;
+  &__btn {
+    width: 14px;
+    transition: transform 0.2s ease-in-out;
+
+    &_active {
+      transform: rotate(180deg);
     }
+  }
 
-    &__link {
-        @include link-states;
+  &__link {
+    @include link-states;
 
-        font-size: 16px;
-    }
+    font-size: 16px;
+  }
+}
+
+.submenu {
+  @include flex-column;
+
+  gap: 7px;
+
+  &__head {
+    @include flex-row-center-between;
+  }
+
+  &__body {
+  }
 }

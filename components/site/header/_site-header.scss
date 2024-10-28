@@ -19,6 +19,8 @@
   &__content {
     @include flex-row-center-between;
 
+    position: relative;
+    z-index: $ui-index-0;
     min-height: $header-height-mobile;
     padding: 15px 0;
 
@@ -27,14 +29,34 @@
     }
   }
 
+  &__logo-wrapper {
+    @include flex-row-center-between;
+
+    max-width: 85px;
+    max-height: 20px;
+    gap: 30px;
+
+    @include desktop {
+      max-width: 205px;
+    }
+  }
+
+  &__categories-btn {
+    @include flex-row-center-center;
+
+    width: 30px;
+    height: auto;
+  }
+
   &__logo {
+    display: block;
     width: 85px;
-    height: 12px;
+    height: auto;
     color: $color-primary;
 
     @include desktop {
       width: 145px;
-      height: auto;
+      height: 20px;
     }
   }
 
@@ -83,7 +105,9 @@
   }
 
   &__actions {
-    display: flex;
+    @include flex-row-center-end;
+
+    min-width: 204px;
     gap: 30px;
   }
 
@@ -104,11 +128,9 @@
     }
 
     &_burger {
-      @include desktop {
-        display: none;
-        width: 29px;
-        height: 29px;
-      }
+      width: 20px;
+      height: 20px;
+      padding: 5px 0 4px;
     }
 
     &_auth {

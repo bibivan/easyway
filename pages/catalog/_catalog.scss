@@ -1,13 +1,51 @@
 .catalog {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(2, 1fr);
+  @include desktop {
+    @include flex-row-top-between;
 
-  @include tablet {
-    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
   }
 
-  @include desktop {
-    grid-template-columns: repeat(4, 1fr);
+  &__categories {
+    padding: 30px 10px 30px 30px;
+  }
+
+  &__list {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include sm-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+.categories {
+  @include flex-column;
+
+  gap: 25px;
+
+  @include md-desktop {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  &__heading {
+    width: 100%;
+  }
+
+  &__body {
+    @include flex-column;
+
+    gap: 18px;
+
+    :deep(.product-categories__item) {
+      padding: 0;
+      font-size: 18px;
+    }
   }
 }

@@ -1,0 +1,15 @@
+.product-categories {
+  &__item {
+    padding: 8px 0;
+  }
+
+  &__link {
+    @include link-states;
+
+    font-size: 14px;
+
+    @include desktop {
+      font-size: 16px;
+    }
+  }
+}

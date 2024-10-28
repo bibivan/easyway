@@ -9,7 +9,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     progressClassName: 'base-toastify__progress-bar',
     hideProgressBar: true,
     position: toast.POSITION.BOTTOM_RIGHT,
-    autoClose: 1000
+    autoClose: 2000
   })
 
   return {
