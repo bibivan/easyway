@@ -5,7 +5,7 @@ export interface IGetCatalogPayload {
 
 export enum EBrand {
   EASYFIT = 'easyfit',
-  EASYWAY = 'easyway',
+  EASYWAY = 'eazyway',
   EASYNUTRITION = 'easynutrition'
 }
 

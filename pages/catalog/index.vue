@@ -1,28 +1,33 @@
 <script setup lang="ts">
-import { EFetchStatus, EProductFilters } from '~/types'
-import { watch } from 'vue'
+import { EFetchStatus } from '~/types'
+import { isEGender } from '~/utils/typeguards/common'
 
 const route = useRoute()
+const { isDesktop } = useDeviceTypeStore()
 const { status, error, data: catalogData } = useCatalog()
-
-watch(
-  () => route?.query[EProductFilters.BRAND],
-  (value) => {
-    const theme = Array.isArray(value) ? value[0] : value || ''
-
-    document?.body.setAttribute('data-theme', theme || '')
-  },
-  { immediate: true }
-)
+const currentGender = computed(() => {
+  const gender = Array.isArray(route.query.gender) ? route.query.gender[0] : route.query.gender
+  if (isEGender(gender)) return gender
+})
 </script>
 
 <template>
-  <section class="section">
+  <section class="section catalog">
+    <aside
+      v-if="isDesktop && false"
+      class="catalog__categories categories"
+    >
+      <h2 class="categories__heading">Категории товаров</h2>
+      <ProductCategories
+        class="categories__body"
+        :gender="currentGender"
+      />
+    </aside>
     <div class="container">
       <BaseSpinner v-if="status === EFetchStatus.PENDING" />
       <div
         v-if="status === EFetchStatus.SUCCESS"
-        class="catalog"
+        class="catalog__list"
       >
         <CatalogItem
           v-for="item in catalogData?.items"

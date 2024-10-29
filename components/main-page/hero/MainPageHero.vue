@@ -2,7 +2,7 @@
 import type { RouteLocationRaw } from 'vue-router'
 defineProps<{
   images: [string, string]
-  note: string
+  note?: string
   title: string
   to: RouteLocationRaw
 }>()
@@ -13,7 +13,12 @@ defineProps<{
     <div class="hero__wrapper">
       <div class="hero__banner">
         <div class="hero__image hero__image_1">
-          <p class="hero__note">{{ note }}</p>
+          <p
+            v-if="note"
+            class="hero__note"
+          >
+            {{ note }}
+          </p>
         </div>
         <img
           :src="images[0]"

@@ -2,9 +2,11 @@
 import { EBrand, EGender, EProductFilters } from '~/types'
 
 const { handleShowCart } = useCartOpening()
+const { isDesktop } = useDeviceTypeStore()
 
 const state = reactive({
-  menuIsOpened: false
+  menuIsOpened: false,
+  categoriesIsOpened: false
 })
 </script>
 
@@ -12,12 +14,21 @@ const state = reactive({
   <header class="header header_easynutrition header_position_fixed">
     <div class="container">
       <div class="header__content">
-        <NuxtLink
-          class="header__logo logo"
-          to="/"
-        >
-          <SvgLogo />
-        </NuxtLink>
+        <div class="header__logo-wrapper">
+          <button
+            v-if="isDesktop && $route.name !== 'catalog' && false"
+            class="header__categories-btn"
+            @click="state.categoriesIsOpened = true"
+          >
+            <SvgBurger />
+          </button>
+          <NuxtLink
+            class="header__logo logo"
+            to="/"
+          >
+            <SvgLogo />
+          </NuxtLink>
+        </div>
         <nav class="header__nav">
           <NuxtLink
             class="header__link"
@@ -45,25 +56,25 @@ const state = reactive({
             >Женское</NuxtLink
           >
 
-          <NuxtLink
-            class="header__link"
-            :to="{ name: 'gift-cards' }"
-            >Подарочные карты</NuxtLink
-          >
+          <!--          <NuxtLink-->
+          <!--            class="header__link"-->
+          <!--            :to="{ name: 'gift-cards' }"-->
+          <!--            >Подарочные карты</NuxtLink-->
+          <!--          >-->
         </nav>
         <div class="header__actions">
-          <NuxtLink
-            class="header__action header__action_favorites"
-            to="/favorites"
-          >
-            <SvgHeart />
-          </NuxtLink>
-          <NuxtLink
-            class="header__action header__action_auth"
-            to="/favorites"
-          >
-            <SvgProfile />
-          </NuxtLink>
+          <!--          <NuxtLink-->
+          <!--            class="header__action header__action_favorites"-->
+          <!--            to="/favorites"-->
+          <!--          >-->
+          <!--            <SvgHeart />-->
+          <!--          </NuxtLink>-->
+          <!--          <NuxtLink-->
+          <!--            class="header__action header__action_auth"-->
+          <!--            to="/favorites"-->
+          <!--          >-->
+          <!--            <SvgProfile />-->
+          <!--          </NuxtLink>-->
           <button
             class="header__action header__action_cart"
             @click="handleShowCart"
@@ -71,21 +82,37 @@ const state = reactive({
             <CartItemsAmount />
           </button>
 
-          <button class="header__action header__action_burger">
-            <SvgBurger
+          <template v-if="!isDesktop">
+            <button
               v-if="!state.menuIsOpened"
+              class="header__action header__action_burger"
               @click="state.menuIsOpened = true"
-            />
-            <SvgCross
+            >
+              <SvgBurger />
+            </button>
+            <button
               v-if="state.menuIsOpened"
+              class="header__action"
               @click="state.menuIsOpened = false"
-            />
-          </button>
+            >
+              <SvgCross />
+            </button>
+          </template>
         </div>
       </div>
     </div>
     <transition name="slide-right">
-      <SiteMenu v-show="state.menuIsOpened" />
+      <SiteMenu
+        v-show="state.menuIsOpened"
+        @on-close-menu="state.menuIsOpened = false"
+      />
+    </transition>
+    <transition name="slide-left">
+      <SiteCategoriesMenu
+        v-show="state.categoriesIsOpened"
+        :is-opened="state.categoriesIsOpened"
+        @on-close-menu="state.categoriesIsOpened = false"
+      />
     </transition>
   </header>
 </template>
