@@ -16,7 +16,7 @@ const state = reactive({
       <div class="header__content">
         <div class="header__logo-wrapper">
           <button
-            v-if="isDesktop"
+            v-if="isDesktop && $route.name !== 'catalog' && false"
             class="header__categories-btn"
             @click="state.categoriesIsOpened = true"
           >
@@ -56,11 +56,11 @@ const state = reactive({
             >Женское</NuxtLink
           >
 
-          <NuxtLink
-            class="header__link"
-            :to="{ name: 'gift-cards' }"
-            >Подарочные карты</NuxtLink
-          >
+          <!--          <NuxtLink-->
+          <!--            class="header__link"-->
+          <!--            :to="{ name: 'gift-cards' }"-->
+          <!--            >Подарочные карты</NuxtLink-->
+          <!--          >-->
         </nav>
         <div class="header__actions">
           <!--          <NuxtLink-->
@@ -102,7 +102,10 @@ const state = reactive({
       </div>
     </div>
     <transition name="slide-right">
-      <SiteMenu v-show="state.menuIsOpened" />
+      <SiteMenu
+        v-show="state.menuIsOpened"
+        @on-close-menu="state.menuIsOpened = false"
+      />
     </transition>
     <transition name="slide-left">
       <SiteCategoriesMenu

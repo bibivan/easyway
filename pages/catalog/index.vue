@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { EFetchStatus, EProductFilters } from '~/types'
-import { watch } from 'vue'
+import { EFetchStatus } from '~/types'
 import { isEGender } from '~/utils/typeguards/common'
 
 const route = useRoute()
@@ -10,22 +9,12 @@ const currentGender = computed(() => {
   const gender = Array.isArray(route.query.gender) ? route.query.gender[0] : route.query.gender
   if (isEGender(gender)) return gender
 })
-
-watch(
-  () => route?.query[EProductFilters.BRAND],
-  (value) => {
-    const theme = Array.isArray(value) ? value[0] : value || ''
-
-    document?.body.setAttribute('data-theme', theme || '')
-  },
-  { immediate: true }
-)
 </script>
 
 <template>
   <section class="section catalog">
     <aside
-      v-if="isDesktop"
+      v-if="isDesktop && false"
       class="catalog__categories categories"
     >
       <h2 class="categories__heading">Категории товаров</h2>

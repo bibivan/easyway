@@ -1,11 +1,5 @@
 import dayjs from 'dayjs'
-import {
-  EDeliveryType,
-  type ICartItem,
-  type IOrder,
-  type ISendOrderPayload,
-  type ISendOrderResponse
-} from '~/types'
+import { EDeliveryType, type ICartItem, type IOrder, type ISendOrderResponse } from '~/types'
 
 export const useOrderStore = defineStore('order_store', () => {
   const order = reactive<IOrder>({

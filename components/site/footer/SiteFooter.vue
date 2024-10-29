@@ -13,16 +13,16 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
             <SiteSocials
               class="footer__social footer__social_easyway"
               logo-route="/"
-              tg-route="https://t.me/+qt3ZwgXc0jdiYWYy"
-              vk-route="https://vk.com/easynutrition4you"
+              tg-route="https://t.me/eazywayofficial"
+              vk-route="https://vk.com/eazywayofficial"
             >
               <SvgLogo />
             </SiteSocials>
             <SiteSocials
               class="footer__social footer__social_easyfit"
-              logo-route="https://easynutrition.ru/"
-              tg-route="https://t.me/+qt3ZwgXc0jdiYWYy"
-              vk-route="https://vk.com/easynutrition4you"
+              :logo-route="{ name: 'catalog', query: { [EProductFilters.BRAND]: EBrand.EASYFIT } }"
+              tg-route="https://t.me/easyfit4u"
+              vk-route="https://vk.com/easyfit4u"
             >
               <SvgEasyfit />
             </SiteSocials>

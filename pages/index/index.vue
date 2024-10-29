@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { EBrand, EGender, EProductFilters } from '~/types/index.js'
-const collaborators = useCollaboratorsMock()
+// const collaborators = useCollaboratorsMock()
 const community = useCommunityMock()
-const { isMobile } = useDeviceTypeStore()
 </script>
 
 <template>
@@ -12,7 +11,6 @@ const { isMobile } = useDeviceTypeStore()
     :grab-cursor="true"
     :loop="true"
     :modules="[SwiperPagination, SwiperAutoplay]"
-    :space-between="20"
     :initial-slide="0"
     :autoplay="{
       delay: 250000,
@@ -25,8 +23,7 @@ const { isMobile } = useDeviceTypeStore()
   >
     <SwiperSlide>
       <MainPageHero
-        :title="`New\u00A0in ${isMobile ? '\n' : ''}sport`"
-        :note="'feel the energy of summer with new sportswear\ncollection'"
+        title="EAZYWAY"
         :to="{
           name: 'catalog',
           query: { [EProductFilters.BRAND]: EBrand.EASYWAY }
@@ -36,7 +33,7 @@ const { isMobile } = useDeviceTypeStore()
     </SwiperSlide>
     <SwiperSlide>
       <MainPageHero
-        title="easyfit"
+        title="EASYFIT"
         note="Бренд-линейка easyfit"
         :to="{
           name: 'catalog',
@@ -81,40 +78,40 @@ const { isMobile } = useDeviceTypeStore()
     }"
   />
 
+  <!--  <section class="section">-->
+  <!--    <div class="container">-->
+  <!--      <div class="collaborators">-->
+  <!--        <CommonHeading-->
+  <!--          class="collaborators__heading"-->
+  <!--          title="Образы"-->
+  <!--          :to="{-->
+  <!--            name: 'catalog',-->
+  <!--            query: { [EProductFilters.GENDER]: EGender.FEMALE }-->
+  <!--          }"-->
+  <!--        />-->
+  <!--        <ul class="collaborators__list">-->
+  <!--          <li-->
+  <!--            v-for="(collaborator, index) in collaborators"-->
+  <!--            :key="'imagery-' + index"-->
+  <!--            class="collaborators__item"-->
+  <!--          >-->
+  <!--            <ProductCollaboratorCard-->
+  <!--              :img="collaborator.img"-->
+  <!--              :name="collaborator.name"-->
+  <!--            >-->
+  <!--              <ProductMiniCard :product-group-id="index" />-->
+  <!--            </ProductCollaboratorCard>-->
+  <!--          </li>-->
+  <!--        </ul>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </section>-->
   <section class="section">
     <div class="container">
       <div class="collaborators">
         <CommonHeading
           class="collaborators__heading"
-          title="Образы"
-          :to="{
-            name: 'catalog',
-            query: { [EProductFilters.GENDER]: EGender.FEMALE }
-          }"
-        />
-        <ul class="collaborators__list">
-          <li
-            v-for="(collaborator, index) in collaborators"
-            :key="'imagery-' + index"
-            class="collaborators__item"
-          >
-            <ProductCollaboratorCard
-              :img="collaborator.img"
-              :name="collaborator.name"
-            >
-              <ProductMiniCard :product-group-id="index" />
-            </ProductCollaboratorCard>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container">
-      <div class="collaborators">
-        <CommonHeading
-          class="collaborators__heading"
-          title="Амбассадоры"
+          title="Коммьюнити #eazyladies"
           :to="{
             name: 'catalog',
             query: { [EProductFilters.GENDER]: EGender.FEMALE }
