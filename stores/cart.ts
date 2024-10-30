@@ -52,8 +52,6 @@ export const useCartStore = defineStore('cart_store', () => {
   }
 
   const putToCart = (item: IProduct) => {
-    if (!item.sfAttrs) return useNuxtApp().$toast('Отсутствуют аттрибуты. Продукт не добавлен')
-
     try {
       if (!cartState.data) cartState.data = [] as ICartItem[]
       const isInCart = arrayHasElem(cartState.data, 'id', item.id)
@@ -63,10 +61,8 @@ export const useCartStore = defineStore('cart_store', () => {
         const newCartItem: ICartItem = {
           name: item.name,
           article: item.article,
-          attributes: {
-            color: item.sfAttrs.color,
-            size: item.sfAttrs.size
-          },
+          color: item.color,
+          size: item.size,
           cnt: 1,
           price: item.priceInt || 0,
           picture: item.pictures ? item.pictures[0] : '',

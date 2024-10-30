@@ -24,16 +24,16 @@ const { deleteCartItem: handleDeleteCartItem } = useCartStore()
           <p class="cart-item__attr">
             <span class="cart-item__label"> Цвет: </span>
             <BaseColorInput
-              :id="'color_id_' + data.attributes.color"
+              :id="'color_id_' + data.color"
               class="cart-item__color"
-              :style="{ color: data.attributes.color }"
-              :value="data.attributes.color"
+              :style="{ color: data.color }"
+              :value="data.color"
               type="radio"
             />
           </p>
           <p class="cart-item__attr">
             <span class="cart-item__label"> Размер: </span>
-            {{ data.attributes.size }}
+            {{ data.size }}
           </p>
         </div>
         <div class="cart-item__price">{{ formatNumberWithSpaces(data.price) }} ₽</div>

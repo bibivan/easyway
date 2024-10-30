@@ -1,13 +1,15 @@
-import type { IProductSFAttrs } from '~/types'
+import type { IProduct } from '~/types'
+import { EProductSizeAttr } from '~/types'
 
 export interface ICartItem {
   name: string
   article: string
-  attributes: Pick<IProductSFAttrs, 'size' | 'color'>
   cnt: number
+  color: string
+  id: number
   price: number
   picture: string
-  id: number
+  size: EProductSizeAttr
 }
 
 export type IPromoResponseData = { result: number | false }

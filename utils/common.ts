@@ -76,52 +76,43 @@ export const debounce = <T extends (...args: any[]) => any>(
   }
 }
 
-export const throttle = <T extends (...args: any[]) => void>(
-  func: T,
-  limit: number
-): ((...args: Parameters<T>) => void) => {
-  let lastFunc: ReturnType<typeof setTimeout> | null = null
-  let lastRan: number | null = null
-
-  return (...args: Parameters<T>) => {
-    const context = this
-
-    if (!lastRan) {
-      func.apply(context, args)
-      lastRan = Date.now()
-    } else {
-      if (lastFunc) {
-        clearTimeout(lastFunc)
-      }
-
-      lastFunc = setTimeout(
-        () => {
-          if (Date.now() - (lastRan as number) >= limit) {
-            func.apply(context, args)
-            lastRan = Date.now()
-          }
-        },
-        limit - (Date.now() - (lastRan as number))
-      )
-    }
-  }
-}
+// export const throttle = <T extends (...args: any[]) => void>(
+//   func: T,
+//   limit: number
+// ): ((...args: Parameters<T>) => void) => {
+//   let lastFunc: ReturnType<typeof setTimeout> | null = null
+//   let lastRan: number | null = null
+//
+//   return (...args: Parameters<T>) => {
+//     const context = this
+//
+//     if (!lastRan) {
+//       func.apply(context, args)
+//       lastRan = Date.now()
+//     } else {
+//       if (lastFunc) {
+//         clearTimeout(lastFunc)
+//       }
+//
+//       lastFunc = setTimeout(
+//         () => {
+//           if (Date.now() - (lastRan as number) >= limit) {
+//             func.apply(context, args)
+//             lastRan = Date.now()
+//           }
+//         },
+//         limit - (Date.now() - (lastRan as number))
+//       )
+//     }
+//   }
+// }
 
 export const formatNumberWithSpaces = (num: number): string =>
   num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 
-export const getRandomNumber = (min: number, max: number): number => {
-  return Math.floor(Math.random() * (max - min + 1)) + min
-}
-
 export const isWhiteColor = (color: string): boolean => {
-  // Проверка на белый цвет в формате HEX
   const hexPattern = /^#(?:f{3}|f{6}|fff|ffffff)$/i
-
-  // Проверка на белый цвет в формате RGB или RGBA
   const rgbPattern = /^rgba?\(\s*255\s*,\s*255\s*,\s*255\s*(?:,\s*(0|1|1.0|0?\.\d+)\s*)?\)$/i
-
-  // Проверка на строку "white"
   const namedWhitePattern = /^white$/i
 
   return hexPattern.test(color) || rgbPattern.test(color) || namedWhitePattern.test(color)
@@ -147,11 +138,15 @@ export const smoothScroll = (container: HTMLElement, targetPosition: number, dur
   requestAnimationFrame(animation)
 }
 
-export const getRandomColor = (): string => {
-  const letters = '0123456789ABCDEF'
-  let color = '#'
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)]
-  }
-  return color
-}
+// export const getRandomNumber = (min: number, max: number): number => {
+//   return Math.floor(Math.random() * (max - min + 1)) + min
+// }
+
+// export const getRandomColor = (): string => {
+//   const letters = '0123456789ABCDEF'
+//   let color = '#'
+//   for (let i = 0; i < 6; i++) {
+//     color += letters[Math.floor(Math.random() * 16)]
+//   }
+//   return color
+// }

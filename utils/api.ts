@@ -22,18 +22,3 @@ export const getBaseUrl = () => {
 //     return { query: { token } }
 //   }
 // }
-
-export const addTokenToRequest = <T, U>(
-  options: NitroFetchOptions<NitroFetchRequest> | UseFetchOptions<T, U>
-): NitroFetchOptions<NitroFetchRequest> | UseFetchOptions<T, U> => {
-  const token = getShopToken()
-  const method = unref(options.method)?.toUpperCase() || 'GET'
-
-  if (options.method && ['POST', 'PUT', 'PATCH'].includes(method)) {
-    options.body = { ...(options.body as object), token }
-  } else {
-    options.query = { ...(options.query as object), token }
-  }
-
-  return options
-}

@@ -4,11 +4,13 @@ import { isEGender } from '~/utils/typeguards/common'
 
 const route = useRoute()
 const { isDesktop } = useDeviceTypeStore()
-const { status, error, data: catalogData } = useCatalog()
+const { status, error, data } = useCatalog()
 const currentGender = computed(() => {
   const gender = Array.isArray(route.query.gender) ? route.query.gender[0] : route.query.gender
   if (isEGender(gender)) return gender
 })
+
+console.log('in page', data.value)
 </script>
 
 <template>
@@ -30,7 +32,7 @@ const currentGender = computed(() => {
         class="catalog__list"
       >
         <CatalogItem
-          v-for="item in catalogData?.items"
+          v-for="item in data?.items"
           :key="item.groupId"
           :data="item"
         />

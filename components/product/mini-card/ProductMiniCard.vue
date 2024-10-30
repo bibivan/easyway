@@ -2,7 +2,7 @@
 import { EFetchStatus } from '~/types'
 
 const props = defineProps<{
-  productGroupId: number
+  productGroupId: string
 }>()
 
 const { error, status, data: productGroup, refresh } = useProductGroup(props.productGroupId)

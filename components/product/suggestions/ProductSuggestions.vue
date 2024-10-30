@@ -20,11 +20,13 @@ const { isDesktop } = storeToRefs(useDeviceTypeStore())
 const { data, error, status } = await useApiFetch<
   IPaginatedDataRaw<IProductGroupRaw[]>,
   IProductGroup[]
->('products', {
-  transform: () => {
-    const data = useCatalogMock()
-
-    return data?.items.map((item: IProductGroupRaw) => {
+>('data', {
+  params: {
+    page: 2,
+    limit: 3
+  },
+  transform: (data) => {
+    return data.items.map((item: IProductGroupRaw) => {
       return productGroupRawToProductGroup(item)
     })
   }

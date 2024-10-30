@@ -1,46 +1,56 @@
 import {
+  type IProduct,
   type IProductGroup,
   type IProductGroupState,
+  type IProductSizeState,
   type TGenericRef,
   type TNullable
 } from '~/types'
+import type { ComputedRef } from 'vue'
 
 export const useActiveProduct = (data: TGenericRef<TNullable<IProductGroup>>) => {
   if (!data.value) return { state: undefined, activeProduct: undefined }
 
-  const state = reactive<IProductGroupState>({
-    color: data.value.items[0].sfAttrs?.color || data.value.colors[0],
-    size: data.value.items[0].sfAttrs?.size || data.value.sizes[0]
+  const state: IProductGroupState = reactive({
+    color: data.value.colors[0],
+    size: {
+      value: null,
+      disabled: null
+    }
   })
 
-  const activeProduct = computed(() => {
-    return data.value?.items.find((item) => {
-      return item.sfAttrs?.color === state.color && item.sfAttrs?.size === state.size
-    })
+  const sizeList: ComputedRef<TNullable<IProductSizeState[]>> = computed(() => {
+    const list = data.value?.items.reduce((acc: IProductSizeState[], curItem: IProduct) => {
+      if (curItem.color !== state.color) return acc
+      else {
+        return [
+          ...acc,
+          {
+            value: curItem.size,
+            disabled: curItem.stock === 0
+          }
+        ]
+      }
+    }, [])
+
+    return list ? list : null
   })
 
-  watch(
-    () => state.color,
-    () => {
-      if (!activeProduct.value) {
-        const itemByColor = data.value?.items.find((item) => item.sfAttrs?.color === state.color)
-        if (itemByColor?.sfAttrs) state.size = itemByColor.sfAttrs.size
-      }
-    }
-  )
+  const activeProduct: ComputedRef<TNullable<IProduct>> = computed(() => {
+    return (
+      data.value?.items.find((item) => {
+        return item.color === state.color && item.size === state.size?.value
+      }) || null
+    )
+  })
 
-  watch(
-    () => state.size,
-    () => {
-      if (!activeProduct.value) {
-        const itemBySize = data.value?.items.find((item) => item.sfAttrs?.size === state.size)
-        if (itemBySize?.sfAttrs) state.color = itemBySize.sfAttrs.color
-      }
-    }
-  )
+  onMounted(() => {
+    if (sizeList.value) state.size = sizeList.value[0]
+  })
 
   return {
     state,
-    activeProduct
+    activeProduct,
+    sizeList
   }
 }

@@ -43,11 +43,6 @@ export const usePromoStore = defineStore('promo_store', () => {
         },
         body: { promo: code }
       })
-      // const getData = (): IPromoResponseData => {
-      //   if (getRandomNumber(1, 100) > 50) throw new Error('серверная ошибка')
-      //   return code === 'e' ? { result: 10 } : false
-      // }
-      // const data: IPromoResponseData = getData()
 
       if (data.result) {
         promoState.data.amount = data.result

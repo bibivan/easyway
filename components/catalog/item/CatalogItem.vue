@@ -8,7 +8,7 @@ const {
   deleteCartItem: handleDeleteCartItem
 } = useCartStore()
 const { isMobile } = storeToRefs(useDeviceTypeStore())
-const { state, activeProduct } = useActiveProduct(toRef(props, 'data'))
+const { state, activeProduct, sizeList } = useActiveProduct(toRef(props, 'data'))
 
 const productIsInCart = computed(() => {
   return arrayHasElem(cartState.data || [], 'id', activeProduct?.value?.id)
@@ -52,11 +52,11 @@ const productIsInCart = computed(() => {
       </div>
       <div class="catalog-item__sizes">
         <BaseSizeInput
-          v-for="size in data.sizes"
+          v-for="size in sizeList"
           :id="data.groupId + size"
           :key="data.groupId + size"
-          v-model="state.size"
-          :value="size"
+          v-model="state.size.value"
+          :value="size.value"
           type="radio"
         />
       </div>

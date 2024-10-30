@@ -9,57 +9,58 @@ export enum EProductSizeAttr {
   XXL = 'XXL'
 }
 
+export interface IProductSizeState {
+  value: TNullable<EProductSizeAttr>
+  disabled: TNullable<boolean>
+}
+
 export enum EProductFilters {
-  SIZE = 'size',
-  COLOR = 'color',
-  GENDER = 'gender',
-  BRAND = 'BRAND'
+  SIZE = 'SIZES',
+  COLOR = 'COLORS',
+  GENDER = 'GENDER',
+  BRAND = 'BRAND',
+  CATEGORY = 'CATEGORY'
 }
 
-export interface IProductAttributesRaw {
-  sfAttrs: {
-    name: string
-    value: string
-  }[]
-}
-
-export interface IProductSFAttrs {
-  size: EProductSizeAttr
-  color: string
-  description: string
+export interface IProductAttrs {
   composition: string
-  careInstructions: string
-  gender: EGender
+  care: string
 }
 
 export interface IProductRaw {
   ARTICLE: string
-  ATTRIBUTES: string
   BARCODE: string
   BRAND: string
   CATEGORY: string
+  COLOR: string
   DESCRIPTION: string
-  ID: string
+  FABRIC: IProductAttrs
   GROUP_ID: string
+  ID: string
   NAME: string
   PICTURES: string
   PRICE: string
   PRICE_INT: string
+  SIZE: string
+  STOCK?: string
 }
 
 export interface IProduct {
   article: string
-  sfAttrs: TNullable<IProductSFAttrs>
   barcode: TNullable<number>
   brand: TNullable<EBrand>
   category: TNullable<string>
+  color: string
   description: TNullable<string>
+  fabric: TNullable<IProductAttrs>
+  groupId: string
   id: number
-  groupId: number
   name: string
   pictures: TNullable<string[]>
   price: TNullable<string>
   priceInt: TNullable<number>
+  size: EProductSizeAttr
+  stock: number
 }
 
 export interface IProductGroupRaw {
@@ -74,7 +75,7 @@ export interface IProductGroupRaw {
 export interface IProductGroup {
   sizes: EProductSizeAttr[]
   colors: string[]
-  groupId: number
+  groupId: string
   category: string
   gender: EGender
   items: IProduct[]
@@ -82,5 +83,5 @@ export interface IProductGroup {
 
 export interface IProductGroupState {
   color: string
-  size: EProductSizeAttr
+  size: IProductSizeState
 }

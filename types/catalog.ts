@@ -4,12 +4,12 @@ export interface IGetCatalogPayload {
 }
 
 export enum EBrand {
-  EASYFIT = 'easyfit',
-  EASYWAY = 'eazyway',
-  EASYNUTRITION = 'easynutrition'
+  EASYFIT = 'EASYFIT',
+  EASYWAY = 'EAZYWAY',
+  EASYNUTRITION = 'EASYNUTRITION'
 }
 
 export enum EGender {
-  MALE = 'male',
-  FEMALE = 'female'
+  FEMALE = 'Женское',
+  MALE = 'Мужское'
 }

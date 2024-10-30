@@ -1,5 +1,4 @@
 import type { IPaginatedDataRaw, IProductGroupRaw } from '~/types'
-import { attrsRawToAttrs } from '~/utils/products'
 
 export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
   return {
@@ -18,10 +17,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         ITEMS: [
           {
             ARTICLE: 'article-0-00',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XS"},{"name":"color","value":"black"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111100',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XS',
+            COLOR: 'black',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '000',
@@ -34,10 +34,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-01',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"black"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111100',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'black',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '001',
@@ -50,10 +51,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-02',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"black"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111100',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'black',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '002',
@@ -66,10 +68,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-03',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"black"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111100',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'black',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '003',
@@ -82,10 +85,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-04',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XL"},{"name":"color","value":"black"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111100',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XL',
+            COLOR: 'black',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '004',
@@ -98,10 +102,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-10',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XS"},{"name":"color","value":"white"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111101',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XS',
+            COLOR: 'white',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '010',
@@ -114,10 +119,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-11',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"white"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111101',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'white',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '011',
@@ -130,10 +136,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-12',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"white"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111101',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'white',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '012',
@@ -146,10 +153,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-13',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"white"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111101',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'white',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '013',
@@ -162,10 +170,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-14',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XL"},{"name":"color","value":"white"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111101',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XL',
+            COLOR: 'white',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '014',
@@ -178,10 +187,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-20',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XS"},{"name":"color","value":"red"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111102',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XS',
+            COLOR: 'red',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '020',
@@ -194,10 +204,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-21',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"red"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111102',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'red',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '021',
@@ -210,10 +221,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-22',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"red"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111102',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'red',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '022',
@@ -226,10 +238,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-23',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"red"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111102',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'red',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '023',
@@ -242,10 +255,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-24',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XL"},{"name":"color","value":"red"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111102',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XL',
+            COLOR: 'red',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '024',
@@ -258,10 +272,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-30',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XS"},{"name":"color","value":"green"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111103',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XS',
+            COLOR: 'green',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '030',
@@ -274,10 +289,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-31',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"green"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111103',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'green',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '031',
@@ -290,10 +306,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-32',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"green"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111103',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'green',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '032',
@@ -306,10 +323,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-33',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"green"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111103',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'green',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '033',
@@ -322,10 +340,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-0-34',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XL"},{"name":"color","value":"green"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111103',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XL',
+            COLOR: 'green',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '034',
@@ -347,10 +366,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         ITEMS: [
           {
             ARTICLE: 'article-1-00',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"black"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111200',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'black',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '100',
@@ -363,10 +383,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-1-01',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"black"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111200',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'black',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '101',
@@ -379,10 +400,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-1-02',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"black"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111200',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'black',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '102',
@@ -395,10 +417,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-1-10',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"white"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111201',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'white',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '110',
@@ -411,10 +434,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-1-11',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"white"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111201',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'white',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '111',
@@ -427,10 +451,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-1-12',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"white"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111201',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'white',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '112',
@@ -443,10 +468,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-1-30',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"green"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111203',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'green',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '130',
@@ -459,10 +485,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-1-31',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"green"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111203',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'green',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '131',
@@ -475,10 +502,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-1-32',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"green"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111203',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'green',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '132',
@@ -500,10 +528,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         ITEMS: [
           {
             ARTICLE: 'article-2-00',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XS"},{"name":"color","value":"black"},{"name":"composition","value":"80% нейлон, 20% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Легинсы, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111300',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XS',
+            COLOR: 'black',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
             ID: '200',
@@ -516,10 +545,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-2-01',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"black"},{"name":"composition","value":"80% нейлон, 20% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Легинсы, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111300',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'black',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
             ID: '201',
@@ -532,10 +562,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-2-02',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"black"},{"name":"composition","value":"80% нейлон, 20% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Легинсы, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111300',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'black',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
             ID: '202',
@@ -548,10 +579,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-2-20',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XS"},{"name":"color","value":"red"},{"name":"composition","value":"80% нейлон, 20% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Легинсы, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111302',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XS',
+            COLOR: 'red',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
             ID: '220',
@@ -564,10 +596,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-2-21',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"red"},{"name":"composition","value":"80% нейлон, 20% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Легинсы, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111302',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'red',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
             ID: '221',
@@ -580,10 +613,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-2-22',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"red"},{"name":"composition","value":"80% нейлон, 20% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Легинсы, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111302',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'red',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
             ID: '222',
@@ -596,10 +630,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-2-30',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XS"},{"name":"color","value":"green"},{"name":"composition","value":"80% нейлон, 20% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Легинсы, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111303',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XS',
+            COLOR: 'green',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
             ID: '230',
@@ -612,10 +647,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-2-31',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"green"},{"name":"composition","value":"80% нейлон, 20% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Легинсы, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111303',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'green',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
             ID: '231',
@@ -628,10 +664,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-2-32',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"green"},{"name":"composition","value":"80% нейлон, 20% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Легинсы, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111303',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'green',
             CATEGORY: 'Легинсы',
             DESCRIPTION: 'Легинсы для тренировок',
             ID: '232',
@@ -653,10 +690,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         ITEMS: [
           {
             ARTICLE: 'article-3-10',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"white"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Брюки, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111401',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'white',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
             ID: '310',
@@ -669,10 +707,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-3-11',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"white"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Брюки, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111401',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'white',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
             ID: '311',
@@ -685,10 +724,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-3-12',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"white"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Брюки, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111401',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'white',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
             ID: '312',
@@ -701,10 +741,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-3-20',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"red"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Брюки, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111402',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'red',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
             ID: '320',
@@ -717,10 +758,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-3-21',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"red"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Брюки, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111402',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'red',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
             ID: '321',
@@ -733,10 +775,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-3-22',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"red"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Брюки, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111402',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'red',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
             ID: '322',
@@ -749,10 +792,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-3-30',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"green"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Брюки, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111403',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'green',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
             ID: '330',
@@ -765,10 +809,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-3-31',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"green"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Брюки, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111403',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'green',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
             ID: '331',
@@ -781,10 +826,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-3-32',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"green"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Брюки, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111403',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'green',
             CATEGORY: 'Брюки',
             DESCRIPTION: 'Брюки для тренировок',
             ID: '332',
@@ -806,10 +852,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         ITEMS: [
           {
             ARTICLE: 'article-4-00',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"black"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Аксессуары, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111500',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'black',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
             ID: '400',
@@ -822,10 +869,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-4-01',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"black"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Аксессуары, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111500',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'black',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
             ID: '401',
@@ -838,10 +886,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-4-02',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XL"},{"name":"color","value":"black"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Аксессуары, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111500',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XL',
+            COLOR: 'black',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
             ID: '402',
@@ -854,10 +903,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-4-10',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"white"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Аксессуары, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111501',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'white',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
             ID: '410',
@@ -870,10 +920,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-4-11',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"white"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Аксессуары, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111501',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'white',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
             ID: '411',
@@ -886,10 +937,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-4-12',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XL"},{"name":"color","value":"white"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Аксессуары, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111501',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XL',
+            COLOR: 'white',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
             ID: '412',
@@ -902,10 +954,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-4-20',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"red"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Аксессуары, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111502',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'red',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
             ID: '420',
@@ -918,10 +971,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-4-21',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"red"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Аксессуары, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111502',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'red',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
             ID: '421',
@@ -934,10 +988,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-4-22',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XL"},{"name":"color","value":"red"},{"name":"composition","value":"100% хлопок"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Аксессуары, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111502',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XL',
+            COLOR: 'red',
             CATEGORY: 'Аксессуары',
             DESCRIPTION: 'Аксессуары для тренировок',
             ID: '422',
@@ -959,10 +1014,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         ITEMS: [
           {
             ARTICLE: 'article-5-00',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XS"},{"name":"color","value":"black"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Лонгсливы, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111600',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XS',
+            COLOR: 'black',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
             ID: '500',
@@ -975,10 +1031,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-5-01',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"black"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Лонгсливы, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111600',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'black',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
             ID: '501',
@@ -991,10 +1048,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-5-02',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"black"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Лонгсливы, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111600',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'black',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
             ID: '502',
@@ -1007,10 +1065,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-5-10',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XS"},{"name":"color","value":"white"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Лонгсливы, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111601',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XS',
+            COLOR: 'white',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
             ID: '510',
@@ -1023,10 +1082,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-5-11',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"white"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Лонгсливы, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111601',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'white',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
             ID: '511',
@@ -1039,10 +1099,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-5-12',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"white"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Лонгсливы, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111601',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'white',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
             ID: '512',
@@ -1055,10 +1116,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-5-30',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XS"},{"name":"color","value":"green"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Лонгсливы, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111603',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XS',
+            COLOR: 'green',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
             ID: '530',
@@ -1071,10 +1133,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-5-31',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"green"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Лонгсливы, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111603',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'green',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
             ID: '531',
@@ -1087,10 +1150,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-5-32',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"green"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Лонгсливы, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111603',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'green',
             CATEGORY: 'Лонгсливы',
             DESCRIPTION: 'Лонгсливы для тренировок',
             ID: '532',
@@ -1112,10 +1176,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         ITEMS: [
           {
             ARTICLE: 'article-6-00',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"black"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111700',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'black',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '600',
@@ -1128,10 +1193,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-6-01',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"black"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111700',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'black',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '601',
@@ -1144,10 +1210,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-6-02',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"black"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, XS, черный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111700',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'black',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '602',
@@ -1160,10 +1227,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-6-10',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"white"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111701',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'white',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '610',
@@ -1176,10 +1244,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-6-11',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"white"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111701',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'white',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '611',
@@ -1192,10 +1261,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-6-12',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"white"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111701',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'white',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '612',
@@ -1208,10 +1278,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-6-30',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"green"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111703',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'green',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '630',
@@ -1224,10 +1295,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-6-31',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"green"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111703',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'green',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '631',
@@ -1240,10 +1312,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-6-32',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"green"},{"name":"composition","value":"90% хлопок, 10% эластан"},{"name":"careInstructions","value":"Ручная стирка при 30°"},{"name":"gender","value":"male"},{"name":"description","value":"Футболки, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111703',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'green',
             CATEGORY: 'Футболки',
             DESCRIPTION: 'Футболки для тренировок',
             ID: '632',
@@ -1265,10 +1338,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
         ITEMS: [
           {
             ARTICLE: 'article-7-100',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"blue"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111801',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'blue',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '7100',
@@ -1281,10 +1355,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-7-10',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"white"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111801',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'white',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '710',
@@ -1297,10 +1372,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-7-11',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"white"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111801',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'white',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '711',
@@ -1313,10 +1389,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-7-12',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"white"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, S, белый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111801',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'white',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '712',
@@ -1329,10 +1406,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-7-20',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"red"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111802',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'red',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '720',
@@ -1345,10 +1423,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-7-21',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"red"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111802',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'red',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '721',
@@ -1361,10 +1440,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-7-22',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"red"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, M, красный"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111802',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'red',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '722',
@@ -1377,10 +1457,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-7-30',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"S"},{"name":"color","value":"green"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111803',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'S',
+            COLOR: 'green',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '730',
@@ -1393,10 +1474,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-7-31',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"M"},{"name":"color","value":"green"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111803',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'M',
+            COLOR: 'green',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '731',
@@ -1409,10 +1491,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-7-32',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"L"},{"name":"color","value":"green"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111803',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'L',
+            COLOR: 'green',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '732',
@@ -1425,10 +1508,11 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
           },
           {
             ARTICLE: 'article-7-33',
-            ATTRIBUTES:
-              '{"sfAttrs":[{"name":"size","value":"XL"},{"name":"color","value":"green"},{"name":"composition","value":"100% полиэстер"},{"name":"careInstructions","value":"Машинная стирка при 40°"},{"name":"gender","value":"male"},{"name":"description","value":"Шорты, L, зеленый"}]}',
+            FABRIC: { composition: '90% хлопок, 10% эластан', care: 'Машинная стирка при 40°' },
             BARCODE: '1111111111803',
-            BRAND: 'easyway',
+            BRAND: 'EAZYWAY',
+            SIZE: 'XL',
+            COLOR: 'green',
             CATEGORY: 'Шорты',
             DESCRIPTION: 'Шорты для тренировок',
             ID: '733',
@@ -1443,28 +1527,4 @@ export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
       }
     ]
   }
-
-  // const transformedItems = mockData.items.map((group) => {
-  //   group.ITEMS = group.ITEMS.map((product) => {
-  //     const pictures = parseJSON(product.PICTURES)
-  //     const updatePictures: string[] = [] as string[]
-  //     console.log(typeof pictures[0])
-  //
-  //     for (let index = 0; index < 4; index++) {
-  //       updatePictures[index] = pictures[0].replace('&font', `, ${index + 1}&font`)
-  //     }
-  //
-  //     product.PICTURES = JSON.stringify(updatePictures)
-  //     return product
-  //   })
-  //
-  //   return group
-  // })
-  //
-  // const updatedData: IPaginatedDataRaw<IProductGroupRaw[]> = {
-  //   pagination: mockData.pagination,
-  //   items: transformedItems
-  // }
-  //
-  // console.log(updatedData)
 }

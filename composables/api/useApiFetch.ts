@@ -8,12 +8,10 @@ export function useApiFetch<ResT, DataT>(
 ) {
   const defaults: typeof options = {
     baseURL: getBaseUrl(),
-    $fetch: useNuxtApp().$api as $Fetch<unknown, NitroFetchRequest>
+    $fetch: useNuxtApp().$api as $Fetch<unknown, NitroFetchRequest>,
+    timeout: 20000
   }
-
-  // Получаем токен
-  const optionsWithToken = addTokenToRequest<ResT, DataT>(options) as UseFetchOptions<ResT, DataT>
-  const params = defu(optionsWithToken, defaults)
+  const params = defu(options, defaults)
 
   return useFetch(request, params)
 }
