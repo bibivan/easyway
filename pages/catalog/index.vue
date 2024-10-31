@@ -14,7 +14,7 @@ const currentGender = computed(() => {
 <template>
   <section class="section catalog">
     <aside
-      v-if="isDesktop && false"
+      v-if="isDesktop"
       class="catalog__categories categories"
     >
       <h2 class="categories__heading">Категории товаров</h2>
