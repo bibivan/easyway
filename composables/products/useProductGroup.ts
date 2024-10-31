@@ -8,7 +8,6 @@ import {
 
 export const useProductGroup = (id: string) => {
   return useApiFetch<IPaginatedDataRaw<IProductGroupRaw[]>, TNullable<IProductGroup>>('data', {
-    method: 'GET',
     query: { [EProductFilters.GROUPID]: id },
     immediate: false,
     transform: (data: IPaginatedDataRaw<IProductGroupRaw[]>) => {

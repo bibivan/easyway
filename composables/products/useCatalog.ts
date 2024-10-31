@@ -1,23 +1,20 @@
-import type { IPaginatedData, IPaginatedDataRaw, IProductGroup, IProductGroupRaw } from '~/types'
-import { EProductFilters } from '~/types'
+import type { IPaginatedDataRaw, IProductGroupRaw, IPaginatedData, IProductGroup } from '~/types'
 
 export const useCatalog = () => {
   const route = useRoute()
   const query = computed(() => route.query)
 
-  if (process.server) {
-    console.log(query.value)
-  }
-
-  return useApiFetch('data', {
-    method: 'GET',
-    query,
-    watch: [query],
-    transform: (data: IPaginatedDataRaw<IProductGroupRaw[]>) => {
-      return {
-        pagination: paginationRawToPagination(data.pagination),
-        items: productGroupsRawToProductGroups(data.items)
+  return useApiFetch<IPaginatedDataRaw<IProductGroupRaw[]>, IPaginatedData<IProductGroup[]>>(
+    'data',
+    {
+      query,
+      watch: [query],
+      transform: (data: IPaginatedDataRaw<IProductGroupRaw[]>) => {
+        return {
+          pagination: paginationRawToPagination(data.pagination),
+          items: productGroupsRawToProductGroups(data.items)
+        }
       }
     }
-  })
+  )
 }
