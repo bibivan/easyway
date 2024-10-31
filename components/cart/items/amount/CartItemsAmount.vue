@@ -4,10 +4,10 @@ const { cartState } = cartStore
 const { cartItemsCount } = storeToRefs(cartStore)
 
 onMounted(() => {
-  const cartJSON = localStorage.getItem('easyway-cart')
+  const cartJSON = localStorage.getItem('eazy-clothing-cart')
 
   if (isValidJSON(cartJSON)) {
-    cartState.data = parseJSON(localStorage.getItem('easyway-cart'))
+    cartState.data = parseJSON(localStorage.getItem('eazy-clothing-cart'))
   }
 })
 </script>

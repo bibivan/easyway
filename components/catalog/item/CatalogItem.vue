@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { IProductGroup } from '~/types'
+import { transformSizeString } from '~/utils/products'
 
 const props = defineProps<{ data: IProductGroup }>()
 const {
@@ -21,12 +22,14 @@ const productIsInCart = computed(() => {
     class="catalog-item"
   >
     <NuxtLink :to="{ name: 'product-group-id', params: { id: data.groupId } }">
-      <img
-        v-if="activeProduct.pictures?.length"
-        :src="activeProduct.pictures[0]"
-        :alt="activeProduct.name"
-        class="catalog-item__img"
-      />
+      <div class="catalog-item__img-wrapper">
+        <img
+          v-if="activeProduct.pictures?.length"
+          :src="activeProduct.pictures[0]"
+          :alt="activeProduct.name"
+          class="catalog-item__image"
+        />
+      </div>
     </NuxtLink>
 
     <div
@@ -45,20 +48,24 @@ const productIsInCart = computed(() => {
           :id="data.groupId + color"
           :key="data.groupId + color"
           v-model="state.color"
-          :style="{ color: color }"
           :value="color"
           type="radio"
         />
       </div>
       <div class="catalog-item__sizes">
-        <BaseSizeInput
-          v-for="size in sizeList"
-          :id="data.groupId + size"
+        <template
+          v-for="(size, idx) in sizeList"
           :key="data.groupId + size"
-          v-model="state.size.value"
-          :value="size.value"
-          type="radio"
-        />
+        >
+          <BaseSizeInput
+            v-if="size.value"
+            :id="data.groupId + size.value + idx"
+            v-model="state.size.value"
+            :value="size.value"
+            :label="transformSizeString(size.value)"
+            type="radio"
+          />
+        </template>
       </div>
       <div class="catalog-item__footer">
         <p class="catalog-item__price">{{ activeProduct.price }} ₽</p>

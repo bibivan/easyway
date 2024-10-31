@@ -19,8 +19,21 @@
     }
   }
 
-  &__img {
-    border-radius: $border-radius-xs;
+  &__img-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 107%;
+    border: 1px solid $color-bg-section-darker;
+    border-radius: $border-radius-s;
+  }
+
+  &__image {
+    position: absolute;
+    display: block;
+    inset: 0;
+    object-fit: cover;
+    object-position: center;
   }
 
   &__name {
@@ -85,15 +98,15 @@
   }
 }
 
-:global([data-theme='easyfit'] .catalog-item__btn) {
+:global([data-theme='EASYFIT'] .catalog-item__btn) {
   background-color: $color-easyfit;
 }
 
-:global([data-theme='easyfit'] .catalog-item__btn:active) {
+:global([data-theme='EASYFIT'] .catalog-item__btn:active) {
   background-color: $color-easyfit;
 }
 
-:global([data-theme='easyfit'] .catalog-item__btn:hover) {
+:global([data-theme='EASYFIT'] .catalog-item__btn:hover) {
   @include hover {
     background-color: $color-easyfit;
   }

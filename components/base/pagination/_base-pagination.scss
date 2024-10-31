@@ -1,0 +1,36 @@
+.pagination {
+  @include flex-row-center-center;
+
+  gap: 25px;
+
+  &__dots {
+    width: auto;
+    height: 14px;
+  }
+
+  &__btn {
+    @include flex-row-center-center;
+    @include text-body;
+
+    font-size: 18px;
+
+    &_first {
+      margin-right: 20px;
+    }
+
+    &_last {
+      margin-left: 20px;
+    }
+
+    &_non-clickable {
+      color: $color-primary-light;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    svg {
+      width: 7px;
+      height: 14px;
+    }
+  }
+}

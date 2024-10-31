@@ -3,20 +3,20 @@ import { EProductFilters } from '~/types'
 
 export const useCatalog = () => {
   const route = useRoute()
-  const brandParam = computed(() => route.meta.brand)
-  const genderParam = computed(() => route.params.gender)
+  const query = computed(() => route.query)
+
+  if (process.server) {
+    console.log(query.value)
+  }
 
   return useApiFetch('data', {
     method: 'GET',
-    query: {
-      [EProductFilters.BRAND]: brandParam,
-      [EProductFilters.GENDER]: genderParam
-    },
+    query,
+    watch: [query],
     transform: (data: IPaginatedDataRaw<IProductGroupRaw[]>) => {
-      console.log('in composable', data)
       return {
         pagination: paginationRawToPagination(data.pagination),
-        items: data.items.map((item: IProductGroupRaw) => productGroupRawToProductGroup(item))
+        items: productGroupsRawToProductGroups(data.items)
       }
     }
   })

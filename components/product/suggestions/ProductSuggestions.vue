@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { RouteLocationRaw } from 'vue-router'
 import {
   EFetchStatus,
   type IPaginatedDataRaw,
@@ -7,30 +6,27 @@ import {
   type IProductGroupRaw
 } from '~/types'
 
+const minProductsPerView = 4
 const props = defineProps<{
   suggestionsName: string
   suggestionsLabel: string
-  query: Record<string, string>
-  withSlider?: boolean
-  to: RouteLocationRaw
+  limit?: number
+  query: Record<string, string | string[]>
 }>()
-
-const { isDesktop } = storeToRefs(useDeviceTypeStore())
 
 const { data, error, status } = await useApiFetch<
   IPaginatedDataRaw<IProductGroupRaw[]>,
   IProductGroup[]
 >('data', {
-  params: {
-    page: 2,
-    limit: 3
+  query: {
+    limit: props.limit ? props.limit : minProductsPerView,
+    ...props.query
   },
   transform: (data) => {
-    return data.items.map((item: IProductGroupRaw) => {
-      return productGroupRawToProductGroup(item)
-    })
+    return productGroupsRawToProductGroups(data.items)
   }
 })
+
 const desktopData = computed(() => data.value?.slice(0, 4))
 </script>
 
@@ -41,14 +37,27 @@ const desktopData = computed(() => data.value?.slice(0, 4))
         <CommonHeading
           v-if="data"
           :title="suggestionsLabel"
-          :to="to"
+          :to="{
+            name: 'catalog',
+            query
+          }"
         />
         <div class="product-suggestions__body">
           <BaseSpinner v-if="status === EFetchStatus.PENDING" />
           <template v-if="status === EFetchStatus.ERROR">{{ error?.message }}</template>
           <template v-if="status === EFetchStatus.SUCCESS">
+            <div
+              v-if="!limit"
+              class="product-suggestions__list"
+            >
+              <CatalogItem
+                v-for="item in desktopData"
+                :key="item.groupId"
+                :data="item"
+              />
+            </div>
             <Swiper
-              v-if="!isDesktop && withSlider"
+              v-else
               class="product-suggestions__swiper"
               :draggable="true"
               :grab-cursor="true"
@@ -67,16 +76,6 @@ const desktopData = computed(() => data.value?.slice(0, 4))
                 <CatalogItem :data="item" />
               </SwiperSlide>
             </Swiper>
-            <div
-              v-else
-              class="product-suggestions__list"
-            >
-              <CatalogItem
-                v-for="item in desktopData"
-                :key="item.groupId"
-                :data="item"
-              />
-            </div>
           </template>
         </div>
       </div>

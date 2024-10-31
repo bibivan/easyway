@@ -163,12 +163,12 @@
   }
 }
 
-:global([data-theme='easyfit'] .header__link:hover) {
+:global([data-theme='EASYFIT'] .header__link:hover) {
   @include hover {
     color: $color-easyfit; // Зада
   }
 }
 
-:global([data-theme='easyfit'] .header__link::before) {
+:global([data-theme='EASYFIT'] .header__link::before) {
   background-color: $color-easyfit; // Меняем цвет линии под ссылкой
 }

@@ -20,7 +20,7 @@ const onSwiperInit = (swiper: SwiperClass) => {
 <template>
   <main>
     <CommonHero
-      image="./img/hero/hero-about-easyway.jpeg"
+      image="./img/hero/hero-about-eazyway.jpeg"
       image-position="center 43%"
       text="Ты — вдохновение для других. Твоя&nbsp;сила мотивирует!"
     />
@@ -85,5 +85,5 @@ const onSwiperInit = (swiper: SwiperClass) => {
 </template>
 
 <style scoped lang="scss">
-@import 'about-easyway';
+@import 'about-eazyway';
 </style>

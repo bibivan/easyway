@@ -3,9 +3,8 @@ import type { IPaginatedDataRaw, IProductGroupRaw } from '~/types'
 export const useCatalogMock = (): IPaginatedDataRaw<IProductGroupRaw[]> => {
   return {
     pagination: {
-      page: 1,
-      pages: 1,
-      total: 5
+      currentPage: 1,
+      totalPages: 1
     },
     items: [
       {

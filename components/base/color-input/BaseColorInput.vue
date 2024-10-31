@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends string | string[]">
-import { isWhiteColor } from '~/utils/common'
+import { formatHexColor } from '~/utils/products'
 
 defineProps<{
   value: string
@@ -29,6 +29,7 @@ const modelValue = defineModel<T>()
     <label
       class="color-input__label"
       :class="{ 'color-input__label_color_white': isWhiteColor(value) }"
+      :style="{ color: formatHexColor(value) }"
       :for="id"
     />
   </div>

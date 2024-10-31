@@ -9,8 +9,6 @@ const currentGender = computed(() => {
   const gender = Array.isArray(route.query.gender) ? route.query.gender[0] : route.query.gender
   if (isEGender(gender)) return gender
 })
-
-console.log('in page', data.value)
 </script>
 
 <template>
@@ -29,12 +27,19 @@ console.log('in page', data.value)
       <BaseSpinner v-if="status === EFetchStatus.PENDING" />
       <div
         v-if="status === EFetchStatus.SUCCESS"
-        class="catalog__list"
+        class="catalog__content"
       >
-        <CatalogItem
-          v-for="item in data?.items"
-          :key="item.groupId"
-          :data="item"
+        <div class="catalog__list">
+          <CatalogItem
+            v-for="item in data?.items"
+            :key="item.groupId"
+            :data="item"
+          />
+        </div>
+
+        <BasePagination
+          v-if="data?.pagination"
+          :data="data.pagination"
         />
       </div>
       <div v-if="status === EFetchStatus.ERROR">{{ error?.message }}</div>

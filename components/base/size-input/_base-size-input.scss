@@ -12,7 +12,7 @@
 
     top: 349px;
     left: 18px;
-    min-width: 34px;
+    min-width: 33px;
     height: auto;
     padding: 2px;
     border-radius: $border-radius-s;
@@ -48,16 +48,16 @@
   }
 }
 
-:global([data-theme='easyfit'] .size-input__input:checked + .size-input__label) {
+:global([data-theme='EASYFIT'] .size-input__input:checked + .size-input__label) {
   background-color: $color-easyfit;
 }
 
-:global([data-theme='easyfit'] .size-input__input:focus:not(:checked) + .size-input__label) {
+:global([data-theme='EASYFIT'] .size-input__input:focus:not(:checked) + .size-input__label) {
   background-color: $color-easyfit;
 }
 
 @include hover {
-  :global([data-theme='easyfit'] .size-input__input:hover:not(:checked) + .size-input__label) {
+  :global([data-theme='EASYFIT'] .size-input__input:hover:not(:checked) + .size-input__label) {
     background-color: $color-easyfit;
   }
 }

@@ -3,6 +3,7 @@ defineProps<{
   value: string | number | boolean | K
   id: string
   type: 'checkbox' | 'radio'
+  label: string
 }>()
 
 defineEmits<{
@@ -28,7 +29,7 @@ const modelValue = defineModel<T>()
       class="size-input__label"
       :for="id"
     >
-      {{ value }}
+      {{ label }}
     </label>
   </div>
 </template>

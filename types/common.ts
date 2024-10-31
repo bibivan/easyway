@@ -13,13 +13,11 @@ export enum EFetchStatus {
 export interface IPagination {
   page: number
   pages: number
-  total: number
 }
 
 export interface IPaginationRaw {
-  page: string | number
-  pages: string | number
-  total: string | number
+  currentPage: string | number
+  totalPages: string | number
 }
 
 export interface IPaginatedData<T> {

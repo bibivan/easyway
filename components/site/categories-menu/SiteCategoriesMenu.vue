@@ -5,11 +5,11 @@ defineProps<{
   isOpened: boolean
 }>()
 
-defineEmits<{
-  onCloseMenu: [void]
-}>()
-
+const emit = defineEmits<{ onCloseMenu: [void] }>()
+const query = computed(() => useRoute().query)
 const selectedGender = ref<EGender>(EGender.FEMALE)
+
+watch(query, () => emit('onCloseMenu'))
 </script>
 
 <template>

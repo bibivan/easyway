@@ -16,7 +16,7 @@ const state = reactive({
       <div class="header__content">
         <div class="header__logo-wrapper">
           <button
-            v-if="isDesktop && $route.name !== 'catalog' && false"
+            v-if="isDesktop && $route.name !== 'catalog'"
             class="header__categories-btn"
             @click="state.categoriesIsOpened = true"
           >
@@ -43,7 +43,10 @@ const state = reactive({
             class="header__link"
             :to="{
               name: 'catalog',
-              query: { [EProductFilters.GENDER]: EGender.MALE }
+              query: {
+                [EProductFilters.GENDER]: EGender.MALE,
+                [EProductFilters.BRAND]: EBrand.EAZYWAY
+              }
             }"
             >Мужское</NuxtLink
           >
@@ -51,7 +54,10 @@ const state = reactive({
             class="header__link"
             :to="{
               name: 'catalog',
-              query: { [EProductFilters.GENDER]: EGender.FEMALE }
+              query: {
+                [EProductFilters.GENDER]: EGender.FEMALE,
+                [EProductFilters.BRAND]: EBrand.EAZYWAY
+              }
             }"
             >Женское</NuxtLink
           >

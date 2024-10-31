@@ -22,12 +22,12 @@ export const useCartStore = defineStore('cart_store', () => {
   // Mutations
   const clearCart = () => {
     cartState.data = null
-    localStorage.removeItem('easyway-cart')
+    localStorage.removeItem('eazy-clothing-cart')
   }
   const findItem = (itemId: number) => cartState.data?.find((item) => item.id === itemId)
 
   const setToLocalStorage = () =>
-    localStorage.setItem('easyway-cart', JSON.stringify(cartState.data))
+    localStorage.setItem('eazy-clothing-cart', JSON.stringify(cartState.data))
 
   const deleteCartItem = (itemId: number) => {
     cartState.data = cartState.data?.filter((item) => item.id !== itemId) || cartState.data

@@ -12,15 +12,18 @@
     grid-template-columns: 1fr 1fr;
 
     @include tablet {
-      display: flex;
-      grid-template-columns: auto;
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    :deep(.size-input__label) {
-      @include sm-desktop {
-        min-width: 44px;
-        height: 29px;
-      }
+    @include sm-desktop {
+      grid-template-columns: repeat(4, 1fr);
     }
+
+    //:deep(.size-input__label) {
+    //  @include sm-desktop {
+    //    min-width: 44px;
+    //    height: 29px;
+    //  }
+    //}
   }
 }

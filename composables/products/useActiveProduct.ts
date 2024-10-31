@@ -1,4 +1,5 @@
 import {
+  EProductSizeAttr,
   type IProduct,
   type IProductGroup,
   type IProductGroupState,
@@ -22,18 +23,22 @@ export const useActiveProduct = (data: TGenericRef<TNullable<IProductGroup>>) =>
   const sizeList: ComputedRef<TNullable<IProductSizeState[]>> = computed(() => {
     const list = data.value?.items.reduce((acc: IProductSizeState[], curItem: IProduct) => {
       if (curItem.color !== state.color) return acc
-      else {
-        return [
-          ...acc,
-          {
-            value: curItem.size,
-            disabled: curItem.stock === 0
-          }
-        ]
-      }
+      else return [...acc, { value: curItem.size, disabled: curItem.stock === 0 }]
     }, [])
 
-    return list ? list : null
+    if (list && state.size) {
+      const sizeOrder = Object.values(EProductSizeAttr)
+
+      return list.sort((a: IProductSizeState, b: IProductSizeState) => {
+        const indexA = a.value ? sizeOrder.indexOf(a.value) : -1
+        const indexB = b.value ? sizeOrder.indexOf(b.value) : -1
+
+        if (indexA === -1) return 1
+        if (indexB === -1) return -1
+
+        return indexA - indexB
+      })
+    } else return null
   })
 
   const activeProduct: ComputedRef<TNullable<IProduct>> = computed(() => {

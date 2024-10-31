@@ -34,7 +34,7 @@
   }
 
   &__social {
-    &_easyway {
+    &_eazyway {
       color: $color-primary;
     }
 
@@ -98,7 +98,7 @@
   }
 }
 
-:global([data-theme='easyfit'] .footer-menu__item:hover) {
+:global([data-theme='EASYFIT'] .footer-menu__item:hover) {
   @include hover {
     color: $color-easyfit; // Зада
   }

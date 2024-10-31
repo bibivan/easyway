@@ -12,7 +12,7 @@ const brand = computed(() => {
 
 const { status, error, data: productGroup, refresh } = useProductGroup(id?.value)
 await refresh()
-const { state, activeProduct } = useActiveProduct(productGroup)
+const { state, activeProduct, sizeList } = useActiveProduct(productGroup)
 </script>
 
 <template>
@@ -25,14 +25,14 @@ const { state, activeProduct } = useActiveProduct(productGroup)
           <ProductImages
             v-if="activeProduct?.pictures"
             class="product__images"
-            :images="activeProduct.pictures"
+            :images="activeProduct.pictures.slice(0, 4)"
           />
           <ProductInfo
-            v-if="state?.size.value && activeProduct && productGroup"
+            v-if="state?.size.value && sizeList && activeProduct && productGroup"
             v-model:color="state.color"
             v-model:size="state.size.value"
             :colors="productGroup.colors"
-            :sizes="productGroup.sizes"
+            :sizes="sizeList"
             :product="activeProduct"
             class="product__info"
           />
@@ -43,27 +43,19 @@ const { state, activeProduct } = useActiveProduct(productGroup)
   <ProductSuggestions
     suggestions-name="your-look"
     suggestions-label="Собери образ"
-    :with-slider="true"
     :query="{
+      ...(productGroup?.category && { [EProductFilters.CATEGORY]: productGroup.category }),
       [EProductFilters.GENDER]: EGender.FEMALE,
-      [EProductFilters.BRAND]: brand || EBrand.EASYWAY
-    }"
-    :to="{
-      name: 'catalog',
-      query: { [EProductFilters.GENDER]: EGender.FEMALE }
+      [EProductFilters.BRAND]: brand || EBrand.EAZYWAY
     }"
   />
   <ProductSuggestions
     suggestions-name="similar"
     suggestions-label="Похожее"
-    :with-slider="true"
     :query="{
+      ...(productGroup?.category && { [EProductFilters.CATEGORY]: productGroup.category }),
       [EProductFilters.GENDER]: EGender.FEMALE,
-      [EProductFilters.BRAND]: brand || EBrand.EASYWAY
-    }"
-    :to="{
-      name: 'catalog',
-      query: { [EProductFilters.GENDER]: EGender.FEMALE }
+      [EProductFilters.BRAND]: brand || EBrand.EAZYWAY
     }"
   />
 </template>

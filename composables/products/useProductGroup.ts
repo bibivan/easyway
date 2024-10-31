@@ -1,11 +1,15 @@
-import type { IPaginatedDataRaw, IProductGroup, IProductGroupRaw, TNullable } from '~/types'
+import {
+  EProductFilters,
+  type IPaginatedDataRaw,
+  type IProductGroup,
+  type IProductGroupRaw,
+  type TNullable
+} from '~/types'
 
 export const useProductGroup = (id: string) => {
   return useApiFetch<IPaginatedDataRaw<IProductGroupRaw[]>, TNullable<IProductGroup>>('data', {
     method: 'GET',
-    query: {
-      id
-    },
+    query: { [EProductFilters.GROUPID]: id },
     immediate: false,
     transform: (data: IPaginatedDataRaw<IProductGroupRaw[]>) => {
       return (

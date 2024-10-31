@@ -12,7 +12,7 @@ export const usePromoStore = defineStore('promo_store', () => {
 
   // mutations
   const initPromoData = () => {
-    const promoJSON = sessionStorage.getItem('easyway-promo')
+    const promoJSON = sessionStorage.getItem('easy-clothing-promo')
     if (promoJSON && isValidJSON(promoJSON)) promoState.data = JSON.parse(promoJSON)
   }
 
@@ -26,7 +26,7 @@ export const usePromoStore = defineStore('promo_store', () => {
     promoState.data.amount = null
     promoState.data.code = null
     promoState.error = null
-    sessionStorage.removeItem('easyway-promo')
+    sessionStorage.removeItem('easy-clothing-promo')
   }
 
   // actions
@@ -46,7 +46,7 @@ export const usePromoStore = defineStore('promo_store', () => {
 
       if (data.result) {
         promoState.data.amount = data.result
-        sessionStorage.setItem('easyway-promo', JSON.stringify(promoState.data))
+        sessionStorage.setItem('easy-clothing-promo', JSON.stringify(promoState.data))
         useNuxtApp().$toast(`Промокод ${code} упешно применен`)
       } else {
         promoState.error = 'Промокод не действителен'

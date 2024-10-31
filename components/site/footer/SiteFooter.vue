@@ -11,7 +11,7 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
         <div class="footer__about">
           <div class="footer__socials">
             <SiteSocials
-              class="footer__social footer__social_easyway"
+              class="footer__social footer__social_eazyway"
               logo-route="/"
               tg-route="https://t.me/eazywayofficial"
               vk-route="https://vk.com/eazywayofficial"
@@ -20,7 +20,10 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
             </SiteSocials>
             <SiteSocials
               class="footer__social footer__social_easyfit"
-              :logo-route="{ name: 'catalog', query: { [EProductFilters.BRAND]: EBrand.EASYFIT } }"
+              :logo-route="{
+                name: 'catalog',
+                query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
+              }"
               tg-route="https://t.me/easyfit4u"
               vk-route="https://vk.com/easyfit4u"
             >
@@ -40,9 +43,9 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
               <NuxtLink
                 class="footer-menu__item"
                 :to="{
-                  name: 'about-easyway'
+                  name: 'about-eazyway'
                 }"
-                >EASYWAY</NuxtLink
+                >EAZYWAY</NuxtLink
               >
               <NuxtLink
                 class="footer-menu__item"
@@ -61,7 +64,8 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
                 :to="{
                   name: 'catalog',
                   query: {
-                    [EProductFilters.GENDER]: EGender.MALE
+                    [EProductFilters.GENDER]: EGender.MALE,
+                    [EProductFilters.BRAND]: EBrand.EAZYWAY
                   }
                 }"
               >
@@ -72,7 +76,8 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
                 :to="{
                   name: 'catalog',
                   query: {
-                    [EProductFilters.GENDER]: EGender.FEMALE
+                    [EProductFilters.GENDER]: EGender.FEMALE,
+                    [EProductFilters.BRAND]: EBrand.EAZYWAY
                   }
                 }"
               >

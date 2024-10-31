@@ -43,9 +43,8 @@ export const parseJSON = <T>(str: any): T | any => {
 
 export const paginationRawToPagination = (obj: IPaginationRaw): IPagination => {
   return {
-    page: Number(obj.page),
-    pages: Number(obj.pages),
-    total: Number(obj.total)
+    page: Number(obj.currentPage),
+    pages: Number(obj.totalPages)
   }
 }
 
@@ -109,14 +108,6 @@ export const debounce = <T extends (...args: any[]) => any>(
 
 export const formatNumberWithSpaces = (num: number): string =>
   num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-
-export const isWhiteColor = (color: string): boolean => {
-  const hexPattern = /^#(?:f{3}|f{6}|fff|ffffff)$/i
-  const rgbPattern = /^rgba?\(\s*255\s*,\s*255\s*,\s*255\s*(?:,\s*(0|1|1.0|0?\.\d+)\s*)?\)$/i
-  const namedWhitePattern = /^white$/i
-
-  return hexPattern.test(color) || rgbPattern.test(color) || namedWhitePattern.test(color)
-}
 
 export const smoothScroll = (container: HTMLElement, targetPosition: number, duration: number) => {
   const startPosition = container.scrollTop

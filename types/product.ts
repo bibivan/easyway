@@ -6,20 +6,13 @@ export enum EProductSizeAttr {
   M = 'M',
   L = 'L',
   XL = 'XL',
-  XXL = 'XXL'
+  XXL = 'XXL',
+  XXXL = 'XXXL'
 }
 
 export interface IProductSizeState {
   value: TNullable<EProductSizeAttr>
   disabled: TNullable<boolean>
-}
-
-export enum EProductFilters {
-  SIZE = 'SIZES',
-  COLOR = 'COLORS',
-  GENDER = 'GENDER',
-  BRAND = 'BRAND',
-  CATEGORY = 'CATEGORY'
 }
 
 export interface IProductAttrs {

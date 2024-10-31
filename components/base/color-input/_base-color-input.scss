@@ -53,17 +53,17 @@
   }
 }
 
-//  :global([data-theme='easyfit'] .color-input__label_color_white::before) {
+//  :global([data-theme='EASYFIT'] .color-input__label_color_white::before) {
 //    border-color: $color-easyfit;
 //  }
-//  :global([data-theme='easyfit'] .color-input__input:checked + .color-input__label) {
+//  :global([data-theme='EASYFIT'] .color-input__input:checked + .color-input__label) {
 //    border-color: $color-easyfit;
 //  }
-//  :global([data-theme='easyfit'] .color-input__input:focus:not(:checked) + .color-input__label) {
+//  :global([data-theme='EASYFIT'] .color-input__input:focus:not(:checked) + .color-input__label) {
 //    border-color: $color-easyfit;
 //  }
 //  @include hover {
-//    :global([data-theme='easyfit'] .color-input__input:hover:not(:checked) + .color-input__label) {
+//    :global([data-theme='EASYFIT'] .color-input__input:hover:not(:checked) + .color-input__label) {
 //      border-color: $color-easyfit;
 //    }
 //  }

@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { EProductSizeAttr, type IProduct } from '~/types'
+import { type IProduct, type IProductSizeState } from '~/types'
+import { transformSizeString } from '~/utils/products'
 
 const props = defineProps<{
   product: IProduct
   colors: string[]
-  sizes: EProductSizeAttr[]
+  sizes: IProductSizeState[]
 }>()
 
 const { cartState, putToCart: handlePutToCart, deleteCartItem } = useCartStore()
@@ -32,10 +33,9 @@ const handleDeleteCartItem = () => {
       <div class="product-info__colors">
         <BaseColorInput
           v-for="color in colors"
-          :id="'product_color_' + color"
-          :key="'product-color-' + color"
+          :id="product.id + color"
+          :key="product.id + color"
           v-model="modelColor"
-          :style="{ color: color }"
           :value="color"
           type="radio"
         />
@@ -44,14 +44,19 @@ const handleDeleteCartItem = () => {
     <div class="product-info__items-wrapper">
       <h2 class="product-info__subtitle">Размер</h2>
       <div class="product-info__sizes">
-        <BaseSizeInput
+        <template
           v-for="size in sizes"
-          :id="'product_size_' + size"
-          :key="'product-size-' + size"
-          v-model="modelSize"
-          :value="size"
-          type="radio"
-        />
+          :key="product.id + size.value"
+        >
+          <BaseSizeInput
+            v-if="size.value"
+            :id="product.id + size.value"
+            v-model="modelSize"
+            :value="size.value"
+            :label="transformSizeString(size.value)"
+            type="radio"
+          />
+        </template>
       </div>
     </div>
 

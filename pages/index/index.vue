@@ -26,7 +26,7 @@ const community = useCommunityMock()
         title="EAZYWAY"
         :to="{
           name: 'catalog',
-          query: { [EProductFilters.BRAND]: EBrand.EASYWAY }
+          query: { [EProductFilters.BRAND]: EBrand.EAZYWAY }
         }"
         :images="['./img/hero/main/3.jpg', './img/hero/main/4.jpg']"
       />
@@ -49,32 +49,30 @@ const community = useCommunityMock()
     suggestions-name="New"
     suggestions-label="Новинки"
     :with-slider="true"
-    :query="{ gender: EGender.FEMALE }"
-    :to="{
-      name: 'catalog',
-      query: { [EProductFilters.GENDER]: EGender.FEMALE }
-    }"
+    :limit="4"
+    :query="{}"
   />
+  <!--      query: { [EProductFilters.BRAND]: EBrand.EAZYWAY }-->
   <CatalogBanner
     btn-content="купить"
     description="Создай свой образ"
-    image="/img/promo-banner-easyfit-2.jfif"
+    image="/img/promo-banner-eazyway.jfif"
     title="TOTAL BLACK"
     :to="{
       name: 'catalog',
-      query: { [EProductFilters.GENDER]: EGender.FEMALE }
+      query: { [EProductFilters.BRAND]: EBrand.EAZYWAY }
     }"
   />
 
   <CatalogBanner
     btn-content="купить"
     description="Создай свой образ"
-    image="/img/promo-banner-easyfit-1.png"
+    image="/img/promo-banner-easyfit.png"
     overlay-text="EASYFIT"
     title="EASYFIT"
     :to="{
       name: 'catalog',
-      query: { [EProductFilters.GENDER]: EGender.FEMALE }
+      query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
     }"
   />
 

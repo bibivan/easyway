@@ -17,7 +17,7 @@ defineProps<{
     <div class="collaborator-card__content-wrapper">
       <slot />
     </div>
-    <p class="collaborator-card__name">{{ name }}</p>
+    <!--    <p class="collaborator-card__name">{{ name }}</p>-->
   </div>
 </template>
 
