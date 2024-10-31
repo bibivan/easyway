@@ -22,6 +22,10 @@
       margin-left: 20px;
     }
 
+    &_active {
+      text-decoration: underline;
+    }
+
     &_non-clickable {
       color: $color-primary-light;
       opacity: 0.5;

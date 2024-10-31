@@ -34,7 +34,7 @@ const countDifference = 2
           (page > data.pages - maxLinksCount && data.page >= data.pages - countDifference)
         "
         class="pagination__btn"
-        :class="{ pagination__number_active: data.page === +page }"
+        :class="{ pagination__btn_active: data.page === +page }"
         :to="{
           query: {
             ...$route.query,
