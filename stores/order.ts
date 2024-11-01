@@ -67,8 +67,11 @@ export const useOrderStore = defineStore('order_store', () => {
   }
 
   const sendOrder = async (cartData: ICartItem[]) => {
+    const config = useRuntimeConfig()
+
     const payload = getOrderPayload(cartData)
     const orderResponse = await useApiFetch<ISendOrderResponse, ISendOrderResponse>('orders/add', {
+      baseURL: config.public.commonApiUrl,
       method: 'POST',
       body: payload
     })
@@ -80,6 +83,7 @@ export const useOrderStore = defineStore('order_store', () => {
     }
 
     const linkResponse = await useApiFetch<{ Link: string }, { Link: string }>('payment/get-url', {
+      baseURL: config.public.commonApiUrl,
       method: 'POST',
       body: {
         orderId: sf.orderId
