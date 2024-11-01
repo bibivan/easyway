@@ -33,6 +33,7 @@ watch(
       :check-full-address="order.courierDelivery === EDeliveryType.COURIER"
       @on-update-address-data="order.addressData = $event"
     />
+    <!--    address-query="самара молодежная 9"-->
 
     <CheckoutDeliveryTypes />
   </fieldset>

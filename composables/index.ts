@@ -1,5 +1,6 @@
 export { useApiFetch } from './api/useApiFetch'
 export { useDadataFetch } from './api/useDadataFetch'
+export { useSFFetch } from './api/useSFFetch'
 export { useCartOpening } from './cart/useCartOpening'
 export { useValidationInfo } from './common/useValidationInfo'
 export { useCatalogMock } from './mock/useCatalogMock'

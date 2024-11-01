@@ -39,9 +39,7 @@ const getDeliveries = async (fiases: Array<TNullable<string>>) => {
   const config = useRuntimeConfig()
   for (const fias of fiases) {
     if (fias) {
-      const { data, success } = await $fetch<IDeliveriesDataRaw>('pickup-sdt/get-pickups', {
-        baseURL: config.public.commonApiUrl,
-        method: 'POST',
+      const { data, success } = await useSFFetch<IDeliveriesDataRaw>('pickup-sdt/get-pickups', {
         body: {
           fias: fias,
           payment_type: order.paymentType,

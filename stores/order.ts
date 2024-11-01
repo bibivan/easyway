@@ -1,6 +1,5 @@
 import dayjs from 'dayjs'
 import { EDeliveryType, type ICartItem, type IOrder, type ISendOrderResponse } from '~/types'
-import { useSFFetch } from '~/composables/api/useSFFetch'
 
 export const useOrderStore = defineStore('order_store', () => {
   const order = reactive<IOrder>({
@@ -11,6 +10,11 @@ export const useOrderStore = defineStore('order_store', () => {
     kladr: null,
     placeId: null,
     postalCode: null,
+    // phone: '9882323144',
+    // name: 'тест',
+    // surname: 'тест',
+    // middleName: 'тест',
+    // email: 'asdfsdf@dfdf.sdf',
     phone: null,
     name: null,
     surname: null,
@@ -24,6 +28,7 @@ export const useOrderStore = defineStore('order_store', () => {
     pickedPoint: null,
     pickedPointAddress: null,
     ruPostDelivery: null,
+    // paymentType: 2,
     paymentType: null,
     orderSum: null,
     deliveryPrice: null,
@@ -33,6 +38,7 @@ export const useOrderStore = defineStore('order_store', () => {
 
   const getOrderPayload = (cartContent: ICartItem[]) => {
     return {
+      token: getShopToken(),
       FIAS: order.fias as string,
       KLADR: order.kladr || '',
       DATE_CREATE: dayjs().format('DD.MM.YY HH:mm:ss'),
@@ -84,27 +90,22 @@ export const useOrderStore = defineStore('order_store', () => {
   }
 
   const sendOrder = async (cartData: ICartItem[]) => {
+    console.log(order, 'after')
     const payload = getOrderPayload(cartData)
-    const { SF } = await $fetch<ISendOrderResponse>('orders/add', {
+    const { SF } = await useSFFetch<ISendOrderResponse>('orders/add', {
       body: payload
     })
 
-    if (!SF?.orderId) {
-      useNuxtApp().$toast('Не удалось отправить заказ')
-      throw new Error()
-    }
+    if (!SF?.orderId) throw new Error()
 
     const { Link } = await useSFFetch<{ Link: string }>('payment/get-url', {
-      body: { orderId: SF.orderId }
+      body: { orderId: SF.orderId, token: getShopToken() }
     })
 
     if (Link) {
       clearOrder()
       await navigateTo(Link, { external: true })
-    } else {
-      useNuxtApp().$toast('Не удалось отправить заказ')
-      throw new Error()
-    }
+    } else throw new Error()
   }
 
   return {
