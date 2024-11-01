@@ -132,8 +132,8 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
             <div class="footer-menu__items">
               <NuxtLink
                 class="footer-menu__item"
-                to="mailto:info@ci.ru.com"
-                >info@ci.ru.com</NuxtLink
+                to="mailto:info@eazy-way.com"
+                >info@eazy-way.com</NuxtLink
               >
             </div>
           </div>

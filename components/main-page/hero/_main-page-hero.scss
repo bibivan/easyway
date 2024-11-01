@@ -36,25 +36,17 @@
   }
 
   &__heading {
+    @include flex-column-bottom-center;
     @include text-heading;
 
+    min-height: 2em;
     margin-bottom: 60px;
     color: $color-text-light;
     font-size: 64px;
     line-height: 1;
-    opacity: 0.6;
     text-align: center;
-    text-shadow:
-      -1px -1px 0 rgba($color-primary, 0.3),
-      1px -1px 0 rgba($color-primary, 0.3),
-      -1px 1px 0 rgba($color-primary, 0.3),
-      1px 1px 0 rgba($color-primary, 0.3);
     text-transform: uppercase;
     white-space: pre-wrap;
-
-    @include tablet {
-      opacity: 1;
-    }
 
     @include xs-desktop {
       margin-bottom: 30px;
@@ -64,9 +56,7 @@
   }
 
   &__btn {
-    @include xxl-mobile {
-      max-width: 251px;
-    }
+    max-width: 251px;
 
     @include tablet {
       background-color: $color-bg-btn-light;
@@ -108,6 +98,10 @@
     @include xs-desktop {
       width: 593px;
       height: 593px;
+    }
+
+    &_position_top {
+      object-position: top;
     }
 
     &_1 {

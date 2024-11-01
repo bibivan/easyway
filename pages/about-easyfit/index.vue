@@ -9,7 +9,7 @@
           id="return_product"
           class="seo__title"
         >
-          О бренде easyfit
+          О бренде Easyfit
         </h2>
         <!--          <h3 class="seo__subtitle"></h3>-->
         <p class="seo__text">

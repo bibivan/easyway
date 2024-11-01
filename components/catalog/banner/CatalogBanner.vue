@@ -4,7 +4,7 @@ import type { RouteLocationRaw } from 'vue-router'
 defineProps<{
   btnContent: string
   description: string
-  overlayText?: string
+  withOverlayText?: boolean
   title: string
   to: RouteLocationRaw
 }>()
@@ -14,13 +14,12 @@ defineProps<{
   <section class="section">
     <div class="catalog-banner">
       <div class="container">
-        <div class="catalog-banner__content">
-          <p
-            v-if="overlayText"
-            class="catalog-banner__overlay-text"
-          >
-            {{ overlayText }}
-          </p>
+        <div
+          class="catalog-banner__content"
+          :class="{
+            'catalog-banner__content_with-overlay': withOverlayText
+          }"
+        >
           <div class="catalog-banner__text">
             <h2 class="catalog-banner__heading">{{ title }}</h2>
             <p class="catalog-banner__description">{{ description }}</p>

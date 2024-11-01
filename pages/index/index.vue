@@ -35,6 +35,7 @@ const community = useCommunityMock()
       <MainPageHero
         title="EASYFIT"
         note="Бренд-линейка easyfit"
+        :images-top="true"
         :to="{
           name: 'catalog',
           query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
@@ -54,6 +55,7 @@ const community = useCommunityMock()
   />
   <!--      query: { [EProductFilters.BRAND]: EBrand.EAZYWAY }-->
   <CatalogBanner
+    class="eazyway-banner"
     btn-content="купить"
     description="Создай свой образ"
     image="/img/promo-banner-eazyway.jpg"
@@ -68,8 +70,8 @@ const community = useCommunityMock()
     class="easyfit-banner"
     btn-content="купить"
     description="Создай свой образ"
-    overlay-text="EASYFIT"
     title="EASYFIT"
+    :with-overlay-text="true"
     :to="{
       name: 'catalog',
       query: { [EProductFilters.BRAND]: EBrand.EASYFIT }

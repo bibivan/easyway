@@ -3,6 +3,7 @@ import type { RouteLocationRaw } from 'vue-router'
 defineProps<{
   images: [string, string]
   note?: string
+  imagesTop?: boolean
   title: string
   to: RouteLocationRaw
 }>()
@@ -24,11 +25,13 @@ defineProps<{
           :src="images[0]"
           alt="Image 1"
           class="hero__image hero__image_2"
+          :class="{ hero__image_position_top: imagesTop }"
         />
         <img
           :src="images[1]"
           alt="Image 2"
           class="hero__image hero__image_3"
+          :class="{ hero__image_position_top: imagesTop }"
         />
       </div>
     </div>

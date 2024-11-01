@@ -16,17 +16,67 @@
   :deep(.catalog-banner__content::before) {
     position: absolute;
     z-index: $ui-index-0;
-    background-image: url('public/img/promo-banner-easyfit.png');
-    background-position: right;
-    background-repeat: no-repeat;
+    top: -295px;
+    right: -10px;
+    width: 526px;
+    height: 789px;
+    background-image: url('public/img/promo-banner-easyfit.jpg');
+    background-size: cover;
     content: '';
-    inset: 0;
+    transform: rotate(19deg);
 
-    //transform: rotate(19deg) translate(-75%, -40%);
+    @include xxl-mobile {
+      right: 60px;
+    }
+
+    @include tablet {
+      top: -670px;
+      right: -10px;
+      width: 1252px;
+      height: 1900px;
+    }
+
+    @include desktop {
+      top: -173%;
+      width: 1446px;
+      height: 2161px;
+    }
   }
 }
 
 .eazyway-banner {
+  :deep(.catalog-banner__content::before) {
+    position: absolute;
+    z-index: $ui-index-0;
+    top: -215px;
+    right: -160px;
+    width: 903px;
+    height: 703px;
+    background-image: url('public/img/promo-banner-eazyway.jpg');
+    background-size: cover;
+    content: '';
+    transform: rotate(15deg);
+
+    @include tablet {
+      top: -500px;
+      right: -420px;
+      width: 2324px;
+      height: 1808px;
+    }
+
+    @include desktop {
+      top: -50%;
+      right: auto;
+      width: 145%;
+      height: auto;
+      padding-top: 112%;
+      background-size: cover;
+    }
+
+    @include md-desktop {
+      top: -80%;
+    }
+  }
 }
 
 .collaborators {
