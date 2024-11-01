@@ -31,6 +31,23 @@ export const useOrderStore = defineStore('order_store', () => {
   })
 
   const getOrderPayload = (cartContent: ICartItem[]) => {
+    const products = cartContent.map((item) => {
+      return {
+        NAME: item.name,
+        ARTICLE: item.article,
+        SKU: item.barcode,
+        CNT: item.cnt,
+        PRICE: item.price,
+        ID: item.id,
+        size: {
+          LENGTH: null,
+          WIDTH: null,
+          HEIGHT: null,
+          WEIGHT: null
+        }
+      }
+    })
+
     return {
       FIAS: order.fias as string,
       KLADR: order.kladr || '',
@@ -56,7 +73,7 @@ export const useOrderStore = defineStore('order_store', () => {
       LOYALTY_POINT: 0,
       DELIVERY_INTERVAL: 0,
       COMMENT: order.comment || '',
-      PRODUCTS: cartContent
+      PRODUCTS: products
     }
   }
 
@@ -83,7 +100,6 @@ export const useOrderStore = defineStore('order_store', () => {
   }
 
   const sendOrder = async (cartData: ICartItem[]) => {
-    console.log(order, 'after')
     const payload = getOrderPayload(cartData)
     const { SF } = await useSFFetch<ISendOrderResponse>('orders/add', { body: payload })
 
@@ -94,8 +110,8 @@ export const useOrderStore = defineStore('order_store', () => {
     })
 
     if (Link) {
-      clearOrder()
       await navigateTo(Link, { external: true })
+      clearOrder()
     } else throw new Error()
   }
 

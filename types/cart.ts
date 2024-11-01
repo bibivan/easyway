@@ -4,6 +4,7 @@ import { EProductSizeAttr } from '~/types'
 export interface ICartItem {
   name: string
   article: string
+  barcode: number
   cnt: number
   color: string
   id: number

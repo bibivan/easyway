@@ -61,6 +61,7 @@ export const useCartStore = defineStore('cart_store', () => {
         const newCartItem: ICartItem = {
           name: item.name,
           article: item.article,
+          barcode: item.barcode,
           color: item.color,
           size: item.size,
           cnt: 1,

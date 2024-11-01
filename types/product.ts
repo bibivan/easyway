@@ -40,7 +40,7 @@ export interface IProductRaw {
 
 export interface IProduct {
   article: string
-  barcode: TNullable<number>
+  barcode: number
   brand: TNullable<EBrand>
   category: TNullable<string>
   color: string
