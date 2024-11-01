@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       baseURL: process.env.NUXT_API_URL,
-      commonApiUrl: process.env.NUXT_COMMON_API_URL,
+      sfApiUrl: process.env.NUXT_COMMON_API_URL,
       token: process.env.NUXT_API_TOKEN,
       dadataUrl: process.env.NUXT_DADATA_URL,
       dadataToken: process.env.NUXT_DADATA_TOKEN,

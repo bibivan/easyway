@@ -10,16 +10,16 @@ export const useOrderStore = defineStore('order_store', () => {
     kladr: null,
     placeId: null,
     postalCode: null,
-    // phone: '9882323144',
-    // name: 'тест',
-    // surname: 'тест',
-    // middleName: 'тест',
-    // email: 'asdfsdf@dfdf.sdf',
-    phone: null,
-    name: null,
-    surname: null,
-    middleName: null,
-    email: null,
+    phone: '9882323144',
+    name: 'тест',
+    surname: 'тест',
+    middleName: 'тест',
+    email: 'asdfsdf@dfdf.sdf',
+    // phone: null,
+    // name: null,
+    // surname: null,
+    // middleName: null,
+    // email: null,
     comment: null,
     courierDelivery: null,
     deliveryCouriers: null,
@@ -28,8 +28,8 @@ export const useOrderStore = defineStore('order_store', () => {
     pickedPoint: null,
     pickedPointAddress: null,
     ruPostDelivery: null,
-    // paymentType: 2,
-    paymentType: null,
+    paymentType: 2,
+    // paymentType: null,
     orderSum: null,
     deliveryPrice: null,
     price: null,
@@ -92,14 +92,12 @@ export const useOrderStore = defineStore('order_store', () => {
   const sendOrder = async (cartData: ICartItem[]) => {
     console.log(order, 'after')
     const payload = getOrderPayload(cartData)
-    const { SF } = await useSFFetch<ISendOrderResponse>('orders/add', {
-      body: payload
-    })
+    const { SF } = await useSFFetch<ISendOrderResponse>('orders/add', { body: payload })
 
     if (!SF?.orderId) throw new Error()
 
     const { Link } = await useSFFetch<{ Link: string }>('payment/get-url', {
-      body: { orderId: SF.orderId, token: getShopToken() }
+      body: { orderId: SF.orderId }
     })
 
     if (Link) {

@@ -1,5 +1,7 @@
-export default defineNuxtPlugin(() => {
+export default defineNuxtPlugin((nuxtApp) => {
+  const config = useRuntimeConfig()
   const api = $fetch.create({
+    baseURL: config.public.baseURL,
     method: 'GET',
     mode: 'cors',
     headers: {
@@ -7,10 +9,6 @@ export default defineNuxtPlugin(() => {
       Accept: 'application/json'
     }
   })
-  // Expose to useNuxtApp().$customFetch
-  return {
-    provide: {
-      api
-    }
-  }
+
+  nuxtApp.provide('api', api)
 })

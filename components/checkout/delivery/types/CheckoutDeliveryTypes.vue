@@ -36,7 +36,6 @@ const separateCouriersAndPickupPoints = (data: IDeliveriesDataItem) => {
 // todo: решить вопрос с весом и размерами заказа
 
 const getDeliveries = async (fiases: Array<TNullable<string>>) => {
-  const config = useRuntimeConfig()
   for (const fias of fiases) {
     if (fias) {
       const { data, success } = await useSFFetch<IDeliveriesDataRaw>('pickup-sdt/get-pickups', {
@@ -46,8 +45,7 @@ const getDeliveries = async (fiases: Array<TNullable<string>>) => {
           company: 0,
           weight: 100,
           parcel_size: [10, 10, 10],
-          order_sum: 1000,
-          token: config.public.token
+          order_sum: 1000
         }
       })
 

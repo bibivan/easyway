@@ -4,7 +4,7 @@ import { useVuelidate } from '@vuelidate/core'
 
 const { order } = useOrderStore()
 const paymentData = usePaymentTypesData()
-const isConfirmed = ref<boolean>(false)
+const isConfirmed = ref<boolean>(true)
 
 const validationRules = computed(() => ({
   paymentType: {
