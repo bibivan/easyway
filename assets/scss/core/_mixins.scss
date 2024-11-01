@@ -88,6 +88,20 @@
   justify-content: flex-end;
 }
 
+@mixin flex-column-bottom-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+@mixin flex-column-bottom-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
 @mixin flex-column-center-center {
   display: flex;
   flex-direction: column;

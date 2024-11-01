@@ -56,7 +56,7 @@ const community = useCommunityMock()
   <CatalogBanner
     btn-content="купить"
     description="Создай свой образ"
-    image="/img/promo-banner-eazyway.jfif"
+    image="/img/promo-banner-eazyway.jpg"
     title="TOTAL BLACK"
     :to="{
       name: 'catalog',
@@ -65,9 +65,9 @@ const community = useCommunityMock()
   />
 
   <CatalogBanner
+    class="easyfit-banner"
     btn-content="купить"
     description="Создай свой образ"
-    image="/img/promo-banner-easyfit.png"
     overlay-text="EASYFIT"
     title="EASYFIT"
     :to="{

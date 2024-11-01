@@ -20,9 +20,8 @@ const onSwiperInit = (swiper: SwiperClass) => {
 <template>
   <main>
     <CommonHero
-      image="./img/hero/hero-about-eazyway.jpeg"
-      image-position="center 43%"
-      text="Ты — вдохновение для других. Твоя&nbsp;сила мотивирует!"
+      class="easyway-about-hero"
+      text="Ты — вдохновение для&nbsp;других. Твоя сила мотивирует!"
     />
     <div
       v-if="isDesktop"

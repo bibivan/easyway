@@ -29,7 +29,7 @@ const handleSendData = async () => {
 
 onMounted(() => {
   const sendBtn = document.getElementById('send_order_btn')
-  if (sendBtn) sendBtn.addEventListener('click', () => handleSendData())
+  if (sendBtn) sendBtn.addEventListener('click', handleSendData)
 })
 </script>
 <template>

@@ -1,14 +1,16 @@
-.hero {
+.common-hero {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
   &__content {
-    @include flex-column-center-center;
-
     min-height: 250px;
 
     @include tablet {
+      min-height: 600px;
+    }
+
+    @include desktop {
       min-height: 500px;
     }
   }
@@ -18,15 +20,16 @@
 
     color: $color-text-light;
     font-size: 24px;
-    text-align: center;
+    line-height: 0.91;
     text-transform: uppercase;
+    white-space: pre-wrap;
 
     @include tablet {
-      font-size: 56px;
+      font-size: 60px;
     }
 
     @include desktop {
-      font-size: 87px;
+      font-size: 64px;
     }
   }
 }

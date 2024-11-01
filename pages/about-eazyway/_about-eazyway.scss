@@ -1,7 +1,35 @@
-.about {
-  &__image {
-    height: 200px;
-    object-fit: cover;
+.easyway-about-hero {
+  background-image: url('public/img/hero/hero-about-easyway.jpg');
+  background-position: right -82px top -130px;
+  background-size: auto 172%;
+
+  @include xl-mobile {
+    background-size: auto 200%;
+  }
+
+  @include tablet {
+    background-position: right -170px top -250px;
+    background-size: auto 160%;
+  }
+
+  @include desktop {
+    background-position: right -370px top -700px;
+    background-size: auto 380%;
+  }
+
+  :deep(.common-hero__content) {
+    @include flex-column-bottom-left;
+
+    max-width: 205px;
+
+    @include tablet {
+      max-width: 542px;
+    }
+  }
+
+  :deep(.common-hero__title::after) {
+    content: '\A';
+    white-space: pre;
   }
 }
 

@@ -3,9 +3,8 @@
 <template>
   <main>
     <CommonHero
-      image="./img/hero/hero-customer-info.jpeg"
-      image-position="center 35%"
-      text="Сложности делают нас сильнее. Преодолевай их с улыбкой!"
+      class="customer-info-hero"
+      text="Сложности делают нас сильнее. Преодолевай их с&nbsp;улыбкой!"
     />
     <section class="section">
       <div class="container">
@@ -209,3 +208,7 @@
     </section>
   </main>
 </template>
+
+<style scoped lang="scss">
+@import 'customers-information';
+</style>

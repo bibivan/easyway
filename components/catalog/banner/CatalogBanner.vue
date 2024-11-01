@@ -4,9 +4,7 @@ import type { RouteLocationRaw } from 'vue-router'
 defineProps<{
   btnContent: string
   description: string
-  image: string
   overlayText?: string
-  rotated?: boolean
   title: string
   to: RouteLocationRaw
 }>()
@@ -17,14 +15,6 @@ defineProps<{
     <div class="catalog-banner">
       <div class="container">
         <div class="catalog-banner__content">
-          <img
-            class="catalog-banner__img"
-            :class="{
-              'catalog-banner__img_rotated': rotated
-            }"
-            :src="image"
-            :alt="title"
-          />
           <p
             v-if="overlayText"
             class="catalog-banner__overlay-text"

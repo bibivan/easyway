@@ -12,6 +12,23 @@
   }
 }
 
+.easyfit-banner {
+  :deep(.catalog-banner__content::before) {
+    position: absolute;
+    z-index: $ui-index-0;
+    background-image: url('public/img/promo-banner-easyfit.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    content: '';
+    inset: 0;
+
+    //transform: rotate(19deg) translate(-75%, -40%);
+  }
+}
+
+.eazyway-banner {
+}
+
 .collaborators {
   @include flex-column;
   @include base-gap;

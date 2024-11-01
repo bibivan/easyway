@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <CommonHero image="./img/hero/hero-about-easyfit.jpeg" />
+  <CommonHero class="about-easyfit-hero" />
   <section class="section">
     <div class="container">
       <div class="seo">
@@ -33,4 +33,6 @@
   </section>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@import 'about-easyfit';
+</style>

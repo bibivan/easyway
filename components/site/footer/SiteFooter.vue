@@ -110,14 +110,14 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
               >
               <NuxtLink
                 class="footer-menu__item"
-                to="/pdf/privacy-policy-1.pdf"
+                to="/pdf/privacy-policy-eazy-way.pdf"
                 download="privacy-policy-1.pdf"
                 external
                 >Политика<br />конфиденциальности</NuxtLink
               >
               <NuxtLink
                 class="footer-menu__item"
-                to="/pdf/offer-1.pdf"
+                to="/pdf/offer-eazy-way.pdf"
                 download="offer-1.pdf"
                 external
                 >Оферта</NuxtLink

@@ -1,0 +1,31 @@
+.customer-info-hero {
+  background-image: url('public/img/hero/hero-customer-info.jpg');
+  background-position: left 60% top 35%;
+  background-size: auto 265%;
+
+  @include desktop {
+    background-position: right 27% top 33%;
+    background-size: auto 360%;
+  }
+
+  :deep(.common-hero__content) {
+    @include flex-column-bottom-right;
+
+    @include desktop {
+      justify-content: center;
+    }
+  }
+
+  :deep(.common-hero__title) {
+    max-width: 246px;
+    text-align: right;
+
+    @include tablet {
+      max-width: 642px;
+    }
+
+    @include desktop {
+      max-width: 792px;
+    }
+  }
+}
