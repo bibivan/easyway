@@ -16,6 +16,7 @@ watch(
   [() => promoState.data.amount, cartTotalPrice],
   () => {
     order.price = calculateDiscountedSum(cartTotalPrice.value)
+    console.log('sdf here', order.price)
   },
   { immediate: true }
 )

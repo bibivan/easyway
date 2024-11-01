@@ -39,27 +39,21 @@ const getDeliveries = async (fiases: Array<TNullable<string>>) => {
   const config = useRuntimeConfig()
   for (const fias of fiases) {
     if (fias) {
-      const { data: pickupsData } = await useApiFetch<IDeliveriesDataRaw, IDeliveriesDataRaw>(
-        'pickup-sdt/get-pickups',
-        {
-          baseURL: config.public.commonApiUrl,
-          method: 'POST',
-          body: {
-            fias: fias,
-            payment_type: order.paymentType,
-            company: 0,
-            weight: 100,
-            parcel_size: [10, 10, 10],
-            order_sum: 1000,
-            token: config.public.token
-          }
+      const { data, success } = await $fetch<IDeliveriesDataRaw>('pickup-sdt/get-pickups', {
+        baseURL: config.public.commonApiUrl,
+        method: 'POST',
+        body: {
+          fias: fias,
+          payment_type: order.paymentType,
+          company: 0,
+          weight: 100,
+          parcel_size: [10, 10, 10],
+          order_sum: 1000,
+          token: config.public.token
         }
-      )
+      })
 
-      if (pickupsData.value) {
-        const { data, success } = pickupsData.value
-        if (success) return separateCouriersAndPickupPoints(data[0])
-      }
+      if (success) return separateCouriersAndPickupPoints(data[0])
     }
   }
 }

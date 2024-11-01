@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { EDeliveryType, type IAddressSuggestion, type TNullable } from '~/types'
 
-const { order, clearOrder } = useOrderStore()
+const { order, clearDelivery } = useOrderStore()
 
 const setAddressData = (addressData: TNullable<IAddressSuggestion>) => {
   if (!addressData) return
@@ -15,7 +15,7 @@ const setAddressData = (addressData: TNullable<IAddressSuggestion>) => {
   order.addressString = addressData.unrestricted_value
 }
 
-onMounted(() => clearOrder())
+onMounted(() => clearDelivery())
 
 watch(
   () => order.addressData,

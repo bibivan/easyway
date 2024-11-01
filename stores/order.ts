@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import { EDeliveryType, type ICartItem, type IOrder, type ISendOrderResponse } from '~/types'
 
 export const useOrderStore = defineStore('order_store', () => {
+  const config = useRuntimeConfig()
   const order = reactive<IOrder>({
     addressData: null,
     addressString: null,
@@ -32,6 +33,7 @@ export const useOrderStore = defineStore('order_store', () => {
 
   const getOrderPayload = (cartContent: ICartItem[]) => {
     return {
+      token: config.public.commonApiUrl,
       FIAS: order.fias as string,
       KLADR: order.kladr || '',
       DATE_CREATE: dayjs().format('DD.MM.YY HH:mm:ss'),
@@ -66,34 +68,44 @@ export const useOrderStore = defineStore('order_store', () => {
     })
   }
 
-  const sendOrder = async (cartData: ICartItem[]) => {
-    const config = useRuntimeConfig()
+  const clearDelivery = () => {
+    order.addressData = null
+    order.addressString = null
+    order.pickedCourier = null
+    order.pickedPoint = null
+    order.pickedPointAddress = null
+    order.deliveryPoints = null
+    order.deliveryCouriers = null
+    order.fiases = null
+    order.fias = null
+    order.kladr = null
+    order.placeId = null
+    order.postalCode = null
+    order.ruPostDelivery = null
+  }
 
+  const sendOrder = async (cartData: ICartItem[]) => {
     const payload = getOrderPayload(cartData)
-    const orderResponse = await useApiFetch<ISendOrderResponse, ISendOrderResponse>('orders/add', {
+    const { SF } = await $fetch<ISendOrderResponse>('orders/add', {
       baseURL: config.public.commonApiUrl,
       method: 'POST',
       body: payload
     })
 
-    const sf = orderResponse.data.value?.SF
-    if (orderResponse.error.value || !sf?.orderId) {
+    if (!SF?.orderId) {
       useNuxtApp().$toast('Не удалось отправить заказ')
       throw new Error()
     }
 
-    const linkResponse = await useApiFetch<{ Link: string }, { Link: string }>('payment/get-url', {
+    const { Link } = await $fetch<{ Link: string }>('payment/get-url', {
       baseURL: config.public.commonApiUrl,
       method: 'POST',
-      body: {
-        orderId: sf.orderId
-      }
+      body: { orderId: SF.orderId }
     })
 
-    const link = linkResponse.data.value?.Link
-    if (link) {
+    if (Link) {
       clearOrder()
-      await navigateTo(link, { external: true })
+      await navigateTo(Link, { external: true })
     } else {
       useNuxtApp().$toast('Не удалось отправить заказ')
       throw new Error()
@@ -103,7 +115,8 @@ export const useOrderStore = defineStore('order_store', () => {
   return {
     order,
     getOrderPayload,
-    sendOrder,
-    clearOrder
+    clearOrder,
+    clearDelivery,
+    sendOrder
   }
 })
