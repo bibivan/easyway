@@ -1,8 +1,8 @@
 import dayjs from 'dayjs'
 import { EDeliveryType, type ICartItem, type IOrder, type ISendOrderResponse } from '~/types'
+import { useSFFetch } from '~/composables/api/useSFFetch'
 
 export const useOrderStore = defineStore('order_store', () => {
-  const config = useRuntimeConfig()
   const order = reactive<IOrder>({
     addressData: null,
     addressString: null,
@@ -33,7 +33,6 @@ export const useOrderStore = defineStore('order_store', () => {
 
   const getOrderPayload = (cartContent: ICartItem[]) => {
     return {
-      token: config.public.commonApiUrl,
       FIAS: order.fias as string,
       KLADR: order.kladr || '',
       DATE_CREATE: dayjs().format('DD.MM.YY HH:mm:ss'),
@@ -87,8 +86,6 @@ export const useOrderStore = defineStore('order_store', () => {
   const sendOrder = async (cartData: ICartItem[]) => {
     const payload = getOrderPayload(cartData)
     const { SF } = await $fetch<ISendOrderResponse>('orders/add', {
-      baseURL: config.public.commonApiUrl,
-      method: 'POST',
       body: payload
     })
 
@@ -97,9 +94,7 @@ export const useOrderStore = defineStore('order_store', () => {
       throw new Error()
     }
 
-    const { Link } = await $fetch<{ Link: string }>('payment/get-url', {
-      baseURL: config.public.commonApiUrl,
-      method: 'POST',
+    const { Link } = await useSFFetch<{ Link: string }>('payment/get-url', {
       body: { orderId: SF.orderId }
     })
 
