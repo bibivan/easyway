@@ -49,7 +49,24 @@ export interface IPaymentType {
   id: number
 }
 
-export interface ISendOrderPayload {
+export interface IOrderPayloadProductSize {
+  LENGTH: TNullable<number>
+  WIDTH: TNullable<number>
+  HEIGHT: TNullable<number>
+  WEIGHT: TNullable<number>
+}
+
+export interface IOrderPayloadProduct {
+  NAME: string
+  ARTICLE: string
+  SKU: number
+  CNT: number
+  PRICE: number
+  ID: number
+  size: IOrderPayloadProductSize
+}
+
+export interface IOrderPayload {
   FIAS: string
   KLADR: string
   DATE_CREATE: string
@@ -74,10 +91,10 @@ export interface ISendOrderPayload {
   LOYALTY_POINT: number
   DELIVERY_INTERVAL: number
   COMMENT: string
-  PRODUCTS: ICartItem[]
+  PRODUCTS: IOrderPayloadProduct[]
 }
 
-export interface ISentOrderRaw extends ISendOrderPayload {
+export interface IOrderPayloadRaw extends IOrderPayload {
   ID: string
 }
 
@@ -98,7 +115,7 @@ export interface ISendOrderResponse {
     dateTime: string
   }
   SDT: false
-  raw: ISentOrderRaw
+  raw: IOrderPayloadRaw
 }
 
 export interface IPromoData {

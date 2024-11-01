@@ -19,6 +19,7 @@ const handleSendData = async () => {
   try {
     state.dataIsSending = true
     await sendOrder(cartState.data)
+    v$.value.$reset()
   } catch (e) {
     state.checkoutError = true
   } finally {

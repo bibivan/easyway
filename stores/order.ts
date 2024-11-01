@@ -1,5 +1,12 @@
 import dayjs from 'dayjs'
-import { EDeliveryType, type ICartItem, type IOrder, type ISendOrderResponse } from '~/types'
+import {
+  EDeliveryType,
+  type ICartItem,
+  type IOrder,
+  type IOrderPayload,
+  type IOrderPayloadProduct,
+  type ISendOrderResponse
+} from '~/types'
 
 export const useOrderStore = defineStore('order_store', () => {
   const order = reactive<IOrder>({
@@ -30,8 +37,8 @@ export const useOrderStore = defineStore('order_store', () => {
     orderWeight: null
   })
 
-  const getOrderPayload = (cartContent: ICartItem[]) => {
-    const products = cartContent.map((item) => {
+  const getOrderPayload = (cartContent: ICartItem[]): IOrderPayload => {
+    const products: IOrderPayloadProduct[] = cartContent.map((item) => {
       return {
         NAME: item.name,
         ARTICLE: item.article,
