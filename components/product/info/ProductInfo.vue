@@ -73,7 +73,7 @@ const handleDeleteCartItem = () => {
       </p>
     </div>
     <div class="product-info__care product-info__items-wrapper">
-      <h2 class="product-info__subtitle">Состав:</h2>
+      <h2 class="product-info__subtitle">Уход:</h2>
       <p class="product-info__text">
         {{ product.fabric?.care }}
       </p>
