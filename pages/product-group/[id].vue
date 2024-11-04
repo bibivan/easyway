@@ -1,21 +1,32 @@
 <script setup lang="ts">
 import { EBrand, EFetchStatus, EGender, EProductFilters } from '~/types'
 
-const route = useRoute()
-const id = computed(() => {
-  return Array.isArray(route.params.id) ? route.params.id[0] : route.params.id
-})
-const brand = computed(() => {
-  const brand = route.query[EProductFilters.BRAND]
-  return Array.isArray(brand) ? brand[0] : brand
-})
-
-const { status, error, data: productGroup, refresh } = useProductGroup(id?.value)
+const { currentBrand, pageId } = useRouteQuery()
+const { status, error, data: productGroup, refresh } = useProductGroup(pageId.value)
 await refresh()
 const { state, activeProduct, sizeList } = useActiveProduct(productGroup)
+const breadcrumbsData = computed(() => [
+  { to: '/', label: 'Главная' },
+  { to: '/catalog', label: 'Каталог' },
+  {
+    to: {
+      name: 'catalog',
+      query: { [EProductFilters.CATEGORY]: productGroup.value?.category }
+    },
+    label: productGroup.value?.category || ''
+  }
+])
 </script>
 
 <template>
+  <section class="section">
+    <div class="container">
+      <SiteBreadcrumbs
+        class="catalog-head__breadcrumbs"
+        :data="breadcrumbsData"
+      />
+    </div>
+  </section>
   <section class="product">
     <div class="container">
       <div class="product__content">
@@ -46,7 +57,7 @@ const { state, activeProduct, sizeList } = useActiveProduct(productGroup)
     :query="{
       ...(productGroup?.category && { [EProductFilters.CATEGORY]: productGroup.category }),
       [EProductFilters.GENDER]: EGender.FEMALE,
-      [EProductFilters.BRAND]: brand || EBrand.EAZYWAY
+      [EProductFilters.BRAND]: currentBrand || EBrand.EAZYWAY
     }"
   />
   <ProductSuggestions
@@ -55,7 +66,7 @@ const { state, activeProduct, sizeList } = useActiveProduct(productGroup)
     :query="{
       ...(productGroup?.category && { [EProductFilters.CATEGORY]: productGroup.category }),
       [EProductFilters.GENDER]: EGender.FEMALE,
-      [EProductFilters.BRAND]: brand || EBrand.EAZYWAY
+      [EProductFilters.BRAND]: currentBrand || EBrand.EAZYWAY
     }"
   />
 </template>

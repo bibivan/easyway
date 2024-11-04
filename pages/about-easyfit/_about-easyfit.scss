@@ -1,13 +1,14 @@
 .about-easyfit-hero {
   background-image: url('public/img/hero/hero-about-easyfit.jpg');
-  background-position: center top 60%;
-  background-size: auto 650px;
+  background-position: left 49% top 60%;
+  background-size: auto 500px;
 
   @include tablet {
-    background-size: auto 1300px;
+    background-size: auto 1200px;
   }
 
   @include tablet {
-    background-position: center top 59%;
+    background-position: center top 58%;
+    background-size: auto 1130px;
   }
 }

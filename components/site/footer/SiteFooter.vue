@@ -64,8 +64,7 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
                 :to="{
                   name: 'catalog',
                   query: {
-                    [EProductFilters.GENDER]: EGender.MALE,
-                    [EProductFilters.BRAND]: EBrand.EAZYWAY
+                    [EProductFilters.GENDER]: EGender.MALE
                   }
                 }"
               >

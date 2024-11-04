@@ -1,19 +1,20 @@
 .easyway-about-hero {
   background-image: url('public/img/hero/hero-about-easyway.jpg');
-  background-position: right -82px top -130px;
-  background-size: auto 172%;
+  background-position: right -60px top -95px;
+  background-size: auto 170%;
 
-  @include xl-mobile {
-    background-size: auto 200%;
+  @include xxl-mobile {
+    background-position: right 0 top -195px;
+    background-size: auto 250%;
   }
 
   @include tablet {
-    background-position: right -170px top -250px;
-    background-size: auto 160%;
+    background-position: right -140px top -210px;
+    background-size: auto 155%;
   }
 
   @include desktop {
-    background-position: right -370px top -700px;
+    background-position: right -265px top -605px;
     background-size: auto 380%;
   }
 
@@ -24,6 +25,10 @@
 
     @include tablet {
       max-width: 542px;
+    }
+
+    @include desktop {
+      @include flex-column-center-center;
     }
   }
 

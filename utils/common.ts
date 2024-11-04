@@ -106,6 +106,9 @@ export const debounce = <T extends (...args: any[]) => any>(
 //   }
 // }
 
+export const capitalize = (str: string): string =>
+  str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+
 export const formatNumberWithSpaces = (num: number): string =>
   num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 

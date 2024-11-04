@@ -2,7 +2,7 @@
 import type { RouteLocationRaw } from 'vue-router'
 
 defineProps<{
-  logoRoute: RouteLocationRaw
+  logoRoute?: RouteLocationRaw
   tgRoute: RouteLocationRaw
   vkRoute: RouteLocationRaw
 }>()
@@ -10,6 +10,7 @@ defineProps<{
 <template>
   <div class="socials">
     <NuxtLink
+      v-if="logoRoute"
       class="socials__brand-logo"
       :to="logoRoute"
     >

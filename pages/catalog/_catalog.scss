@@ -1,12 +1,17 @@
-.catalog {
-  @include desktop {
-    @include flex-row-top-between;
-
-    gap: 10px;
+.catalog-head {
+  &__breadcrumbs {
+    width: 100%;
+    max-width: 300px;
   }
+}
 
-  &__categories {
-    padding: 30px 10px 30px 30px;
+.catalog {
+  &__container {
+    @include desktop {
+      @include flex-row-top-between;
+
+      gap: 50px;
+    }
   }
 
   &__list {
@@ -24,6 +29,8 @@
   }
 
   &__content {
+    width: 100%;
+
     @include flex-column;
     @include base-gap;
   }
@@ -36,7 +43,7 @@
 
   @include md-desktop {
     width: 100%;
-    max-width: 285px;
+    max-width: 300px;
   }
 
   &__heading {

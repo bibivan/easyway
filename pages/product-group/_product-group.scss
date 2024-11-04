@@ -1,20 +1,21 @@
 .product {
-  @include tablet {
-    padding: $section-indent-desktop 0;
-  }
-
   &__content {
     @include tablet {
-      display: flex;
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include desktop {
       gap: $section-indent-desktop;
+      grid-template-columns: minmax(calc(50% - #{$section-indent-desktop}), 640px) minmax(50%, auto);
     }
   }
 
   &__info {
     padding: $section-indent 0;
 
-    @include desktop {
-      flex-grow: 1;
+    @include tablet {
       padding: 0;
     }
   }

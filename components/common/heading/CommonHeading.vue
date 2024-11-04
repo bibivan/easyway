@@ -3,20 +3,21 @@ import type { RouteLocationRaw } from 'vue-router'
 
 defineProps<{
   title: string
-  to: RouteLocationRaw
+  to?: RouteLocationRaw
 }>()
 </script>
 
 <template>
   <div class="common-heading">
     <h2 class="common-heading__title">{{ title }}</h2>
-<!--    <NuxtLink-->
-<!--      class="common-heading__link"-->
-<!--      :to="to"-->
-<!--    >-->
-<!--      Смотреть все-->
-<!--      <SvgChevronRight />-->
-<!--    </NuxtLink>-->
+    <NuxtLink
+      v-if="to"
+      class="common-heading__link"
+      :to="to"
+    >
+      Смотреть все
+      <SvgChevronRight />
+    </NuxtLink>
   </div>
 </template>
 

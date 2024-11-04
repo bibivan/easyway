@@ -1,4 +1,5 @@
 import type { ComputedRef, Ref, WritableComputedRef } from 'vue'
+import type { RouteLocationRaw } from 'vue-router'
 
 export type TNullable<T> = T | null
 export type TGenericRef<T> = Ref<T> | ComputedRef<T> | WritableComputedRef<T>
@@ -42,4 +43,9 @@ export interface IInputEmitEvents {
 export interface ICollaborator {
   img: string
   name: string
+}
+
+export interface IBreadcrumbData {
+  link?: RouteLocationRaw
+  label: string
 }

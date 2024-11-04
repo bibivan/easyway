@@ -1,6 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const breadcrumbsData = [{ to: '/', label: 'Главная' }, { label: 'Оформление заказа' }]
+</script>
 
 <template>
+  <section class="section section_pb_0">
+    <div class="container">
+      <SiteBreadcrumbs
+        class="catalog-head__breadcrumbs"
+        :data="breadcrumbsData"
+      />
+    </div>
+  </section>
   <section class="section">
     <div class="container">
       <div class="order">

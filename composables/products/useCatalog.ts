@@ -2,7 +2,10 @@ import type { IPaginatedDataRaw, IProductGroupRaw, IPaginatedData, IProductGroup
 
 export const useCatalog = () => {
   const route = useRoute()
-  const query = computed(() => route.query)
+  const query = computed(() => ({
+    limit: 12,
+    ...route.query
+  }))
 
   return useApiFetch<IPaginatedDataRaw<IProductGroupRaw[]>, IPaginatedData<IProductGroup[]>>(
     'data',

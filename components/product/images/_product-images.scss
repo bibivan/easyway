@@ -9,11 +9,6 @@
     grid-template-rows: 556px 240px 240px;
   }
 
-  @include desktop {
-    max-width: 640px;
-    flex-shrink: 0;
-  }
-
   &__swiper-pagination {
     bottom: 32px;
 

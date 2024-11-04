@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { ECategory, EGender, EProductFilters } from '~/types'
+import { EGender, EProductFilters } from '~/types'
 
-defineProps<{
-  gender?: EGender
-}>()
+defineProps<{ gender?: EGender }>()
+
+const { categories } = useProductFiltersStore()
 </script>
 
 <template>
   <ul class="product-categories">
     <slot />
     <li
-      v-for="(value, key) in ECategory"
+      v-for="(value, key) in categories"
       :key="key"
       class="product-categories__item"
     >

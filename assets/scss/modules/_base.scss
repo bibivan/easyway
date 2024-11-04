@@ -109,11 +109,15 @@ body {
   @include desktop {
     padding: $section-indent-desktop 0;
   }
+
+  &_pb_0 {
+    padding-bottom: 0;
+  }
 }
 
 .container {
   width: 100%;
-  max-width: 1360px;
+  max-width: 1440px;
   padding: 0 $container-indent;
   margin: 0 auto;
 

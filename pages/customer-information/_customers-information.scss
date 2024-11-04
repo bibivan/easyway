@@ -1,11 +1,19 @@
 .customer-info-hero {
   background-image: url('public/img/hero/hero-customer-info.jpg');
-  background-position: left 60% top 35%;
+  background-position: left 66% top 36%;
   background-size: auto 265%;
 
+  @include tablet {
+    background-position: right 35% top 33%;
+  }
+
   @include desktop {
-    background-position: right 27% top 33%;
+    background-position: right 25% top 33%;
     background-size: auto 360%;
+  }
+
+  @include md-desktop {
+    background-position: right -125px top 32%;
   }
 
   :deep(.common-hero__content) {

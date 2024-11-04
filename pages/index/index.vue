@@ -50,6 +50,7 @@ const community = useCommunityMock()
     suggestions-name="New"
     suggestions-label="Новинки"
     :with-slider="true"
+    no-mobile-slider
     :limit="4"
     :query="{}"
   />
@@ -112,10 +113,6 @@ const community = useCommunityMock()
         <CommonHeading
           class="collaborators__heading"
           title="Коммьюнити #eazyladies"
-          :to="{
-            name: 'catalog',
-            query: { [EProductFilters.GENDER]: EGender.FEMALE }
-          }"
         />
         <ul class="collaborators__list">
           <li

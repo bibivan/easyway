@@ -8,11 +8,14 @@ import {
 
 const minProductsPerView = 4
 const props = defineProps<{
+  limit?: number
+  noMobileSlider?: boolean
   suggestionsName: string
   suggestionsLabel: string
-  limit?: number
   query: Record<string, string | string[]>
 }>()
+
+const { isMobile } = useDeviceTypeStore()
 
 const { data, error, status } = await useApiFetch<
   IPaginatedDataRaw<IProductGroupRaw[]>,
@@ -47,7 +50,7 @@ const desktopData = computed(() => data.value?.slice(0, 4))
           <template v-if="status === EFetchStatus.ERROR">{{ error?.message }}</template>
           <template v-if="status === EFetchStatus.SUCCESS">
             <div
-              v-if="!limit"
+              v-if="isMobile && noMobileSlider"
               class="product-suggestions__list"
             >
               <CatalogItem
@@ -66,7 +69,7 @@ const desktopData = computed(() => data.value?.slice(0, 4))
               :initial-slide="0"
               :breakpoints="{
                 768: { slidesPerView: 3 },
-                800: { slidesPerView: 4 }
+                1200: { slidesPerView: 4 }
               }"
             >
               <SwiperSlide

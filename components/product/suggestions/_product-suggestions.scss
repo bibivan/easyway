@@ -11,11 +11,7 @@
     gap: 10px;
     grid-template-columns: 1fr 1fr;
 
-    @include tablet {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    @include sm-desktop {
+    @include desktop {
       grid-template-columns: repeat(4, 1fr);
     }
 

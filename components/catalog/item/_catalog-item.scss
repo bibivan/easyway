@@ -23,7 +23,7 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    padding-top: 107%;
+    padding-top: 133%;
     border: 1px solid $color-bg-section-darker;
     border-radius: $border-radius-s;
   }
@@ -38,11 +38,7 @@
 
   &__name {
     overflow: hidden;
-    //height: 42px;
-
-    @include tablet {
-      //height: $line-height-base;
-    }
+    height: 2 * $line-height-base;
   }
 
   &__colors,

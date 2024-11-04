@@ -4,14 +4,14 @@
   background-size: cover;
 
   &__content {
-    min-height: 250px;
+    min-height: calc(250px - $section-indent * 2);
 
     @include tablet {
-      min-height: 600px;
+      min-height: calc(600px - $section-indent * 2);
     }
 
     @include desktop {
-      min-height: 500px;
+      min-height: calc(500px - $section-indent-desktop * 2);
     }
   }
 
