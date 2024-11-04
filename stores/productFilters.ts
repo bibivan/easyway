@@ -4,7 +4,6 @@ export const useProductFiltersStore = defineStore('product_filters_store', () =>
   const route = useRoute()
 
   // data
-  const categories = ref()
   const filters = ref()
 
   // getters
@@ -15,15 +14,6 @@ export const useProductFiltersStore = defineStore('product_filters_store', () =>
     })
   }))
 
-  // actions
-  useApiFetch('categories', {
-    query,
-    watch: [query],
-    onResponse({ response }) {
-      categories.value = response._data.categories
-    }
-  })
-
   useApiFetch('filters', {
     query,
     watch: [query],
@@ -33,7 +23,6 @@ export const useProductFiltersStore = defineStore('product_filters_store', () =>
   })
 
   return {
-    filters,
-    categories
+    filters
   }
 })

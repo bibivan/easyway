@@ -1,16 +1,20 @@
 <script setup lang="ts">
 import { EFetchStatus } from '~/types'
-import { capitalize } from '~/utils/common'
 
 const { isDesktop } = useDeviceTypeStore()
 const { status, error, data } = useCatalog()
 const { currentGender, currentBrand } = useRouteQuery()
-const { filters, categories } = useProductFiltersStore()
+const categoriesStore = useProductCategoriesStore()
+const { getCurrentCategories } = categoriesStore
+const { currentCategories } = storeToRefs(categoriesStore)
+// const { filters } = useProductFiltersStore()
 
 const breadcrumbsData = computed(() => [
   { to: '/', label: 'Главная' },
-  { label: ((currentGender.value || currentBrand.value) as string).toLowerCase() }
+  { label: (currentGender.value || currentBrand.value)?.toLowerCase() || '' }
 ])
+
+await getCurrentCategories()
 </script>
 
 <template>
@@ -35,9 +39,9 @@ const breadcrumbsData = computed(() => [
         >
           <h2 class="categories__heading">Категории товаров</h2>
           <ProductCategories
-            v-if="isEGender(currentGender)"
+            v-if="currentCategories"
             class="categories__body"
-            :gender="currentGender"
+            :data="currentCategories"
           />
         </aside>
         <div class="catalog__content">

@@ -4,6 +4,7 @@ import { EBrand, EGender, EProductFilters } from '~/types'
 const emit = defineEmits<{ onCloseMenu: [void] }>()
 
 const route = useRoute()
+const { maleCategories, femaleCategories } = storeToRefs(useProductCategoriesStore())
 const submenusState = reactive({
   maleIsOpened: false,
   femaleIsOpened: false
@@ -26,7 +27,10 @@ watch(
           class="menu__link"
           :to="{
             name: 'catalog',
-            query: { [EProductFilters.GENDER]: EGender.FEMALE }
+            query: {
+              [EProductFilters.GENDER]: EGender.FEMALE,
+              [EProductFilters.BRAND]: EBrand.EAZYWAY
+            }
           }"
           >Женщинам</NuxtLink
         >
@@ -43,6 +47,7 @@ watch(
           v-show="submenusState.femaleIsOpened"
           class="submenu__body"
           :gender="EGender.FEMALE"
+          :data="femaleCategories"
         />
       </transition>
     </li>
@@ -72,6 +77,7 @@ watch(
           v-show="submenusState.maleIsOpened"
           class="submenu__body"
           :gender="EGender.MALE"
+          :data="maleCategories"
         />
       </transition>
     </li>

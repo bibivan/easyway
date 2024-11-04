@@ -8,6 +8,12 @@ defineProps<{
 const emit = defineEmits<{ onCloseMenu: [void] }>()
 const query = computed(() => useRoute().query)
 const selectedGender = ref<EGender>(EGender.FEMALE)
+const { categoriesState } = useProductCategoriesStore()
+
+const categories = computed(() => {
+  if (selectedGender.value === EGender.FEMALE) return categoriesState.data.male
+  if (selectedGender.value === EGender.MALE) return categoriesState.data.female
+})
 
 watch(query, () => emit('onCloseMenu'))
 </script>
@@ -44,8 +50,10 @@ watch(query, () => emit('onCloseMenu'))
       </div>
       <div class="categories-menu__body">
         <ProductCategories
+          v-if="categories"
           class="categories-menu__list"
           :gender="selectedGender"
+          :data="categories"
         />
       </div>
     </div>

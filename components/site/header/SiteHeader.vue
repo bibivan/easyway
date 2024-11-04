@@ -3,11 +3,13 @@ import { EBrand, EGender, EProductFilters } from '~/types'
 
 const { handleShowCart } = useCartOpening()
 const { isDesktop } = useDeviceTypeStore()
-
+const { getMaleCategories, getFemaleCategories } = useProductCategoriesStore()
 const state = reactive({
   menuIsOpened: false,
   categoriesIsOpened: false
 })
+
+await Promise.all([getMaleCategories(), getFemaleCategories()])
 </script>
 
 <template>
@@ -87,22 +89,20 @@ const state = reactive({
             <CartItemsAmount />
           </button>
 
-          <template v-if="!isDesktop">
-            <button
-              v-if="!state.menuIsOpened"
-              class="header__action header__action_burger"
-              @click="state.menuIsOpened = true"
-            >
-              <SvgBurger />
-            </button>
-            <button
-              v-if="state.menuIsOpened"
-              class="header__action"
-              @click="state.menuIsOpened = false"
-            >
-              <SvgCross />
-            </button>
-          </template>
+          <button
+            v-show="!isDesktop && !state.menuIsOpened"
+            class="header__action header__action_burger"
+            @click="state.menuIsOpened = true"
+          >
+            <SvgBurger />
+          </button>
+          <button
+            v-show="!isDesktop && state.menuIsOpened"
+            class="header__action"
+            @click="state.menuIsOpened = false"
+          >
+            <SvgCross />
+          </button>
         </div>
       </div>
     </div>
