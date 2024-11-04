@@ -1,12 +1,23 @@
-import { EGender, EProductFilters, type TNullable } from '~/types'
+import {
+  EGender,
+  EProductFilters,
+  type IProductCategoriesState,
+  type TDefaultState,
+  type TNullable
+} from '~/types'
 
 export const useProductFiltersStore = defineStore('product_filters_store', () => {
   const route = useRoute()
 
   // data
-  const filters = ref()
+  const filtersState = reactive<TDefaultState<TNullable<IProductCategoriesState>>>({
+    data: null,
+    error: null,
+    loading: false
+  })
 
   // getters
+  const filters = computed(() => filtersState.data)
   const query = computed(() => ({
     [EProductFilters.GENDER]: route.query[EProductFilters.GENDER],
     ...(route.query[EProductFilters.GENDER] !== EGender.MALE && {
@@ -14,15 +25,17 @@ export const useProductFiltersStore = defineStore('product_filters_store', () =>
     })
   }))
 
-  useApiFetch('filters', {
+  const filtersFetch = useApiFetch('filters', {
     query,
     watch: [query],
+    immediate: false,
     onResponse({ response }) {
-      filters.value = response._data
+      filtersState.data = response._data
     }
   })
 
   return {
-    filters
+    filters,
+    getFilters: filtersFetch.refresh
   }
 })

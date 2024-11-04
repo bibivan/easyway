@@ -1,0 +1,30 @@
+.base-popup {
+  @include flex-column;
+
+  position: relative;
+
+  &__overlay {
+    position: fixed;
+    z-index: $ui-index-1;
+    inset: 0;
+  }
+
+  &__label {
+    @include flex-row-center-between;
+    @include text-body;
+
+    font-size: 16px;
+    gap: 10px;
+  }
+
+  &__icon {
+    width: 14px;
+  }
+
+  &__content {
+    position: absolute;
+    z-index: $ui-index-2;
+    top: 100%;
+    left: 0;
+  }
+}

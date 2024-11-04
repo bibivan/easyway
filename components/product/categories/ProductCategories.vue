@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { EGender, EProductFilters, type TNullable } from '~/types'
 
-const props = defineProps<{ gender?: EGender; data: TNullable<string[]> }>()
+defineProps<{ gender?: EGender; data: TNullable<string[]> }>()
 </script>
 
 <template>
@@ -20,8 +20,11 @@ const props = defineProps<{ gender?: EGender; data: TNullable<string[]> }>()
         :to="{
           name: 'catalog',
           query: {
-            ...(gender && { [EProductFilters.GENDER]: gender }),
-            [EProductFilters.CATEGORY]: value
+            [EProductFilters.GENDER]: gender || $route.query[EProductFilters.GENDER],
+            [EProductFilters.CATEGORY]: value,
+            ...(gender !== EGender.MALE && {
+              [EProductFilters.BRAND]: $route.query[EProductFilters.BRAND]
+            })
           }
         }"
         >{{ value }}</NuxtLink

@@ -33,7 +33,7 @@ const community = useCommunityMock()
     </SwiperSlide>
     <SwiperSlide>
       <MainPageHero
-        title="EASYFIT"
+        title="easyfit"
         note="Бренд-линейка easyfit"
         :images-top="true"
         :to="{

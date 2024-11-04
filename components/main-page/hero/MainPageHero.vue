@@ -12,15 +12,18 @@ defineProps<{
 <template>
   <section class="hero section">
     <div class="hero__wrapper">
-      <div class="hero__banner">
-        <div class="hero__image hero__image_1">
-          <p
+      <NuxtLink
+        class="hero__banner"
+        :to="to"
+      >
+        <span class="hero__image hero__image_1">
+          <span
             v-if="note"
             class="hero__note"
           >
             {{ note }}
-          </p>
-        </div>
+          </span>
+        </span>
         <img
           :src="images[0]"
           alt="Image 1"
@@ -33,7 +36,7 @@ defineProps<{
           class="hero__image hero__image_3"
           :class="{ hero__image_position_top: imagesTop }"
         />
-      </div>
+      </NuxtLink>
     </div>
     <div class="hero__container container">
       <div class="hero__content">

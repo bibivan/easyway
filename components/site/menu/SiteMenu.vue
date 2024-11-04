@@ -39,7 +39,7 @@ watch(
           :class="{ menu__btn_active: submenusState.femaleIsOpened }"
           @click="submenusState.femaleIsOpened = !submenusState.femaleIsOpened"
         >
-          <SvgChevronBottom />
+          <SvgChevronDown />
         </button>
       </div>
       <transition name="slide-vertical">
@@ -69,7 +69,7 @@ watch(
           :class="{ menu__btn_active: submenusState.maleIsOpened }"
           @click="submenusState.maleIsOpened = !submenusState.maleIsOpened"
         >
-          <SvgChevronBottom />
+          <SvgChevronDown />
         </button>
       </div>
       <transition name="slide-vertical">

@@ -11,8 +11,8 @@ const selectedGender = ref<EGender>(EGender.FEMALE)
 const { categoriesState } = useProductCategoriesStore()
 
 const categories = computed(() => {
-  if (selectedGender.value === EGender.FEMALE) return categoriesState.data.male
-  if (selectedGender.value === EGender.MALE) return categoriesState.data.female
+  if (selectedGender.value === EGender.FEMALE) return categoriesState.data.female
+  if (selectedGender.value === EGender.MALE) return categoriesState.data.male
 })
 
 watch(query, () => emit('onCloseMenu'))

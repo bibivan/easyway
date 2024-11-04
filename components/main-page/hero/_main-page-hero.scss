@@ -3,7 +3,7 @@
 
   position: relative;
   width: 100%;
-  min-height: 330px;
+  min-height: 320px;
   padding: 0;
   background-color: $color-bg-section-darker; // серый фон
 
@@ -29,6 +29,7 @@
   &__container {
     position: relative;
     z-index: $ui-index-2;
+    pointer-events: none;
   }
 
   &__content {
@@ -42,10 +43,9 @@
     min-height: 2em;
     margin-bottom: 60px;
     color: $color-text-light;
-    font-size: 64px;
+    font-size: 50px;
     line-height: 1;
     text-align: center;
-    text-transform: uppercase;
     white-space: pre-wrap;
 
     @include xs-desktop {
@@ -66,6 +66,7 @@
 
   &__banner {
     position: relative;
+    display: block;
     width: 100%;
     height: 100%;
   }
@@ -84,15 +85,15 @@
     position: absolute;
     left: 50%;
     display: block;
-    width: 208px;
-    height: 208px;
-    border: 5px solid $color-bg-section; // прозрачный бордер
+    width: 200px;
+    height: 200px;
+    border: 1px solid $color-bg-section; // прозрачный бордер
     border-radius: 50%;
     object-fit: cover;
 
     @include tablet {
-      width: 430px;
-      height: 430px;
+      width: 482px;
+      height: 482px;
     }
 
     @include xs-desktop {
@@ -124,7 +125,7 @@
 
     &_2 {
       z-index: 2;
-      transform: translateX(-66.66%);
+      transform: translateX(-73%);
 
       @include desktop {
         transform: translateX(-50%);
@@ -133,7 +134,7 @@
 
     &_3 {
       z-index: 3;
-      transform: translateX(-33.3333%);
+      transform: translateX(-27%);
 
       @include desktop {
         transform: translateX(0);

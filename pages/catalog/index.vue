@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { EFetchStatus } from '~/types'
+import ProductFilters from '~/components/product/filters/ProductFilters.vue'
 
 const { isDesktop } = useDeviceTypeStore()
 const { status, error, data } = useCatalog()
@@ -7,7 +8,9 @@ const { currentGender, currentBrand } = useRouteQuery()
 const categoriesStore = useProductCategoriesStore()
 const { getCurrentCategories } = categoriesStore
 const { currentCategories } = storeToRefs(categoriesStore)
-// const { filters } = useProductFiltersStore()
+const filtersStore = useProductFiltersStore()
+const { getFilters } = filtersStore
+const { filters } = storeToRefs(filtersStore)
 
 const breadcrumbsData = computed(() => [
   { to: '/', label: 'Главная' },
@@ -25,7 +28,7 @@ await getCurrentCategories()
           class="catalog-head__breadcrumbs"
           :data="breadcrumbsData"
         />
-        <div class="catalog-head__filters"></div>
+        <ProductFilters class="catalog-head__filters" />
       </div>
     </div>
   </section>
