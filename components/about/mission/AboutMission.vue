@@ -26,9 +26,7 @@ const { isDesktop } = storeToRefs(useDeviceTypeStore())
         </div>
         <h2 class="our-mission__heading typographic-about__heading">Наша миссия:</h2>
         <p class="our-mission__description typographic-about__text">
-          Развивать осознанную и здоровую культуру потребления товаров для спорта и активной жизни,
-          предоставляя лучший опыт взаимодействия нашей аудитории с товарами российского
-          производства.
+          Мы создаем комфортную, функциональную и стильную спортивную одежду. Она вдохновляет наших девушек на занятия спортом.
         </p>
       </div>
     </div>

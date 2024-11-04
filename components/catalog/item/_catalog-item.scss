@@ -33,15 +33,15 @@
     display: block;
     inset: 0;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
   }
 
   &__name {
     overflow: hidden;
-    height: 42px;
+    //height: 42px;
 
     @include tablet {
-      height: $line-height-base;
+      //height: $line-height-base;
     }
   }
 

@@ -33,18 +33,22 @@
 
     &_w_full {
       grid-column: 1 / -1;
+      object-position: top;
     }
 
     &_row_1 {
       grid-row: 1;
+      object-position: top;
     }
 
     &_row_2 {
       grid-row: 2;
+      object-position: top;
     }
 
     &_row_3 {
       grid-row: 3;
+      object-position: top;
     }
 
     &_span_row_2 {

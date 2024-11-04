@@ -36,7 +36,7 @@ const { deleteCartItem: handleDeleteCartItem } = useCartStore()
             {{ data.size }}
           </p>
         </div>
-        <div class="cart-item__price">{{ formatNumberWithSpaces(data.price) }} ₽</div>
+        <div class="cart-item__price">{{ formatNumberWithSpaces(data.price*data.cnt) }} ₽</div>
       </div>
     </div>
     <button

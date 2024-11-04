@@ -10,13 +10,13 @@ defineProps<{
 <template>
   <div class="common-heading">
     <h2 class="common-heading__title">{{ title }}</h2>
-    <NuxtLink
-      class="common-heading__link"
-      :to="to"
-    >
-      Смотреть все
-      <SvgChevronRight />
-    </NuxtLink>
+<!--    <NuxtLink-->
+<!--      class="common-heading__link"-->
+<!--      :to="to"-->
+<!--    >-->
+<!--      Смотреть все-->
+<!--      <SvgChevronRight />-->
+<!--    </NuxtLink>-->
   </div>
 </template>
 

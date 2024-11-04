@@ -1,7 +1,6 @@
 <template>
   <div class="legal-info">
     <div>
-      <small class="legal-info__text">Капитал Инвест, 2024</small>
       <p class="legal-info__text">ИНН 7727276967, ОГРН 5157746161690</p>
     </div>
     <address class="legal-info__text">

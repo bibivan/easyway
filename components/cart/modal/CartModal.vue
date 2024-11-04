@@ -80,7 +80,7 @@ const handleCloseModal = () => {
                 class="btn cart-modal__checkout-btn"
                 @click="handleCloseModal"
               >
-                Оформить заказз
+                Оформить заказ
               </NuxtLink>
             </template>
             <p v-else>Корзина пуста</p>
