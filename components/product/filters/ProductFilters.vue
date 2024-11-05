@@ -15,6 +15,11 @@ const filtersState = reactive({
 })
 
 const handleResetFilters = () => {
+  filtersState.COLORS = ""
+  filtersState.SIZES = ""
+  filtersState.PRICETO = 100000
+  filtersState.PRICEFROM = 0
+
   delete route.query[EProductFilters.SIZE]
   delete route.query[EProductFilters.COLOR]
   delete route.query[EProductFilters.PRICEFROM]
@@ -138,7 +143,7 @@ watch(filtersState, () => {
         />
       </BasePopup>
     </div>
-    <button v-show="false"
+    <button
       class="product-filters__reset-btn"
       @click="handleResetFilters"
     >
