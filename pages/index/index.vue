@@ -53,7 +53,6 @@ const community = useCommunityMock()
     no-mobile-slider
     :limit="4"
     :query="{
-      [EProductFilters.BRAND]: EBrand.EASYFIT,
       [EProductFilters.NEW]: 'YES'
     }"
   />
