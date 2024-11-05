@@ -113,6 +113,7 @@
       z-index: 1;
       display: none;
       background-color: #6c6c6a;
+      display: none !important;
 
       @include desktop {
         display: flex;
@@ -130,7 +131,7 @@
       transform: translateX(-73%);
 
       @include desktop {
-        transform: translateX(-50%);
+        transform: translateX(-73%);
       }
     }
 
@@ -139,7 +140,7 @@
       transform: translateX(-27%);
 
       @include desktop {
-        transform: translateX(0);
+        transform: translateX(-27);
       }
     }
   }
