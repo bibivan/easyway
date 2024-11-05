@@ -16,7 +16,10 @@ const handleSubscribe = () => {
     <p class="subscription__description">
       Подпишитесь на нашу рассылку, чтобы быть в курсе последних коллекций и специальных предложений
     </p>
-    <div class="subscription__form">
+    <form
+      class="subscription__form"
+      @submit.prevent="handleSubscribe"
+    >
       <BaseInput
         id="subscription_email"
         v-model="email"
@@ -27,11 +30,11 @@ const handleSubscribe = () => {
       />
       <button
         class="subscription__btn btn"
-        @click="handleSubscribe"
+        type="submit"
       >
         хочу
       </button>
-    </div>
+    </form>
     <p class="subscription__consent">
       Нажимая на кнопку, я даю согласие на обработку персональных данных
     </p>
