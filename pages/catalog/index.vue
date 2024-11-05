@@ -4,36 +4,37 @@ import ProductFilters from '~/components/product/filters/ProductFilters.vue'
 
 const { isDesktop } = useDeviceTypeStore()
 const { status, error, data } = useCatalog()
-const { currentGender, currentBrand } = useRouteQuery()
-const categoriesStore = useProductCategoriesStore()
-const { getCurrentCategories } = categoriesStore
-const { currentCategories } = storeToRefs(categoriesStore)
-const filtersStore = useProductFiltersStore()
-const { getFilters } = filtersStore
-const { filters } = storeToRefs(filtersStore)
+const { currentGender, currentBrand } = useProductsQuery()
+const { currentCategories } = storeToRefs(useProductCategoriesStore())
 
 const breadcrumbsData = computed(() => [
   { to: '/', label: 'Главная' },
   { label: (currentGender.value || currentBrand.value)?.toLowerCase() || '' }
 ])
 
-await getCurrentCategories()
+// Promise.all([
+//   await getCurrentCategories(),
+//   await useAsyncData('filter', () => getFilters(query.value as IBaseProductsQuery))
+// ])
+
+// watch(query, async () => {
+//   console.log(query.value)
+//   await getFilters()
+// })
 </script>
 
 <template>
-  <section class="section section_pb_0">
-    <div class="container">
-      <div class="catalog-head">
-        <SiteBreadcrumbs
-          class="catalog-head__breadcrumbs"
-          :data="breadcrumbsData"
-        />
-        <ProductFilters class="catalog-head__filters" />
-      </div>
+  <section class="section section_pb_0 catalog-head">
+    <div class="container catalog-container">
+      <SiteBreadcrumbs
+        class="catalog-head__breadcrumbs"
+        :data="breadcrumbsData"
+      />
+      <ProductFilters class="catalog-head__filters" />
     </div>
   </section>
   <section class="section catalog">
-    <div class="container catalog__container">
+    <div class="container catalog-container">
       <BaseSpinner v-if="status === EFetchStatus.PENDING" />
       <template v-if="status === EFetchStatus.SUCCESS">
         <aside

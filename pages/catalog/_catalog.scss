@@ -1,19 +1,22 @@
 .catalog-head {
-  &__breadcrumbs {
-    width: 100%;
-    max-width: 300px;
+  display: flex;
+  overflow: visible;
+}
+
+.catalog-container {
+  @include desktop {
+    display: grid;
+    padding: 0 30px;
+    gap: 50px;
+    grid-template-columns: auto auto;
+  }
+
+  @include md-desktop {
+    grid-template-columns: max(300px) auto;
   }
 }
 
 .catalog {
-  &__container {
-    @include desktop {
-      @include flex-row-top-between;
-
-      gap: 50px;
-    }
-  }
-
   &__list {
     display: grid;
     gap: 10px;
@@ -40,11 +43,6 @@
   @include flex-column;
 
   gap: 25px;
-
-  @include md-desktop {
-    width: 100%;
-    max-width: 300px;
-  }
 
   &__heading {
     width: 100%;

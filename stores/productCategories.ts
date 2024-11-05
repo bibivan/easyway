@@ -2,16 +2,14 @@ import {
   EBrand,
   EGender,
   EProductFilters,
-  type IProductCategoriesState,
-  type TDefaultState,
-  type TNullable
+  type ICategoriesStoreState,
+  type TDefaultState
 } from '~/types'
 
 export const useProductCategoriesStore = defineStore('product_categories_store', () => {
-  const route = useRoute()
-
   // data
-  const categoriesState = reactive<TDefaultState<IProductCategoriesState>>({
+  const { query } = useProductsQuery()
+  const categoriesState = reactive<TDefaultState<ICategoriesStoreState>>({
     data: {
       male: null,
       female: null,
@@ -25,12 +23,6 @@ export const useProductCategoriesStore = defineStore('product_categories_store',
   const maleCategories = computed(() => categoriesState.data.male)
   const femaleCategories = computed(() => categoriesState.data.female)
   const currentCategories = computed(() => categoriesState.data.current)
-  const query = computed(() => ({
-    [EProductFilters.GENDER]: route.query[EProductFilters.GENDER],
-    ...(route.query[EProductFilters.GENDER] !== EGender.MALE && {
-      [EProductFilters.BRAND]: route.query[EProductFilters.BRAND]
-    })
-  }))
 
   // actions
   const maleCategoriesFetch = useApiFetch('categories', {
@@ -62,7 +54,6 @@ export const useProductCategoriesStore = defineStore('product_categories_store',
 
   return {
     categoriesState,
-
     maleCategories,
     femaleCategories,
     currentCategories,

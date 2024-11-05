@@ -1,7 +1,10 @@
 .base-popup {
+  $this: &;
+
   @include flex-column;
 
   position: relative;
+  min-width: 320px;
 
   &__overlay {
     position: fixed;
@@ -13,8 +16,18 @@
     @include flex-row-center-between;
     @include text-body;
 
+    padding: 7px 9px;
+    border-radius: $border-radius-s $border-radius-s 0 0;
     font-size: 16px;
     gap: 10px;
+
+    &_active {
+      background-color: $color-bg-section-darker;
+
+      #{$this}__icon {
+        transform: rotate(180deg);
+      }
+    }
   }
 
   &__icon {
@@ -22,9 +35,15 @@
   }
 
   &__content {
+    @include flex-row-center-start;
+
     position: absolute;
-    z-index: $ui-index-2;
+    z-index: $ui-index-6;
     top: 100%;
     left: 0;
+    width: 100%;
+    padding: 24px 9px;
+    border-radius: 0 0 $border-radius-s $border-radius-s;
+    background-color: $color-bg-section;
   }
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { EBrand, EFetchStatus, EGender, EProductFilters } from '~/types'
 
-const { currentBrand, pageId } = useRouteQuery()
+const { currentBrand, pageId } = useProductsQuery()
 const { status, error, data: productGroup, refresh } = useProductGroup(pageId.value)
 await refresh()
 const { state, activeProduct, sizeList } = useActiveProduct(productGroup)
