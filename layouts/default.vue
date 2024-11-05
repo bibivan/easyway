@@ -13,7 +13,7 @@ const { isDesktop } = storeToRefs(useDeviceTypeStore())
       wheelPropagation: false
     }"
   >
-    <SiteHeader />
+    <!--    <SiteHeader />-->
     <main class="main">
       <slot />
     </main>
@@ -21,7 +21,7 @@ const { isDesktop } = storeToRefs(useDeviceTypeStore())
     <CartModal />
   </PerfectScrollbar>
   <template v-else>
-    <SiteHeader />
+    <!--    <SiteHeader />-->
     <main class="main">
       <slot />
     </main>
