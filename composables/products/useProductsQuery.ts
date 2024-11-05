@@ -4,6 +4,18 @@ export const useProductsQuery = () => {
   const route = useRoute()
   const query = computed(() => route.query)
 
+  const priceFrom = computed(() => {
+    return Array.isArray(query.value[EProductFilters.PRICEFROM])
+      ? query.value[EProductFilters.PRICEFROM][0]
+      : query.value[EProductFilters.PRICEFROM]
+  })
+
+  const priceTo = computed(() => {
+    return Array.isArray(query.value[EProductFilters.PRICETO])
+      ? query.value[EProductFilters.PRICETO][0]
+      : query.value[EProductFilters.PRICETO]
+  })
+
   const currentGender = computed(() => {
     return Array.isArray(query.value[EProductFilters.GENDER])
       ? query.value[EProductFilters.GENDER][0]
@@ -29,6 +41,8 @@ export const useProductsQuery = () => {
 
   return {
     pageId,
+    priceFrom,
+    priceTo,
     currentGender,
     currentBrand,
     query: queries

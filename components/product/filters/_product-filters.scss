@@ -1,5 +1,60 @@
 .product-filters {
   @include base-gap;
+  @include flex-row-center-between;
 
   display: flex;
+  width: 100%;
+
+  &__popups {
+    @include flex-row-center-between;
+  }
+
+  &__reset-btn {
+    @include text-body;
+
+    color: $color-text;
+    font-size: 16px;
+  }
+}
+
+.range-price {
+  @include flex-column-stretch-start;
+
+  &__ranges {
+    @include text-body;
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    color: $color-text;
+
+    @include desktop {
+      color: $color-headline;
+      font-size: 16px;
+    }
+  }
+
+  &__inputs {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.range-input {
+  @include text-body;
+
+  width: 70px;
+  height: 35px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: $border-radius-l;
+  background-color: $color-bg-btn-light;
+  color: $color-text;
+  text-align: center;
+
+  @include desktop {
+    width: 80px;
+    height: 36px;
+    font-size: 16px;
+  }
 }

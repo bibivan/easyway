@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EBrand, EFetchStatus, EGender, EProductFilters } from '~/types'
+import { EFetchStatus, EProductFilters } from '~/types'
 
 const { currentBrand, pageId } = useProductsQuery()
 const { status, error, data: productGroup, refresh } = useProductGroup(pageId.value)
@@ -55,9 +55,8 @@ const breadcrumbsData = computed(() => [
     suggestions-name="your-look"
     suggestions-label="Собери образ"
     :query="{
-      ...(productGroup?.category && { [EProductFilters.CATEGORY]: productGroup.category }),
-      [EProductFilters.GENDER]: EGender.FEMALE,
-      [EProductFilters.BRAND]: currentBrand || EBrand.EAZYWAY
+      ...(productGroup?.gender && { [EProductFilters.GENDER]: productGroup?.gender }),
+      ...(currentBrand && { [EProductFilters.BRAND]: currentBrand })
     }"
   />
   <ProductSuggestions
@@ -65,8 +64,8 @@ const breadcrumbsData = computed(() => [
     suggestions-label="Похожее"
     :query="{
       ...(productGroup?.category && { [EProductFilters.CATEGORY]: productGroup.category }),
-      [EProductFilters.GENDER]: EGender.FEMALE,
-      [EProductFilters.BRAND]: currentBrand || EBrand.EAZYWAY
+      ...(productGroup?.gender && { [EProductFilters.GENDER]: productGroup?.gender }),
+      ...(currentBrand && { [EProductFilters.BRAND]: currentBrand })
     }"
   />
 </template>

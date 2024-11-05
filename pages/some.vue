@@ -1,7 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({ layout: 'test' })
+</script>
 
 <template>
-  <NuxtLink to="/#link">Link</NuxtLink>
+  <section class="section">
+    <div class="container">
+      <CommonSubscriptionForm />
+    </div>
+  </section>
 </template>
 
 <style scoped lang="scss"></style>

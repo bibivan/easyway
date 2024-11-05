@@ -8,7 +8,8 @@ export enum EProductFilters {
   CATEGORY = 'CATEGORY',
   PRICEFROM = 'PRICEFROM',
   PRICETO = 'PRICETO',
-  GROUPID = 'GROUP_ID'
+  GROUPID = 'GROUP_ID',
+  NEW = 'NEW'
 }
 
 export interface ICategoriesStoreState {

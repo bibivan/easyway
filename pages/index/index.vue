@@ -52,7 +52,10 @@ const community = useCommunityMock()
     :with-slider="true"
     no-mobile-slider
     :limit="4"
-    :query="{}"
+    :query="{
+      [EProductFilters.BRAND]: EBrand.EASYFIT,
+      [EProductFilters.NEW]: 'YES'
+    }"
   />
   <!--      query: { [EProductFilters.BRAND]: EBrand.EAZYWAY }-->
   <CatalogBanner
@@ -127,6 +130,12 @@ const community = useCommunityMock()
           </li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <CommonSubscriptionForm />
     </div>
   </section>
 </template>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { EFetchStatus } from '~/types'
-import ProductFilters from '~/components/product/filters/ProductFilters.vue'
 
 const { isDesktop } = useDeviceTypeStore()
 const { status, error, data } = useCatalog()
@@ -11,16 +10,6 @@ const breadcrumbsData = computed(() => [
   { to: '/', label: 'Главная' },
   { label: (currentGender.value || currentBrand.value)?.toLowerCase() || '' }
 ])
-
-// Promise.all([
-//   await getCurrentCategories(),
-//   await useAsyncData('filter', () => getFilters(query.value as IBaseProductsQuery))
-// ])
-
-// watch(query, async () => {
-//   console.log(query.value)
-//   await getFilters()
-// })
 </script>
 
 <template>

@@ -1,18 +1,22 @@
 .catalog-head {
   display: flex;
   overflow: visible;
+
+  &__filters {
+    width: 100%;
+  }
 }
 
-.catalog-container {
+:global(.catalog-container) {
   @include desktop {
     display: grid;
     padding: 0 30px;
     gap: 50px;
-    grid-template-columns: auto auto;
+    grid-template-columns: max(180px) auto;
   }
 
   @include md-desktop {
-    grid-template-columns: max(300px) auto;
+    grid-template-columns: max(270px) auto;
   }
 }
 
@@ -26,7 +30,7 @@
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @include sm-desktop {
+    @include md-desktop {
       grid-template-columns: repeat(4, 1fr);
     }
   }
