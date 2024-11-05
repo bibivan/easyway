@@ -11,7 +11,7 @@ defineProps<{ data: IBreadcrumbData[] }>()
       :key="'breadcrumb-link-' + index"
       class="breadcrumbs__link"
       :class="{ 'breadcrumbs__link_without-slash': index === data.length - 1 }"
-      :to="crumb.link"
+      :to="crumb.to"
     >
       {{ crumb.label }}
     </NuxtLink>

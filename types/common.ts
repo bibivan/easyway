@@ -46,7 +46,7 @@ export interface ICollaborator {
 }
 
 export interface IBreadcrumbData {
-  link?: RouteLocationRaw
+  to?: RouteLocationRaw
   label: string
 }
 

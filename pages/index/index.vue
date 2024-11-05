@@ -132,7 +132,7 @@ const community = useCommunityMock()
     </div>
   </section>
 
-  <section class="section">
+  <section v-show="false" class="section">
     <div class="container">
       <CommonSubscriptionForm />
     </div>
