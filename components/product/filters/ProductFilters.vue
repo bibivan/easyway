@@ -91,7 +91,7 @@ watch(filtersState, () => {
           type="radio"
         />
       </BasePopup>
-      <BasePopup
+      <BasePopup v-show="false"
         v-if="colorsFilters"
         label="Цена"
       >
@@ -138,7 +138,7 @@ watch(filtersState, () => {
         />
       </BasePopup>
     </div>
-    <button
+    <button v-show="false"
       class="product-filters__reset-btn"
       @click="handleResetFilters"
     >
