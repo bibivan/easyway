@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import { EFetchStatus } from '~/types'
+import SvgFilters from '~/components/svg/SvgFilters.vue'
 
 const { isDesktop } = useDeviceTypeStore()
 const { status, error, data } = useCatalog()
 const { currentGender, currentBrand } = useProductsQuery()
 const { currentCategories } = storeToRefs(useProductCategoriesStore())
+const { filtersState } = useProductFiltersStore()
+
+const state = reactive({
+  filtersAreShown: false,
+  categoriesAreShown: false
+})
 
 const breadcrumbsData = computed(() => [
   { to: '/', label: 'Главная' },
@@ -19,7 +26,34 @@ const breadcrumbsData = computed(() => [
         class="catalog-head__breadcrumbs"
         :data="breadcrumbsData"
       />
-      <ProductFilters class="catalog-head__filters" />
+      <ProductFilters
+        v-if="filtersState.data && isDesktop"
+        class="catalog-head__filters"
+      />
+    </div>
+  </section>
+
+  <section class="section section_pb_0 catalog-head">
+    <div class="container">
+      <div
+        v-if="!isDesktop"
+        class="catalog-head__controls"
+      >
+        <button
+          class="catalog-head__btn"
+          @click="state.categoriesAreShown = true"
+        >
+          Категории
+          <SvgFilters />
+        </button>
+        <button
+          class="catalog-head__btn"
+          @click="state.filtersAreShown = true"
+        >
+          Фильтры
+          <SvgFilters />
+        </button>
+      </div>
     </div>
   </section>
   <section class="section catalog">
@@ -55,6 +89,24 @@ const breadcrumbsData = computed(() => [
       <div v-if="status === EFetchStatus.ERROR">{{ error?.message }}</div>
     </div>
   </section>
+
+  <template v-if="!isDesktop">
+    <CommonSettingsModal
+      v-model="state.filtersAreShown"
+      settings-name="Фильтры"
+    >
+      <ProductFilters v-if="filtersState.data" />
+    </CommonSettingsModal>
+    <CommonSettingsModal
+      v-model="state.categoriesAreShown"
+      settings-name="Категории"
+    >
+      <ProductCategories
+        v-if="currentCategories"
+        :data="currentCategories"
+      />
+    </CommonSettingsModal>
+  </template>
 </template>
 
 <style scoped lang="scss">

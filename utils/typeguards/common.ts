@@ -15,3 +15,6 @@ export const isKeyOf = <T>(key: string, obj: any): key is Extract<keyof T, strin
 export function isEGender(value: any): value is EGender {
   return Object.values(EGender).includes(value)
 }
+
+export const isNumber = (value: unknown): value is number => typeof value === 'number'
+export const isString = (value: unknown): value is string => typeof value === 'string'

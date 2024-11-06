@@ -55,3 +55,5 @@ export type TDefaultState<T extends any = any> = {
   loading: boolean
   error: unknown
 }
+
+export type ExcludeKeys<T, K extends keyof T> = Omit<T, K>

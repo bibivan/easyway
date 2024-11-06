@@ -1,4 +1,13 @@
 .product-categories {
+  width: 100%;
+  padding: 9px;
+  background-color: $color-bg-section;
+
+  @include desktop {
+    width: auto;
+    padding: 0;
+  }
+
   &__item {
     padding: 8px 0;
   }

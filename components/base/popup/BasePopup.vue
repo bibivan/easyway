@@ -9,11 +9,11 @@ const closePopup = () => (isOpen.value = false)
 
 <template>
   <div class="base-popup">
-    <div
-      v-show="isOpen"
-      class="base-popup__overlay"
-      @click="closePopup"
-    />
+    <!--    <div-->
+    <!--      v-show="isOpen"-->
+    <!--      class="base-popup__overlay"-->
+    <!--      @click="closePopup"-->
+    <!--    />-->
 
     <div
       class="base-popup__label"

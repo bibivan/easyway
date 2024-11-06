@@ -69,6 +69,20 @@ legend {
   padding: 0;
 }
 
+/* stylelint-disable */
+input[type='number'] {
+  -moz-appearance: textfield; /* для Firefox */
+  -webkit-appearance: none; /* для Safari и Chrome */
+  appearance: none; /* для поддержки в других браузерах */
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* убирает отступы для более ровного отображения */
+}
+/* stylelint-enable */
+
 body {
   display: flex;
   overflow: auto;

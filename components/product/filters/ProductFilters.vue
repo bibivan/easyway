@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { EProductFilters } from '~/types'
+import { EProductFilters, type IFiltersState } from '~/types'
+import type { LocationQuery, LocationQueryValue } from 'vue-router'
 
 const rangeStep = ref(10)
 const route = useRoute()
@@ -7,64 +8,56 @@ const router = useRouter()
 const { sizesFilters, colorsFilters, minPrice, maxPrice } = storeToRefs(useProductFiltersStore())
 
 const { priceFrom, priceTo } = useProductsQuery()
-const filtersState = reactive({
+const filtersState = reactive<IFiltersState>({
   [EProductFilters.SIZE]: route.query[EProductFilters.SIZE] || null,
   [EProductFilters.COLOR]: route.query[EProductFilters.COLOR] || null,
-  [EProductFilters.PRICEFROM]: (priceFrom.value && parseInt(priceFrom.value)) || minPrice.value,
-  [EProductFilters.PRICETO]: (priceTo.value && parseInt(priceTo.value)) || maxPrice.value
+  [EProductFilters.PRICEFROM]: priceFrom.value || minPrice.value,
+  [EProductFilters.PRICETO]: priceTo.value || maxPrice.value
 })
 
 const handleResetFilters = () => {
-  filtersState.COLORS = ""
-  filtersState.SIZES = ""
-  filtersState.PRICETO = 100000
-  filtersState.PRICEFROM = 0
-
-  delete route.query[EProductFilters.SIZE]
-  delete route.query[EProductFilters.COLOR]
-  delete route.query[EProductFilters.PRICEFROM]
-  delete route.query[EProductFilters.PRICETO]
+  filtersState[EProductFilters.SIZE] = null
+  filtersState[EProductFilters.COLOR] = null
+  filtersState[EProductFilters.PRICEFROM] = 0
+  filtersState[EProductFilters.PRICETO] = 0
 }
 
-const handleSetMin = (e: Event) => {
+const setMin = (e: Event) => {
   const input = e.target as HTMLInputElement
   const value = +input.value
 
   if (value < minPrice.value) input.value = String(minPrice.value)
-  if (value > filtersState[EProductFilters.PRICETO]) {
+  if (value > filtersState[EProductFilters.PRICETO])
     input.value = String(filtersState[EProductFilters.PRICETO] - rangeStep.value)
-  }
-  filtersState[EProductFilters.PRICETO] = +input.value
+  filtersState[EProductFilters.PRICEFROM] = +input.value
 }
 
-const handleSetMax = (e: Event) => {
+const setMax = (e: Event) => {
+  console.log(e)
   const input = e.target as HTMLInputElement
   const value = +input.value
+
   if (value > maxPrice.value) input.value = String(maxPrice.value)
-  if (value < filtersState[EProductFilters.PRICEFROM]) {
+  if (value < filtersState[EProductFilters.PRICEFROM])
     input.value = String(filtersState[EProductFilters.PRICEFROM] + rangeStep.value)
-  }
   filtersState[EProductFilters.PRICETO] = +value
 }
 
+const handleSetMin = debounce(setMin, 500)
+const handleSetMax = debounce(setMax, 500)
+
 watch(filtersState, () => {
-  router.push({
-    query: {
-      ...route.query,
-      ...(filtersState[EProductFilters.SIZE] && {
-        [EProductFilters.SIZE]: filtersState[EProductFilters.SIZE]
-      }),
-      ...(filtersState[EProductFilters.COLOR] && {
-        [EProductFilters.COLOR]: filtersState[EProductFilters.COLOR]
-      }),
-      ...(filtersState[EProductFilters.PRICEFROM] && {
-        [EProductFilters.PRICEFROM]: filtersState[EProductFilters.PRICEFROM]
-      }),
-      ...(filtersState[EProductFilters.PRICETO] && {
-        [EProductFilters.PRICETO]: filtersState[EProductFilters.PRICETO]
-      })
+  const query = { ...route.query }
+
+  Object.keys(filtersState).forEach((key) => {
+    if (filtersState[key as keyof IFiltersState]) {
+      query[key] = String(filtersState[key as keyof IFiltersState])
+    } else {
+      delete query[key]
     }
   })
+
+  router.push({ query })
 })
 </script>
 
@@ -96,8 +89,9 @@ watch(filtersState, () => {
           type="radio"
         />
       </BasePopup>
-      <BasePopup v-show="false"
-        v-if="colorsFilters"
+      <BasePopup
+        v-show="false"
+        v-if="minPrice && maxPrice"
         label="Цена"
       >
         <div class="range-price">
@@ -109,10 +103,10 @@ watch(filtersState, () => {
           <CommonRangeSlider
             v-model:minValue.number="filtersState[EProductFilters.PRICEFROM]"
             v-model:maxValue.number="filtersState[EProductFilters.PRICETO]"
-            :min="1"
-            :max="99999"
+            :min="minPrice"
+            :max="maxPrice"
             :normalize-fact="2"
-            :step="10"
+            :step="rangeStep"
           />
           <div class="range-price__inputs">
             <input
@@ -120,7 +114,7 @@ watch(filtersState, () => {
               type="number"
               :min="minPrice"
               :max="maxPrice"
-              :value="EProductFilters.PRICEFROM"
+              :value="filtersState[EProductFilters.PRICEFROM]"
               @change="handleSetMin"
             />
             <input
@@ -128,19 +122,11 @@ watch(filtersState, () => {
               type="number"
               :min="minPrice"
               :max="maxPrice"
-              :value="EProductFilters.PRICETO"
+              :value="filtersState[EProductFilters.PRICETO]"
               @change="handleSetMax"
             />
           </div>
         </div>
-        <CommonRangeSlider
-          v-model:minValue.number="filtersState[EProductFilters.PRICEFROM]"
-          v-model:maxValue.number="filtersState[EProductFilters.PRICETO]"
-          :min="minPrice"
-          :max="maxPrice"
-          :normalize-fact="2"
-          :step="rangeStep"
-        />
       </BasePopup>
     </div>
     <button
