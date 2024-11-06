@@ -13,7 +13,7 @@ await Promise.all([getMaleCategories(), getFemaleCategories()])
 </script>
 
 <template>
-  <header class="header header_position_fixed">
+  <header class="header header_position_fixed" id="header">
     <div class="container">
       <div class="header__content">
         <div class="header__logo-wrapper">

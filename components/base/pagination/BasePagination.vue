@@ -41,7 +41,8 @@ const countDifference = 2
           query: {
             ...$route.query,
             page: page
-          }
+          },
+          hash: '#header'
         }"
       >
         {{ page }}
