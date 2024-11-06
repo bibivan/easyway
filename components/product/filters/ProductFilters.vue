@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { EProductFilters, type IFiltersState } from '~/types'
-import type { LocationQuery, LocationQueryValue } from 'vue-router'
 
 const rangeStep = ref(10)
 const route = useRoute()

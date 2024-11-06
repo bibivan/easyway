@@ -49,11 +49,3 @@ export interface IBreadcrumbData {
   to?: RouteLocationRaw
   label: string
 }
-
-export type TDefaultState<T extends any = any> = {
-  data: T
-  loading: boolean
-  error: unknown
-}
-
-export type ExcludeKeys<T, K extends keyof T> = Omit<T, K>

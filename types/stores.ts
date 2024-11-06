@@ -1,7 +1,7 @@
 import type { TNullable } from '~/types'
 
-export type TDefaultStoreState<T extends any = any> = {
-  data: TNullable<T>
+export type TDefaultState<T extends any = any> = {
+  data: T
   loading: boolean
-  error: unknown
+  error: TNullable<Error>
 }

@@ -1,4 +1,4 @@
-import type { ExcludeKeys, IPagination, IPaginationRaw } from '~/types'
+import type { IPagination, IPaginationRaw } from '~/types'
 
 export const toNullable = (value: any) => {
   return value === '' || value === undefined || value === null ? null : value
@@ -130,12 +130,6 @@ export const smoothScroll = (container: HTMLElement, targetPosition: number, dur
   }
 
   requestAnimationFrame(animation)
-}
-
-export const pickAllExcept = <T, K extends keyof T>(obj: T, ...keys: K[]): ExcludeKeys<T, K> => {
-  const { ...result } = obj
-  keys.forEach((key) => delete result[key])
-  return result
 }
 
 // export const getRandomNumber = (min: number, max: number): number => {
