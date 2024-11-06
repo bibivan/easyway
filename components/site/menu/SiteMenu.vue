@@ -95,7 +95,7 @@ watch(
           name: 'catalog',
           query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
         }"
-        >Брэнд-линейка easyfit</NuxtLink
+        >Бренд-линейка easyfit</NuxtLink
       >
     </li>
   </ul>

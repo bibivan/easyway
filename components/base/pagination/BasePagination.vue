@@ -7,6 +7,7 @@ defineProps<{
 const minLinksCount = 3
 const maxLinksCount = 5
 const countDifference = 2
+
 </script>
 
 <template>
@@ -20,6 +21,7 @@ const countDifference = 2
           page: 1
         }
       }"
+
     >
       <SvgChevronLeft />
     </NuxtLink>

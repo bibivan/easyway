@@ -88,25 +88,27 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
             <p class="footer-menu__headline">Покупателям</p>
             <div class="footer-menu__items">
               <NuxtLink
+                  class="footer-menu__item"
+                  :to="{ path: '/customer-information', hash: '#payment' }"
+              >Оплата</NuxtLink
+              >
+              <NuxtLink
+                  class="footer-menu__item"
+                  :to="{ path: '/customer-information', hash: '#guarantee' }"
+              >Гарантия</NuxtLink
+              >
+              <NuxtLink
+                  class="footer-menu__item"
+                  :to="{ path: '/customer-information', hash: '#return_product' }"
+              >Возврат</NuxtLink
+              >
+              <NuxtLink
                 class="footer-menu__item"
                 :to="{ path: '/customer-information', hash: '#delivery' }"
                 >Доставка</NuxtLink
               >
-              <NuxtLink
-                class="footer-menu__item"
-                :to="{ path: '/customer-information', hash: '#payment' }"
-                >Оплата</NuxtLink
-              >
-              <NuxtLink
-                class="footer-menu__item"
-                :to="{ path: '/customer-information', hash: '#return_product' }"
-                >Возврат</NuxtLink
-              >
-              <NuxtLink
-                class="footer-menu__item"
-                :to="{ path: '/customer-information', hash: '#guarantee' }"
-                >Гарантия</NuxtLink
-              >
+
+
               <NuxtLink
                 class="footer-menu__item"
                 to="/pdf/privacy-policy-eazy-way.pdf"

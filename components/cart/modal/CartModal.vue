@@ -49,7 +49,7 @@ const handleCloseModal = () => {
                 <SvgCross v-else />
               </button>
             </div>
-            <template v-if="cartState.data">
+            <template v-if="cartState.data && cartState.data.length > 0">
               <PerfectScrollbar
                 class="cart-modal__items-ps"
                 :options="{ suppressScrollY: isMobile }"

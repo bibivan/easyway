@@ -46,7 +46,7 @@ defineProps<{
           class="btn hero__btn"
           :to="to"
         >
-          Купить
+          купить
         </NuxtLink>
       </div>
     </div>
