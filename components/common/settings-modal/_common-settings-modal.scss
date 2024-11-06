@@ -1,0 +1,50 @@
+.settings-modal {
+  position: fixed;
+  z-index: $ui-index-6;
+  width: 100%;
+
+  &__head {
+    @include flex-row-center-between;
+
+    position: relative;
+    z-index: $ui-index-1;
+    width: 100%;
+    padding: 5px;
+    background-color: $color-bg-section-darker;
+  }
+
+  &__body {
+    display: grid;
+    padding: 9px;
+    background-color: $color-bg-section;
+    grid-template-columns: 1fr;
+  }
+
+  &__close-btn {
+    position: relative;
+    margin-right: auto;
+
+    &::before {
+      position: absolute;
+      z-index: $ui-index-2;
+      left: calc(50% - 22px);
+      display: block;
+      width: 44px;
+      content: '';
+    }
+
+    svg {
+      width: 14px;
+      height: 7px;
+      color: $color-primary;
+    }
+  }
+
+  &__name {
+    @include text-body;
+
+    display: block;
+    color: $color-text;
+    font-size: 16px;
+  }
+}

@@ -2,11 +2,18 @@
   @include base-gap;
   @include flex-row-center-between;
 
-  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+
+  @include desktop {
+    position: static;
+  }
 
   &__popups {
     @include flex-row-center-between;
+    @include base-gap;
   }
 
   &__reset-btn {
@@ -19,6 +26,8 @@
 
 .range-price {
   @include flex-column-stretch-start;
+
+  width: 100%;
 
   &__ranges {
     @include text-body;

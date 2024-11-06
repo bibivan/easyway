@@ -5,15 +5,31 @@ export const useProductsQuery = () => {
   const query = computed(() => route.query)
 
   const priceFrom = computed(() => {
-    return Array.isArray(query.value[EProductFilters.PRICEFROM])
-      ? query.value[EProductFilters.PRICEFROM][0]
-      : query.value[EProductFilters.PRICEFROM]
+    if (Array.isArray(query.value[EProductFilters.PRICEFROM])) {
+      return (
+        isString(query.value[EProductFilters.PRICEFROM][0]) &&
+        parseInt(query.value[EProductFilters.PRICEFROM][0], 10)
+      )
+    } else if (isString(query.value[EProductFilters.PRICEFROM])) {
+      return (
+        isString(query.value[EProductFilters.PRICEFROM]) &&
+        parseInt(query.value[EProductFilters.PRICEFROM], 10)
+      )
+    }
   })
 
   const priceTo = computed(() => {
-    return Array.isArray(query.value[EProductFilters.PRICETO])
-      ? query.value[EProductFilters.PRICETO][0]
-      : query.value[EProductFilters.PRICETO]
+    if (Array.isArray(query.value[EProductFilters.PRICETO])) {
+      return (
+        isString(query.value[EProductFilters.PRICETO][0]) &&
+        parseInt(query.value[EProductFilters.PRICETO][0], 10)
+      )
+    } else if (isString(query.value[EProductFilters.PRICETO])) {
+      return (
+        isString(query.value[EProductFilters.PRICETO]) &&
+        parseInt(query.value[EProductFilters.PRICETO], 10)
+      )
+    }
   })
 
   const currentGender = computed(() => {
