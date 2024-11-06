@@ -20,8 +20,14 @@
     width: 100%;
     color: $color-input;
     cursor: pointer;
+    font-size: 14px;
     gap: 12px;
+    line-height: 1.1;
     transition: color 0.2s ease-in-out;
+
+    @include tablet {
+      font-size: 16px;
+    }
 
     &::before {
       display: block;

@@ -1,0 +1,110 @@
+.auth-modal {
+  @include flex-column-top-center;
+
+  position: fixed;
+  z-index: $ui-index-2;
+  background: #0009;
+  inset: 0;
+
+  @include tablet {
+    justify-content: center;
+  }
+
+  &__dialog {
+    position: relative;
+    width: 100%;
+    padding-top: 50%;
+    background-color: $color-bg-section;
+    background-image: url('public/img/auth.jpg');
+    background-position: 0 -110px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include tablet {
+      max-width: 575px;
+      padding-top: 216px;
+      border-radius: $border-radius-s;
+      background-position: 0 -185px;
+    }
+  }
+
+  &__heading {
+    @include text-heading;
+
+    font-size: 18px;
+    text-align: center;
+
+    @include tablet {
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+  }
+
+  &__content {
+    @include flex-column;
+    @include base-gap;
+
+    position: relative;
+    padding: 25px 20px 65px;
+    border-radius: 0 0 $border-radius-s $border-radius-s;
+    background-color: $color-bg-section;
+
+    @include tablet {
+      padding: 60px 115px;
+    }
+  }
+
+  &__form {
+    @include flex-column;
+
+    gap: 15px;
+
+    @include tablet {
+      gap: 20px;
+    }
+  }
+
+  &__close-btn {
+    $btn-diameter: 50px;
+
+    @include flex-row-center-center;
+
+    position: absolute;
+    top: calc(100% - ($btn-diameter / 2));
+    left: calc(50% - ($btn-diameter / 2));
+    width: $btn-diameter;
+    height: $btn-diameter;
+    border-radius: 50%;
+    background-color: $color-bg-section;
+    box-shadow: 0 -2px 4px 0 #00000040;
+
+    @include tablet {
+      top: 19px;
+      left: 30px;
+      width: auto;
+      height: auto;
+      justify-content: space-between;
+      border-radius: 0;
+      background-color: transparent;
+      box-shadow: none;
+      gap: 10px;
+    }
+
+    svg {
+      width: 14px;
+      height: 7px;
+
+      @include tablet {
+        transform: rotate(-90deg);
+      }
+    }
+
+    span {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+  }
+}

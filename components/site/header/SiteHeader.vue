@@ -1,19 +1,24 @@
 <script setup lang="ts">
 import { EBrand, EGender, EProductFilters } from '~/types'
 
-const { handleShowCart } = useCartOpening()
 const { isDesktop } = useDeviceTypeStore()
+const { setToken } = useAuthorizationStore()
+const { handleShowCart } = useCartOpening()
 const { getMaleCategories, getFemaleCategories } = useProductCategoriesStore()
 const state = reactive({
   menuIsOpened: false,
   categoriesIsOpened: false
 })
 
+setToken()
 await Promise.all([getMaleCategories(), getFemaleCategories()])
 </script>
 
 <template>
-  <header class="header header_position_fixed" id="header">
+  <header
+    id="header"
+    class="header header_position_fixed"
+  >
     <div class="container">
       <div class="header__content">
         <div class="header__logo-wrapper">
@@ -70,18 +75,18 @@ await Promise.all([getMaleCategories(), getFemaleCategories()])
           <!--          >-->
         </nav>
         <div class="header__actions">
-          <!--          <NuxtLink-->
-          <!--            class="header__action header__action_favorites"-->
-          <!--            to="/favorites"-->
-          <!--          >-->
-          <!--            <SvgHeart />-->
-          <!--          </NuxtLink>-->
-          <!--          <NuxtLink-->
-          <!--            class="header__action header__action_auth"-->
-          <!--            to="/favorites"-->
-          <!--          >-->
-          <!--            <SvgProfile />-->
-          <!--          </NuxtLink>-->
+          <NuxtLink
+            class="header__action header__action_favorites"
+            :to="{ name: 'profile-favorites' }"
+          >
+            <SvgHeart />
+          </NuxtLink>
+          <NuxtLink
+            class="header__action header__action_auth"
+            :to="{ name: 'profile-data' }"
+          >
+            <SvgProfile />
+          </NuxtLink>
           <button
             class="header__action header__action_cart"
             @click="handleShowCart"
