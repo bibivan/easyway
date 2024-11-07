@@ -7,7 +7,7 @@ defineProps<{
   isLastItem: boolean
 }>()
 
-const { isDesktop } = useDeviceTypeStore()
+const { isDesktop } = storeToRefs(useDeviceTypeStore())
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const historyEventsData = useHistoryEvents()
-const { isDesktop } = useDeviceTypeStore()
+const { isDesktop } = storeToRefs(useDeviceTypeStore())
 </script>
 
 <template>

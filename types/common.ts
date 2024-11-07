@@ -49,3 +49,8 @@ export interface IBreadcrumbData {
   to?: RouteLocationRaw
   label: string
 }
+
+export interface ITableData<T extends unknown[], U> {
+  headers: T
+  rows: { [K in keyof T]: U }[]
+}

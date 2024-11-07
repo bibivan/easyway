@@ -69,33 +69,17 @@ legend {
   padding: 0;
 }
 
-/* stylelint-disable */
-input[type='number'] {
-  -moz-appearance: textfield; /* для Firefox */
-  -webkit-appearance: none; /* для Safari и Chrome */
-  appearance: none; /* для поддержки в других браузерах */
-}
+.body {
+  @include flex-column;
 
-input[type='number']::-webkit-outer-spin-button,
-input[type='number']::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0; /* убирает отступы для более ровного отображения */
-}
-/* stylelint-enable */
-
-body {
-  display: flex;
   overflow: auto;
-  flex-direction: column;
   padding: 0;
   margin: 0;
   background-color: transparent;
   color: $color-text;
   font-family: $font-base;
   -webkit-font-smoothing: antialiased;
-}
 
-.body {
   &_no-scroll {
     overflow: hidden;
   }
@@ -108,9 +92,6 @@ body {
 
   @include desktop {
     width: calc(100% - #{$scrollbar-width});
-  }
-
-  @include desktop {
     padding-top: $header-height-desktop;
   }
 }

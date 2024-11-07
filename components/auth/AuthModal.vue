@@ -8,10 +8,15 @@ const authDataState = reactive<IAuthDataState>({
   privacyDataConsent: false,
   emailMarketing: false
 })
-const { closeAuthModal: handleCloseModal } = useAuthorizationStore()
+const { closeAuthModal: handleCloseModal, getCode } = useAuthorizationStore()
 const v$ = useVuelidate()
 
-const handleSubmitForm = (phone: IAuthDataState) => {}
+const handleSubmitForm = async () => {
+  const result = await v$.value.$validate()
+  if (result && authDataState.phone) {
+    await getCode(authDataState.phone)
+  }
+}
 </script>
 
 <template>
@@ -25,13 +30,17 @@ const handleSubmitForm = (phone: IAuthDataState) => {}
 
         <form
           class="auth-modal__form"
-          action="/"
-          @submit.prevent
+          action="/public"
+          @submit.prevent="handleSubmitForm"
         >
           <BasePhoneInput
             id="auth_phone_id"
             v-model="authDataState.phone"
             :required-val="true"
+          />
+          <BaseCodeVerifier
+            v-model="authDataState.code"
+            :code-length="4"
           />
           <button class="btn">Далее</button>
 
@@ -67,5 +76,5 @@ const handleSubmitForm = (phone: IAuthDataState) => {}
 </template>
 
 <style scoped lang="scss">
-@import 'profile-auth';
+@import 'auth-modal';
 </style>

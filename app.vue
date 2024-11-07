@@ -35,6 +35,6 @@ const { authFormIsShown } = storeToRefs(useAuthorizationStore())
       <SiteFooter />
     </template>
     <CartModal />
-    <ProfileAuth v-if="false" />
+    <AuthModal v-if="authFormIsShown" />
   </NuxtLayout>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { EBrand, EGender, EProductFilters } from '~/types'
 
-const { isDesktop } = useDeviceTypeStore()
+const { isDesktop } = storeToRefs(useDeviceTypeStore())
 const { setToken } = useAuthorizationStore()
 const { handleShowCart } = useCartOpening()
 const { getMaleCategories, getFemaleCategories } = useProductCategoriesStore()
@@ -75,18 +75,18 @@ await Promise.all([getMaleCategories(), getFemaleCategories()])
           <!--          >-->
         </nav>
         <div class="header__actions">
-          <NuxtLink
-            class="header__action header__action_favorites"
-            :to="{ name: 'profile-favorites' }"
-          >
-            <SvgHeart />
-          </NuxtLink>
-          <NuxtLink
-            class="header__action header__action_auth"
-            :to="{ name: 'profile-data' }"
-          >
-            <SvgProfile />
-          </NuxtLink>
+          <!--          <NuxtLink-->
+          <!--            class="header__action header__action_favorites"-->
+          <!--            :to="{ name: 'profile-favorites' }"-->
+          <!--          >-->
+          <!--            <SvgHeart />-->
+          <!--          </NuxtLink>-->
+          <!--          <NuxtLink-->
+          <!--            class="header__action header__action_auth"-->
+          <!--            :to="{ name: 'profile-data' }"-->
+          <!--          >-->
+          <!--            <SvgProfile />-->
+          <!--          </NuxtLink>-->
           <button
             class="header__action header__action_cart"
             @click="handleShowCart"

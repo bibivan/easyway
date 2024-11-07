@@ -2,7 +2,7 @@
 import { EFetchStatus } from '~/types'
 import SvgFilters from '~/components/svg/SvgFilters.vue'
 
-const { isDesktop } = useDeviceTypeStore()
+const { isDesktop } = storeToRefs(useDeviceTypeStore())
 const { status, error, data } = useCatalog()
 const { currentGender, currentBrand } = useProductsQuery()
 const { currentCategories } = storeToRefs(useProductCategoriesStore())
