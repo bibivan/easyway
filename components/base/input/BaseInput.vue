@@ -8,6 +8,7 @@ const props = defineProps<{
   errorPosition?: EErrorPosition
   id: string
   isEmail?: boolean
+  maxlength?: string
   noErrorMessage?: boolean
   placeholder?: string
   requiredVal?: boolean
@@ -16,6 +17,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   input: [Event]
+  keyup: [Event]
   change: [Event]
   blur: [Event]
   focus: [Event]
@@ -51,9 +53,11 @@ const { isValid, hasError, errorMessage, handleBlur, handleFocus } = useValidati
       class="input-block__input"
       :type="type"
       :disabled="disabled"
+      :maxlength="maxlength"
       :placeholder="placeholder"
       @input="emit('input', $event)"
       @change="emit('change', $event)"
+      @keyup="emit('keyup', $event)"
       @blur="handleBlur"
       @focus="handleFocus"
     />

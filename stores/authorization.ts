@@ -6,7 +6,7 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
   const authorizationState = reactive<TDefaultState<IAuthStoreState>>({
     data: {
       token: null,
-      authFormIsShown: true
+      authFormIsShown: false
     },
     error: null,
     loading: false

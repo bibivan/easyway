@@ -1,18 +1,35 @@
 <script setup lang="ts">
-import { type IProduct, type IProductSizeState } from '~/types'
-import { transformSizeString } from '~/utils/products'
+import { EGender, type IProduct, type IProductSizeState } from '~/types'
 
 const props = defineProps<{
+  gender: EGender
   product: IProduct
   colors: string[]
   sizes: IProductSizeState[]
 }>()
 
+const { womanSizeChart, manSizeChart } = useSizeChartMock()
 const { cartState, putToCart: handlePutToCart, deleteCartItem } = useCartStore()
+const { isMobile } = storeToRefs(useDeviceTypeStore())
 
 const modelColor = defineModel<string>('color')
 const modelSize = defineModel<string>('size')
+const sizesModalIsShown = ref<boolean>(false)
+
 const productIsInCart = computed(() => arrayHasElem(cartState.data || [], 'id', props.product.id))
+const sizeChart = computed(() => {
+  if (props.gender === EGender.FEMALE) {
+    return {
+      name: 'Женская одежда',
+      data: womanSizeChart
+    }
+  } else {
+    return {
+      name: 'Мужская одежда',
+      data: manSizeChart
+    }
+  }
+})
 
 const handleDeleteCartItem = () => {
   deleteCartItem(props.product.id)
@@ -42,7 +59,16 @@ const handleDeleteCartItem = () => {
       </div>
     </div>
     <div class="product-info__items-wrapper">
-      <h2 class="product-info__subtitle">Размер</h2>
+      <div class="product-info__subtitle-wrapper">
+        <h2 class="product-info__subtitle">Размер</h2>
+        <button
+          v-if="!isMobile"
+          class="product-info__subtitle-btn"
+          @click="sizesModalIsShown = true"
+        >
+          Размерная сетка <SvgChevronRight />
+        </button>
+      </div>
       <div class="product-info__sizes">
         <template
           v-for="size in sizes"
@@ -58,6 +84,14 @@ const handleDeleteCartItem = () => {
           />
         </template>
       </div>
+
+      <button
+        v-show="isMobile"
+        class="product-info__subtitle-btn"
+        @click="sizesModalIsShown = true"
+      >
+        Гид по размерам <SvgChevronRight />
+      </button>
     </div>
 
     <div class="product-info__description product-info__items-wrapper">
@@ -101,6 +135,12 @@ const handleDeleteCartItem = () => {
         <SvgFavorite />
       </button>
     </div>
+    <BaseModal v-model="sizesModalIsShown">
+      <BaseTable
+        :name="sizeChart.name"
+        :data="sizeChart.data"
+      />
+    </BaseModal>
   </div>
 </template>
 

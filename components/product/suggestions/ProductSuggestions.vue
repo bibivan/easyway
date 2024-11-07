@@ -15,7 +15,7 @@ const props = defineProps<{
   query: Record<string, string | string[]>
 }>()
 
-const { isMobile } = useDeviceTypeStore()
+const { isMobile } = storeToRefs(useDeviceTypeStore())
 
 const { data, error, status } = await useApiFetch<
   IPaginatedDataRaw<IProductGroupRaw[]>,

@@ -1,0 +1,56 @@
+.base-table {
+  $table: &;
+
+  @include flex-column;
+  @include base-gap;
+
+  &__name {
+    @include text-heading;
+
+    font-size: 14px;
+    line-height: 0.9;
+
+    @include tablet {
+      font-size: 24px;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    border-collapse: collapse;
+    color: $color-text;
+  }
+
+  &__head {
+    background-color: $color-text;
+  }
+
+  &__cell {
+    @include text-body;
+
+    padding: 8px 6px;
+    border-bottom: 1px solid $color-text;
+    font-size: 12px;
+    line-height: 1.1;
+    text-align: center;
+
+    @include tablet {
+      font-size: 12px;
+    }
+
+    &_head {
+      border-bottom: none;
+      color: $color-text-light;
+
+      &:first-child {
+        border-bottom-left-radius: $border-radius-s;
+        border-top-left-radius: $border-radius-s;
+      }
+
+      &:last-child {
+        border-bottom-right-radius: $border-radius-s;
+        border-top-right-radius: $border-radius-s;
+      }
+    }
+  }
+}

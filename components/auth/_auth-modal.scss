@@ -3,7 +3,7 @@
 
   position: fixed;
   z-index: $ui-index-2;
-  background: #0009;
+  background: $color-overlay;
   inset: 0;
 
   @include tablet {
@@ -15,7 +15,7 @@
     width: 100%;
     padding-top: 50%;
     background-color: $color-bg-section;
-    background-image: url('public/img/auth.jpg');
+    background-image: url('../../public/img/auth.jpg');
     background-position: 0 -110px;
     background-repeat: no-repeat;
     background-size: cover;

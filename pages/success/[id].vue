@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { isMobile } = useDeviceTypeStore()
+const { isMobile } = storeToRefs(useDeviceTypeStore())
 const { params } = useRoute()
 const breadcrumbsData = [{ to: '/', label: 'Главная' }, { label: 'Спасибо за покупку' }]
 </script>

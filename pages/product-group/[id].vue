@@ -42,6 +42,7 @@ const breadcrumbsData = computed(() => [
             v-if="state?.size.value && sizeList && activeProduct && productGroup"
             v-model:color="state.color"
             v-model:size="state.size.value"
+            :gender="productGroup.gender"
             :colors="productGroup.colors"
             :sizes="sizeList"
             :product="activeProduct"
