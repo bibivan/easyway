@@ -1,0 +1,49 @@
+.range-price {
+  @include flex-column-stretch-start;
+
+  width: 100%;
+  gap: 8px;
+
+  &__ranges {
+    @include text-body;
+
+    display: flex;
+    justify-content: space-between;
+    color: $color-text;
+
+    @include desktop {
+      color: $color-headline;
+      font-size: 16px;
+    }
+  }
+
+  &__slider {
+    :deep(.vue-slider-rail) {
+      padding: 0 3px;
+    }
+  }
+
+  &__inputs {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__input {
+    @include text-body;
+
+    width: 70px;
+    height: 35px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: $border-radius-l;
+    background-color: $color-bg-btn-light;
+    color: $color-text;
+    text-align: center;
+
+    @include desktop {
+      width: 80px;
+      height: 36px;
+      font-size: 16px;
+    }
+  }
+}

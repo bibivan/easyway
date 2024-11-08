@@ -1,14 +1,30 @@
 .product-filters {
+  @include flex-column;
   @include base-gap;
-  @include flex-row-center-between;
 
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
 
   @include desktop {
-    position: static;
+    @include flex-row-center-between;
+  }
+
+  &__list {
+    @include flex-column;
+    @include base-gap;
+  }
+
+  &__item {
+    @include flex-column;
+
+    width: 100%;
+    gap: 10px;
+  }
+
+  &__filter {
+    @include flex-row-center-start;
+
+    width: 100%;
+    gap: 3px;
   }
 
   &__popups {
@@ -19,51 +35,34 @@
   &__reset-btn {
     @include text-body;
 
+    padding: 9px;
     color: $color-text;
     font-size: 16px;
-  }
-}
-
-.range-price {
-  @include flex-column-stretch-start;
-
-  width: 100%;
-
-  &__ranges {
-    @include text-body;
-
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 4px;
-    color: $color-text;
 
     @include desktop {
-      color: $color-headline;
-      font-size: 16px;
+      padding: 0;
     }
   }
 
-  &__inputs {
-    display: flex;
-    justify-content: space-between;
+  &__range {
+    @include desktop {
+      padding: 8px 15px;
+    }
+
+    :deep(.range-price__slider) {
+      margin: 0 3px;
+
+      @include desktop {
+        margin: 0;
+      }
+    }
+  }
+
+  :deep(.size-input__label) {
+    background-color: $color-bg-btn-light;
   }
 }
 
-.range-input {
-  @include text-body;
-
-  width: 70px;
-  height: 35px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: $border-radius-l;
-  background-color: $color-bg-btn-light;
-  color: $color-text;
-  text-align: center;
-
-  @include desktop {
-    width: 80px;
-    height: 36px;
-    font-size: 16px;
-  }
+:global(.product-filters .base-popup__content) {
+  padding: 7px 0;
 }

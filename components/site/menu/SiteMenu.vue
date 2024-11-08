@@ -21,7 +21,10 @@ watch(
     <!--    <li class="menu__item">-->
     <!--      <NuxtLink class="menu__link">Профиль</NuxtLink>-->
     <!--    </li>-->
-    <li class="menu__item">
+    <li
+      class="menu__item submenu"
+      :class="{ menu__item_active: submenusState.femaleIsOpened }"
+    >
       <div class="submenu__head">
         <NuxtLink
           class="menu__link"

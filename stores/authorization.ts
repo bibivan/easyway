@@ -22,12 +22,23 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
     if (token) authorizationState.data.token = token
   }
 
+  const updateToken = (token: string) => {
+    cookieToken.value = token
+    authorizationState.data.token = token
+  }
+
   const openAuthModal = () => {
     authorizationState.data.authFormIsShown = true
   }
 
   const closeAuthModal = () => {
     authorizationState.data.authFormIsShown = false
+  }
+
+  const goToAuth = () => {
+    cookieToken.value = null
+    openAuthModal()
+    return navigateTo('/')
   }
 
   // Actions
@@ -47,8 +58,7 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
         code
       },
       onResponse: ({ response }) => {
-        authorizationState.data.token = response._data.token
-        cookieToken.value = response._data.token
+        updateToken(response._data.token)
       }
     })
   }
@@ -60,6 +70,7 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
     setToken,
     openAuthModal,
     closeAuthModal,
+    goToAuth,
     getCode,
     checkCode
   }

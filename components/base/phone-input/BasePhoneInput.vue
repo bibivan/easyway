@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Inputmask from 'inputmask'
-import { useVuelidate, type Validation } from '@vuelidate/core'
-import { minLength, helpers, required, requiredIf } from '@vuelidate/validators'
+import { useVuelidate } from '@vuelidate/core'
+import { minLength, helpers, requiredIf } from '@vuelidate/validators'
 import { EErrorPosition, type TNullable } from '~/types'
 
 const props = withDefaults(

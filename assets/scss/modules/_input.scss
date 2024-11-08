@@ -4,6 +4,7 @@
   @include text-body;
 
   position: relative;
+  line-height: 1.1px;
 
   &__input {
     width: 100%;
@@ -15,10 +16,18 @@
     color: $color-input;
     font-size: 12px;
 
+    @include tablet {
+      font-size: 16px;
+    }
+
     &::placeholder {
       color: $color-input;
       font-family: $font-base;
       font-size: 12px;
+
+      @include tablet {
+        font-size: 16px;
+      }
     }
   }
 

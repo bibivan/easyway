@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { YandexMap, YandexClusterer, YandexMarker } from 'vue-yandex-maps'
-import type { IDeliveryPoint, TNullable, YaMapInstance } from '~/types'
+import type { IDeliveryPoint, YaMapInstance } from '~/types'
 
 let mapInstance: YaMapInstance
 const { order } = useOrderStore()

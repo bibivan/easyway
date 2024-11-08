@@ -8,9 +8,10 @@ const isOpened = defineModel<boolean>()
   <div
     v-if="isOpened"
     class="settings-modal"
+    @click.self="isOpened = false"
   >
     <div class="settings-modal__head">
-      <span class="settings-modal__name">{{ settingsName }}</span>
+      <p class="settings-modal__name">{{ settingsName }}</p>
       <button
         class="settings-modal__close-btn"
         @click="isOpened = false"

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { IAuthDataState } from '~/types'
 import { useVuelidate } from '@vuelidate/core'
+import VOtpInput from 'vue3-otp-input'
 
 const authDataState = reactive<IAuthDataState>({
   phone: null,
@@ -8,13 +9,25 @@ const authDataState = reactive<IAuthDataState>({
   privacyDataConsent: false,
   emailMarketing: false
 })
-const { closeAuthModal: handleCloseModal, getCode } = useAuthorizationStore()
+const authStore = useAuthorizationStore()
+const { closeAuthModal, getCode, checkCode } = authStore
+const { token } = storeToRefs(authStore)
 const v$ = useVuelidate()
 
-const handleSubmitForm = async () => {
+const handleSubmitPhone = async () => {
   const result = await v$.value.$validate()
   if (result && authDataState.phone) {
     await getCode(authDataState.phone)
+  }
+}
+
+const handleCloseModal = () => closeAuthModal()
+
+const handleSubmitCode = async () => {
+  if (authDataState.code) await checkCode(authDataState.code)
+  if (token.value) {
+    closeAuthModal()
+    await navigateTo({ name: 'profile-data' })
   }
 }
 </script>
@@ -31,16 +44,12 @@ const handleSubmitForm = async () => {
         <form
           class="auth-modal__form"
           action="/public"
-          @submit.prevent="handleSubmitForm"
+          @submit.prevent="handleSubmitPhone"
         >
           <BasePhoneInput
             id="auth_phone_id"
             v-model="authDataState.phone"
             :required-val="true"
-          />
-          <BaseCodeVerifier
-            v-model="authDataState.code"
-            :code-length="4"
           />
           <button class="btn">Далее</button>
 
@@ -52,7 +61,7 @@ const handleSubmitForm = async () => {
             <template #label> Даю согласие на обработку персональных данных </template>
           </BaseCheckbox>
           <BaseCheckbox
-            id="personal_data_consent"
+            id="personal_data_marketing"
             v-model="authDataState.emailMarketing"
             :required-val="true"
           >
@@ -61,6 +70,24 @@ const handleSubmitForm = async () => {
               SMS.
             </template>
           </BaseCheckbox>
+        </form>
+
+        <form
+          class="auth-modal__form"
+          action="/"
+          @submit.prevent="handleSubmitCode"
+        >
+          <v-otp-input
+            v-model="authDataState.code"
+            class="auth-modal__otp"
+            input-classes="auth-modal__input-otp"
+            separator=" "
+            :num-inputs="4"
+            :should-auto-focus="true"
+            :should-focus-order="true"
+            :placeholder="['', '', '', '']"
+            @on-complete="handleSubmitCode"
+          />
         </form>
 
         <button

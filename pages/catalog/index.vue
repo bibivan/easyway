@@ -26,19 +26,31 @@ const breadcrumbsData = computed(() => [
         class="catalog-head__breadcrumbs"
         :data="breadcrumbsData"
       />
-      <ProductFilters
-        v-if="filtersState.data && isDesktop"
-        class="catalog-head__filters"
-      />
+      <template v-if="isDesktop">
+        <ProductFilters
+          v-if="filtersState.data"
+          class="catalog-head__filters"
+        />
+      </template>
+      <template v-else>
+        <Teleport to="body">
+          <CommonSettingsModal
+            v-model="state.filtersAreShown"
+            settings-name="Фильтры"
+          >
+            <ProductFilters v-if="filtersState.data" />
+          </CommonSettingsModal>
+        </Teleport>
+      </template>
     </div>
   </section>
 
-  <section class="section section_pb_0 catalog-head">
+  <section
+    v-if="!isDesktop"
+    class="section section_pb_0 catalog-head"
+  >
     <div class="container">
-      <div
-        v-if="!isDesktop"
-        class="catalog-head__controls"
-      >
+      <div class="catalog-head__controls">
         <button
           class="catalog-head__btn"
           @click="state.categoriesAreShown = true"
@@ -71,6 +83,20 @@ const breadcrumbsData = computed(() => [
             :data="currentCategories"
           />
         </aside>
+        <template v-else>
+          <Teleport to="body">
+            <CommonSettingsModal
+              v-model="state.categoriesAreShown"
+              settings-name="Категории"
+            >
+              <ProductCategories
+                v-if="currentCategories"
+                :data="currentCategories"
+                @click="state.categoriesAreShown = false"
+              />
+            </CommonSettingsModal>
+          </Teleport>
+        </template>
         <div class="catalog__content">
           <div class="catalog__list">
             <CatalogItem
@@ -89,24 +115,6 @@ const breadcrumbsData = computed(() => [
       <div v-if="status === EFetchStatus.ERROR">{{ error?.message }}</div>
     </div>
   </section>
-
-  <template v-if="!isDesktop">
-    <CommonSettingsModal
-      v-model="state.filtersAreShown"
-      settings-name="Фильтры"
-    >
-      <ProductFilters v-if="filtersState.data" />
-    </CommonSettingsModal>
-    <CommonSettingsModal
-      v-model="state.categoriesAreShown"
-      settings-name="Категории"
-    >
-      <ProductCategories
-        v-if="currentCategories"
-        :data="currentCategories"
-      />
-    </CommonSettingsModal>
-  </template>
 </template>
 
 <style scoped lang="scss">
