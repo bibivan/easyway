@@ -11,30 +11,32 @@ const { authFormIsShown } = storeToRefs(useAuthorizationStore())
 </script>
 
 <template>
-  <NuxtLayout>
-    <PerfectScrollbar
-      v-if="isDesktop"
-      class="global-ps"
-      :options="{
-        suppressScrollY: globalScrollIsHidden,
-        swipeEasing: true,
-        wheelPropagation: false
-      }"
-    >
-      <SiteHeader />
-      <main class="main">
+  <PerfectScrollbar
+    v-if="isDesktop"
+    class="global-ps"
+    :options="{
+      suppressScrollY: globalScrollIsHidden,
+      swipeEasing: true,
+      wheelPropagation: false
+    }"
+  >
+    <SiteHeader />
+    <main class="main">
+      <NuxtLayout>
         <NuxtPage />
-      </main>
-      <SiteFooter />
-    </PerfectScrollbar>
-    <template v-else>
-      <SiteHeader />
-      <main class="main">
+      </NuxtLayout>
+    </main>
+    <SiteFooter />
+  </PerfectScrollbar>
+  <template v-else>
+    <SiteHeader />
+    <main class="main">
+      <NuxtLayout>
         <NuxtPage />
-      </main>
-      <SiteFooter />
-    </template>
-    <CartModal />
-    <AuthModal v-if="authFormIsShown" />
-  </NuxtLayout>
+      </NuxtLayout>
+    </main>
+    <SiteFooter />
+  </template>
+  <CartModal />
+  <AuthModal v-if="authFormIsShown" />
 </template>

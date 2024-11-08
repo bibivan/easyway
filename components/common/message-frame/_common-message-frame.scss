@@ -1,7 +1,7 @@
 .message {
   margin: 0 auto;
 
-  @include flex-column;
+  @include flex-column-top-center;
 
   gap: 15px;
 

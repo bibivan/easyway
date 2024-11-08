@@ -19,7 +19,6 @@ export function useApiFetch<ResT, DataT>(
     },
     async onResponseError({ response }) {
       if (response.status === 401) {
-        useNuxtApp().$toast('Время Сессии истекло. Авторизуйтесь снова')
         goToAuth()
       }
     },

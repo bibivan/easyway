@@ -2,7 +2,11 @@ import type { IAuthStoreState, TDefaultState } from '~/types'
 
 export const useAuthorizationStore = defineStore('auth_store', () => {
   // Data
-  const cookieToken = useCookie('easyway-user-token', { maxAge: 604800 })
+  const cookieToken = useCookie('easyway-user-token', {
+    maxAge: 2046426067910,
+    secure: true,
+    sameSite: 'strict'
+  })
   const authorizationState = reactive<TDefaultState<IAuthStoreState>>({
     data: {
       token: null,
@@ -35,9 +39,18 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
     authorizationState.data.authFormIsShown = false
   }
 
+  const logOut = () => {
+    cookieToken.value = null
+    authorizationState.data.token = null
+    return navigateTo('/')
+  }
+
   const goToAuth = () => {
     cookieToken.value = null
     openAuthModal()
+    useNuxtApp().$toast('Время Сессии истекло. Авторизуйтесь снова', {
+      theme: 'dark'
+    })
     return navigateTo('/')
   }
 
@@ -71,6 +84,7 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
     openAuthModal,
     closeAuthModal,
     goToAuth,
+    logOut,
     getCode,
     checkCode
   }

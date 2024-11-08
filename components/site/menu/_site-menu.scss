@@ -25,6 +25,22 @@
     &_active {
       background-color: $color-bg-section-darker;
     }
+
+    &_with_divider {
+      position: relative;
+      padding: 21px 20px 6px;
+
+      &::before {
+        position: absolute;
+        top: 7px;
+        left: 20px;
+        display: block;
+        width: calc(100% - 40px);
+        height: 2px;
+        background-color: $color-divider;
+        content: '';
+      }
+    }
   }
 
   &__btn {

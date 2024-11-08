@@ -122,7 +122,6 @@ watch(filtersState, debounce(updateQuery, 500))
         </div>
       </div>
       <div
-        v-show="true"
         v-if="minPrice && maxPrice"
         class="product-filters__item"
       >

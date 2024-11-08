@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { EGender, type IProduct, type IProductSizeState } from '~/types'
+import { EGender, type IProduct, IProductGroup, type IProductSizeState } from '~/types'
 
 const props = defineProps<{
-  gender: EGender
+  productGroup: IProductGroup
   product: IProduct
-  colors: string[]
   sizes: IProductSizeState[]
 }>()
 
@@ -18,7 +17,7 @@ const sizesModalIsShown = ref<boolean>(false)
 
 const productIsInCart = computed(() => arrayHasElem(cartState.data || [], 'id', props.product.id))
 const sizeChart = computed(() => {
-  if (props.gender === EGender.FEMALE) {
+  if (props.productGroup.gender === EGender.FEMALE) {
     return {
       name: 'Женская одежда',
       data: womanSizeChart
@@ -33,7 +32,17 @@ const sizeChart = computed(() => {
 
 const handleDeleteCartItem = () => {
   deleteCartItem(props.product.id)
-  useNuxtApp().$toast('Товар удален из коризны')
+  useNuxtApp().$toast('Товар удален из коризны', {
+    theme: 'dark'
+  })
+}
+
+const { findItem, addToFavorites, deleteFromFavorites } = useFavoritesStore()
+const isInFavorites = computed(() => findItem(props.productGroup.groupId))
+const handleToggleFavorite = () => {
+  return isInFavorites.value
+    ? deleteFromFavorites(props.productGroup.groupId)
+    : addToFavorites(props.productGroup)
 }
 </script>
 
@@ -49,7 +58,7 @@ const handleDeleteCartItem = () => {
       <h2 class="product-info__subtitle">Цвет</h2>
       <div class="product-info__colors">
         <BaseColorInput
-          v-for="color in colors"
+          v-for="color in productGroup.colors"
           :id="product.id + color"
           :key="product.id + color"
           v-model="modelColor"
@@ -129,8 +138,9 @@ const handleDeleteCartItem = () => {
         В корзину
       </button>
       <button
-        v-if="false"
-        class="btn"
+        class="btn product-info__to-favorite"
+        :class="{ 'product-info__to-favorite_active': isInFavorites }"
+        @click="handleToggleFavorite"
       >
         <SvgFavorite />
       </button>

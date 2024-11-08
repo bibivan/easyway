@@ -84,12 +84,6 @@ watch(
         />
       </transition>
     </li>
-    <!--    <li-->
-    <!--      class="menu__item"-->
-    <!--      :class="{ menu__item_active: submenusState.femaleIsOpened }"-->
-    <!--    >-->
-    <!--      <NuxtLink class="menu__link">Подарочные карты</NuxtLink>-->
-    <!--    </li>-->
 
     <li class="menu__item">
       <NuxtLink
@@ -100,6 +94,15 @@ watch(
         }"
         >Бренд-линейка easyfit</NuxtLink
       >
+    </li>
+
+    <li class="menu__item menu__item_with_divider">
+      <NuxtLink
+        class="menu__link"
+        :to="{ name: 'profile-favorites' }"
+      >
+        Избранное
+      </NuxtLink>
     </li>
   </ul>
 </template>

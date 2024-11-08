@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const cartStore = useCartStore()
+const { setNoScroll } = useNoScroll()
 const { cartTotalPrice } = storeToRefs(cartStore)
 const { cartState, clearCart: handleClearCart } = cartStore
 const { promoState, calculateDiscountedSum } = usePromoStore()
-const { isMobile, isDesktop } = storeToRefs(useDeviceTypeStore())
-const { globalScrollIsHidden } = storeToRefs(useGlobalScrollbarStore())
+const { isMobile } = storeToRefs(useDeviceTypeStore())
 
 const totalSum = computed(() => formatNumberWithSpaces(cartTotalPrice.value))
 
@@ -14,8 +14,7 @@ const discountedSum = computed(() => {
 
 const handleCloseModal = () => {
   cartState.isShown = false
-  if (isDesktop.value) globalScrollIsHidden.value = false
-  if (!isDesktop.value) document.body.classList.remove('body_no-scroll')
+  setNoScroll(cartState.isShown)
 }
 </script>
 

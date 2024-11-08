@@ -14,6 +14,11 @@
     background-color 0.2s ease-in-out,
     color 0.2s ease-in-out;
 
+  @include desktop {
+    height: 44px;
+    font-size: 18px;
+  }
+
   &:active {
     background-color: $color-primary-light;
   }

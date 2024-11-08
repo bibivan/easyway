@@ -18,6 +18,16 @@
   transform: translateX(100%);
 }
 
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: transform 0.4s ease-in-out;
+}
+
+.slide-up-enter-from,
+.slide-up-leave-to {
+  transform: translateY(-100%);
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.4s ease-in-out;

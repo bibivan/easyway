@@ -8,5 +8,5 @@ definePageMeta({
 <template></template>
 
 <style scoped lang="scss">
-@import 'profile-data';
+@import 'profile-user';
 </style>

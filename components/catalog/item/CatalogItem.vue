@@ -14,6 +14,12 @@ const { state, activeProduct, sizeList } = useActiveProduct(toRef(props, 'data')
 const productIsInCart = computed(() => {
   return arrayHasElem(cartState.data || [], 'id', activeProduct?.value?.id)
 })
+
+const { findItem, addToFavorites, deleteFromFavorites } = useFavoritesStore()
+const isInFavorites = computed(() => findItem(props.data.groupId))
+const handleToggleFavorite = () => {
+  return isInFavorites.value ? deleteFromFavorites(props.data.groupId) : addToFavorites(props.data)
+}
 </script>
 
 <template>
@@ -21,6 +27,13 @@ const productIsInCart = computed(() => {
     v-if="activeProduct"
     class="catalog-item"
   >
+    <button
+      class="catalog-item__to-favorite"
+      :class="{ 'catalog-item__to-favorite_active': isInFavorites }"
+      @click="handleToggleFavorite"
+    >
+      <SvgHeart />
+    </button>
     <NuxtLink :to="{ name: 'product-group-id', params: { id: data.groupId } }">
       <div class="catalog-item__img-wrapper">
         <img

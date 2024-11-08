@@ -2,28 +2,33 @@
 
 @mixin flex-row-top-start {
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
 }
 
 @mixin flex-row-top-end {
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
   justify-content: flex-end;
 }
 
 @mixin flex-row-top-between {
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
 }
 
 @mixin flex-row-stretch-start {
   display: flex;
+  flex-direction: row;
   align-items: stretch;
 }
 
 @mixin flex-row-center-center {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -37,18 +42,21 @@
 
 @mixin flex-row-center-end {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: flex-end;
 }
 
 @mixin flex-row-bottom-between {
   display: flex;
+  flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
 }
 
 @mixin flex-row-bottom-end {
   display: flex;
+  flex-direction: row;
   align-items: flex-end;
   justify-content: flex-end;
 }
@@ -133,6 +141,7 @@
 
 @mixin flex-row-center-start {
   display: flex;
+  flex-direction: row;
   align-items: center;
 }
 

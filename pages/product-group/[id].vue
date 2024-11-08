@@ -5,6 +5,7 @@ const { currentBrand, pageId } = useProductsQuery()
 const { status, error, data: productGroup, refresh } = useProductGroup(pageId.value)
 await refresh()
 const { state, activeProduct, sizeList } = useActiveProduct(productGroup)
+
 const breadcrumbsData = computed(() => [
   { to: '/', label: 'Главная' },
   { to: '/catalog', label: 'Каталог' },
@@ -16,6 +17,9 @@ const breadcrumbsData = computed(() => [
     label: productGroup.value?.category || ''
   }
 ])
+
+const { initFavorites } = useFavoritesStore()
+initFavorites()
 </script>
 
 <template>
@@ -42,8 +46,7 @@ const breadcrumbsData = computed(() => [
             v-if="state?.size.value && sizeList && activeProduct && productGroup"
             v-model:color="state.color"
             v-model:size="state.size.value"
-            :gender="productGroup.gender"
-            :colors="productGroup.colors"
+            :product-group="productGroup"
             :sizes="sizeList"
             :product="activeProduct"
             class="product__info"

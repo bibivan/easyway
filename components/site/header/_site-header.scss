@@ -144,18 +144,29 @@
     &_favorites {
       width: 18px;
       height: 16px;
+      transition: color 0.2s ease-in-out;
+
+      svg {
+        transition: fill 0.2s ease-in-out;
+      }
 
       @include desktop {
         width: 28px;
         height: 26px;
       }
 
+      &:hover {
+        @include hover {
+          color: $color-danger-light;
+        }
+      }
+
       &:active {
-        color: #e24c4c;
+        color: $color-danger-light;
         transition: none;
 
         svg {
-          fill: #e24c4c;
+          fill: $color-danger-light;
           transition: none;
         }
       }

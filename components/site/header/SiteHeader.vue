@@ -75,15 +75,16 @@ await Promise.all([getMaleCategories(), getFemaleCategories()])
           <!--          >-->
         </nav>
         <div class="header__actions">
+          <NuxtLink
+            class="header__action header__action_favorites"
+            :to="{ name: 'profile-favorites' }"
+          >
+            <SvgHeart />
+          </NuxtLink>
           <!--          <NuxtLink-->
-          <!--            class="header__action header__action_favorites"-->
-          <!--            :to="{ name: 'profile-favorites' }"-->
-          <!--          >-->
-          <!--            <SvgHeart />-->
-          <!--          </NuxtLink>-->
-          <!--          <NuxtLink-->
+          <!--            v-if="isDesktop"-->
           <!--            class="header__action header__action_auth"-->
-          <!--            :to="{ name: 'profile-data' }"-->
+          <!--            :to="{ name: 'profile-user' }"-->
           <!--          >-->
           <!--            <SvgProfile />-->
           <!--          </NuxtLink>-->

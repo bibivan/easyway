@@ -3,19 +3,32 @@
   z-index: $ui-index-6;
   width: 100%;
   height: 100%;
-  background-color: $color-overlay;
+
+  &::before {
+    position: fixed;
+    z-index: $ui-index-1;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 300%;
+    background-color: $color-overlay;
+    content: '';
+  }
 
   &__head {
     @include flex-row-center-between;
 
     position: relative;
-    z-index: $ui-index-1;
+    z-index: $ui-index-2;
     width: 100%;
     padding: 7px 9px;
     background-color: $color-bg-section-darker;
   }
 
   &__body {
+    position: relative;
+    z-index: $ui-index-2;
     display: grid;
     padding: 9px;
     background-color: $color-bg-section;
@@ -32,7 +45,6 @@
 
     &::before {
       position: absolute;
-      z-index: $ui-index-2;
       left: calc(50% - 22px);
       display: block;
       width: 44px;

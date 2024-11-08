@@ -1,27 +1,20 @@
 <script setup lang="ts">
-const { isDesktop } = storeToRefs(useDeviceTypeStore())
-const { globalScrollIsHidden } = storeToRefs(useGlobalScrollbarStore())
-const model = defineModel<boolean>()
+const isOpened = defineModel<boolean>({
+  required: true
+})
 
 const handleCloseModal = () => {
-  model.value = false
+  isOpened.value = false
 }
 
-watch(model, (val) => {
-  if (isDesktop.value) {
-    return val ? (globalScrollIsHidden.value = true) : (globalScrollIsHidden.value = false)
-  } else {
-    return val
-      ? document.body.classList.add('body_no-scroll')
-      : document.body.classList.remove('body_no-scroll')
-  }
-})
+const { setNoScroll } = useNoScroll()
+watch(isOpened, (val) => setNoScroll(val))
 </script>
 
 <template>
   <Teleport to="body">
     <div
-      v-if="model"
+      v-if="isOpened"
       class="base-modal"
       @click.self="handleCloseModal"
     >

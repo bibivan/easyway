@@ -47,7 +47,9 @@ export const usePromoStore = defineStore('promo_store', () => {
       if (data.result) {
         promoState.data.amount = data.result
         sessionStorage.setItem('easy-clothing-promo', JSON.stringify(promoState.data))
-        useNuxtApp().$toast(`Промокод ${code} упешно применен`)
+        useNuxtApp().$toast(`Промокод ${code} упешно применен`, {
+          theme: 'dark'
+        })
       } else {
         promoState.error = 'Промокод не действителен'
       }

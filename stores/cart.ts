@@ -56,7 +56,10 @@ export const useCartStore = defineStore('cart_store', () => {
       if (!cartState.data) cartState.data = [] as ICartItem[]
       const isInCart = arrayHasElem(cartState.data, 'id', item.id)
 
-      if (isInCart) useNuxtApp().$toast('Товар уже в корзине')
+      if (isInCart)
+        useNuxtApp().$toast('Товар уже в корзине', {
+          theme: 'dark'
+        })
       else {
         const newCartItem: ICartItem = {
           name: item.name,
@@ -78,7 +81,9 @@ export const useCartStore = defineStore('cart_store', () => {
         })
       }
     } catch (e) {
-      useNuxtApp().$toast('Неверный формат продукта. Товар не добавлен')
+      useNuxtApp().$toast('Неверный формат продукта. Товар не добавлен', {
+        theme: 'dark'
+      })
     }
   }
 
