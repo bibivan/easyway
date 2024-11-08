@@ -73,7 +73,7 @@ const community = useCommunityMock()
     class="easyfit-banner"
     btn-content="купить"
     description="Создай свой образ"
-    title="EASYFIT"
+    title="easyfit"
     :with-overlay-text="true"
     :to="{
       name: 'catalog',
@@ -114,7 +114,7 @@ const community = useCommunityMock()
       <div class="collaborators">
         <CommonHeading
           class="collaborators__heading"
-          title="Коммьюнити #eazyladies"
+          title="Комьюнити #eazyladies"
         />
         <ul class="collaborators__list">
           <li
