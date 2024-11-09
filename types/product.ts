@@ -1,17 +1,18 @@
 import type { EBrand, EGender, TNullable } from '~/types'
 
-export enum EProductSizeAttr {
+export enum ESize {
   XS = 'XS',
   S = 'S',
   M = 'M',
   L = 'L',
   XL = 'XL',
   XXL = 'XXL',
-  XXXL = 'XXXL'
+  XXXL = 'XXXL',
+  PLUS = 'Plus Size'
 }
 
 export interface IProductSizeState {
-  value: TNullable<EProductSizeAttr>
+  value: TNullable<ESize>
   disabled: TNullable<boolean>
 }
 
@@ -52,7 +53,7 @@ export interface IProduct {
   pictures: TNullable<string[]>
   price: TNullable<string>
   priceInt: TNullable<number>
-  size: EProductSizeAttr
+  size: ESize
   stock: number
 }
 
@@ -66,7 +67,7 @@ export interface IProductGroupRaw {
 }
 
 export interface IProductGroup {
-  sizes: EProductSizeAttr[]
+  sizes: ESize[]
   colors: string[]
   groupId: string
   category: string

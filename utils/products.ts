@@ -4,30 +4,29 @@ import {
   type IProductGroupRaw,
   type IProductRaw,
   EGender,
-  EProductSizeAttr,
-  type IPaginatedDataRaw
+  ESize
 } from '~/types'
 
 const getGender = (gender: string): EGender => {
   return gender === 'Мужское' ? EGender.MALE : EGender.FEMALE
 }
 
-const getSize = (size: string): EProductSizeAttr => {
+const getSize = (size: string): ESize => {
   switch (size) {
     case 'XS':
-      return EProductSizeAttr.XS
+      return ESize.XS
     case 'S':
-      return EProductSizeAttr.S
+      return ESize.S
     case 'M':
-      return EProductSizeAttr.M
+      return ESize.M
     case 'L':
-      return EProductSizeAttr.L
+      return ESize.L
     case 'XL':
-      return EProductSizeAttr.XL
+      return ESize.XL
     case 'XXL':
-      return EProductSizeAttr.XXL
+      return ESize.XXL
     case 'XXXL':
-      return EProductSizeAttr.XXXL
+      return ESize.XXXL
     default:
       throw new Error(`Rendering Error. Unknown size: ${size}`)
   }
@@ -55,7 +54,7 @@ export const productRawToProduct = (data: IProductRaw): IProduct => {
 
 export const productGroupRawToProductGroup = (data: IProductGroupRaw): IProductGroup => {
   return {
-    sizes: data.SIZES.reduce<EProductSizeAttr[]>((acc, curSize) => {
+    sizes: data.SIZES.reduce<ESize[]>((acc, curSize) => {
       return curSize ? [...acc, getSize(curSize)] : acc
     }, []),
     colors: data.COLORS,

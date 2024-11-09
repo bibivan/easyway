@@ -21,6 +21,15 @@ const handleLogOut = () => {
     <!--        >Заказы</NuxtLink-->
     <!--      >-->
     <!--    </li>-->
+
+    <li class="profile-menu__item">
+      <NuxtLink
+        class="profile-menu__link"
+        :to="{ name: 'profile-user' }"
+        @click="$emit('onClose')"
+        >Личные данные</NuxtLink
+      >
+    </li>
     <li class="profile-menu__item">
       <NuxtLink
         class="profile-menu__link"
@@ -37,14 +46,6 @@ const handleLogOut = () => {
         >Карта лояльности</NuxtLink
       >
     </li>
-    <!--    <li class="profile-menu__item">-->
-    <!--      <NuxtLink-->
-    <!--        class="profile-menu__link"-->
-    <!--        :to="{ name: 'profile-user' }"-->
-    <!--        @click="$emit('onClose')"-->
-    <!--        >Личные данные</NuxtLink-->
-    <!--      >-->
-    <!--    </li>-->
     <li class="profile-menu__item">
       <button
         class="profile-menu__link"

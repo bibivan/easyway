@@ -13,10 +13,11 @@ export function useAuthFetch<ResT, DataT>(
 
   return useFetch(request, {
     baseURL: getBaseUrl(),
-    timeout: 20000,
+    method: 'GET',
     headers: {
       Authorization: `Bearer ${token.value}`
     },
+    timeout: 20000,
     async onResponseError({ response }) {
       if (response.status === 401) {
         goToAuth()

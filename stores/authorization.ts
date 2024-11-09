@@ -48,9 +48,6 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
   const goToAuth = () => {
     cookieToken.value = null
     openAuthModal()
-    useNuxtApp().$toast('Время Сессии истекло. Авторизуйтесь снова', {
-      theme: 'dark'
-    })
     return navigateTo('/')
   }
 

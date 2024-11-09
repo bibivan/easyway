@@ -1,4 +1,4 @@
-import { ILoyaltyData } from '~/types/profile'
+import { type ILoyaltyData } from '~/types'
 import { Ref } from 'vue'
 
 export const useLoyaltyMock = () => {

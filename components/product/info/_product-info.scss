@@ -153,3 +153,13 @@
     }
   }
 }
+
+:global(.clothes-size-table) {
+  width: 100%;
+  max-width: 520px;
+  padding: 25px;
+
+  @include tablet {
+    padding: 50px;
+  }
+}

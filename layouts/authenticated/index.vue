@@ -46,7 +46,6 @@ const profileMenuIsShown = ref<boolean>(false)
           <CommonSettingsModal
             v-model="profileMenuIsShown"
             settings-name="Профиль"
-            class="authenticated__modal"
           >
             <ProfileMenu @on-close="profileMenuIsShown = false" />
           </CommonSettingsModal>

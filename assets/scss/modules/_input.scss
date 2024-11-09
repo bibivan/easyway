@@ -17,6 +17,8 @@
     font-size: 12px;
 
     @include tablet {
+      height: 50px;
+      padding: 16px 20px;
       font-size: 16px;
     }
 

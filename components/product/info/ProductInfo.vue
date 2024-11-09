@@ -145,7 +145,10 @@ const handleToggleFavorite = () => {
         <SvgFavorite />
       </button>
     </div>
-    <BaseModal v-model="sizesModalIsShown">
+    <BaseModal
+      v-model="sizesModalIsShown"
+      dialog-class="clothes-size-table"
+    >
       <BaseTable
         :name="sizeChart.name"
         :data="sizeChart.data"

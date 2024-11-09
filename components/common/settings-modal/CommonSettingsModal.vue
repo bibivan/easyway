@@ -1,5 +1,9 @@
 <script setup lang="ts">
-defineProps<{ settingsName: string }>()
+defineProps<{
+  settingsName: string
+  modalClass?: string
+  dialogClass?: string
+}>()
 
 const isOpened = defineModel<boolean>({
   required: true
@@ -15,6 +19,7 @@ watch(isOpened, (val) => setNoScroll(val))
       <div
         v-if="isOpened"
         class="settings-modal"
+        :class="modalClass"
         @click.self="isOpened = false"
       >
         <div class="settings-modal__head">
@@ -26,7 +31,10 @@ watch(isOpened, (val) => setNoScroll(val))
             <SvgChevronUp />
           </button>
         </div>
-        <div class="settings-modal__body">
+        <div
+          class="settings-modal__body"
+          :class="dialogClass"
+        >
           <slot />
         </div>
       </div>
