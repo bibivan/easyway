@@ -81,13 +81,13 @@ await Promise.all([getMaleCategories(), getFemaleCategories()])
           >
             <SvgHeart />
           </NuxtLink>
-          <!--          <NuxtLink-->
-          <!--            v-if="isDesktop"-->
-          <!--            class="header__action header__action_auth"-->
-          <!--            :to="{ name: 'profile-user' }"-->
-          <!--          >-->
-          <!--            <SvgProfile />-->
-          <!--          </NuxtLink>-->
+          <NuxtLink
+            v-if="isDesktop"
+            class="header__action header__action_auth"
+            :to="{ name: 'profile-user' }"
+          >
+            <SvgProfile />
+          </NuxtLink>
           <button
             class="header__action header__action_cart"
             @click="handleShowCart"

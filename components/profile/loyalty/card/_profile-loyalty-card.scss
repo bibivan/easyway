@@ -1,0 +1,50 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 61.5%;
+  border-radius: $border-radius-s;
+
+  &__img {
+    position: absolute;
+    z-index: $ui-index-1;
+    display: block;
+    background-color: $color-primary;
+    color: #1a1919;
+    inset: 0;
+  }
+
+  &__text {
+    position: absolute;
+    z-index: $ui-index-2;
+    bottom: 25px;
+    left: 30px;
+    color: $color-text-light;
+
+    @include desktop {
+      bottom: 35px;
+      left: 40px;
+    }
+  }
+
+  &__label {
+    @include text-body;
+
+    font-size: 14px;
+
+    @include desktop {
+      font-size: 16px;
+    }
+  }
+
+  &__points {
+    @include text-body;
+
+    font-size: 32px;
+    font-weight: 700;
+
+    @include desktop {
+      font-size: 36px;
+    }
+  }
+}

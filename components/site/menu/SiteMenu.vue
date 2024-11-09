@@ -104,6 +104,14 @@ watch(
         Избранное
       </NuxtLink>
     </li>
+    <li class="menu__item">
+      <NuxtLink
+        class="menu__link"
+        :to="{ name: 'profile-loyalty' }"
+      >
+        Карта лояльности
+      </NuxtLink>
+    </li>
   </ul>
 </template>
 

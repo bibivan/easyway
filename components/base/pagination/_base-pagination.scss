@@ -23,7 +23,7 @@
     }
 
     &_active {
-      text-decoration: underline;
+      @include underline;
     }
 
     &_non-clickable {

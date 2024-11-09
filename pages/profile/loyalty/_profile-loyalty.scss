@@ -1,0 +1,42 @@
+.loyalty {
+  display: grid;
+  width: 100%;
+  gap: 35px;
+  grid-template-columns: 1fr;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include desktop {
+    gap: 90px;
+  }
+
+  &__btn {
+    @include flex-row-center-start;
+    @include underline;
+
+    font-size: 14px;
+    font-weight: 400;
+    gap: 10px;
+    line-height: 1.1px;
+
+    @include desktop {
+      font-size: 16px;
+    }
+
+    svg {
+      width: 5px;
+      height: 10px;
+    }
+
+    &_mt {
+      margin-top: auto;
+    }
+  }
+}
+
+:global(.loyalty__rules.base-modal__dialog) {
+  max-width: 890px;
+  padding: 0;
+}

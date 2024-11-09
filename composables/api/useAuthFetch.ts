@@ -1,7 +1,7 @@
 import type { UseFetchOptions } from 'nuxt/app'
 import type { NitroFetchRequest } from 'nitropack'
 
-export function useApiFetch<ResT, DataT>(
+export function useAuthFetch<ResT, DataT>(
   request: NitroFetchRequest,
   options: UseFetchOptions<ResT, DataT> = {}
 ) {

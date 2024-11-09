@@ -1,0 +1,26 @@
+.loyalty-text {
+  @include flex-column;
+
+  gap: 15px;
+
+  &__heading {
+    @include text-heading;
+
+    font-size: 16px;
+
+    @include desktop {
+      font-size: 24px;
+    }
+  }
+
+  &__description {
+    @include text-body;
+
+    color: $color-note;
+    font-size: 14px;
+
+    @include desktop {
+      font-size: 18px;
+    }
+  }
+}

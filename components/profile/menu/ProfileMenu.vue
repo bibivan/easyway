@@ -29,14 +29,14 @@ const handleLogOut = () => {
         >Избранное</NuxtLink
       >
     </li>
-    <!--    <li class="profile-menu__item">-->
-    <!--      <NuxtLink-->
-    <!--        class="profile-menu__link"-->
-    <!--        :to="{ name: 'profile-loyalty' }"-->
-    <!--        @click="$emit('onClose')"-->
-    <!--        >Карта лояльности</NuxtLink-->
-    <!--      >-->
-    <!--    </li>-->
+    <li class="profile-menu__item">
+      <NuxtLink
+        class="profile-menu__link"
+        :to="{ name: 'profile-loyalty' }"
+        @click="$emit('onClose')"
+        >Карта лояльности</NuxtLink
+      >
+    </li>
     <!--    <li class="profile-menu__item">-->
     <!--      <NuxtLink-->
     <!--        class="profile-menu__link"-->
@@ -45,14 +45,14 @@ const handleLogOut = () => {
     <!--        >Личные данные</NuxtLink-->
     <!--      >-->
     <!--    </li>-->
-    <!--    <li class="profile-menu__item">-->
-    <!--      <button-->
-    <!--        class="profile-menu__link"-->
-    <!--        @click="handleLogOut"-->
-    <!--      >-->
-    <!--        Выход-->
-    <!--      </button>-->
-    <!--    </li>-->
+    <li class="profile-menu__item">
+      <button
+        class="profile-menu__link"
+        @click="handleLogOut"
+      >
+        Выход
+      </button>
+    </li>
   </ul>
 </template>
 

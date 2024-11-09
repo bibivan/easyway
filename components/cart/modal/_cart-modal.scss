@@ -65,12 +65,12 @@
 
   &__clear {
     @include text-body;
+    @include underline;
 
     order: 2;
     margin: 0 0 0 auto;
     color: $color-text;
     font-size: 12px;
-    text-decoration: underline;
 
     @include desktop {
       order: 3;
