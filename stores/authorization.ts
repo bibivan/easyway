@@ -1,4 +1,4 @@
-import type { IAuthStoreState, TDefaultState } from '~/types'
+import { IAuthStoreState, ICodeCheckingResponse, TDefaultState } from '~/types'
 
 export const useAuthorizationStore = defineStore('auth_store', () => {
   // Data
@@ -53,22 +53,39 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
 
   // Actions
   const getCode = async (phone: string) => {
-    return useApiFetch('get-code', {
-      method: 'POST',
-      body: {
-        phone
-      }
+    // return useApiFetch('get-code', {
+    //   method: 'POST',
+    //   body: {
+    //     phone
+    //   }
+    // })
+
+    return useFetch<ICodeCheckingResponse>('https://echo.htmlacademy.ru/courses', {
+      onResponse: () => ({ success: true })
     })
   }
 
   const checkCode = async (code: number) => {
-    return useApiFetch<{ token: string }, { token: string }>('check-code', {
-      method: 'POST',
-      body: {
-        code
-      },
-      onResponse: ({ response }) => {
-        updateToken(response._data.token)
+    // return useApiFetch<{ token: string }, { token: string }>('check-code', {
+    //   method: 'POST',
+    //   body: {
+    //     code
+    //   },
+    //   onResponse: ({ response }) => {
+    //     updateToken(response._data.token)
+    //   }
+    // })
+
+    return useFetch<ICodeCheckingResponse>('https://echo.htmlacademy.ru/courses', {
+      immediate: false,
+      body: { code },
+      onResponse: () => {
+        if (code === 1111) {
+          const resData = { success: true, token: 'asdfsdfsdf' }
+          if (resData.token) updateToken(resData.token)
+
+          return resData
+        } else return { success: false, message: 'Неверный код' }
       }
     })
   }

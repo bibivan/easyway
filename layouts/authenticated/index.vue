@@ -13,6 +13,11 @@ const breadcrumbsData = computed(() => [
 ])
 
 const profileMenuIsShown = ref<boolean>(false)
+
+const authStore = useAuthorizationStore()
+const { goToAuth } = authStore
+const { token } = storeToRefs(authStore)
+if (!token.value) goToAuth()
 </script>
 
 <template>

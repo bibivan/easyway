@@ -6,7 +6,7 @@ export function useAuthFetch<ResT, DataT>(
   options: UseFetchOptions<ResT, DataT> = {}
 ) {
   const authStore = useAuthorizationStore()
-  const { goToAuth } = authStore
+  const { goToAuth, authorizationState } = authStore
   const { token } = storeToRefs(authStore)
 
   if (!token.value) goToAuth()
@@ -18,7 +18,6 @@ export function useAuthFetch<ResT, DataT>(
       Authorization: `Bearer ${token.value}`
     },
     timeout: 20000,
-
     async onResponseError({ response, error }) {
       if (response.status === 401) {
         goToAuth()
@@ -26,6 +25,9 @@ export function useAuthFetch<ResT, DataT>(
         console.error(error)
         throw new Error('Что-то пошло не так. Попробуйте повторить попытку')
       }
+    },
+    async onResponse({ response }) {
+      authorizationState.data.token = response._data.token
     },
     ...options
   })

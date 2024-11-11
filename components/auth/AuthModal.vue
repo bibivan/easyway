@@ -7,7 +7,9 @@ const authDataState = reactive<IAuthDataState>({
   phone: null,
   code: null,
   privacyDataConsent: false,
-  emailMarketing: false
+  emailMarketing: false,
+  codeCheckingIsShown: false,
+  errorMessage: null
 })
 const authStore = useAuthorizationStore()
 const { closeAuthModal, getCode, checkCode } = authStore
@@ -16,18 +18,40 @@ const v$ = useVuelidate()
 
 const handleSubmitPhone = async () => {
   const result = await v$.value.$validate()
+
   if (result && authDataState.phone) {
-    await getCode(authDataState.phone)
+    const { data, error } = await getCode(authDataState.phone)
+
+    if (error.value) authDataState.errorMessage = error.value.message
+    if (data.value?.success) authDataState.codeCheckingIsShown = true
   }
 }
 
-const handleCloseModal = () => closeAuthModal()
+const handleCloseModal = () => {
+  // authDataState.phone = null
+  // authDataState.code = null
+  // authDataState.emailMarketing = false
+  // authDataState.emailMarketing = false
+  // authDataState.errorMessage = null
+  closeAuthModal()
+}
 
 const handleSubmitCode = async () => {
-  if (authDataState.code) await checkCode(authDataState.code)
+  authDataState.errorMessage = null
+  if (!authDataState.code) return
+  const { data, error } = await checkCode(authDataState.code)
+
   if (token.value) {
     closeAuthModal()
     await navigateTo({ name: 'profile-data' })
+  }
+
+  if (!data.value?.success && data.value?.message) {
+    return (authDataState.errorMessage = error.value?.message as string)
+  }
+
+  if (error.value) {
+    return (authDataState.errorMessage = error.value.message)
   }
 }
 </script>
@@ -42,6 +66,7 @@ const handleSubmitCode = async () => {
         <h2 class="auth-modal__heading">Вход или регистрация</h2>
 
         <form
+          v-if="!authDataState.codeCheckingIsShown"
           class="auth-modal__form"
           action="/public"
           @submit.prevent="handleSubmitPhone"
@@ -73,10 +98,12 @@ const handleSubmitCode = async () => {
         </form>
 
         <form
+          v-if="authDataState.codeCheckingIsShown"
           class="auth-modal__form"
           action="/"
           @submit.prevent="handleSubmitCode"
         >
+          <p>Введите код, который отправлен на&nbsp;номер {{ authDataState.phone }}</p>
           <v-otp-input
             v-model="authDataState.code"
             class="auth-modal__otp"
@@ -87,6 +114,10 @@ const handleSubmitCode = async () => {
             :should-focus-order="true"
             :placeholder="['', '', '', '']"
             @on-complete="handleSubmitCode"
+          />
+          <BaseErrorMessage
+            v-if="authDataState.errorMessage"
+            :message="authDataState.errorMessage"
           />
         </form>
 

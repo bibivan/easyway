@@ -10,4 +10,12 @@ export interface IAuthDataState {
   code: TNullable<number>
   privacyDataConsent: boolean
   emailMarketing: boolean
+  codeCheckingIsShown: boolean
+  errorMessage: TNullable<string>
+}
+
+export interface ICodeCheckingResponse {
+  success: boolean
+  message?: string
+  token?: string
 }
