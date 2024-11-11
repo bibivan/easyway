@@ -34,6 +34,7 @@ export interface IProductRaw {
   PICTURES: string
   PRICE: string
   PRICE_INT: string
+  PRICE_DISCOUNT: string
   SIZE: string
   STOCK?: string
 }
@@ -52,6 +53,7 @@ export interface IProduct {
   pictures: TNullable<string[]>
   price: TNullable<string>
   priceInt: TNullable<number>
+  priceDsc: TNullable<number>
   size: EProductSizeAttr
   stock: number
 }

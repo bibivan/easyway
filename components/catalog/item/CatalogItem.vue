@@ -81,7 +81,8 @@ const handleToggleFavorite = () => {
         </template>
       </div>
       <div class="catalog-item__footer">
-        <p class="catalog-item__price">{{ activeProduct.price }} ₽</p>
+        <p class="catalog-item__price__old" v-if="(activeProduct.priceDsc ?? 0) > (activeProduct.priceInt ?? 0)">{{activeProduct.priceDsc }} ₽</p>
+        <p class="catalog-item__price">{{activeProduct.price }} ₽</p>
 
         <CatalogItemsCounter
           v-if="productIsInCart && !isMobile"

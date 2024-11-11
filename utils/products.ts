@@ -48,6 +48,7 @@ export const productRawToProduct = (data: IProductRaw): IProduct => {
     pictures: toNullable(data.PICTURES),
     price: toNullable(parseJSON(data.PRICE)),
     priceInt: toNullable(parseInt(data.PRICE_INT, 10)),
+    priceDsc: toNullable(parseInt(data.PRICE_DISCOUNT, 10)),
     size: getSize(data.SIZE),
     stock: toNullable(parseInt(data.STOCK || '100', 10))
   }

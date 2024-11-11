@@ -105,6 +105,9 @@
 
   &__price {
     font-weight: 700;
+    &__old {
+      text-decoration: line-through;
+    }
   }
 
   &__btn {
