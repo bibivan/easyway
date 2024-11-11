@@ -8,7 +8,11 @@ export function useApiFetch<ResT, DataT>(
 ) {
   const defaults: typeof options = {
     baseURL: getBaseUrl(),
-    timeout: 20000
+    timeout: 20000,
+    onResponseError: ({ error }) => {
+      console.error(error)
+      throw new Error('Что-то пошло не так. Попробуйте повторить попытку')
+    }
   }
   const params = defu(options, defaults)
 

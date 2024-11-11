@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { EFetchStatus } from '~/types'
-import SvgFilters from '~/components/svg/SvgFilters.vue'
 
 const { isDesktop } = storeToRefs(useDeviceTypeStore())
 const { status, error, data } = useCatalog()

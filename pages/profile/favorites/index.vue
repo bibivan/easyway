@@ -4,7 +4,9 @@ definePageMeta({
   currentBreadcrumb: 'Избранное'
 })
 
-const { favoritesState } = useFavoritesStore()
+const { favoritesState, initFavorites } = useFavoritesStore()
+
+initFavorites()
 </script>
 
 <template>

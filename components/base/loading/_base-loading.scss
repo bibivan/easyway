@@ -1,0 +1,6 @@
+.base-loading {
+  @include flex-row-center-center;
+
+  position: absolute;
+  inset: 0;
+}

@@ -1,0 +1,41 @@
+.placed-orders {
+  @include flex-column;
+  @include base-gap;
+
+  width: 100%;
+
+  &__icon {
+    width: 35px;
+  }
+
+  &__item {
+    @include flex-column;
+
+    gap: 15px;
+  }
+
+  &__date {
+    @include text-body;
+
+    font-size: 14px;
+
+    @include tablet {
+      color: $color-text;
+      font-size: 18px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include md-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

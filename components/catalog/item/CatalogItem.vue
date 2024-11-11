@@ -2,7 +2,10 @@
 import type { IProductGroup } from '~/types'
 import { transformSizeString } from '~/utils/products'
 
-const props = defineProps<{ data: IProductGroup }>()
+const props = defineProps<{
+  data: IProductGroup
+  withoutBtn?: boolean
+}>()
 const {
   cartState,
   putToCart: handlePutToCart,
@@ -83,25 +86,27 @@ const handleToggleFavorite = () => {
       <div class="catalog-item__footer">
         <p class="catalog-item__price">{{ activeProduct.price }} ₽</p>
 
-        <CatalogItemsCounter
-          v-if="productIsInCart && !isMobile"
-          :id="activeProduct.id"
-          class="catalog-item__counter"
-        />
-        <button
-          v-else-if="productIsInCart"
-          class="catalog-item__btn btn"
-          @click="handleDeleteCartItem(activeProduct.id)"
-        >
-          <SvgTrash />
-        </button>
-        <button
-          v-else
-          class="catalog-item__btn btn"
-          @click="handlePutToCart(activeProduct)"
-        >
-          <SvgCart />
-        </button>
+        <template v-if="!withoutBtn">
+          <CatalogItemsCounter
+            v-if="productIsInCart && !isMobile"
+            :id="activeProduct.id"
+            class="catalog-item__counter"
+          />
+          <button
+            v-else-if="productIsInCart"
+            class="catalog-item__btn btn"
+            @click="handleDeleteCartItem(activeProduct.id)"
+          >
+            <SvgTrash />
+          </button>
+          <button
+            v-else
+            class="catalog-item__btn btn"
+            @click="handlePutToCart(activeProduct)"
+          >
+            <SvgCart />
+          </button>
+        </template>
       </div>
     </div>
   </div>

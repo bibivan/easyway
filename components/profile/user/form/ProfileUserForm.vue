@@ -1,27 +1,42 @@
 <script setup lang="ts">
-import { ESize, IUserData } from '~/types'
+import { EFetchStatus, ESize, type IUserData } from '~/types'
 import { transformSizeString } from '~/utils/products'
 import { useVuelidate } from '@vuelidate/core'
 
-const props = defineProps<{
-  user: IUserData
-}>()
+const props = defineProps<{ user: IUserData }>()
+const emit = defineEmits<{ onUpdateUser: [IUserData] }>()
 
-const v$ = useVuelidate()
 const payload = reactive<IUserData>({ ...props.user })
 
 // const { error, status, refresh } = useAuthFetch('user', {
 //   method: 'PATCH',
 //   body: payload,
-//   immediate: false,
-//   watch: false
+//   immediate: false
 // })
 
-const handleSubmitUserData = () => {
+const { error, status, refresh } = useMockFetch(
+  'userSendData',
+  { success: true },
+  {
+    immediate: false
+  }
+)
+
+const v$ = useVuelidate()
+
+//  хендлеры
+const handleSubmitUserData = async () => {
   const result = v$.value.$validate()
   if (!result) return
 
-  // return refresh()
+  await refresh()
+
+  if (status.value === EFetchStatus.SUCCESS) {
+    emit('onUpdateUser', payload)
+    useNuxtApp().$toast('Данные успешно обновлены', {
+      theme: 'dark'
+    })
+  }
 }
 </script>
 
@@ -88,11 +103,13 @@ const handleSubmitUserData = () => {
         for="user_birthdate_input"
         >Дата рождения</label
       >
-      <BaseInput
+      <BaseDateInput
         id="user_birthdate_input"
         v-model="payload.birthDate"
         type="date"
         :required-val="true"
+        :max-age="100"
+        :min-age="18"
       />
     </div>
     <div class="user-form__item">
@@ -122,12 +139,19 @@ const handleSubmitUserData = () => {
       </template>
     </BaseCheckbox>
 
-    <button
-      class="btn user-form__btn"
-      type="submit"
-    >
-      сохранить
-    </button>
+    <div class="user-form__controls">
+      <button
+        class="btn user-form__btn"
+        type="submit"
+      >
+        <BaseSpinner v-if="status === EFetchStatus.PENDING" />
+        <template v-else> {{ error ? 'повторить' : 'сохранить' }} </template>
+      </button>
+      <BaseErrorMessage
+        v-if="error"
+        :message="error?.message"
+      />
+    </div>
   </form>
 </template>
 

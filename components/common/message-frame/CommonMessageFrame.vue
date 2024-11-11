@@ -3,9 +3,9 @@ import type { RouteLocationRaw } from 'vue-router'
 
 defineProps<{
   title: string
-  description: string
-  btnContent: string
-  to: RouteLocationRaw
+  description?: string
+  btnContent?: string
+  to?: RouteLocationRaw
 }>()
 </script>
 
@@ -17,10 +17,14 @@ defineProps<{
         <h2 class="message__headline">
           {{ title }}
         </h2>
-        <p class="message__description">
+        <p
+          v-if="description"
+          class="message__description"
+        >
           {{ description }}
         </p>
         <NuxtLink
+          v-if="to && btnContent"
           class="btn"
           :to="to"
         >

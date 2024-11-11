@@ -15,4 +15,4 @@ type DD = `${0}${oneToNine}` | `${1 | 2}${zeroToNine}` | `3${0 | 1}`
 /**
  * YYYYMMDD
  */
-export type TRawDateString = string & `${DD}${MM}${YYYY}`
+export type TRawDateString = string & `${DD}.${MM}.${YYYY}`

@@ -3,6 +3,7 @@
   display: block;
   width: 25px;
   height: 25px;
+  color: $color-bg-section;
 
   &::before,
   &::after {
@@ -22,7 +23,7 @@
   }
 
   &::after {
-    border: 2px solid $color-bg-section;
+    border: 2px solid currentcolor;
     border-top-color: transparent;
     animation: 1s linear 0s normal none infinite running rot;
   }

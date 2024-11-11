@@ -1,20 +1,29 @@
 <script setup lang="ts">
+import { EFetchStatus } from '~/types'
+
 definePageMeta({
   layout: 'authenticated',
   currentBreadcrumb: 'Карта лояльности'
 })
 
-// const { data: loyaltyData } = useAuthFetch('loyalty')
+// const { data, error, refresh: handleGetLoyalty, status } = useAuthFetch('loyalty')
 const { isMobile } = storeToRefs(useDeviceTypeStore())
-const { loyaltyMock: loyaltyData } = useLoyaltyMock()
+const { data, error, refresh: handleGetLoyalty, status } = useLoyaltyMock()
 const rulesAreShown = ref<boolean>(false)
 </script>
 
 <template>
-  <div class="loyalty">
+  <BaseLoading
+    v-if="status === EFetchStatus.PENDING"
+    color="#232323"
+  />
+  <div
+    v-if="data && status === EFetchStatus.SUCCESS"
+    class="loyalty"
+  >
     <ProfileLoyaltyText
       class="loyalty__text"
-      :points-count="loyaltyData.pointsCount"
+      :points-count="data.pointsCount"
     >
       <button
         v-if="!isMobile"
@@ -26,7 +35,7 @@ const rulesAreShown = ref<boolean>(false)
     </ProfileLoyaltyText>
     <ProfileLoyaltyCard
       class="loyalty__card"
-      :points-count="loyaltyData.pointsCount"
+      :points-count="data.pointsCount"
     />
 
     <button
@@ -36,14 +45,21 @@ const rulesAreShown = ref<boolean>(false)
     >
       Правила бонусной программы <SvgChevronRight />
     </button>
-
-    <BaseModal
-      v-model="rulesAreShown"
-      dialog-class="loyalty__rules"
-    >
-      <ProfileLoyaltyRules />
-    </BaseModal>
   </div>
+
+  <BaseModal
+    v-if="data && status === EFetchStatus.SUCCESS"
+    v-model="rulesAreShown"
+    dialog-class="loyalty__rules"
+  >
+    <ProfileLoyaltyRules />
+  </BaseModal>
+  <CommonErrorView
+    :error="error"
+    :title="error?.message"
+    :loading="status === EFetchStatus.PENDING"
+    @on-refresh="handleGetLoyalty"
+  />
 </template>
 
 <style scoped lang="scss">

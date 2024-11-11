@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EGender, type IProduct, IProductGroup, type IProductSizeState } from '~/types'
+import { EGender, type IProduct, type IProductGroup, type IProductSizeState } from '~/types'
 
 const props = defineProps<{
   productGroup: IProductGroup

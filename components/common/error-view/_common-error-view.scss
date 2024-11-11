@@ -1,0 +1,40 @@
+.error-view {
+  @include flex-column-top-center;
+
+  margin: 0 auto;
+  gap: 15px;
+
+  @include tablet {
+    max-width: 516px;
+    gap: 45px;
+  }
+
+  &__icon {
+    width: 50px;
+    height: 50px;
+    color: $color-danger;
+  }
+
+  &__headline {
+    @include text-heading;
+
+    font-size: 18px;
+    text-align: center;
+
+    @include tablet {
+      font-size: 36px;
+    }
+  }
+
+  &__description {
+    @include text-body;
+
+    color: $color-note;
+    font-size: 14px;
+    text-align: center;
+
+    @include tablet {
+      font-size: 18px;
+    }
+  }
+}

@@ -13,21 +13,20 @@ const handleLogOut = () => {
 
 <template>
   <ul class="profile-menu">
-    <!--    <li class="profile-menu__item">-->
-    <!--      <NuxtLink-->
-    <!--        class="profile-menu__link"-->
-    <!--        :to="{ name: 'profile-orders' }"-->
-    <!--        @click="$emit('onClose')"-->
-    <!--        >Заказы</NuxtLink-->
-    <!--      >-->
-    <!--    </li>-->
-
     <li class="profile-menu__item">
       <NuxtLink
         class="profile-menu__link"
         :to="{ name: 'profile-user' }"
         @click="$emit('onClose')"
         >Личные данные</NuxtLink
+      >
+    </li>
+    <li class="profile-menu__item">
+      <NuxtLink
+        class="profile-menu__link"
+        :to="{ name: 'profile-orders' }"
+        @click="$emit('onClose')"
+        >Заказы</NuxtLink
       >
     </li>
     <li class="profile-menu__item">

@@ -18,9 +18,13 @@ export function useAuthFetch<ResT, DataT>(
       Authorization: `Bearer ${token.value}`
     },
     timeout: 20000,
-    async onResponseError({ response }) {
+
+    async onResponseError({ response, error }) {
       if (response.status === 401) {
         goToAuth()
+      } else {
+        console.error(error)
+        throw new Error('Что-то пошло не так. Попробуйте повторить попытку')
       }
     },
     ...options

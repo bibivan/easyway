@@ -4,11 +4,21 @@ import {
   type IProductGroupRaw,
   type IProductRaw,
   EGender,
-  ESize
+  ESize,
+  ENew,
+  EBrand
 } from '~/types'
 
 const getGender = (gender: string): EGender => {
   return gender === 'Мужское' ? EGender.MALE : EGender.FEMALE
+}
+
+const getBrand = (brand: string): EBrand => {
+  return brand === 'EAZYWAY' ? EBrand.EAZYWAY : EBrand.EASYFIT
+}
+
+const getNoveltyStatus = (novelty: string): ENew => {
+  return novelty === 'YES' ? ENew.TRUE : ENew.FALSE
 }
 
 const getSize = (size: string): ESize => {
@@ -54,14 +64,17 @@ export const productRawToProduct = (data: IProductRaw): IProduct => {
 
 export const productGroupRawToProductGroup = (data: IProductGroupRaw): IProductGroup => {
   return {
-    sizes: data.SIZES.reduce<ESize[]>((acc, curSize) => {
-      return curSize ? [...acc, getSize(curSize)] : acc
-    }, []),
+    brand: getBrand(data.BRAND),
     colors: data.COLORS,
-    groupId: data.GROUP_ID,
     category: data.CATEGORY,
     gender: getGender(data.GENDER),
-    items: data.ITEMS.map((item: IProductRaw) => productRawToProduct(item))
+    groupId: data.GROUP_ID,
+    items: data.ITEMS.map((item: IProductRaw) => productRawToProduct(item)),
+    new: getNoveltyStatus(data.NEW),
+    price: toNullable(parseInt(data.PRICE, 10)),
+    sizes: data.SIZES.reduce<ESize[]>((acc, curSize) => {
+      return curSize ? [...acc, getSize(curSize)] : acc
+    }, [])
   }
 }
 

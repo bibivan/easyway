@@ -1,12 +1,9 @@
-import { type ILoyaltyData } from '~/types'
-import { Ref } from 'vue'
+import type { ILoyaltyData } from '~/types'
 
 export const useLoyaltyMock = () => {
-  const loyaltyMock: Ref<ILoyaltyData> = ref({
+  const loyaltyMock: ILoyaltyData = {
     pointsCount: 286
-  })
-
-  return {
-    loyaltyMock
   }
+
+  return useMockFetch('userMock', loyaltyMock)
 }

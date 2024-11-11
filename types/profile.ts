@@ -1,4 +1,5 @@
 import { ESize } from '~/types/product'
+import { TRawDateString } from '~/types/date'
 
 export interface ILoyaltyData {
   pointsCount: number
@@ -9,7 +10,7 @@ export interface IUserData {
   surname: string
   phone: string
   email: string
-  birthDate: string
+  birthDate: TRawDateString
   emailMarketing: boolean
   size: ESize
 }

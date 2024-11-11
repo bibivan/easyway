@@ -107,6 +107,14 @@ watch(
     <li class="menu__item">
       <NuxtLink
         class="menu__link"
+        :to="{ name: 'profile-orders' }"
+      >
+        Заказы
+      </NuxtLink>
+    </li>
+    <li class="menu__item">
+      <NuxtLink
+        class="menu__link"
         :to="{ name: 'profile-favorites' }"
       >
         Избранное

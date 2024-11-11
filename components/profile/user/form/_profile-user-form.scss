@@ -1,7 +1,7 @@
 .user-form {
   @include flex-column;
 
-  gap: 10px;
+  gap: 20px;
 
   &__item {
     @include flex-column;
@@ -39,5 +39,9 @@
     @include tablet {
       margin-top: 25px;
     }
+  }
+
+  &__controls {
+    position: relative;
   }
 }

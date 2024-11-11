@@ -3,8 +3,8 @@ import {
   type IAddressSuggestion,
   type IDeliveryCourier,
   type IDeliveryPoint,
-  type ICartItem,
-  EDeliveryType
+  EDeliveryType,
+  IProductGroup
 } from '~/types'
 
 export enum EPaymentType {
@@ -127,4 +127,8 @@ export interface IPromoStoreState {
   data: IPromoData
   loading: boolean
   error: TNullable<string>
+}
+
+export interface IPlacedOrders {
+  [key: string]: IProductGroup[]
 }

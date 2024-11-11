@@ -1,4 +1,5 @@
 import type { EBrand, EGender, TNullable } from '~/types'
+import { ENew } from '~/types'
 
 export enum ESize {
   XS = 'XS',
@@ -32,11 +33,23 @@ export interface IProductRaw {
   GROUP_ID: string
   ID: string
   NAME: string
-  PICTURES: string
+  PICTURES: string[]
   PRICE: string
   PRICE_INT: string
   SIZE: string
   STOCK?: string
+}
+
+export interface IProductGroupRaw {
+  BRAND: string
+  CATEGORY: string
+  COLORS: string[]
+  GENDER: string
+  GROUP_ID: string
+  ITEMS: IProductRaw[]
+  NEW: string
+  SIZES: string[]
+  PRICE: string
 }
 
 export interface IProduct {
@@ -57,22 +70,16 @@ export interface IProduct {
   stock: number
 }
 
-export interface IProductGroupRaw {
-  SIZES: string[]
-  COLORS: string[]
-  GROUP_ID: string
-  CATEGORY: string
-  GENDER: string
-  ITEMS: IProductRaw[]
-}
-
 export interface IProductGroup {
-  sizes: ESize[]
-  colors: string[]
-  groupId: string
+  brand: EBrand
   category: string
+  colors: string[]
   gender: EGender
+  groupId: string
   items: IProduct[]
+  new: ENew
+  price: number
+  sizes: ESize[]
 }
 
 export interface IProductGroupState {

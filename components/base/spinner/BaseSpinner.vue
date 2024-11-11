@@ -1,7 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{ color?: string }>()
+</script>
 
 <template>
-  <span class="spinner" />
+  <span
+    class="spinner"
+    :style="{ color: color }"
+  />
 </template>
 
 <style lang="scss">

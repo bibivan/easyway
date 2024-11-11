@@ -1,4 +1,3 @@
-import type { IProduct } from '~/types'
 import { ESize } from '~/types'
 
 export interface ICartItem {
