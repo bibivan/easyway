@@ -2,15 +2,19 @@
 import { EBrand, EGender, EProductFilters } from '~/types'
 
 const { isDesktop } = storeToRefs(useDeviceTypeStore())
-const { setToken } = useAuthorizationStore()
 const { handleShowCart } = useCartOpening()
-const { getMaleCategories, getFemaleCategories } = useProductCategoriesStore()
 const state = reactive({
   menuIsOpened: false,
   categoriesIsOpened: false
 })
 
+const { setToken } = useAuthorizationStore()
 setToken()
+
+const { initFavorites } = useFavoritesStore()
+initFavorites()
+
+const { getMaleCategories, getFemaleCategories } = useProductCategoriesStore()
 await Promise.all([getMaleCategories(), getFemaleCategories()])
 </script>
 

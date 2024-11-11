@@ -16,9 +16,6 @@ const breadcrumbsData = computed(() => [
   { to: '/', label: 'Главная' },
   { label: (currentGender.value || currentBrand.value)?.toLowerCase() || '' }
 ])
-
-const { initFavorites } = useFavoritesStore()
-initFavorites()
 </script>
 
 <template>

@@ -44,7 +44,7 @@ const handleUpdateUserData = (user: IUserData) => {
         </ul>
       </div>
       <BaseCheckbox
-        id="user_email_marketing_checkbox_id"
+        id="user_email_marketing_info"
         v-model="data.emailMarketing"
         class="user__email-marketing"
       >

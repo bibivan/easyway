@@ -6,8 +6,8 @@ definePageMeta({
   currentBreadcrumb: 'Карта лояльности'
 })
 
-// const { data, error, refresh: handleGetLoyalty, status } = useAuthFetch('loyalty')
 const { isMobile } = storeToRefs(useDeviceTypeStore())
+// const { data, error, refresh: handleGetLoyalty, status } = useAuthFetch('loyalty')
 const { data, error, refresh: handleGetLoyalty, status } = useLoyaltyMock()
 const rulesAreShown = ref<boolean>(false)
 </script>

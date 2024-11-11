@@ -6,6 +6,7 @@ definePageMeta({
   currentBreadcrumb: 'Заказы'
 })
 
+// const { data, error, refresh: handleGetPlacedOrders, status } = useAuthFetch('placed-orders')
 const { data, error, refresh: handleGetPlacedOrders, status } = usePlacedOrdersMock()
 </script>
 
