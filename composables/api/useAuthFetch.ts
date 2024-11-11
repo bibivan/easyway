@@ -6,7 +6,7 @@ export function useAuthFetch<ResT, DataT>(
   options: UseFetchOptions<ResT, DataT> = {}
 ) {
   const authStore = useAuthorizationStore()
-  const { goToAuth, authorizationState } = authStore
+  const { goToAuth, updateToken } = authStore
   const { token } = storeToRefs(authStore)
 
   if (!token.value) goToAuth()
@@ -27,7 +27,7 @@ export function useAuthFetch<ResT, DataT>(
       }
     },
     async onResponse({ response }) {
-      authorizationState.data.token = response._data.token
+      updateToken(response._data.token)
     },
     ...options
   })

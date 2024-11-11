@@ -231,10 +231,13 @@ export const usePlacedOrdersMock = () => {
   ].map((group: IProductGroupRaw) => productGroupRawToProductGroup(group))
 
   const userMock: IPlacedOrders = {
-    '12.06.2024': groups,
-    '23.12.2023': groups,
-    '04.06.2022': groups,
-    '11.01.2021': groups
+    token: 'token',
+    items: {
+      '12.06.2024': groups,
+      '23.12.2023': groups,
+      '04.06.2022': groups,
+      '11.01.2021': groups
+    }
   }
 
   return useMockFetch('userMock', userMock)

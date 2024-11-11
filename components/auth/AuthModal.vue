@@ -5,55 +5,65 @@ import VOtpInput from 'vue3-otp-input'
 
 const authDataState = reactive<IAuthDataState>({
   phone: null,
-  code: null,
+  code: '',
   privacyDataConsent: false,
   emailMarketing: false,
   codeCheckingIsShown: false,
   errorMessage: null
 })
+
 const authStore = useAuthorizationStore()
 const { closeAuthModal, getCode, checkCode } = authStore
 const { token } = storeToRefs(authStore)
+const { ticker, initTimer } = useTimer()
 const v$ = useVuelidate()
+
+const refreshCode = () => {
+  authDataState.errorMessage = null
+  authDataState.code = ''
+  initTimer()
+}
+
+const handleReqError = (e: unknown) => {
+  return (authDataState.errorMessage = 'Что-то пошло  не такб повторите попытку')
+}
 
 const handleSubmitPhone = async () => {
   const result = await v$.value.$validate()
 
   if (result && authDataState.phone) {
-    const { data, error } = await getCode(authDataState.phone)
+    try {
+      const { success, message } = await getCode(authDataState.phone)
+      if (!success && message) authDataState.errorMessage = message
 
-    if (error.value) authDataState.errorMessage = error.value.message
-    if (data.value?.success) authDataState.codeCheckingIsShown = true
+      if (success) {
+        authDataState.codeCheckingIsShown = true
+        refreshCode()
+      }
+    } catch (e) {
+      handleReqError(e)
+    }
   }
-}
-
-const handleCloseModal = () => {
-  // authDataState.phone = null
-  // authDataState.code = null
-  // authDataState.emailMarketing = false
-  // authDataState.emailMarketing = false
-  // authDataState.errorMessage = null
-  closeAuthModal()
 }
 
 const handleSubmitCode = async () => {
   authDataState.errorMessage = null
   if (!authDataState.code) return
-  const { data, error } = await checkCode(authDataState.code)
 
-  if (token.value) {
-    closeAuthModal()
-    await navigateTo({ name: 'profile-data' })
-  }
+  try {
+    const { success, message } = await checkCode(authDataState.code)
+    if (!success && message) authDataState.errorMessage = message
 
-  if (!data.value?.success && data.value?.message) {
-    return (authDataState.errorMessage = error.value?.message as string)
-  }
-
-  if (error.value) {
-    return (authDataState.errorMessage = error.value.message)
+    if (token.value) {
+      closeAuthModal()
+      await navigateTo({ name: 'profile-user' })
+    }
+  } catch (e) {
+    handleReqError(e)
   }
 }
+
+const handleCloseModal = () => closeAuthModal()
 </script>
 
 <template>
@@ -101,24 +111,41 @@ const handleSubmitCode = async () => {
           v-if="authDataState.codeCheckingIsShown"
           class="auth-modal__form"
           action="/"
-          @submit.prevent="handleSubmitCode"
+          @submit.prevent
         >
-          <p>Введите код, который отправлен на&nbsp;номер {{ authDataState.phone }}</p>
-          <v-otp-input
-            v-model="authDataState.code"
-            class="auth-modal__otp"
-            input-classes="auth-modal__input-otp"
-            separator=" "
-            :num-inputs="4"
-            :should-auto-focus="true"
-            :should-focus-order="true"
-            :placeholder="['', '', '', '']"
-            @on-complete="handleSubmitCode"
-          />
-          <BaseErrorMessage
-            v-if="authDataState.errorMessage"
-            :message="authDataState.errorMessage"
-          />
+          <p class="auth-modal__info">
+            Введите код, который отправлен на&nbsp;номер +7{{ authDataState.phone }}
+          </p>
+          <div class="auth-modal__otp-wrapper">
+            <v-otp-input
+              v-model:value="authDataState.code"
+              class="auth-modal__otp"
+              input-classes="auth-modal__input-otp"
+              separator=" "
+              :num-inputs="4"
+              :should-auto-focus="true"
+              :should-focus-order="true"
+              :placeholder="['', '', '', '']"
+              @on-complete="handleSubmitCode"
+            />
+            <BaseErrorMessage
+              v-if="authDataState.errorMessage"
+              :message="authDataState.errorMessage"
+            />
+          </div>
+          <p
+            v-if="ticker"
+            class="auth-modal__info"
+          >
+            Повторная отправка через {{ ticker }} сек
+          </p>
+          <button
+            v-if="!ticker"
+            class="btn"
+            @click="handleSubmitPhone"
+          >
+            отправить смс еще раз
+          </button>
         </form>
 
         <button

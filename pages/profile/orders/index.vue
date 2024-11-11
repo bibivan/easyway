@@ -15,11 +15,11 @@ const { data, error, refresh: handleGetPlacedOrders, status } = usePlacedOrdersM
     color="#232323"
   />
   <div
-    v-if="data && status === EFetchStatus.SUCCESS"
+    v-if="data?.items && status === EFetchStatus.SUCCESS"
     class="placed-orders"
   >
     <div
-      v-for="(list, date) in data"
+      v-for="(list, date) in data.items"
       :key="'order-date-' + date"
       class="placed-orders__item"
     >

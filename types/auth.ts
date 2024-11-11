@@ -7,7 +7,7 @@ export interface IAuthStoreState {
 
 export interface IAuthDataState {
   phone: TNullable<string>
-  code: TNullable<number>
+  code: string
   privacyDataConsent: boolean
   emailMarketing: boolean
   codeCheckingIsShown: boolean

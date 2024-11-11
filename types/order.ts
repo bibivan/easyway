@@ -130,5 +130,8 @@ export interface IPromoStoreState {
 }
 
 export interface IPlacedOrders {
-  [key: string]: IProductGroup[]
+  token: string
+  items: {
+    [key: string]: IProductGroup[]
+  }
 }
