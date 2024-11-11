@@ -8,11 +8,16 @@
   background-color: $color-bg-section-darker; // серый фон
 
   @include tablet {
+    min-height: 320px;
     height: 510px;
   }
 
   @include xs-desktop {
+    min-height: 320px;
     height: 690px;
+  }
+  @include desktop {
+    min-height: 320px;
   }
 
   &__wrapper {
