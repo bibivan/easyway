@@ -3,7 +3,7 @@
 
   position: relative;
   width: 100%;
-  min-height: 450px;
+  min-height: 100vw;
   padding: 0;
   background-color: $color-bg-section-darker; // серый фон
 
@@ -20,13 +20,15 @@
     z-index: $ui-index-1;
     padding: 11px 0 46px;
     inset: 0;
-    background-size: cover;
+    background-size: contain;
     background-position: top;
     aspect-ratio: 1 / 1;
+
 
     @include desktop {
       padding: 25px 0 72px;
       aspect-ratio: 48 / 23;
+      background-size: cover;
     }
   }
 
