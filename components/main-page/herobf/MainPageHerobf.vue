@@ -11,18 +11,21 @@ const props = defineProps<{
 }>()
 
 const backgroundImage = ref('')
+let isMob = false;
 
 // Функция для установки фонового изображения
 function updateBackgroundImage() {
   const width = window.innerWidth
   if (width >= 1024){
-    backgroundImage.value = `url(${props.images[0]})`
+    backgroundImage.value = `url(${props.images[0]})`;
   }
   else if (width > 860 && width < 1024) {
     backgroundImage.value = `url(${props.images[1]})`
+
   }
   else if (width <= 860) {
     backgroundImage.value = `url(${props.images[2]})`
+    isMob = true
   } else {
     backgroundImage.value = 'none'
   }
@@ -60,8 +63,8 @@ onBeforeUnmount(() => {
     </div>
     <div class="hero__container container">
       <div class="hero__content">
-        <p class="hero__heading">{{ title }}</p>
-        <NuxtLink
+        <p v-if="!isMob" class="hero__heading">{{ title }}</p>
+        <NuxtLink v-if="!isMob"
             class="btn hero__btn"
             :to="to"
         >
