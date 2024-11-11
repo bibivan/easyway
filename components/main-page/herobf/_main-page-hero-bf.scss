@@ -1,0 +1,150 @@
+.hero {
+  @include flex-column-center-center;
+
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  padding: 0;
+  background-color: $color-bg-section-darker; // серый фон
+
+  @include tablet {
+    height: 510px;
+  }
+
+  @include xs-desktop {
+    height: 690px;
+  }
+
+  &__wrapper {
+    position: absolute;
+    z-index: $ui-index-1;
+    padding: 11px 0 46px;
+    inset: 0;
+    background-size: cover;
+    background-position: top;
+
+    @include desktop {
+      padding: 25px 0 72px;
+      aspect-ratio: 48 / 23;
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: $ui-index-2;
+    pointer-events: none;
+  }
+
+  &__content {
+    @include flex-column-center-center;
+  }
+
+  &__heading {
+    @include flex-column-bottom-center;
+    @include text-heading;
+
+    min-height: 2em;
+    //margin-bottom: 60px;
+    color: $color-text-light;
+    font-size: 50px;
+    line-height: 1;
+    text-align: center;
+    white-space: pre-wrap;
+
+    @include xs-desktop {
+      margin-bottom: 30px;
+      font-size: 87px;
+      line-height: 1;
+    }
+  }
+
+  &__btn {
+    max-width: 251px;
+
+    @include tablet {
+      background-color: $color-bg-btn-light;
+      color: $color-text;
+    }
+  }
+
+  &__banner {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__note {
+    @include text-body;
+
+    max-width: 150px;
+    color: $color-text-light;
+    font-size: 15px;
+    text-align: right;
+    white-space: pre-wrap;
+  }
+
+  &__image {
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 200px;
+    height: 200px;
+    border: 1px solid $color-bg-section;
+    border-radius: 50%;
+    object-fit: cover;
+
+    @include tablet {
+      width: 482px;
+      height: 482px;
+      border-width: 3px;
+    }
+
+    @include xs-desktop {
+      width: 593px;
+      height: 593px;
+      border-width: 5px;
+    }
+
+    &_position_top {
+      object-position: top;
+    }
+
+    &_1 {
+      @include flex-row-bottom-end;
+
+      z-index: 1;
+      display: none;
+      background-color: #6c6c6a;
+      display: none !important;
+
+      @include desktop {
+        display: flex;
+        padding: 0 260px 268px 20px;
+        transform: translateX(-100%);
+      }
+
+      @include xs-desktop {
+        padding: 0 340px 328px 20px;
+      }
+    }
+
+    &_2 {
+      z-index: 2;
+      transform: translateX(-73%);
+
+      @include desktop {
+        transform: translateX(-73%);
+      }
+    }
+
+    &_3 {
+      z-index: 3;
+      transform: translateX(-27%);
+
+      @include desktop {
+        transform: translateX(-27);
+      }
+    }
+  }
+}

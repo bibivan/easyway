@@ -13,7 +13,7 @@ const community = useCommunityMock()
     :modules="[SwiperPagination, SwiperAutoplay]"
     :initial-slide="0"
     :autoplay="{
-      delay: 10000,
+      delay: 1000000,
       disableOnInteraction: false
     }"
     :pagination="{
@@ -22,25 +22,25 @@ const community = useCommunityMock()
     }"
   >
     <SwiperSlide>
-      <MainPageHero
-        title="EAZYWAY"
+      <MainPageHerobf
+        title="BLACK FRIDAY"
         :to="{
           name: 'catalog',
-          query: { [EProductFilters.BRAND]: EBrand.EAZYWAY }
+          query: { [EProductFilters.BRAND]: EBrand.EAZYWAY, ['erid'] : '2VtzqxcQKA5' }
         }"
-        :images="['./img/hero/main/3.jpg', './img/hero/main/4.jpg']"
+        :images="['./img/hero/main/main-bf-1-desk.jpg', './img/hero/main/main-bf-1-tablet.jpg', './img/hero/main/main-bf-1-mob.jpg']"
       />
     </SwiperSlide>
     <SwiperSlide>
-      <MainPageHero
-        title="easyfit"
+      <MainPageHerobf
+        title="BLACK FRIDAY"
         note="Бренд-линейка easyfit"
         :images-top="true"
         :to="{
           name: 'catalog',
-          query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
+          query: { [EProductFilters.BRAND]: EBrand.EASYFIT, ['erid'] : '2VtzqxEBAtm' }
         }"
-        :images="['./img/hero/main/1.jpg', './img/hero/main/2.jpg']"
+        :images="['./img/hero/main/main-bf-2-desk.jpg', './img/hero/main/main-bf-2-tablet.jpg', './img/hero/main/main-bf-2-mob.jpg']"
       />
     </SwiperSlide>
 
