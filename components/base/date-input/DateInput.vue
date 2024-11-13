@@ -1,9 +1,12 @@
 <script setup lang="ts" generic="T extends number | string">
 import dayjs from 'dayjs'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
 import { useVuelidate } from '@vuelidate/core'
 import { helpers, requiredIf } from '@vuelidate/validators'
 import { EErrorPosition, type TNullable, type TRawDateString } from '~/types'
 import Inputmask from 'inputmask'
+
+dayjs.extend(customParseFormat)
 
 const props = defineProps<{
   disabled?: boolean
@@ -29,6 +32,7 @@ const modelValue = defineModel<TNullable<TRawDateString>>()
 
 const getAge = (value: string) => {
   const birthDate = dayjs(value, 'DD.MM.YYYY')
+  console.log(dayjs().diff(birthDate, 'year'))
   return dayjs().diff(birthDate, 'year')
 }
 const validationRules = computed(() => ({

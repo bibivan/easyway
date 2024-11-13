@@ -38,5 +38,5 @@ const { authFormIsShown } = storeToRefs(useAuthorizationStore())
     <SiteFooter />
   </template>
   <CartModal />
-  <AuthModal v-if="authFormIsShown" />
+  <ProfileAuthModal v-if="authFormIsShown" />
 </template>

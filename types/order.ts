@@ -4,7 +4,8 @@ import {
   type IDeliveryCourier,
   type IDeliveryPoint,
   EDeliveryType,
-  IProductGroup
+  IProductGroup,
+  IProductGroupRaw
 } from '~/types'
 
 export enum EPaymentType {
@@ -129,9 +130,13 @@ export interface IPromoStoreState {
   error: TNullable<string>
 }
 
-export interface IPlacedOrders {
+export interface IPlacedOrdersRaw {
   token: string
   items: {
-    [key: string]: IProductGroup[]
+    [key: string]: IProductGroupRaw[]
   }
+}
+
+export interface IPlacedOrders {
+  [key: string]: IProductGroup[]
 }

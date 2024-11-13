@@ -25,7 +25,8 @@ const refreshCode = () => {
 }
 
 const handleReqError = (e: unknown) => {
-  return (authDataState.errorMessage = 'Что-то пошло  не такб повторите попытку')
+  authDataState.errorMessage = 'Что-то пошло  не так, повторите попытку'
+  return console.error(e)
 }
 
 const handleSubmitPhone = async () => {
@@ -48,10 +49,10 @@ const handleSubmitPhone = async () => {
 
 const handleSubmitCode = async () => {
   authDataState.errorMessage = null
-  if (!authDataState.code) return
+  if (!authDataState.code || !authDataState.phone) return
 
   try {
-    const { success, message } = await checkCode(authDataState.code)
+    const { success, message } = await checkCode(authDataState.code, authDataState.phone)
     if (!success && message) authDataState.errorMessage = message
 
     if (token.value) {
@@ -110,7 +111,7 @@ const handleCloseModal = () => closeAuthModal()
         <form
           v-if="authDataState.codeCheckingIsShown"
           class="auth-modal__form"
-          action="/"
+          action="/public"
           @submit.prevent
         >
           <p class="auth-modal__info">
@@ -161,5 +162,5 @@ const handleCloseModal = () => closeAuthModal()
 </template>
 
 <style scoped lang="scss">
-@import 'auth-modal';
+@import 'profile-auth-modal';
 </style>

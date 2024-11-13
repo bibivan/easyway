@@ -32,6 +32,7 @@ export const usePlacedOrdersMock = () => {
           ],
           PRICE: '2100',
           PRICE_INT: '2100',
+          PRICE_DISCOUNT: '2100',
           SIZE: 'L',
           COLOR: '000000'
         }
@@ -69,6 +70,7 @@ export const usePlacedOrdersMock = () => {
           ],
           PRICE: '2100',
           PRICE_INT: '2100',
+          PRICE_DISCOUNT: '2100',
           SIZE: 'L',
           COLOR: '000000'
         }
@@ -106,6 +108,7 @@ export const usePlacedOrdersMock = () => {
           ],
           PRICE: '6400',
           PRICE_INT: '6400',
+          PRICE_DISCOUNT: '6400',
           SIZE: 'M',
           COLOR: '000000'
         }
@@ -144,6 +147,7 @@ export const usePlacedOrdersMock = () => {
           ],
           PRICE: '5900',
           PRICE_INT: '5900',
+          PRICE_DISCOUNT: '5900',
           SIZE: 'XL',
           COLOR: '1240AB'
         }
@@ -181,6 +185,7 @@ export const usePlacedOrdersMock = () => {
           ],
           PRICE: '3600',
           PRICE_INT: '3600',
+          PRICE_DISCOUNT: '3600',
           SIZE: 'XXL',
           COLOR: '000000'
         }
@@ -221,6 +226,7 @@ export const usePlacedOrdersMock = () => {
           ],
           PRICE: '3800',
           PRICE_INT: '3800',
+          PRICE_DISCOUNT: '3800',
           SIZE: 'S',
           COLOR: '000000'
         }
@@ -231,13 +237,10 @@ export const usePlacedOrdersMock = () => {
   ].map((group: IProductGroupRaw) => productGroupRawToProductGroup(group))
 
   const userMock: IPlacedOrders = {
-    token: 'token',
-    items: {
-      '12.06.2024': groups,
-      '23.12.2023': groups,
-      '04.06.2022': groups,
-      '11.01.2021': groups
-    }
+    '12.06.2024': groups,
+    '23.12.2023': groups,
+    '04.06.2022': groups,
+    '11.01.2021': groups
   }
 
   return useMockFetch('userMock', userMock)

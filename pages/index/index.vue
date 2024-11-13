@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { EBrand, EGender, EProductFilters } from '~/types/index.js'
+import { EBrand, EProductFilters } from '~/types/index.js'
 // const collaborators = useCollaboratorsMock()
 const community = useCommunityMock()
 </script>

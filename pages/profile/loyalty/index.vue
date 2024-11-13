@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EFetchStatus } from '~/types'
+import { EFetchStatus, type ILoyaltyData } from '~/types'
 
 definePageMeta({
   layout: 'authenticated',
@@ -7,8 +7,13 @@ definePageMeta({
 })
 
 const { isMobile } = storeToRefs(useDeviceTypeStore())
-// const { data, error, refresh: handleGetLoyalty, status } = useAuthFetch('loyalty')
-const { data, error, refresh: handleGetLoyalty, status } = useLoyaltyMock()
+const {
+  data,
+  error,
+  refresh: handleGetLoyalty,
+  status
+} = useAuthFetch<ILoyaltyData, ILoyaltyData>('loyalty')
+// const { data, error, refresh: handleGetLoyalty, status } = useLoyaltyMock()
 const rulesAreShown = ref<boolean>(false)
 </script>
 

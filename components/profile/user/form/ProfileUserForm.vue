@@ -8,27 +8,29 @@ const emit = defineEmits<{ onUpdateUser: [IUserData] }>()
 
 const payload = reactive<IUserData>({ ...props.user })
 
-// const { error, status, refresh } = useAuthFetch('user', {
-//   method: 'PATCH',
-//   body: payload,
-//   immediate: false
-// })
+const { error, status, refresh } = useAuthFetch<IUserData, IUserData>('user', {
+  method: 'POST',
+  body: payload,
+  immediate: false,
+  watch: false
+})
 
-const { error, status, refresh } = useMockFetch(
-  'userSendData',
-  { success: true },
-  {
-    immediate: false
-  }
-)
+// const { error, status, refresh } = useMockFetch(
+//   'userSendData',
+//   { success: true },
+//   {
+//     immediate: false
+//   }
+// )
 
 const v$ = useVuelidate()
 
 //  хендлеры
 const handleSubmitUserData = async () => {
-  const result = v$.value.$validate()
+  const result = await v$.value.$validate()
   if (!result) return
 
+  console.log('here', result, v$.value)
   await refresh()
 
   if (status.value === EFetchStatus.SUCCESS) {
@@ -66,7 +68,7 @@ const handleSubmitUserData = async () => {
       >
       <BaseInput
         id="user_name_input"
-        v-model="payload.name"
+        v-model.trim="payload.name"
         type="text"
         :required-val="true"
       />
@@ -79,7 +81,7 @@ const handleSubmitUserData = async () => {
       >
       <BaseInput
         id="user_surname_input"
-        v-model="payload.surname"
+        v-model.trim="payload.surname"
         type="text"
         :required-val="true"
       />
@@ -94,6 +96,7 @@ const handleSubmitUserData = async () => {
         id="user_email_input"
         v-model="payload.email"
         type="text"
+        :is-email="true"
         :required-val="true"
       />
     </div>
@@ -140,10 +143,7 @@ const handleSubmitUserData = async () => {
     </BaseCheckbox>
 
     <div class="user-form__controls">
-      <button
-        class="btn user-form__btn"
-        type="submit"
-      >
+      <button class="btn user-form__btn">
         <BaseSpinner v-if="status === EFetchStatus.PENDING" />
         <template v-else> {{ error ? 'повторить' : 'сохранить' }} </template>
       </button>

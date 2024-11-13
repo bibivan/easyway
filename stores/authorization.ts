@@ -35,9 +35,9 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
   }
 
   const updateToken = (token: string) => {
+    // console.log('updated', cookieToken.value, token)
     cookieToken.value = token
     authorizationState.data.token = token
-    console.log(token, 'tok', cookieToken.value, authorizationState.data.token)
   }
 
   const logOut = () => {
@@ -54,57 +54,58 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
 
   // Actions
   const getCode = async (phone: string) => {
-    // return $fetch('get-sms-code', {
-    // baseURL: getBaseUrl(),
-    //   method: 'POST',
-    //   body: {
-    //     phone
-    //   }
-    // })
-
-    return $fetch<ICodeCheckingResponse>(
-      'https://echo.free.beeceptor.com/sample-request?success=true',
-      {
-        onResponse: ({ response }) => {
-          response._data = {
-            success: parseJSON(response._data?.parsedQueryParams.success)
-          }
-          console.log(response._data)
-        }
-      }
-    )
-  }
-
-  const checkCode = async (code: string) => {
-    // return $fetch<ICodeCheckingResponse>('check-code', {
-    //   baseURL: getBaseUrl(),
-    //   method: 'POST',
-    //   body: {
-    //     code
-    //   },
-    //   onResponse: ({ response }) => {
-    //     updateToken(response._data.token)
-    //   }
-    // })
-    const query = () => {
-      if (code === '1111') {
-        return { success: true, token: 'asdfsdfsdf' }
-      } else return { success: false, message: 'Неверный код' }
-    }
-
-    return $fetch<ICodeCheckingResponse>('https://echo.free.beeceptor.com/sample-request', {
-      query: query(),
-      onResponse: ({ response }) => {
-        response._data = {
-          ...response._data.parsedQueryParams,
-          success: parseJSON(response._data?.parsedQueryParams?.success)
-        }
-        console.log(response._data, '4442323333')
-        if (response._data.token) {
-          updateToken(response._data.token)
-        }
+    return $fetch<ICodeCheckingResponse>('get-sms-code', {
+      baseURL: getBaseUrl(),
+      method: 'POST',
+      body: {
+        phone: '7' + phone
       }
     })
+
+    // return $fetch<ICodeCheckingResponse>(
+    //   'https://echo.free.beeceptor.com/sample-request?success=true',
+    //   {
+    //     onResponse: ({ response }) => {
+    //       response._data = {
+    //         success: parseJSON(response._data?.parsedQueryParams.success)
+    //       }
+    //       console.log(response._data)
+    //     }
+    //   }
+    // )
+  }
+
+  const checkCode = async (code: string, phone: string) => {
+    return $fetch<ICodeCheckingResponse>('check-code', {
+      baseURL: getBaseUrl(),
+      method: 'POST',
+      body: {
+        code,
+        phone: '7' + phone
+      },
+      onResponse: ({ response }) => {
+        updateToken(response._data.token)
+      }
+    })
+    // const query = () => {
+    //   if (code === '1111') {
+    //     return { success: true, token: 'asdfsdfsdf' }
+    //   } else return { success: false, message: 'Неверный код' }
+    // }
+    //
+    // return $fetch<ICodeCheckingResponse>('https://echo.free.beeceptor.com/sample-request', {
+    //   query: query(),
+    //   onResponse: ({ response }) => {
+    //     response._data = {
+    //       ...response._data.parsedQueryParams,
+    //       success: parseJSON(response._data?.parsedQueryParams?.success)
+    //     }
+    //     console.log(response._data, '4442323333')
+    //     if (response._data.token) {
+    //       updateToken(response._data.token)
+    //     }
+    //   }
+    // })
   }
 
   return {

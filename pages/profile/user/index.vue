@@ -6,8 +6,8 @@ definePageMeta({
   currentBreadcrumb: 'Личные данные'
 })
 
-// const { data, error, refresh: handleGetUser, status } = useAuthFetch('user')
-const { data, error, refresh: handleGetUser, status } = useUserMock()
+const { data, error, refresh: handleGetUser, status } = useAuthFetch<IUserData, IUserData>('user')
+// const { data, error, refresh: handleGetUser, status } = useUserMock()
 const userFormIsShown = ref<boolean>(false)
 
 const handleUpdateUserData = (user: IUserData) => {

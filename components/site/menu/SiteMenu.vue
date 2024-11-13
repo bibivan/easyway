@@ -101,7 +101,7 @@ watch(
         class="menu__link"
         :to="{ name: 'profile-user' }"
       >
-        Личные данные
+        Профиль
       </NuxtLink>
     </li>
     <li class="menu__item">

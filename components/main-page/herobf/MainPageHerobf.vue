@@ -11,22 +11,20 @@ const props = defineProps<{
 }>()
 
 const backgroundImage = ref('')
-let isMob = false
+const { isMobile, isTablet, isDesktop } = storeToRefs(useDeviceTypeStore())
 
 // Функция для установки фонового изображения
-function updateBackgroundImage() {
-  const width = window.innerWidth
-  if (width >= 1024) {
+const updateBackgroundImage = debounce(() => {
+  if (isDesktop.value) {
     backgroundImage.value = `url(${props.images[0]})`
-  } else if (width > 860 && width < 1024) {
+  } else if (isTablet.value) {
     backgroundImage.value = `url(${props.images[1]})`
-  } else if (width <= 860) {
+  } else if (isMobile.value) {
     backgroundImage.value = `url(${props.images[2]})`
-    isMob = true
   } else {
     backgroundImage.value = 'none'
   }
-}
+}, 500)
 
 onMounted(() => {
   updateBackgroundImage()
@@ -61,13 +59,13 @@ onBeforeUnmount(() => {
     <div class="hero__container container">
       <div class="hero__content">
         <p
-          v-if="!isMob"
+          v-if="!isMobile"
           class="hero__heading"
         >
           {{ title }}
         </p>
         <NuxtLink
-          v-if="!isMob"
+          v-if="!isMobile"
           class="btn hero__btn"
           :to="to"
         >

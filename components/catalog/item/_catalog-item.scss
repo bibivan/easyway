@@ -100,11 +100,14 @@
   }
 
   &__footer {
-    @include flex-row-center-between;
+    @include flex-row-center-start;
+
+    gap: 10px;
   }
 
   &__price {
     font-weight: 700;
+
     &__old {
       text-decoration: line-through;
     }
@@ -115,6 +118,7 @@
     height: 25px;
     padding: 6px 7px 7px 6px;
     border-radius: $border-radius-s;
+    margin-left: auto;
     background-color: $color-bg-btn;
     color: $color-text-light;
     transition: background-color 0.2s ease-in-out;

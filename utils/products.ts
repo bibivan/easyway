@@ -6,7 +6,9 @@ import {
   EGender,
   ESize,
   ENew,
-  EBrand
+  EBrand,
+  type IPlacedOrdersRaw,
+  type IPlacedOrders
 } from '~/types'
 
 const getGender = (gender: string): EGender => {
@@ -86,6 +88,16 @@ export const productGroupsRawToProductGroups = (data: IProductGroupRaw[]): IProd
       else return [...acc, productGroupRawToProductGroup(curItem)]
     }, []) || null
   )
+}
+
+export const placedOrdersRawToPlacedOrders = (rawData: IPlacedOrdersRaw): IPlacedOrders => {
+  const transformedItems: IPlacedOrders = {}
+
+  Object.keys(rawData.items).forEach((key) => {
+    transformedItems[key] = rawData.items[key].map(productGroupRawToProductGroup)
+  })
+
+  return transformedItems
 }
 
 export const transformSizeString = (size: string): string => {

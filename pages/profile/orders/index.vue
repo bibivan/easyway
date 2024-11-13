@@ -1,13 +1,22 @@
 <script setup lang="ts">
-import { EFetchStatus } from '~/types'
+import { EFetchStatus, type IPlacedOrders, type IPlacedOrdersRaw } from '~/types'
 
 definePageMeta({
   layout: 'authenticated',
   currentBreadcrumb: 'Заказы'
 })
 
-// const { data, error, refresh: handleGetPlacedOrders, status } = useAuthFetch('placed-orders')
-const { data, error, refresh: handleGetPlacedOrders, status } = usePlacedOrdersMock()
+const {
+  data,
+  error,
+  refresh: handleGetPlacedOrders,
+  status
+} = useAuthFetch<IPlacedOrdersRaw, IPlacedOrders>('placed-orders', {
+  transform: (data: IPlacedOrdersRaw) => {
+    return placedOrdersRawToPlacedOrders(data)
+  }
+})
+// const { data, error, refresh: handleGetPlacedOrders, status } = usePlacedOrdersMock()
 </script>
 
 <template>
@@ -16,11 +25,11 @@ const { data, error, refresh: handleGetPlacedOrders, status } = usePlacedOrdersM
     color="#232323"
   />
   <div
-    v-if="data?.items && status === EFetchStatus.SUCCESS"
+    v-if="data && status === EFetchStatus.SUCCESS"
     class="placed-orders"
   >
     <div
-      v-for="(list, date) in data.items"
+      v-for="(list, date) in data"
       :key="'order-date-' + date"
       class="placed-orders__item"
     >
