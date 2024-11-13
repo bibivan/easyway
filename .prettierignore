@@ -9,6 +9,7 @@ public
 node_modules
 
 logs
+plugins/vk-retargeting.js
 *.log
 
 .DS_Store

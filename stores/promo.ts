@@ -1,4 +1,4 @@
-import type {ICartItem, IPromoResponseData, IPromoStoreState, TNullable} from '~/types'
+import type { ICartItem, IPromoResponseData, IPromoStoreState, TNullable } from '~/types'
 
 export const usePromoStore = defineStore('promo_store', () => {
   //data
@@ -6,13 +6,6 @@ export const usePromoStore = defineStore('promo_store', () => {
     data: { amount: null, code: null },
     loading: false,
     error: null
-  })
-  let cartState = reactive<{
-    data: TNullable<ICartItem[]>
-    isShown: boolean
-  }>({
-    data: null,
-    isShown: false
   })
 
   // getters
@@ -23,35 +16,25 @@ export const usePromoStore = defineStore('promo_store', () => {
     if (promoJSON && isValidJSON(promoJSON)) promoState.data = JSON.parse(promoJSON)
   }
 
-  const calculateDiscount = (
-      sum: number,
-      cart: { data: TNullable<ICartItem[]>; isShown: boolean }
-  ) => {
-    let discountSum = 0;
-    cartState.data = cart.data;
-    // Проверяем, что промокод и данные о скидке существуют и не равны null
+  const calculateDiscount = (cartData: TNullable<ICartItem[]>) => {
+    let discountSum = 0
 
-
-    if (cartState.data && promoState.data.code) {
-
-      // Проходим по каждому товару в корзине
-      cartState.data!.forEach((item) => {
+    if (cartData && promoState.data.code) {
+      cartData!.forEach((item) => {
         // Применяем скидку, если артикул не начинается с 'EF' или промокод не начинается с 'EAZY'
         if (item.article.startsWith('EF') && !promoState.data.code!.startsWith('EAZY')) {
-          discountSum += Math.floor(item.price * (promoState.data.amount! / 100));
+          discountSum += Math.floor(item.price * (promoState.data.amount! / 100))
         } else if (!item.article.startsWith('EF') && promoState.data.code!.startsWith('EAZY')) {
-          discountSum += Math.floor(item.price * (promoState.data.amount! / 100));
+          discountSum += Math.floor(item.price * (promoState.data.amount! / 100))
         }
-      });
+      })
     }
 
-    return discountSum;
-  };
+    return discountSum
+  }
 
-  const calculateDiscountedSum = (sum: number, cart: { data: TNullable<ICartItem[]>; isShown: boolean }) => {
-    console.log(cart);
-    console.log(promoState);
-    return sum - calculateDiscount(sum, cart);
+  const calculateDiscountedSum = (sum: number, cartData: TNullable<ICartItem[]>) => {
+    return sum - calculateDiscount(cartData)
   }
 
   const cancelPromo = () => {

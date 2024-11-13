@@ -26,9 +26,13 @@ const community = useCommunityMock()
         title="BLACK FRIDAY"
         :to="{
           name: 'catalog',
-          query: { [EProductFilters.BRAND]: EBrand.EAZYWAY, ['erid'] : '2VtzqxcQKA5' }
+          query: { [EProductFilters.BRAND]: EBrand.EAZYWAY, ['erid']: '2VtzqxcQKA5' }
         }"
-        :images="['./img/hero/main/main-bf-1-desk.jpg', './img/hero/main/main-bf-1-tablet.jpg', './img/hero/main/main-bf-1-mob.jpg']"
+        :images="[
+          './img/hero/main/main-bf-1-desk.jpg',
+          './img/hero/main/main-bf-1-tablet.jpg',
+          './img/hero/main/main-bf-1-mob.jpg'
+        ]"
       />
     </SwiperSlide>
     <SwiperSlide>
@@ -38,9 +42,13 @@ const community = useCommunityMock()
         :images-top="true"
         :to="{
           name: 'catalog',
-          query: { [EProductFilters.BRAND]: EBrand.EASYFIT, ['erid'] : '2VtzqxEBAtm' }
+          query: { [EProductFilters.BRAND]: EBrand.EASYFIT, ['erid']: '2VtzqxEBAtm' }
         }"
-        :images="['./img/hero/main/main-bf-2-desk.jpg', './img/hero/main/main-bf-2-tablet.jpg', './img/hero/main/main-bf-2-mob.jpg']"
+        :images="[
+          './img/hero/main/main-bf-2-desk.jpg',
+          './img/hero/main/main-bf-2-tablet.jpg',
+          './img/hero/main/main-bf-2-mob.jpg'
+        ]"
       />
     </SwiperSlide>
 
@@ -132,7 +140,10 @@ const community = useCommunityMock()
     </div>
   </section>
 
-  <section v-show="false" class="section">
+  <section
+    v-show="false"
+    class="section"
+  >
     <div class="container">
       <CommonSubscriptionForm />
     </div>

@@ -15,7 +15,7 @@ onMounted(() => initPromoData())
 watch(
   [() => promoState.data.amount, cartTotalPrice],
   () => {
-    order.price = calculateDiscountedSum(cartTotalPrice.value, cartState)
+    order.price = calculateDiscountedSum(cartTotalPrice.value, cartState.data)
   },
   { immediate: true }
 )
@@ -63,7 +63,7 @@ watch(
           <span class="checkout-cart-item__name">Скидка</span>
           <span class="checkout-cart-item__desc">Промокод: {{ promoState.data.code }}</span>
         </div>
-        <span class="checkout-cart-item__price">-{{ calculateDiscount(cartTotalPrice, cartState) }}₽</span>
+        <span class="checkout-cart-item__price">-{{ calculateDiscount(cartState.data) }}₽</span>
       </li>
     </ul>
 

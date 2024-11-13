@@ -66,6 +66,7 @@ export interface IProduct {
   pictures: TNullable<string[]>
   price: TNullable<string>
   priceInt: TNullable<number>
+  priceDsc: TNullable<number>
   size: ESize
   stock: number
 }

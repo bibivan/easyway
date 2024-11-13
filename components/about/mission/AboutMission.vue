@@ -26,14 +26,15 @@ const { isDesktop } = storeToRefs(useDeviceTypeStore())
         </div>
         <h2 class="our-mission__heading typographic-about__heading">Наша миссия:</h2>
         <p class="our-mission__description typographic-about__text">
-          Мы создаем комфортную, функциональную и стильную спортивную одежду. Она вдохновляет наших девушек на занятия спортом.
+          Мы создаем комфортную, функциональную и стильную спортивную одежду. Она вдохновляет наших
+          девушек на занятия спортом.
         </p>
       </div>
     </div>
   </section>
 </template>
 
+<script setup lang="ts"></script>
 <style scoped lang="scss">
 @import 'about-mission';
 </style>
-<script setup lang="ts"></script>

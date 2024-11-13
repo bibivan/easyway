@@ -9,7 +9,7 @@ const { isMobile } = storeToRefs(useDeviceTypeStore())
 const totalSum = computed(() => formatNumberWithSpaces(cartTotalPrice.value))
 
 const discountedSum = computed(() => {
-  return formatNumberWithSpaces(calculateDiscountedSum(cartTotalPrice.value, cartState))
+  return formatNumberWithSpaces(calculateDiscountedSum(cartTotalPrice.value, cartState.data))
 })
 
 const handleCloseModal = () => {

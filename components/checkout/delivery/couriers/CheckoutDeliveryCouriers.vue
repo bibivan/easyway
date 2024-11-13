@@ -40,7 +40,14 @@ watch(
       :key="deliveryCourier.delivery_code + index"
       v-model="pickedCourier"
       :value="deliveryCourier.name"
-      :label="deliveryCourier.name + ' доставка ' + deliveryCourier.delivery_date + ' за ' + deliveryCourier.cost + ' руб'"
+      :label="
+        deliveryCourier.name +
+        ' доставка ' +
+        deliveryCourier.delivery_date +
+        ' за ' +
+        deliveryCourier.cost +
+        ' руб'
+      "
     />
   </div>
 </template>

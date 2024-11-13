@@ -11,19 +11,16 @@ const props = defineProps<{
 }>()
 
 const backgroundImage = ref('')
-let isMob = false;
+let isMob = false
 
 // Функция для установки фонового изображения
 function updateBackgroundImage() {
   const width = window.innerWidth
-  if (width >= 1024){
-    backgroundImage.value = `url(${props.images[0]})`;
-  }
-  else if (width > 860 && width < 1024) {
+  if (width >= 1024) {
+    backgroundImage.value = `url(${props.images[0]})`
+  } else if (width > 860 && width < 1024) {
     backgroundImage.value = `url(${props.images[1]})`
-
-  }
-  else if (width <= 860) {
+  } else if (width <= 860) {
     backgroundImage.value = `url(${props.images[2]})`
     isMob = true
   } else {
@@ -44,17 +41,17 @@ onBeforeUnmount(() => {
 <template>
   <section class="hero section">
     <div
-        class="hero__wrapper"
-        :style="{ backgroundImage: backgroundImage }"
+      class="hero__wrapper"
+      :style="{ backgroundImage: backgroundImage }"
     >
       <NuxtLink
-          class="hero__banner"
-          :to="to"
+        class="hero__banner"
+        :to="to"
       >
         <span class="hero__image hero__image_1">
           <span
-              v-if="note"
-              class="hero__note"
+            v-if="note"
+            class="hero__note"
           >
             {{ note }}
           </span>
@@ -63,10 +60,16 @@ onBeforeUnmount(() => {
     </div>
     <div class="hero__container container">
       <div class="hero__content">
-        <p v-if="!isMob" class="hero__heading">{{ title }}</p>
-        <NuxtLink v-if="!isMob"
-            class="btn hero__btn"
-            :to="to"
+        <p
+          v-if="!isMob"
+          class="hero__heading"
+        >
+          {{ title }}
+        </p>
+        <NuxtLink
+          v-if="!isMob"
+          class="btn hero__btn"
+          :to="to"
         >
           купить
         </NuxtLink>
@@ -77,5 +80,4 @@ onBeforeUnmount(() => {
 
 <style scoped lang="scss">
 @import 'main-page-hero-bf';
-
 </style>

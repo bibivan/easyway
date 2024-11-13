@@ -8,8 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint . && stylelint {**/*,*}.{scss,vue}",
-    "lint:fix": "eslint . --fix && stylelint --fix {**/*,*}.{scss,vue}"
+    "lint": "eslint . --quiet && prettier --check . && stylelint {**/*,*}.{scss,vue}",
+    "lint:fix": "eslint . --fix --quiet && prettier --write . && stylelint --fix {**/*,*}.{scss,vue}"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
