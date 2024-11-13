@@ -3,6 +3,8 @@ $default: 'Toastify';
 .base-toastify {
   --toastify-color-dark: #{$color-primary};
 
+  z-index: $ui-index-7;
+
   &__item.#{$default}__toast-theme--dark {
     padding: 14px;
     box-shadow: none;

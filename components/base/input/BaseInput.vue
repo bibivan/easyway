@@ -12,7 +12,7 @@ const props = defineProps<{
   noErrorMessage?: boolean
   placeholder?: string
   requiredVal?: boolean
-  type: 'text' | 'number'
+  type: 'text' | 'number' | 'date'
 }>()
 
 const emit = defineEmits<{
@@ -46,7 +46,10 @@ const { isValid, hasError, errorMessage, handleBlur, handleFocus } = useValidati
       }
     ]"
   >
-    <SvgCheckmark class="input-block__checkmark" />
+    <SvgCheckmark
+      v-if="type !== 'date'"
+      class="input-block__checkmark"
+    />
     <input
       :id="id"
       v-model="modelValue"

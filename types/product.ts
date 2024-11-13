@@ -1,17 +1,18 @@
-import type { EBrand, EGender, TNullable } from '~/types'
+import type { EBrand, EGender, ENew, TNullable } from '~/types'
 
-export enum EProductSizeAttr {
+export enum ESize {
   XS = 'XS',
   S = 'S',
   M = 'M',
   L = 'L',
   XL = 'XL',
   XXL = 'XXL',
-  XXXL = 'XXXL'
+  XXXL = 'XXXL',
+  PLUS = 'Plus Size'
 }
 
 export interface IProductSizeState {
-  value: TNullable<EProductSizeAttr>
+  value: TNullable<ESize>
   disabled: TNullable<boolean>
 }
 
@@ -31,12 +32,24 @@ export interface IProductRaw {
   GROUP_ID: string
   ID: string
   NAME: string
-  PICTURES: string
+  PICTURES: string[]
   PRICE: string
   PRICE_INT: string
   PRICE_DISCOUNT: string
   SIZE: string
   STOCK?: string
+}
+
+export interface IProductGroupRaw {
+  BRAND: string
+  CATEGORY: string
+  COLORS: string[]
+  GENDER: string
+  GROUP_ID: string
+  ITEMS: IProductRaw[]
+  NEW: string
+  SIZES: string[]
+  PRICE: string
 }
 
 export interface IProduct {
@@ -53,27 +66,20 @@ export interface IProduct {
   pictures: TNullable<string[]>
   price: TNullable<string>
   priceInt: TNullable<number>
-  priceDsc: TNullable<number>
-  size: EProductSizeAttr
+  size: ESize
   stock: number
 }
 
-export interface IProductGroupRaw {
-  SIZES: string[]
-  COLORS: string[]
-  GROUP_ID: string
-  CATEGORY: string
-  GENDER: string
-  ITEMS: IProductRaw[]
-}
-
 export interface IProductGroup {
-  sizes: EProductSizeAttr[]
-  colors: string[]
-  groupId: string
+  brand: EBrand
   category: string
+  colors: string[]
   gender: EGender
+  groupId: string
   items: IProduct[]
+  new: ENew
+  price: number
+  sizes: ESize[]
 }
 
 export interface IProductGroupState {

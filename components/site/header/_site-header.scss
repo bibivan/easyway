@@ -6,10 +6,6 @@
   box-shadow: 0 0 15px rgba($color-primary, 0.1);
   color: $color-text;
 
-  @include desktop {
-    width: calc(100% - #{$scrollbar-width});
-  }
-
   &_position_fixed {
     position: fixed;
     top: 0;

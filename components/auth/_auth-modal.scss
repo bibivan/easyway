@@ -57,10 +57,35 @@
   &__form {
     @include flex-column;
 
+    position: relative;
     gap: 15px;
 
     @include tablet {
       gap: 20px;
+    }
+  }
+
+  &__info {
+    @include flex-row-center-center;
+    @include text-body;
+
+    min-height: 40px;
+    color: $color-note;
+    font-size: 14px;
+    text-align: center;
+
+    @include tablet {
+      min-height: 44px;
+      font-size: 16px;
+    }
+  }
+
+  &__otp-wrapper {
+    position: relative;
+
+    :deep(.error-message) {
+      width: 100%;
+      text-align: center;
     }
   }
 

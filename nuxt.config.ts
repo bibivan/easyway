@@ -6,7 +6,7 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/jpg+xml', href: '/favicon.jpg' }]
     }
   },
-  css: ['~/assets/scss/main.scss'],
+  css: ['normalize.css', '~/assets/scss/main.scss'],
   devtools: { enabled: true },
   imports: {
     dirs: ['utils/typeguards']

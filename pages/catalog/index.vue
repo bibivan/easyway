@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { EFetchStatus } from '~/types'
-import SvgFilters from '~/components/svg/SvgFilters.vue'
 
 const { isDesktop } = storeToRefs(useDeviceTypeStore())
 const { status, error, data } = useCatalog()
@@ -17,9 +16,6 @@ const breadcrumbsData = computed(() => [
   { to: '/', label: 'Главная' },
   { label: (currentGender.value || currentBrand.value)?.toLowerCase() || '' }
 ])
-
-const { initFavorites } = useFavoritesStore()
-initFavorites()
 </script>
 
 <template>
@@ -36,14 +32,12 @@ initFavorites()
         />
       </template>
       <template v-else>
-        <Teleport to="body">
-          <CommonSettingsModal
-            v-model="state.filtersAreShown"
-            settings-name="Фильтры"
-          >
-            <ProductFilters v-if="filtersState.data" />
-          </CommonSettingsModal>
-        </Teleport>
+        <CommonSettingsModal
+          v-model="state.filtersAreShown"
+          settings-name="Фильтры"
+        >
+          <ProductFilters v-if="filtersState.data" />
+        </CommonSettingsModal>
       </template>
     </div>
   </section>
@@ -87,18 +81,16 @@ initFavorites()
           />
         </aside>
         <template v-else>
-          <Teleport to="body">
-            <CommonSettingsModal
-              v-model="state.categoriesAreShown"
-              settings-name="Категории"
-            >
-              <ProductCategories
-                v-if="currentCategories"
-                :data="currentCategories"
-                @click="state.categoriesAreShown = false"
-              />
-            </CommonSettingsModal>
-          </Teleport>
+          <CommonSettingsModal
+            v-model="state.categoriesAreShown"
+            settings-name="Категории"
+          >
+            <ProductCategories
+              v-if="currentCategories"
+              :data="currentCategories"
+              @click="state.categoriesAreShown = false"
+            />
+          </CommonSettingsModal>
         </template>
         <div class="catalog__content">
           <div class="catalog__list">

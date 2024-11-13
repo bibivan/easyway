@@ -1,5 +1,4 @@
-import type { IProduct } from '~/types'
-import { EProductSizeAttr } from '~/types'
+import { ESize } from '~/types'
 
 export interface ICartItem {
   name: string
@@ -10,7 +9,7 @@ export interface ICartItem {
   id: number
   price: number
   picture: string
-  size: EProductSizeAttr
+  size: ESize
 }
 
 export type IPromoResponseData = { result: number | false }

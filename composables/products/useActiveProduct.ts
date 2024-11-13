@@ -1,5 +1,5 @@
 import {
-  EProductSizeAttr,
+  ESize,
   type IProduct,
   type IProductGroup,
   type IProductGroupState,
@@ -27,7 +27,7 @@ export const useActiveProduct = (data: TGenericRef<TNullable<IProductGroup>>) =>
     }, [])
 
     if (list && state.size) {
-      const sizeOrder = Object.values(EProductSizeAttr)
+      const sizeOrder = Object.values(ESize)
 
       return list.sort((a: IProductSizeState, b: IProductSizeState) => {
         const indexA = a.value ? sizeOrder.indexOf(a.value) : -1

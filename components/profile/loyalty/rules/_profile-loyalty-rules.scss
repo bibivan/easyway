@@ -1,0 +1,42 @@
+.loyalty-rules {
+  @include flex-column-top-center;
+  @include base-gap;
+
+  padding: 20px;
+
+  @include tablet {
+    padding: 40px;
+  }
+
+  @include desktop {
+    padding: 60px;
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 441px;
+    margin-bottom: 20px;
+  }
+
+  &__heading {
+    @include text-heading;
+
+    font-size: 18px;
+    text-align: center;
+
+    @include desktop {
+      font-size: 36px;
+    }
+  }
+
+  &__description {
+    @include text-body;
+
+    font-size: 16px;
+    text-align: center;
+
+    @include desktop {
+      font-size: 18px;
+    }
+  }
+}

@@ -12,6 +12,10 @@ export const useSFFetch = <T>(path: string, options = {}) => {
       'Content-Type': 'application/json',
       Accept: 'application/json'
     },
+    onResponseError: ({ error }) => {
+      console.error(error)
+      throw new Error('Что-то пошло не так. Попробуйте повторить попытку')
+    },
     ...optionsWithToken
   })
 }

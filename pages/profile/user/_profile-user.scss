@@ -1,0 +1,85 @@
+.user {
+  @include flex-column;
+  @include base-gap;
+
+  width: 100%;
+  max-width: 760px;
+
+  &__props {
+    @include flex-column;
+  }
+
+  &__prop {
+    @include text-body;
+
+    padding: 10px 0;
+    border-bottom: 1px solid $color-divider;
+    font-size: 14px;
+
+    @include tablet {
+      padding: 15px 0;
+      font-size: 18px;
+    }
+  }
+
+  &__email-marketing {
+    pointer-events: none;
+  }
+}
+
+.user-size {
+  @include flex-column;
+  @include base-gap;
+
+  &__label {
+    @include text-body;
+
+    font-size: 14px;
+
+    @include tablet {
+      font-size: 18px;
+    }
+  }
+
+  &__list {
+    @include flex-row-center-start;
+
+    flex-wrap: wrap;
+    gap: 13px;
+  }
+
+  &__value {
+    @include text-body;
+    @include flex-row-center-center;
+
+    min-width: 25px;
+    height: 25px;
+    padding: 2px 6px;
+    border-radius: $border-radius-s;
+    background-color: $color-bg-btn-light;
+    color: $color-text;
+    font-size: 14px;
+    text-align: center;
+
+    @include tablet {
+      min-width: 45px;
+      height: 45px;
+      padding: 12px 6px;
+    }
+
+    &_active {
+      background-color: $color-primary;
+      color: $color-text-light;
+    }
+  }
+}
+
+:global(.update-user-modal.base-modal__dialog) {
+  width: 100%;
+  max-width: 620px;
+  padding: 20px;
+
+  @include tablet {
+    padding: 60px;
+  }
+}

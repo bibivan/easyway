@@ -1,4 +1,4 @@
-import { type IFiltersStoreState, type TDefaultState, type TNullable } from '~/types'
+import type { IFiltersStoreState, TDefaultState, TNullable } from '~/types'
 
 export const useProductFiltersStore = defineStore('store_product_filters', () => {
   // data

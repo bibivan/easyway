@@ -1,26 +1,33 @@
 import type { UseFetchOptions } from 'nuxt/app'
 import type { NitroFetchRequest } from 'nitropack'
 
-export function useApiFetch<ResT, DataT>(
+export function useAuthFetch<ResT, DataT>(
   request: NitroFetchRequest,
   options: UseFetchOptions<ResT, DataT> = {}
 ) {
   const authStore = useAuthorizationStore()
-  const { goToAuth } = authStore
+  const { goToAuth, updateToken } = authStore
   const { token } = storeToRefs(authStore)
 
   if (!token.value) goToAuth()
 
   return useFetch(request, {
     baseURL: getBaseUrl(),
-    timeout: 20000,
+    method: 'GET',
     headers: {
       Authorization: `Bearer ${token.value}`
     },
-    async onResponseError({ response }) {
+    timeout: 20000,
+    async onResponseError({ response, error }) {
       if (response.status === 401) {
         goToAuth()
+      } else {
+        console.error(error)
+        throw new Error('Что-то пошло не так. Попробуйте повторить попытку')
       }
+    },
+    async onResponse({ response }) {
+      updateToken(response._data.token)
     },
     ...options
   })

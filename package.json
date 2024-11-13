@@ -17,6 +17,7 @@
     "@vuelidate/validators": "^2.0.4",
     "dayjs": "^1.11.13",
     "inputmask": "^5.0.9",
+    "normalize.css": "^8.0.1",
     "nuxt": "^3.11.2",
     "nuxt-swiper": "^1.2.2",
     "vue": "^3.4.21",

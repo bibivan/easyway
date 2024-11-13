@@ -1,4 +1,8 @@
 <script setup lang="ts">
+defineProps<{
+  modalClass?: string
+  dialogClass?: string
+}>()
 const isOpened = defineModel<boolean>({
   required: true
 })
@@ -16,9 +20,13 @@ watch(isOpened, (val) => setNoScroll(val))
     <div
       v-if="isOpened"
       class="base-modal"
+      :class="modalClass"
       @click.self="handleCloseModal"
     >
-      <div class="base-modal__dialog">
+      <div
+        class="base-modal__dialog"
+        :class="dialogClass"
+      >
         <button
           class="base-modal__close-btn"
           @click="handleCloseModal"

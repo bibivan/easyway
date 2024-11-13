@@ -1,5 +1,9 @@
 <script setup lang="ts">
-defineProps<{ settingsName: string }>()
+defineProps<{
+  settingsName: string
+  modalClass?: string
+  dialogClass?: string
+}>()
 
 const isOpened = defineModel<boolean>({
   required: true
@@ -10,26 +14,32 @@ watch(isOpened, (val) => setNoScroll(val))
 </script>
 
 <template>
-  <transition name="slide-up">
-    <div
-      v-if="isOpened"
-      class="settings-modal"
-      @click.self="isOpened = false"
-    >
-      <div class="settings-modal__head">
-        <p class="settings-modal__name">{{ settingsName }}</p>
-        <button
-          class="settings-modal__close-btn"
-          @click="isOpened = false"
+  <Teleport to="body">
+    <transition name="slide-up">
+      <div
+        v-if="isOpened"
+        class="settings-modal"
+        :class="modalClass"
+        @click.self="isOpened = false"
+      >
+        <div class="settings-modal__head">
+          <p class="settings-modal__name">{{ settingsName }}</p>
+          <button
+            class="settings-modal__close-btn"
+            @click="isOpened = false"
+          >
+            <SvgChevronUp />
+          </button>
+        </div>
+        <div
+          class="settings-modal__body"
+          :class="dialogClass"
         >
-          <SvgChevronUp />
-        </button>
+          <slot />
+        </div>
       </div>
-      <div class="settings-modal__body">
-        <slot />
-      </div>
-    </div>
-  </transition>
+    </transition>
+  </Teleport>
 </template>
 
 <style scoped lang="scss">

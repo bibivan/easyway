@@ -1,4 +1,4 @@
-import type { IAuthStoreState, TDefaultState } from '~/types'
+import { IAuthStoreState, ICodeCheckingResponse, TDefaultState } from '~/types'
 
 export const useAuthorizationStore = defineStore('auth_store', () => {
   // Data
@@ -21,6 +21,14 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
   const authFormIsShown = computed(() => authorizationState.data.authFormIsShown)
 
   // Mutations
+  const openAuthModal = () => {
+    authorizationState.data.authFormIsShown = true
+  }
+
+  const closeAuthModal = () => {
+    authorizationState.data.authFormIsShown = false
+  }
+
   const setToken = () => {
     const token = cookieToken.value
     if (token) authorizationState.data.token = token
@@ -29,14 +37,7 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
   const updateToken = (token: string) => {
     cookieToken.value = token
     authorizationState.data.token = token
-  }
-
-  const openAuthModal = () => {
-    authorizationState.data.authFormIsShown = true
-  }
-
-  const closeAuthModal = () => {
-    authorizationState.data.authFormIsShown = false
+    console.log(token, 'tok', cookieToken.value, authorizationState.data.token)
   }
 
   const logOut = () => {
@@ -48,30 +49,60 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
   const goToAuth = () => {
     cookieToken.value = null
     openAuthModal()
-    useNuxtApp().$toast('Время Сессии истекло. Авторизуйтесь снова', {
-      theme: 'dark'
-    })
     return navigateTo('/')
   }
 
   // Actions
   const getCode = async (phone: string) => {
-    return useApiFetch('get-code', {
-      method: 'POST',
-      body: {
-        phone
+    // return $fetch('get-sms-code', {
+    // baseURL: getBaseUrl(),
+    //   method: 'POST',
+    //   body: {
+    //     phone
+    //   }
+    // })
+
+    return $fetch<ICodeCheckingResponse>(
+      'https://echo.free.beeceptor.com/sample-request?success=true',
+      {
+        onResponse: ({ response }) => {
+          response._data = {
+            success: parseJSON(response._data?.parsedQueryParams.success)
+          }
+          console.log(response._data)
+        }
       }
-    })
+    )
   }
 
-  const checkCode = async (code: number) => {
-    return useApiFetch<{ token: string }, { token: string }>('check-code', {
-      method: 'POST',
-      body: {
-        code
-      },
+  const checkCode = async (code: string) => {
+    // return $fetch<ICodeCheckingResponse>('check-code', {
+    //   baseURL: getBaseUrl(),
+    //   method: 'POST',
+    //   body: {
+    //     code
+    //   },
+    //   onResponse: ({ response }) => {
+    //     updateToken(response._data.token)
+    //   }
+    // })
+    const query = () => {
+      if (code === '1111') {
+        return { success: true, token: 'asdfsdfsdf' }
+      } else return { success: false, message: 'Неверный код' }
+    }
+
+    return $fetch<ICodeCheckingResponse>('https://echo.free.beeceptor.com/sample-request', {
+      query: query(),
       onResponse: ({ response }) => {
-        updateToken(response._data.token)
+        response._data = {
+          ...response._data.parsedQueryParams,
+          success: parseJSON(response._data?.parsedQueryParams?.success)
+        }
+        console.log(response._data, '4442323333')
+        if (response._data.token) {
+          updateToken(response._data.token)
+        }
       }
     })
   }
@@ -81,6 +112,7 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
     token,
     authFormIsShown,
     setToken,
+    updateToken,
     openAuthModal,
     closeAuthModal,
     goToAuth,

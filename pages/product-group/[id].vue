@@ -17,9 +17,6 @@ const breadcrumbsData = computed(() => [
     label: productGroup.value?.category || ''
   }
 ])
-
-const { initFavorites } = useFavoritesStore()
-initFavorites()
 </script>
 
 <template>

@@ -75,36 +75,36 @@ export const debounce = <T extends (...args: any[]) => any>(
   }
 }
 
-// export const throttle = <T extends (...args: any[]) => void>(
-//   func: T,
-//   limit: number
-// ): ((...args: Parameters<T>) => void) => {
-//   let lastFunc: ReturnType<typeof setTimeout> | null = null
-//   let lastRan: number | null = null
-//
-//   return (...args: Parameters<T>) => {
-//     const context = this
-//
-//     if (!lastRan) {
-//       func.apply(context, args)
-//       lastRan = Date.now()
-//     } else {
-//       if (lastFunc) {
-//         clearTimeout(lastFunc)
-//       }
-//
-//       lastFunc = setTimeout(
-//         () => {
-//           if (Date.now() - (lastRan as number) >= limit) {
-//             func.apply(context, args)
-//             lastRan = Date.now()
-//           }
-//         },
-//         limit - (Date.now() - (lastRan as number))
-//       )
-//     }
-//   }
-// }
+export const throttle = <T extends (...args: any[]) => void>(
+  func: T,
+  limit: number
+): ((...args: Parameters<T>) => void) => {
+  let lastFunc: ReturnType<typeof setTimeout> | null = null
+  let lastRan: number | null = null
+
+  return (...args: Parameters<T>) => {
+    const context = this
+
+    if (!lastRan) {
+      func.apply(context, args)
+      lastRan = Date.now()
+    } else {
+      if (lastFunc) {
+        clearTimeout(lastFunc)
+      }
+
+      lastFunc = setTimeout(
+        () => {
+          if (Date.now() - (lastRan as number) >= limit) {
+            func.apply(context, args)
+            lastRan = Date.now()
+          }
+        },
+        limit - (Date.now() - (lastRan as number))
+      )
+    }
+  }
+}
 
 export const capitalize = (str: string): string =>
   str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
@@ -132,15 +132,21 @@ export const smoothScroll = (container: HTMLElement, targetPosition: number, dur
   requestAnimationFrame(animation)
 }
 
-// export const getRandomNumber = (min: number, max: number): number => {
-//   return Math.floor(Math.random() * (max - min + 1)) + min
-// }
+export const declineWord = (count: number, word: string): string => {
+  const lastDigit = count % 10
+  const lastTwoDigits = count % 100
 
-// export const getRandomColor = (): string => {
-//   const letters = '0123456789ABCDEF'
-//   let color = '#'
-//   for (let i = 0; i < 6; i++) {
-//     color += letters[Math.floor(Math.random() * 16)]
-//   }
-//   return color
-// }
+  if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
+    return `${count} ${word}ов`
+  }
+
+  if (lastDigit === 1) {
+    return `${count} ${word}`
+  }
+
+  if (lastDigit >= 2 && lastDigit <= 4) {
+    return `${count} ${word}а`
+  }
+
+  return `${count} ${word}ов`
+}

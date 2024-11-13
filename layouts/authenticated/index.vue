@@ -13,6 +13,11 @@ const breadcrumbsData = computed(() => [
 ])
 
 const profileMenuIsShown = ref<boolean>(false)
+
+const authStore = useAuthorizationStore()
+const { goToAuth } = authStore
+const { token } = storeToRefs(authStore)
+if (!token.value) goToAuth()
 </script>
 
 <template>
@@ -43,15 +48,12 @@ const profileMenuIsShown = ref<boolean>(false)
           >
             {{ currentBreadcrumb }} <SvgChevronDown />
           </button>
-          <Teleport to="body">
-            <CommonSettingsModal
-              v-model="profileMenuIsShown"
-              settings-name="Профиль"
-              class="authenticated__modal"
-            >
-              <ProfileMenu @on-close="profileMenuIsShown = false" />
-            </CommonSettingsModal>
-          </Teleport>
+          <CommonSettingsModal
+            v-model="profileMenuIsShown"
+            settings-name="Профиль"
+          >
+            <ProfileMenu @on-close="profileMenuIsShown = false" />
+          </CommonSettingsModal>
         </div>
 
         <slot />

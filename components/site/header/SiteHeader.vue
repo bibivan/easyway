@@ -2,15 +2,19 @@
 import { EBrand, EGender, EProductFilters } from '~/types'
 
 const { isDesktop } = storeToRefs(useDeviceTypeStore())
-const { setToken } = useAuthorizationStore()
 const { handleShowCart } = useCartOpening()
-const { getMaleCategories, getFemaleCategories } = useProductCategoriesStore()
 const state = reactive({
   menuIsOpened: false,
   categoriesIsOpened: false
 })
 
+const { setToken } = useAuthorizationStore()
 setToken()
+
+const { initFavorites } = useFavoritesStore()
+initFavorites()
+
+const { getMaleCategories, getFemaleCategories } = useProductCategoriesStore()
 await Promise.all([getMaleCategories(), getFemaleCategories()])
 </script>
 
@@ -81,13 +85,13 @@ await Promise.all([getMaleCategories(), getFemaleCategories()])
           >
             <SvgHeart />
           </NuxtLink>
-          <!--          <NuxtLink-->
-          <!--            v-if="isDesktop"-->
-          <!--            class="header__action header__action_auth"-->
-          <!--            :to="{ name: 'profile-user' }"-->
-          <!--          >-->
-          <!--            <SvgProfile />-->
-          <!--          </NuxtLink>-->
+          <NuxtLink
+            v-if="isDesktop"
+            class="header__action header__action_auth"
+            :to="{ name: 'profile-user' }"
+          >
+            <SvgProfile />
+          </NuxtLink>
           <button
             class="header__action header__action_cart"
             @click="handleShowCart"

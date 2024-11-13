@@ -1,4 +1,8 @@
 .authenticated {
+  @include desktop {
+    min-height: 450px;
+  }
+
   &__heading {
     @include text-heading;
 
@@ -25,8 +29,10 @@
     @include flex-column;
     @include base-gap;
 
+    position: relative;
+
     @include tablet {
-      @include flex-row-top-between;
+      @include flex-row-top-start;
     }
   }
 

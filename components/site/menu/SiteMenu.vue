@@ -99,9 +99,33 @@ watch(
     <li class="menu__item menu__item_with_divider">
       <NuxtLink
         class="menu__link"
+        :to="{ name: 'profile-user' }"
+      >
+        Личные данные
+      </NuxtLink>
+    </li>
+    <li class="menu__item">
+      <NuxtLink
+        class="menu__link"
+        :to="{ name: 'profile-orders' }"
+      >
+        Заказы
+      </NuxtLink>
+    </li>
+    <li class="menu__item">
+      <NuxtLink
+        class="menu__link"
         :to="{ name: 'profile-favorites' }"
       >
         Избранное
+      </NuxtLink>
+    </li>
+    <li class="menu__item">
+      <NuxtLink
+        class="menu__link"
+        :to="{ name: 'profile-loyalty' }"
+      >
+        Карта лояльности
       </NuxtLink>
     </li>
   </ul>

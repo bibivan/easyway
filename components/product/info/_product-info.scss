@@ -64,11 +64,11 @@
   &__subtitle-btn {
     @include flex-row-center-start;
     @include text-body;
+    @include underline;
 
     font-size: 12px;
     gap: 10px;
     text-align: right;
-    text-decoration: underline;
 
     @include tablet {
       font-size: 16px;
@@ -151,5 +151,15 @@
         fill: $color-danger-light;
       }
     }
+  }
+}
+
+:global(.clothes-size-table) {
+  width: 100%;
+  max-width: 520px;
+  padding: 25px;
+
+  @include tablet {
+    padding: 50px;
   }
 }

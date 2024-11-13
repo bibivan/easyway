@@ -10,6 +10,10 @@ export const useDadataFetch = <T>(path: string, options = {}) => {
       Accept: 'application/json',
       Authorization: 'Token ' + config.public.dadataToken
     },
+    onResponseError: ({ error }) => {
+      console.error(error)
+      throw new Error('Что-то пошло не так. Попробуйте повторить попытку')
+    },
     ...options
   })
 }

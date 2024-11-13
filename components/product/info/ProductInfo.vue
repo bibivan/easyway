@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EGender, type IProduct, IProductGroup, type IProductSizeState } from '~/types'
+import { EGender, type IProduct, type IProductGroup, type IProductSizeState } from '~/types'
 
 const props = defineProps<{
   productGroup: IProductGroup
@@ -145,7 +145,10 @@ const handleToggleFavorite = () => {
         <SvgFavorite />
       </button>
     </div>
-    <BaseModal v-model="sizesModalIsShown">
+    <BaseModal
+      v-model="sizesModalIsShown"
+      dialog-class="clothes-size-table"
+    >
       <BaseTable
         :name="sizeChart.name"
         :data="sizeChart.data"

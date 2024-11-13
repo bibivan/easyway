@@ -13,3 +13,8 @@ export enum EGender {
   FEMALE = 'Женское',
   MALE = 'Мужское'
 }
+
+export enum ENew {
+  TRUE = 'YES',
+  FALSE = 'NO'
+}
