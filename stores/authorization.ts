@@ -1,4 +1,5 @@
 import { IAuthStoreState, ICodeCheckingResponse, TDefaultState } from '~/types'
+import { FetchContext, FetchResponse } from 'ofetch'
 
 export const useAuthorizationStore = defineStore('auth_store', () => {
   // Data
@@ -35,7 +36,6 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
   }
 
   const updateToken = (token: string) => {
-    // console.log('updated', cookieToken.value, token)
     cookieToken.value = token
     authorizationState.data.token = token
   }
@@ -61,18 +61,6 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
         phone: '7' + phone
       }
     })
-
-    // return $fetch<ICodeCheckingResponse>(
-    //   'https://echo.free.beeceptor.com/sample-request?success=true',
-    //   {
-    //     onResponse: ({ response }) => {
-    //       response._data = {
-    //         success: parseJSON(response._data?.parsedQueryParams.success)
-    //       }
-    //       console.log(response._data)
-    //     }
-    //   }
-    // )
   }
 
   const checkCode = async (code: string, phone: string) => {
@@ -85,27 +73,18 @@ export const useAuthorizationStore = defineStore('auth_store', () => {
       },
       onResponse: ({ response }) => {
         updateToken(response._data.token)
+      },
+      onResponseError: ({ response }) => {
+        if (response?.status === 404 && response?._data.message) {
+          throw new Error(
+            response?._data.message +
+              '. Мы автоматически зерегистрируем вас полсе вашей первой покупки'
+          )
+        } else {
+          throw new Error('Что-то пошло не так. Повторите попытку позже')
+        }
       }
     })
-    // const query = () => {
-    //   if (code === '1111') {
-    //     return { success: true, token: 'asdfsdfsdf' }
-    //   } else return { success: false, message: 'Неверный код' }
-    // }
-    //
-    // return $fetch<ICodeCheckingResponse>('https://echo.free.beeceptor.com/sample-request', {
-    //   query: query(),
-    //   onResponse: ({ response }) => {
-    //     response._data = {
-    //       ...response._data.parsedQueryParams,
-    //       success: parseJSON(response._data?.parsedQueryParams?.success)
-    //     }
-    //     console.log(response._data, '4442323333')
-    //     if (response._data.token) {
-    //       updateToken(response._data.token)
-    //     }
-    //   }
-    // })
   }
 
   return {

@@ -30,7 +30,6 @@ const handleSubmitUserData = async () => {
   const result = await v$.value.$validate()
   if (!result) return
 
-  console.log('here', result, v$.value)
   await refresh()
 
   if (status.value === EFetchStatus.SUCCESS) {

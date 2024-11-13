@@ -32,7 +32,6 @@ const modelValue = defineModel<TNullable<TRawDateString>>()
 
 const getAge = (value: string) => {
   const birthDate = dayjs(value, 'DD.MM.YYYY')
-  console.log(dayjs().diff(birthDate, 'year'))
   return dayjs().diff(birthDate, 'year')
 }
 const validationRules = computed(() => ({

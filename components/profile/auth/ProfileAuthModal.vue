@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { IAuthDataState } from '~/types'
+import { IAuthDataState, ICodeCheckingResponse } from '~/types'
 import { useVuelidate } from '@vuelidate/core'
 import VOtpInput from 'vue3-otp-input'
+import { FetchResponse } from 'ofetch'
 
 const authDataState = reactive<IAuthDataState>({
   phone: null,
@@ -24,25 +25,19 @@ const refreshCode = () => {
   initTimer()
 }
 
-const handleReqError = (e: unknown) => {
-  authDataState.errorMessage = 'Что-то пошло  не так, повторите попытку'
-  return console.error(e)
-}
-
 const handleSubmitPhone = async () => {
   const result = await v$.value.$validate()
 
   if (result && authDataState.phone) {
     try {
-      const { success, message } = await getCode(authDataState.phone)
-      if (!success && message) authDataState.errorMessage = message
+      const { success } = await getCode(authDataState.phone)
 
       if (success) {
         authDataState.codeCheckingIsShown = true
         refreshCode()
       }
     } catch (e) {
-      handleReqError(e)
+      console.error(e)
     }
   }
 }
@@ -51,16 +46,16 @@ const handleSubmitCode = async () => {
   authDataState.errorMessage = null
   if (!authDataState.code || !authDataState.phone) return
 
+  let res
   try {
-    const { success, message } = await checkCode(authDataState.code, authDataState.phone)
-    if (!success && message) authDataState.errorMessage = message
+    res = await checkCode(authDataState.code, authDataState.phone)
 
     if (token.value) {
       closeAuthModal()
       await navigateTo({ name: 'profile-user' })
     }
   } catch (e) {
-    handleReqError(e)
+    if (e instanceof Error) authDataState.errorMessage = e.message
   }
 }
 
