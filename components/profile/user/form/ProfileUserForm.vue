@@ -15,14 +15,6 @@ const { error, status, refresh } = useAuthFetch<IUserData, IUserData>('user', {
   watch: false
 })
 
-// const { error, status, refresh } = useMockFetch(
-//   'userSendData',
-//   { success: true },
-//   {
-//     immediate: false
-//   }
-// )
-
 const v$ = useVuelidate()
 
 //  хендлеры

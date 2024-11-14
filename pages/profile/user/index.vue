@@ -26,7 +26,7 @@ const handleUpdateUserData = (user: IUserData) => {
       <div class="user__props">
         <p class="user__prop">Имя: {{ data.name }}</p>
         <p class="user__prop">Фамилия: {{ data.surname }}</p>
-        <p class="user__prop">Телефон: {{ data.phone }}</p>
+        <p class="user__prop">Телефон: {{ '+7' + data.phone.slice(-10) }}</p>
         <p class="user__prop">E-mail: {{ data.email }}</p>
         <p class="user__prop">Дата рождения: {{ data.birthDate }}</p>
       </div>

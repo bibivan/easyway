@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { IAuthDataState, ICodeCheckingResponse } from '~/types'
+import { IAuthDataState } from '~/types'
 import { useVuelidate } from '@vuelidate/core'
 import VOtpInput from 'vue3-otp-input'
-import { FetchResponse } from 'ofetch'
 
 const authDataState = reactive<IAuthDataState>({
   phone: null,

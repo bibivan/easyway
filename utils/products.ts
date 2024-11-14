@@ -93,7 +93,7 @@ export const productGroupsRawToProductGroups = (data: IProductGroupRaw[]): IProd
 export const placedOrdersRawToPlacedOrders = (rawData: IPlacedOrdersRaw): IPlacedOrders => {
   const transformedItems: IPlacedOrders = {}
 
-  Object.keys(rawData.items).forEach((key) => {
+  Object.keys(rawData?.items)?.forEach((key) => {
     transformedItems[key] = rawData.items[key].map(productGroupRawToProductGroup)
   })
 

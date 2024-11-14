@@ -16,7 +16,6 @@ const {
     return placedOrdersRawToPlacedOrders(data)
   }
 })
-// const { data, error, refresh: handleGetPlacedOrders, status } = usePlacedOrdersMock()
 </script>
 
 <template>
@@ -25,7 +24,7 @@ const {
     color="#232323"
   />
   <div
-    v-if="data && status === EFetchStatus.SUCCESS"
+    v-if="!isEmpty(data) && status === EFetchStatus.SUCCESS"
     class="placed-orders"
   >
     <div
