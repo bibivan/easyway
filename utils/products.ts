@@ -3,15 +3,16 @@ import {
   type IProductGroup,
   type IProductGroupRaw,
   type IProductRaw,
+  type IPlacedOrdersRaw,
+  type IPlacedOrders,
   EGender,
   ESize,
   ENew,
-  EBrand,
-  type IPlacedOrdersRaw,
-  type IPlacedOrders
+  EBrand
 } from '~/types'
+import { isEmpty, toNullable, parseJSON } from '~/utils/common'
 
-const getGender = (gender: string): EGender => {
+export const getGender = (gender: string): EGender => {
   return gender === 'Мужское' ? EGender.MALE : EGender.FEMALE
 }
 

@@ -19,7 +19,7 @@ export function useAuthFetch<ResT, DataT>(
     },
     timeout: 20000,
     async onResponseError({ response, error }) {
-      if (response.status === 401) {
+      if (response.status === 401 || response.status === 403) {
         goToAuth()
       } else {
         console.error(error)
