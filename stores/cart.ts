@@ -81,7 +81,6 @@ export const useCartStore = defineStore('cart_store', () => {
         })
         //@ts-ignore
         ym(98761136, 'reachGoal', 'goal_basket_add')
-        console.log("don't crushed")
       }
     } catch (e) {
       useNuxtApp().$toast('Неверный формат продукта. Товар не добавлен', {

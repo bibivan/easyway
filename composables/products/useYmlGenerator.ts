@@ -78,6 +78,7 @@ export const useYmlGenerator = async () => {
                       <description>${product.description}</description>
                       <param name="Размер" unit="INT">${product.size}</param>
                       <param name="Пол">${product.gender}</param>
+                      <param name="Пол">${product.fabric?.composition}</param>
                     </offer>
                   `
                 })
