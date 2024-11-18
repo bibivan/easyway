@@ -40,7 +40,7 @@ export const useYmlGenerator = async () => {
       <!DOCTYPE yml_catalog SYSTEM "shops.dtd">
         <yml_catalog date="${new Date().toISOString()}">
           <shop>
-            <name>eazyway</name>
+            <name>EAZYWAY</name>
             <company>ООО «Капитал Инвест»</company>
             <url>https://eazy-way.com/</url>
             <currencies>
