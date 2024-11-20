@@ -92,7 +92,7 @@ const handleToggleFavorite = () => {
         </p>
         <p class="catalog-item__price">{{ activeProduct.price }} ₽</p>
 
-        <template v-if="!withoutBtn">
+        <template v-if="!withoutBtn && !isMobile">
           <CatalogItemsCounter
             v-if="productIsInCart && !isMobile"
             :id="activeProduct.id"

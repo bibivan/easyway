@@ -93,7 +93,7 @@ const handleCloseModal = () => closeAuthModal()
           <BaseCheckbox
             id="personal_data_marketing"
             v-model="authDataState.emailMarketing"
-            :required-val="true"
+            :required-val="false"
           >
             <template #label>
               Я согласен получать информацию от компании «Капитал-Инвест» через электронную почту и
