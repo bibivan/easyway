@@ -22,32 +22,30 @@ const community = useCommunityMock()
     }"
   >
     <SwiperSlide>
-      <MainPageHerobf
-        title="BLACK FRIDAY"
+      <MainPageHero
+        title="EAZYWAY"
         :to="{
           name: 'catalog',
-          query: { [EProductFilters.BRAND]: EBrand.EAZYWAY, ['erid']: '2VtzqxcQKA5' }
+          query: { [EProductFilters.BRAND]: EBrand.EAZYWAY}
         }"
         :images="[
-          './img/hero/main/main-bf-1-desk.jpg',
-          './img/hero/main/main-bf-1-tablet.jpg',
-          './img/hero/main/main-bf-1-mob.jpg'
+          './img/hero/main/1.jpg',
+          './img/hero/main/2.jpg'
         ]"
       />
     </SwiperSlide>
     <SwiperSlide>
-      <MainPageHerobf
-        title="BLACK FRIDAY"
+      <MainPageHero
+        title="easyfit"
         note="Бренд-линейка easyfit"
         :images-top="true"
         :to="{
           name: 'catalog',
-          query: { [EProductFilters.BRAND]: EBrand.EASYFIT, ['erid']: '2VtzqxEBAtm' }
+          query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
         }"
         :images="[
-          './img/hero/main/main-bf-2-desk.jpg',
-          './img/hero/main/main-bf-2-tablet.jpg',
-          './img/hero/main/main-bf-2-mob.jpg'
+          './img/hero/main/3.jpg',
+          './img/hero/main/4.jpg'
         ]"
       />
     </SwiperSlide>

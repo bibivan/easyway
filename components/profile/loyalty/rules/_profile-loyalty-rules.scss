@@ -1,20 +1,20 @@
 .loyalty-rules {
   @include flex-column-top-center;
-  @include base-gap;
+  //@include base-gap;
 
-  padding: 20px;
+  //padding: 20px;
 
   @include tablet {
-    padding: 40px;
+    //padding: 40px;
   }
 
   @include desktop {
-    padding: 60px;
+    //padding: 60px;
   }
 
   &__img {
     width: 100%;
-    max-width: 441px;
+    //max-width: 441px;
     margin-bottom: 20px;
   }
 
@@ -31,12 +31,14 @@
 
   &__description {
     @include text-body;
+    padding: 0 20px;
 
-    font-size: 16px;
-    text-align: center;
+
+    font-size: 14px;
+    text-align: left;
 
     @include desktop {
-      font-size: 18px;
+      font-size: 14px;
     }
   }
 }
