@@ -29,8 +29,8 @@ const community = useCommunityMock()
           query: { [EProductFilters.BRAND]: EBrand.EAZYWAY}
         }"
         :images="[
-          './img/hero/main/1.jpg',
-          './img/hero/main/2.jpg'
+          './img/hero/main/3.jpg',
+          './img/hero/main/4.jpg'
         ]"
       />
     </SwiperSlide>
@@ -44,8 +44,8 @@ const community = useCommunityMock()
           query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
         }"
         :images="[
-          './img/hero/main/3.jpg',
-          './img/hero/main/4.jpg'
+          './img/hero/main/1.jpg',
+          './img/hero/main/2.jpg'
         ]"
       />
     </SwiperSlide>
