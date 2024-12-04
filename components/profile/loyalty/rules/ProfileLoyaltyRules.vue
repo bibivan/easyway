@@ -5,7 +5,7 @@
   <div class="loyalty-rules">
     <img
       class="loyalty-rules__img"
-      src="/img/loyalty/loyalty-rules.jpg"
+      src="/img/loyalty/loyalty-rules-new.png"
       alt="Фото девушуек"
     />
     <h3 class="loyalty-rules__heading">Правила бонусной программы</h3>
