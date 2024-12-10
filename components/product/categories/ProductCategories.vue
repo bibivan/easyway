@@ -23,7 +23,7 @@ defineProps<{ gender?: EGender; data: TNullable<string[]> }>()
             [EProductFilters.GENDER]: gender || $route.query[EProductFilters.GENDER],
             [EProductFilters.CATEGORY]: value,
             ...(gender !== EGender.MALE && {
-              [EProductFilters.BRAND]: $route.query[EProductFilters.BRAND]
+              [EProductFilters.BRAND]: 'EAZYWAY'
             })
           }
         }"
