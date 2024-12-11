@@ -3,7 +3,7 @@ import { useVuelidate } from '@vuelidate/core'
 
 const { sendOrder } = useOrderStore()
 const { cartState } = useCartStore()
-
+const { promoState } = usePromoStore()
 const v$ = useVuelidate()
 const state = reactive({
   dataIsSending: false,
@@ -18,7 +18,10 @@ const handleSendData = async () => {
 
   try {
     state.dataIsSending = true
-    await sendOrder(cartState.data)
+    await sendOrder(cartState.data, {
+      amount: promoState.data.amount,
+      code: promoState.data.code,
+    })
     v$.value.$reset()
   } catch (e) {
     state.checkoutError = true

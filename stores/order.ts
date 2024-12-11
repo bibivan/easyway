@@ -4,7 +4,7 @@ import {
   type ICartItem,
   type IOrder,
   type IOrderPayload,
-  type IOrderPayloadProduct,
+  type IOrderPayloadProduct, IPromoData,
   type ISendOrderResponse
 } from '~/types'
 
@@ -37,7 +37,7 @@ export const useOrderStore = defineStore('order_store', () => {
     orderWeight: null
   })
 
-  const getOrderPayload = (cartContent: ICartItem[]): IOrderPayload => {
+  const getOrderPayload = (cartContent: ICartItem[], promoContent: IPromoData): IOrderPayload => {
     const products: IOrderPayloadProduct[] = cartContent.map((item) => {
       return {
         NAME: item.name,
@@ -79,7 +79,7 @@ export const useOrderStore = defineStore('order_store', () => {
       B2B_CLIENT: false,
       LOYALTY_POINT: 0,
       DELIVERY_INTERVAL: 0,
-      COMMENT: order.comment || '',
+      COMMENT: order.comment + "||"+ promoContent.code+";"+promoContent.amount,
       PRODUCTS: products
     }
   }
@@ -106,8 +106,8 @@ export const useOrderStore = defineStore('order_store', () => {
     order.ruPostDelivery = null
   }
 
-  const sendOrder = async (cartData: ICartItem[]) => {
-    const payload = getOrderPayload(cartData)
+  const sendOrder = async (cartData: ICartItem[], promoData: IPromoData) => {
+    const payload = getOrderPayload(cartData, promoData)
     const { SF } = await useSFFetch<ISendOrderResponse>('orders/add', { body: payload })
 
     if (!SF?.orderId) throw new Error()
