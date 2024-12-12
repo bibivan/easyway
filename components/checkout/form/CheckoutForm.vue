@@ -22,7 +22,7 @@ const handleSendData = async () => {
       amount: promoState.data.amount,
       code: promoState.data.code,
     })
-    v$.value.$reset()
+    v$.value.$reset();
   } catch (e) {
     state.checkoutError = true
   } finally {
