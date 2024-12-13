@@ -64,13 +64,13 @@ onBeforeUnmount(() => {
         >
           {{ title }}
         </p>
-        <NuxtLink
-          v-if="!isMobile"
-          class="btn hero__btn"
-          :to="to"
-        >
-          купить
-        </NuxtLink>
+<!--        <NuxtLink-->
+<!--          v-if="!isMobile"-->
+<!--          class="btn hero__btn"-->
+<!--          :to="to"-->
+<!--        >-->
+<!--          купить-->
+<!--        </NuxtLink>-->
       </div>
     </div>
   </section>
