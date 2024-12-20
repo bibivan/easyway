@@ -17,16 +17,42 @@ const handleSendData = async () => {
   if (!cartState.data) return
 
   try {
-    state.dataIsSending = true
-    await sendOrder(cartState.data, {
-      amount: promoState.data.amount,
-      code: promoState.data.code,
-    })
-    v$.value.$reset();
+    state.dataIsSending = true;
+
+    if (cartState.data && Array.isArray(cartState.data) && promoState.data) {
+      const discountCode = promoState.data.code ?? ''; // Убедимся, что это строка
+      const discountAmount = promoState.data.amount ?? 0; // Убедимся, что это число
+
+      const updatedCartData = cartState.data.map(item => {
+        let newPrice = item.price;
+
+        // Проверка на скидку
+        if (discountCode.startsWith('EAZY') && !item.article.startsWith('EF')) {
+          // Применяем скидку, если промокод начинается с EAZY и article не начинается с EF
+          newPrice = item.price - (item.price * discountAmount / 100);
+        } else if (discountAmount > 0) {
+          // Применяем скидку ко всем товарам, если есть ненулевая скидка
+          newPrice = item.price - (item.price * discountAmount / 100);
+        }
+
+        // Возвращаем новый объект с измененной ценой
+        return { ...item, price: newPrice };
+      });
+
+      // console.log('Updated cartState.data:', updatedCartData);
+      // console.log('promoState.data:', promoState.data);
+
+      // Передаем новый массив с измененными ценами в метод отправки
+      await sendOrder(updatedCartData, {
+        amount: promoState.data.amount,
+        code: promoState.data.code,
+      });
+      v$.value.$reset();
+    }
   } catch (e) {
-    state.checkoutError = true
+    state.checkoutError = true;
   } finally {
-    state.dataIsSending = false
+    state.dataIsSending = false;
   }
 }
 
