@@ -21,64 +21,64 @@ const community = useCommunityMock()
       clickable: true
     }"
   >
-<!--    <SwiperSlide>-->
-<!--      <MainPageHero-->
-<!--        title="EAZYWAY"-->
-<!--        :to="{-->
-<!--          name: 'catalog',-->
-<!--          query: { [EProductFilters.BRAND]: EBrand.EAZYWAY}-->
-<!--        }"-->
-<!--        :images="[-->
-<!--          './img/hero/main/3.jpg',-->
-<!--          './img/hero/main/4.jpg'-->
-<!--        ]"-->
-<!--      />-->
-<!--    </SwiperSlide>-->
-<!--    <SwiperSlide>-->
-<!--      <MainPageHero-->
-<!--        title="easyfit"-->
-<!--        note="Бренд-линейка easyfit"-->
-<!--        :images-top="true"-->
-<!--        :to="{-->
-<!--          name: 'catalog',-->
-<!--          query: { [EProductFilters.BRAND]: EBrand.EASYFIT }-->
-<!--        }"-->
-<!--        :images="[-->
-<!--          './img/hero/main/1.jpg',-->
-<!--          './img/hero/main/2.jpg'-->
-<!--        ]"-->
-<!--      />-->
-<!--    </SwiperSlide>-->
     <SwiperSlide>
-      <MainPageHerobf
-          title=""
-          :to="{
-              name: 'catalog',
-              query: { [EProductFilters.BRAND]: EBrand.EAZYWAY, ['erid']: '2Vtzqvy9gLQ' }
-            }"
-          :images="[
-              './img/hero/main/main-eazy-ny-desk.jpg',
-          './img/hero/main/main-eazy-ny-tablet.jpg',
-          './img/hero/main/main-eazy-ny-mobile.jpg'
-            ]"
-      />
-    </SwiperSlide>
-    <SwiperSlide>
-      <MainPageHerobf
-        title=""
-        note=""
-        :images-top="true"
+      <MainPageHero
+        title="EAZYWAY"
         :to="{
           name: 'catalog',
-          query: { [EProductFilters.BRAND]: EBrand.EASYFIT, ['erid']: '2VtzqvFgiJC' }
+          query: { [EProductFilters.BRAND]: EBrand.EAZYWAY}
         }"
         :images="[
-          './img/hero/main/main-easy-ny-desk.jpg',
-          './img/hero/main/main-easy-ny-tablet.jpg',
-          './img/hero/main/main-easy-ny-mobile.jpg'
+          './img/hero/main/3.jpg',
+          './img/hero/main/4.jpg'
         ]"
       />
     </SwiperSlide>
+    <SwiperSlide>
+      <MainPageHero
+        title="easyfit"
+        note="Бренд-линейка easyfit"
+        :images-top="true"
+        :to="{
+          name: 'catalog',
+          query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
+        }"
+        :images="[
+          './img/hero/main/1.jpg',
+          './img/hero/main/2.jpg'
+        ]"
+      />
+    </SwiperSlide>
+<!--    <SwiperSlide>-->
+<!--      <MainPageHerobf-->
+<!--          title=""-->
+<!--          :to="{-->
+<!--              name: 'catalog',-->
+<!--              query: { [EProductFilters.BRAND]: EBrand.EAZYWAY, ['erid']: '2Vtzqvy9gLQ' }-->
+<!--            }"-->
+<!--          :images="[-->
+<!--              './img/hero/main/main-eazy-ny-desk.jpg',-->
+<!--          './img/hero/main/main-eazy-ny-tablet.jpg',-->
+<!--          './img/hero/main/main-eazy-ny-mobile.jpg'-->
+<!--            ]"-->
+<!--      />-->
+<!--    </SwiperSlide>-->
+<!--    <SwiperSlide>-->
+<!--      <MainPageHerobf-->
+<!--        title=""-->
+<!--        note=""-->
+<!--        :images-top="true"-->
+<!--        :to="{-->
+<!--          name: 'catalog',-->
+<!--          query: { [EProductFilters.BRAND]: EBrand.EASYFIT, ['erid']: '2VtzqvFgiJC' }-->
+<!--        }"-->
+<!--        :images="[-->
+<!--          './img/hero/main/main-easy-ny-desk.jpg',-->
+<!--          './img/hero/main/main-easy-ny-tablet.jpg',-->
+<!--          './img/hero/main/main-easy-ny-mobile.jpg'-->
+<!--        ]"-->
+<!--      />-->
+<!--    </SwiperSlide>-->
 
 
     <div class="hero-swiper__pagination swiper-pagination base-swiper__pagination" />
