@@ -12,4 +12,6 @@ export interface ICartItem {
   size: ESize
 }
 
-export type IPromoResponseData = { result: number | false }
+export type IPromoResponseData = {
+  balance: any;
+  result: number | false }

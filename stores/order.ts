@@ -79,7 +79,7 @@ export const useOrderStore = defineStore('order_store', () => {
       B2B_CLIENT: false,
       LOYALTY_POINT: 0,
       DELIVERY_INTERVAL: 0,
-      COMMENT: order.comment + "||"+ promoContent.code+";"+promoContent.amount,
+      COMMENT: order.comment + "||"+ promoContent.code+";"+promoContent.amount+";"+promoContent.balance,
       PRODUCTS: products
     }
   }
@@ -107,7 +107,14 @@ export const useOrderStore = defineStore('order_store', () => {
   }
 
   const sendOrder = async (cartData: ICartItem[], promoData: IPromoData) => {
-    const payload = getOrderPayload(cartData, promoData)
+    const payload = getOrderPayload(cartData, promoData);
+    if (promoData.balance === true) {
+      await fetch('https://promo.aimagic.today/use-promo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ promo: promoData.code, amount: promoData.amount })
+      });
+    }
     const { SF } = await useSFFetch<ISendOrderResponse>('orders/add', { body: payload })
 
     if (!SF?.orderId) throw new Error()

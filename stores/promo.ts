@@ -3,7 +3,7 @@ import type { ICartItem, IPromoResponseData, IPromoStoreState, TNullable } from 
 export const usePromoStore = defineStore('promo_store', () => {
   //data
   const promoState = reactive<IPromoStoreState>({
-    data: { amount: null, code: null },
+    data: { amount: null, code: null, balance:false },
     loading: false,
     error: null
   })
@@ -20,14 +20,25 @@ export const usePromoStore = defineStore('promo_store', () => {
     let discountSum = 0
 
     if (cartData && promoState.data.code) {
+      let totalDiscount = 0;
       cartData!.forEach((item) => {
-        // Применяем скидку, если артикул не начинается с 'EF' или промокод не начинается с 'EAZY'
-        if (item.article.startsWith('EF') && !promoState.data.code!.startsWith('EAZY')) {
-          discountSum += Math.floor(item.price * (promoState.data.amount! / 100))
-        } else if (!item.article.startsWith('EF') && promoState.data.code!.startsWith('EAZY')) {
-          discountSum += Math.floor(item.price * (promoState.data.amount! / 100))
+        let discount = 0;
+        if (promoState.data.balance === true) {
+          discount = Math.min(promoState.data.amount!, item.price - 1, promoState.data.amount! - totalDiscount);
+          totalDiscount += discount;
+        } else {
+          if (promoState.data.code!.startsWith('EAZY')) {
+            discount = Math.floor(item.price * (promoState.data.amount! / 100));
+          } else if (promoState.data.code!.startsWith('easy')) {
+            if (item.article.startsWith('EF')) {
+              discount = Math.floor(item.price * (promoState.data.amount! / 100));
+            }
+          } else {
+            discount = Math.floor(item.price * (promoState.data.amount! / 100));
+          }
         }
-      })
+        discountSum += discount;
+      });
     }
 
     return discountSum
@@ -60,7 +71,8 @@ export const usePromoStore = defineStore('promo_store', () => {
       })
 
       if (data.result) {
-        promoState.data.amount = data.result
+        promoState.data.amount = data.result;
+        promoState.data.balance = data.balance;
         sessionStorage.setItem('easy-clothing-promo', JSON.stringify(promoState.data))
         useNuxtApp().$toast(`Промокод ${code} упешно применен`, {
           theme: 'dark'

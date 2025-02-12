@@ -22,30 +22,39 @@ const handleSendData = async () => {
     if (cartState.data && Array.isArray(cartState.data) && promoState.data) {
       const discountCode = promoState.data.code ?? ''; // Убедимся, что это строка
       const discountAmount = promoState.data.amount ?? 0; // Убедимся, что это число
-
+      let totalDiscount = 0;
       const updatedCartData = cartState.data.map(item => {
         let newPrice = item.price;
-
-        // Проверка на скидку
-        if (discountCode.startsWith('EAZY') && !item.article.startsWith('EF')) {
-          // Применяем скидку, если промокод начинается с EAZY и article не начинается с EF
-          newPrice = item.price - (item.price * discountAmount / 100);
-        } else if (discountAmount > 0) {
-          // Применяем скидку ко всем товарам, если есть ненулевая скидка
-          newPrice = item.price - (item.price * discountAmount / 100);
+        let discount = 0;
+        if (promoState.data.balance === true) {
+          let availableDiscount = promoState.data.amount! - totalDiscount;
+          if (availableDiscount > 0) {
+            discount = Math.min(availableDiscount, item.price - 1);
+            totalDiscount += discount;
+          }
+        } else {
+          if (discountCode.startsWith('EAZY') && !item.article.startsWith('EF')) {
+            discount = Math.floor(item.price * discountAmount / 100);
+          } else if (discountCode.startsWith('easy')) {
+            if (item.article.startsWith('EF')) {
+              discount = Math.floor(item.price * discountAmount / 100);
+            }
+          } else {
+            discount = Math.floor(item.price * discountAmount / 100);
+          }
         }
-
-        // Возвращаем новый объект с измененной ценой
+        newPrice = item.price - discount;
         return { ...item, price: newPrice };
       });
 
-      // console.log('Updated cartState.data:', updatedCartData);
-      // console.log('promoState.data:', promoState.data);
+      console.log('Updated cartState.data:', updatedCartData);
+      console.log('promoState.data:', promoState.data);
 
       // Передаем новый массив с измененными ценами в метод отправки
       await sendOrder(updatedCartData, {
-        amount: promoState.data.amount,
+        amount: (promoState.data.balance)? totalDiscount : promoState.data.amount,
         code: promoState.data.code,
+        balance: promoState.data.balance,
       });
       v$.value.$reset();
     }

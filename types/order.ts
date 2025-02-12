@@ -122,6 +122,7 @@ export interface ISendOrderResponse {
 export interface IPromoData {
   amount: TNullable<number>
   code: TNullable<string>
+  balance: TNullable<boolean>
 }
 
 export interface IPromoStoreState {

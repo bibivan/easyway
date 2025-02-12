@@ -86,7 +86,8 @@ onMounted(() => initPromoData())
       class="promo-checker__info label-value-info"
     >
       <span class="label-value-info__label">Скидка</span>
-      <span class="label-value-info__value">-{{ promoState.data.amount }}%</span>
+      <span v-if="promoState.data.balance" class="label-value-info__value">- {{ promoState.data.amount }} ₽</span>
+      <span v-else class="label-value-info__value">- {{ promoState.data.amount }} %</span>
     </div>
   </div>
 </template>
