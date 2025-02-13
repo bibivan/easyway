@@ -135,7 +135,7 @@ watch(
         data-giftery-widget="25735"
         data-giftery-widget-color="000000"
       >
-        Карта лояльности
+        Подарочные сертификаты
       </a>
     </li>
   </ul>
