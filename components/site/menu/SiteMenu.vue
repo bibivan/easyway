@@ -128,6 +128,16 @@ watch(
         Карта лояльности
       </NuxtLink>
     </li>
+    <li class="menu__item">
+      <a
+        class="menu__link"
+        href="#"
+        data-giftery-widget="25735"
+        data-giftery-widget-color="000000"
+      >
+        Карта лояльности
+      </a>
+    </li>
   </ul>
 </template>
 

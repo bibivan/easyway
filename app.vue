@@ -2,7 +2,13 @@
 useHead({
   bodyAttrs: {
     class: 'body'
-  }
+  },
+  script: [
+    {
+      src: "https://launcher.giftery.cards/js/index.js",
+      async: true
+    }
+  ]
 })
 
 const { globalScrollIsHidden } = storeToRefs(useGlobalScrollbarStore())

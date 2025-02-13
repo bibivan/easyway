@@ -46,6 +46,15 @@ const handleLogOut = () => {
       >
     </li>
     <li class="profile-menu__item">
+      <a
+        class="profile-menu__link"
+        href="#"
+        data-giftery-widget="25735"
+        data-giftery-widget-color="000000"
+        >Подарочные сертификаты</a
+      >
+    </li>
+    <li class="profile-menu__item">
       <button
         class="profile-menu__link"
         @click="handleLogOut"

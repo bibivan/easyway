@@ -72,11 +72,13 @@ await Promise.all([getMaleCategories(), getFemaleCategories()])
             >Женское</NuxtLink
           >
 
-          <!--          <NuxtLink-->
-          <!--            class="header__link"-->
-          <!--            :to="{ name: 'gift-cards' }"-->
-          <!--            >Подарочные карты</NuxtLink-->
-          <!--          >-->
+                    <a
+                      class="header__link"
+                      href="#"
+                      data-giftery-widget="25735"
+                      data-giftery-widget-color="000000"
+                      >Подарочные сертификаты</a
+                    >
         </nav>
         <div class="header__actions">
           <NuxtLink
