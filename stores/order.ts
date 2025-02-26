@@ -109,7 +109,7 @@ export const useOrderStore = defineStore('order_store', () => {
   const sendOrder = async (cartData: ICartItem[], promoData: IPromoData) => {
     const payload = getOrderPayload(cartData, promoData);
     if (promoData.balance === true) {
-      await fetch('https://promo.aimagic.today/use-promo', {
+      await fetch('https://check.aimagic.today/use-promo', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ promo: promoData.code, amount: promoData.amount })

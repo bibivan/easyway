@@ -62,7 +62,7 @@ export const usePromoStore = defineStore('promo_store', () => {
     try {
       promoState.error = null
 
-      const data = await $fetch<IPromoResponseData>('https://promo.aimagic.today/check-promo/', {
+      const data = await $fetch<IPromoResponseData>('https://check.aimagic.today/check-promo/', {
         method: 'POST',
         headers: {
           Authorization: `Bearer someToken`
