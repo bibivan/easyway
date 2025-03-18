@@ -35,7 +35,7 @@ const handleSendData = async () => {
         } else {
           if (discountCode.startsWith('EAZY') && !item.article.startsWith('EF')) {
             discount = Math.floor(item.price * discountAmount / 100);
-          } else if (discountCode.startsWith('easy')) {
+          } else if (discountCode.startsWith('easy') || discountCode.startsWith('EASY')) {
             if (item.article.startsWith('EF')) {
               discount = Math.floor(item.price * discountAmount / 100);
             }

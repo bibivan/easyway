@@ -29,7 +29,7 @@ export const usePromoStore = defineStore('promo_store', () => {
         } else {
           if (promoState.data.code!.startsWith('EAZY')) {
             discount = Math.floor(item.price * (promoState.data.amount! / 100));
-          } else if (promoState.data.code!.startsWith('easy')) {
+          } else if (promoState.data.code!.startsWith('easy') || promoState.data.code!.startsWith('EASY')) {
             if (item.article.startsWith('EF')) {
               discount = Math.floor(item.price * (promoState.data.amount! / 100));
             }
