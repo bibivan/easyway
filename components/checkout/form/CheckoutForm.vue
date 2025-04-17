@@ -11,6 +11,7 @@ const state = reactive({
 })
 
 const handleSendData = async () => {
+  //@ts-ignore
   ym(98761136,'reachGoal','goal-buy-button')
   const result = await v$.value.$validate()
 

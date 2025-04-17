@@ -22,9 +22,9 @@ defineProps<{ gender?: EGender; data: TNullable<string[]> }>()
           query: {
             [EProductFilters.GENDER]: gender || $route.query[EProductFilters.GENDER],
             [EProductFilters.CATEGORY]: value,
-            ...(gender !== EGender.MALE && {
-              [EProductFilters.BRAND]: 'EAZYWAY'
-            })
+            ...($route.query[EProductFilters.BRAND] && {
+        [EProductFilters.BRAND]: $route.query[EProductFilters.BRAND]
+      })
           }
         }"
         >{{ value }}</NuxtLink
