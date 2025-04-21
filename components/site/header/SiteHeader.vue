@@ -42,7 +42,7 @@ await Promise.all([getMaleCategories(), getFemaleCategories()])
         </div>
         <nav class="header__nav">
           <NuxtLink
-            class="header__link"
+            class="header__link easyfit-link"
             :to="{
               name: 'catalog',
               query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
@@ -136,4 +136,10 @@ await Promise.all([getMaleCategories(), getFemaleCategories()])
 
 <style scoped lang="scss">
 @import 'site-header';
+.easyfit-link:hover {
+  color: #00adbb;
+}
+.easyfit-link::before {
+  background-color: #00adbb;
+}
 </style>

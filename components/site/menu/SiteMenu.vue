@@ -87,7 +87,7 @@ watch(
 
     <li class="menu__item">
       <NuxtLink
-        class="menu__link"
+        class="menu__link easyfit-link"
         :to="{
           name: 'catalog',
           query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
@@ -143,4 +143,7 @@ watch(
 
 <style scoped lang="scss">
 @import 'site-menu';
+.easyfit-link:hover {
+  color: #00adbb;
+}
 </style>
