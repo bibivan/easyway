@@ -34,51 +34,51 @@ const community = useCommunityMock()
 <!--        ]"-->
 <!--      />-->
 <!--    </SwiperSlide>-->
-<!--    <SwiperSlide>-->
-<!--      <MainPageHero-->
-<!--        title="easyfit"-->
-<!--        note="Бренд-линейка easyfit"-->
-<!--        :images-top="true"-->
-<!--        :to="{-->
-<!--          name: 'catalog',-->
-<!--          query: { [EProductFilters.BRAND]: EBrand.EASYFIT }-->
-<!--        }"-->
-<!--        :images="[-->
-<!--          './img/hero/main/1.jpg',-->
-<!--          './img/hero/main/2.jpg'-->
-<!--        ]"-->
-<!--      />-->
-<!--    </SwiperSlide>-->
     <SwiperSlide>
       <MainPageHerobf
           title=""
+          note=""
+          :images-top="true"
           :to="{
-              name: 'catalog',
-              query: { [EProductFilters.CATEGORY]: 'Новая коллекция'/*, ['erid']: '2Vtzqvy9gLQ'*/ }
-            }"
-          :images="[
-              './img/hero/main/neweazy0525.jpg',
-          './img/hero/main/neweazy0525tab.jpg',
-          './img/hero/main/neweazy0525mobile.jpg'
-            ]"
-      />
-    </SwiperSlide>
-    <SwiperSlide>
-      <MainPageHerobf
-        title=""
-        note=""
-        :images-top="true"
-        :to="{
           name: 'catalog',
           query: { [EProductFilters.BRAND]: EBrand.EAZYWAY/*, ['erid']: '2VtzqvFgiJC'*/ }
         }"
-        :images="[
+          :images="[
           './img/hero/main/eazy0525.jpg',
           './img/hero/main/eazy0525tab.jpg',
           './img/hero/main/eazy0525mobile.jpg'
         ]"
       />
     </SwiperSlide>
+    <SwiperSlide>
+      <MainPageHero
+        title="easyfit"
+        note="Бренд-линейка easyfit"
+        :images-top="true"
+        :to="{
+          name: 'catalog',
+          query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
+        }"
+        :images="[
+          './img/hero/main/1.jpg',
+          './img/hero/main/2.jpg'
+        ]"
+      />
+    </SwiperSlide>
+<!--    <SwiperSlide>-->
+<!--      <MainPageHerobf-->
+<!--          title=""-->
+<!--          :to="{-->
+<!--              name: 'catalog',-->
+<!--              query: { [EProductFilters.CATEGORY]: 'Новая коллекция'/*, ['erid']: '2Vtzqvy9gLQ'*/ }-->
+<!--            }"-->
+<!--          :images="[-->
+<!--              './img/hero/main/neweazy0525.jpg',-->
+<!--          './img/hero/main/neweazy0525tab.jpg',-->
+<!--          './img/hero/main/neweazy0525mobile.jpg'-->
+<!--            ]"-->
+<!--      />-->
+<!--    </SwiperSlide>-->
 
 
     <div class="hero-swiper__pagination swiper-pagination base-swiper__pagination" />
@@ -98,11 +98,11 @@ const community = useCommunityMock()
     class="eazyway-banner"
     btn-content="купить"
     description="Создай свой образ"
-    image="/img/promo-banner-eazyway.jpg"
+    image="/img/neweazy0525.jpg"
     title="TOTAL BLACK"
     :to="{
       name: 'catalog',
-      query: { [EProductFilters.BRAND]: EBrand.EAZYWAY }
+      query: { [EProductFilters.CATEGORY]: 'Новая коллекция' }
     }"
   />
 
