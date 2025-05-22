@@ -41,7 +41,7 @@ const community = useCommunityMock()
           :images-top="true"
           :to="{
           name: 'catalog',
-          query: { [EProductFilters.BRAND]: EBrand.EAZYWAY/*, ['erid']: '2VtzqvFgiJC'*/ }
+          query: { [EProductFilters.CATEGORY]: 'Новая коллекция'/*, ['erid']: '2VtzqvFgiJC'*/ }
         }"
           :images="[
           './img/hero/main/eazy0525.jpg',
@@ -99,7 +99,7 @@ const community = useCommunityMock()
     btn-content="купить"
     description="Создай свой образ"
     image="/img/neweazy0525.jpg"
-    title="Новая коллекция"
+    title="НОВАЯ КОЛЛЕКЦИЯ"
     :to="{
       name: 'catalog',
       query: { [EProductFilters.CATEGORY]: 'Новая коллекция' }
