@@ -48,11 +48,11 @@
   :deep(.catalog-banner__content::before) {
     position: absolute;
     z-index: $ui-index-0;
-    top: -215px;
-    right: -160px;
+    top: -112px;
+    right: -246px;
     width: 903px;
     height: 703px;
-    background-image: url('public/img/promo-banner-eazyway.jpg');
+    background-image: url('public/img/neweazycatalog.jpg');
     background-size: cover;
     content: '';
     transform: rotate(15deg);

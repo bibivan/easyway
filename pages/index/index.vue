@@ -46,7 +46,7 @@ const community = useCommunityMock()
           :images="[
           './img/hero/main/eazy0525.jpg',
           './img/hero/main/eazy0525tab.jpg',
-          './img/hero/main/eazy0525mobile.jpg'
+          './img/hero/main/neweazy0525mobile.jpg'
         ]"
       />
     </SwiperSlide>
@@ -99,7 +99,7 @@ const community = useCommunityMock()
     btn-content="купить"
     description="Создай свой образ"
     image="/img/neweazy0525.jpg"
-    title="TOTAL BLACK"
+    title="Новая коллекция"
     :to="{
       name: 'catalog',
       query: { [EProductFilters.CATEGORY]: 'Новая коллекция' }
