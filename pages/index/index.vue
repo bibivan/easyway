@@ -13,7 +13,7 @@ const community = useCommunityMock()
     :modules="[SwiperPagination, SwiperAutoplay]"
     :initial-slide="0"
     :autoplay="{
-      delay: 500000,
+      delay: 5000,
       disableOnInteraction: false
     }"
     :pagination="{
