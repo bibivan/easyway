@@ -75,5 +75,9 @@
     @include tablet {
       max-width: 220px;
     }
+    @include md-mobile {
+      max-width: 135px;
+      margin: auto;
+    }
   }
 }
