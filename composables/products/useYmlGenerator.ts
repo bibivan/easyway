@@ -60,7 +60,7 @@ export const useYmlGenerator = async () => {
                     categories.indexOf(product.category ? product.category : '') + 1
 
                   return `
-                    <offer id="${product.id}" available="true">
+                    <offer id="${product.article}" available="true">
                       <url>https://eazy-way.com/product-group/${product.groupId}</url>
                       <price>${product.priceInt}</price>
                       <currencyId>RUB</currencyId>
