@@ -50,35 +50,35 @@ const community = useCommunityMock()
         ]"
       />
     </SwiperSlide>
-    <SwiperSlide>
-      <MainPageHero
-        title="easyfit"
-        note="Бренд-линейка easyfit"
-        :images-top="true"
-        :to="{
-          name: 'catalog',
-          query: { [EProductFilters.BRAND]: EBrand.EASYFIT }
-        }"
-        :images="[
-          './img/hero/main/1.jpg',
-          './img/hero/main/2.jpg'
-        ]"
-      />
-    </SwiperSlide>
 <!--    <SwiperSlide>-->
-<!--      <MainPageHerobf-->
-<!--          title=""-->
-<!--          :to="{-->
-<!--              name: 'catalog',-->
-<!--              query: { [EProductFilters.CATEGORY]: 'Новая коллекция'/*, ['erid']: '2Vtzqvy9gLQ'*/ }-->
-<!--            }"-->
-<!--          :images="[-->
-<!--              './img/hero/main/neweazy0525.jpg',-->
-<!--          './img/hero/main/neweazy0525tab.jpg',-->
-<!--          './img/hero/main/neweazy0525mobile.jpg'-->
-<!--            ]"-->
+<!--      <MainPageHero-->
+<!--        title="easyfit"-->
+<!--        note="Бренд-линейка easyfit"-->
+<!--        :images-top="true"-->
+<!--        :to="{-->
+<!--          name: 'catalog',-->
+<!--          query: { [EProductFilters.BRAND]: EBrand.EASYFIT }-->
+<!--        }"-->
+<!--        :images="[-->
+<!--          './img/hero/main/1.jpg',-->
+<!--          './img/hero/main/2.jpg'-->
+<!--        ]"-->
 <!--      />-->
 <!--    </SwiperSlide>-->
+    <SwiperSlide>
+      <MainPageHerobf
+          title=""
+          :to="{
+              name: 'catalog',
+              query: { [EProductFilters.BRAND]: EBrand.EASYFIT/*, ['erid']: '2Vtzqvy9gLQ'*/ }
+            }"
+          :images="[
+              './img/hero/main/easyfit.jpg',
+          './img/hero/main/easyfittab.jpg',
+          './img/hero/main/easyfitmob.jpg'
+            ]"
+      />
+    </SwiperSlide>
 
 
     <div class="hero-swiper__pagination swiper-pagination base-swiper__pagination" />
