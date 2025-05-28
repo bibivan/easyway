@@ -58,10 +58,10 @@
     transform: rotate(0deg);
 
     @include tablet {
-      top: -500px;
-      right: -420px;
-      width: 2324px;
-      height: 1808px;
+      height: 100%;
+      right: auto;
+      top: auto;
+      width: 185vw;
     }
 
     @include desktop {
@@ -74,7 +74,7 @@
     }
 
     @include md-desktop {
-      top: -80%;
+      top: -15%;
     }
   }
 }
