@@ -65,11 +65,22 @@ await Promise.all([getMaleCategories(), getFemaleCategories()])
             :to="{
               name: 'catalog',
               query: {
-                [EProductFilters.GENDER]: EGender.FEMALE,
-                [EProductFilters.BRAND]: EBrand.EAZYWAY
+                [EProductFilters.GENDER]: EGender.FEMALE
+                // [EProductFilters.BRAND]: EBrand.EAZYWAY
               }
             }"
             >Женское</NuxtLink
+          >
+          <NuxtLink
+            class="header__link"
+            :to="{
+              name: 'catalog',
+              query: {
+                [EProductFilters.CATEGORY]: 'Новая коллекция'
+                // [EProductFilters.BRAND]: EBrand.EAZYWAY
+              }
+            }"
+            >Новая коллекция</NuxtLink
           >
 
                     <a

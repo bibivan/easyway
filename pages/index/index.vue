@@ -44,9 +44,9 @@ const community = useCommunityMock()
           query: { [EProductFilters.CATEGORY]: 'Новая коллекция'/*, ['erid']: '2VtzqvFgiJC'*/ }
         }"
           :images="[
-          './img/hero/main/eazy0525.jpg',
-          './img/hero/main/eazy0525tab.jpg',
-          './img/hero/main/neweazy0525mobile.jpg'
+          './img/hero/main/eazy0528.jpg',
+          './img/hero/main/eazy0528tab.jpg',
+          './img/hero/main/neweazy0528mobile.jpg'
         ]"
       />
     </SwiperSlide>
@@ -73,9 +73,9 @@ const community = useCommunityMock()
               query: { [EProductFilters.BRAND]: EBrand.EASYFIT/*, ['erid']: '2Vtzqvy9gLQ'*/ }
             }"
           :images="[
-              './img/hero/main/easyfit.jpg',
-          './img/hero/main/easyfittab.jpg',
-          './img/hero/main/easyfitmob.jpg'
+              './img/hero/main/easyfit0528.jpg',
+          './img/hero/main/easyfit0528tab.jpg',
+          './img/hero/main/easyfit0528mob.jpg'
             ]"
       />
     </SwiperSlide>
