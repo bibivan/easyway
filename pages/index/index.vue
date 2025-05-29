@@ -46,7 +46,7 @@ const community = useCommunityMock()
           :images="[
           './img/hero/main/eazy0528.jpg',
           './img/hero/main/eazy0528tab.jpg',
-          './img/hero/main/neweazy0528mobile.jpg'
+          './img/hero/main/eazy0528mobile.jpg'
         ]"
       />
     </SwiperSlide>

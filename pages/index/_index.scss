@@ -65,7 +65,7 @@
     }
 
     @include desktop {
-      top: -15%;
+      top: -20%;
       right: auto;
       width: 145%;
       height: auto;
@@ -74,7 +74,7 @@
     }
 
     @include md-desktop {
-      top: -15%;
+      top: -60%;
     }
   }
 }
