@@ -155,3 +155,27 @@
     background-color: $color-easyfit;
   }
 }
+.catalog-item {
+  &__badges {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap: 4px;
+    z-index: $ui-index-1;
+
+    @include tablet {
+      gap: 6px;
+    }
+  }
+
+  &__badge {
+    width: auto;
+    height: 20px;
+
+    @include tablet {
+      height: 26px;
+    }
+  }
+}

@@ -2,6 +2,7 @@
 import type { IProductGroup } from '~/types'
 import { transformSizeString } from '~/utils/products'
 
+
 const props = defineProps<{
   data: IProductGroup
   withoutBtn?: boolean
@@ -22,6 +23,20 @@ const { findItem, addToFavorites, deleteFromFavorites } = useFavoritesStore()
 const isInFavorites = computed(() => findItem(props.data.groupId))
 const handleToggleFavorite = () => {
   return isInFavorites.value ? deleteFromFavorites(props.data.groupId) : addToFavorites(props.data)
+}
+const badges = computed(() => {
+  if (props.data.brand !== 'EAZYWAY') {
+    return ['easyfit']
+  }
+  return []
+})
+
+
+const getBadgeSrc = (badge: string) => {
+  const fileName = badge.replace(/\s+/g, '%20') // пробелы на %20
+  return isMobile.value
+      ? `/img/320_mob_ Button ${fileName}.png`
+      : `/img/Button ${fileName}.png`
 }
 </script>
 
@@ -45,6 +60,15 @@ const handleToggleFavorite = () => {
           :alt="activeProduct.name"
           class="catalog-item__image"
         />
+        <div class="catalog-item__badges">
+          <img
+              v-for="badge in badges"
+              :key="badge"
+              :src="getBadgeSrc(badge)"
+              :alt="badge"
+              class="catalog-item__badge"
+          />
+        </div>
       </div>
     </NuxtLink>
 
