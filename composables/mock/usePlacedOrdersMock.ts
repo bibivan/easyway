@@ -38,7 +38,8 @@ export const usePlacedOrdersMock = () => {
         }
       ],
       BRAND: 'EAZYWAY',
-      NEW: 'YES'
+      NEW: 'YES',
+      BADGES: [],
     },
     {
       CATEGORY: 'Легинсы',
@@ -76,7 +77,8 @@ export const usePlacedOrdersMock = () => {
         }
       ],
       BRAND: 'EAZYWAY',
-      NEW: 'YES'
+      NEW: 'YES',
+      BADGES: [],
     },
     {
       CATEGORY: 'Комбинезоны',
@@ -114,7 +116,8 @@ export const usePlacedOrdersMock = () => {
         }
       ],
       BRAND: 'EAZYWAY',
-      NEW: 'YES'
+      NEW: 'YES',
+      BADGES: [],
     },
     {
       CATEGORY: 'Рашгарды',
@@ -153,7 +156,8 @@ export const usePlacedOrdersMock = () => {
         }
       ],
       BRAND: 'EASYFIT',
-      NEW: 'NO'
+      NEW: 'NO',
+      BADGES: []
     },
     {
       CATEGORY: 'Шорты',
@@ -191,7 +195,8 @@ export const usePlacedOrdersMock = () => {
         }
       ],
       BRAND: 'EASYFIT',
-      NEW: 'NO'
+      NEW: 'NO',
+      BADGES: []
     },
     {
       CATEGORY: 'Футболки',
@@ -232,7 +237,8 @@ export const usePlacedOrdersMock = () => {
         }
       ],
       BRAND: 'EASYFIT',
-      NEW: 'NO'
+      NEW: 'NO',
+      BADGES: [],
     }
   ].map((group: IProductGroupRaw) => productGroupRawToProductGroup(group))
 

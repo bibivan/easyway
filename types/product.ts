@@ -49,7 +49,8 @@ export interface IProductGroupRaw {
   ITEMS: IProductRaw[]
   NEW: string
   SIZES: string[]
-  PRICE: string
+  PRICE: string,
+  BADGES: string []
 }
 
 export interface IProduct {
@@ -80,7 +81,8 @@ export interface IProductGroup {
   items: IProduct[]
   new: ENew
   price: number
-  sizes: ESize[]
+  sizes: ESize[],
+  badges: string []
 }
 
 export interface IProductGroupState {

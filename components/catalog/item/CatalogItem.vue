@@ -25,10 +25,11 @@ const handleToggleFavorite = () => {
   return isInFavorites.value ? deleteFromFavorites(props.data.groupId) : addToFavorites(props.data)
 }
 const badges = computed(() => {
-  if (props.data.brand !== 'EAZYWAY') {
-    return ['easyfit']
-  }
-  return []
+  // console.log(props.data.badges);
+  // if (props.data.brand !== 'EAZYWAY') {
+  //   props.data.badges.push('easyfit');
+  // }
+  return props.data.badges;
 })
 
 

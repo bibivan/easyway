@@ -76,6 +76,7 @@ export const productGroupRawToProductGroup = (data: IProductGroupRaw): IProductG
     items: data.ITEMS.map((item: IProductRaw) => productRawToProduct(item)),
     new: getNoveltyStatus(data.NEW),
     price: toNullable(parseInt(data.PRICE, 10)),
+    badges: data.BADGES,
     sizes: data.SIZES.reduce<ESize[]>((acc, curSize) => {
       return curSize ? [...acc, getSize(curSize)] : acc
     }, [])
