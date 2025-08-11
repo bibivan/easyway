@@ -71,17 +71,17 @@ await Promise.all([getMaleCategories(), getFemaleCategories()])
             }"
             >Женское</NuxtLink
           >
-          <NuxtLink
-            class="header__link"
-            :to="{
-              name: 'catalog',
-              query: {
-                [EProductFilters.CATEGORY]: 'Новая коллекция'
-                // [EProductFilters.BRAND]: EBrand.EAZYWAY
-              }
-            }"
-            >Новая коллекция</NuxtLink
-          >
+<!--          <NuxtLink-->
+<!--            class="header__link"-->
+<!--            :to="{-->
+<!--              name: 'catalog',-->
+<!--              query: {-->
+<!--                [EProductFilters.CATEGORY]: 'Новая коллекция'-->
+<!--                // [EProductFilters.BRAND]: EBrand.EAZYWAY-->
+<!--              }-->
+<!--            }"-->
+<!--            >Новая коллекция</NuxtLink-->
+<!--          >-->
 
                     <a
                       class="header__link"

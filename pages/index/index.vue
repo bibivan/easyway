@@ -99,10 +99,10 @@ const community = useCommunityMock()
     btn-content="купить"
     description="Создай свой образ"
     image="/img/neweazy0525.jpg"
-    title="НОВАЯ КОЛЛЕКЦИЯ"
+    title="EAZYWAY"
     :to="{
       name: 'catalog',
-      query: { [EProductFilters.CATEGORY]: 'Новая коллекция' }
+      query: { [EProductFilters.GENDER]: 'Женское' }
     }"
   />
 
