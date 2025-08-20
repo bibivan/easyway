@@ -41,7 +41,7 @@ const community = useCommunityMock()
           :images-top="true"
           :to="{
           name: 'catalog',
-          query: { [EProductFilters.CATEGORY]: 'Новая коллекция'/*, ['erid']: '2VtzqvFgiJC'*/ }
+          query: { [EProductFilters.GENDER]: 'Женское'/*, ['erid']: '2VtzqvFgiJC'*/ }
         }"
           :images="[
           './img/hero/main/eazy0528.jpg',
