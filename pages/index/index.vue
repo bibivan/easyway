@@ -44,9 +44,9 @@ const community = useCommunityMock()
           query: { [EProductFilters.GENDER]: 'Женское'/*, ['erid']: '2VtzqvFgiJC'*/ }
         }"
           :images="[
-          './img/hero/main/eazy0528.jpg',
-          './img/hero/main/eazy0528tab.jpg',
-          './img/hero/main/eazy0528mob.jpg'
+          './img/hero/main/eazyway2108desc.jpg',
+          './img/hero/main/eazyway2108tab.jpg',
+          './img/hero/main/eazyway2108mob.jpg'
         ]"
       />
     </SwiperSlide>
@@ -73,9 +73,9 @@ const community = useCommunityMock()
               query: { [EProductFilters.BRAND]: EBrand.EASYFIT/*, ['erid']: '2Vtzqvy9gLQ'*/ }
             }"
           :images="[
-              './img/hero/main/easyfit0528.jpg',
-          './img/hero/main/easyfit0528tab.jpg',
-          './img/hero/main/easyfit0528mob.jpg'
+              './img/hero/main/easyfit2108desc.jpg',
+          './img/hero/main/easyfit2108tab.jpg',
+          './img/hero/main/easyfit2108mob.jpg'
             ]"
       />
     </SwiperSlide>
